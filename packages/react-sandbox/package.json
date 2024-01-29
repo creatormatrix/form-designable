@@ -10,7 +10,7 @@
   "module": "esm",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alibaba/designable.git"
+    "url": "git+https://github.com/elppac/form-designable.git"
   },
   "bugs": {
     "url": "https://github.com/alibaba/designable/issues"
