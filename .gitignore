@@ -22,3 +22,6 @@ package.zip
 .cjsescache
 doc-site
 .lerna-changelog
+lib/
+esm/
+dist/
