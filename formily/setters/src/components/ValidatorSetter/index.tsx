@@ -7,7 +7,7 @@ import {
   Schema,
   ISchema,
 } from '@formily/react'
-import { GlobalRegistry } from '@designable/core'
+import { GlobalRegistry } from '@creatormatrix/core'
 import {
   ArrayItems,
   FormDialog,
@@ -22,12 +22,12 @@ import {
   SchemaField,
   ValueInput,
   useLocales,
-} from '@designable/react-settings-form'
+} from '@creatormatrix/react-settings-form'
 import { Button, Select } from 'antd'
-import { DesignerLayoutContext } from '@designable/react'
+import { DesignerLayoutContext } from '@creatormatrix/react'
 import '../../locales'
 import locale from '../../locales/zh-CN'
-import { clone } from '@designable/shared'
+import { clone } from '@creatormatrix/shared'
 
 export interface IValidatorSetterProps {
   value?: any

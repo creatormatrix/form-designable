@@ -17,17 +17,17 @@ import {
   ViewPanel,
   SettingsPanel,
   ComponentTreeWidget,
-} from '@designable/react'
+} from '@creatormatrix/react'
 import {
   SettingsForm,
   setNpmCDNRegistry,
-} from '@designable/react-settings-form'
+} from '@creatormatrix/react-settings-form'
 import {
   createDesigner,
   GlobalRegistry,
   Shortcut,
   KeyCode,
-} from '@designable/core'
+} from '@creatormatrix/core'
 import {
   LogoWidget,
   ActionsWidget,
@@ -69,8 +69,8 @@ import {
   DataSourceSetter,
   ReactionsSetter,
   ValidatorSetter,
-} from '@designable/formily-setters'
-import { DesignerLayoutContext } from '@designable/react'
+} from '@creatormatrix/formily-setters'
+import { DesignerLayoutContext } from '@creatormatrix/react'
 
 import { ConfigProvider } from 'antd'
 import { createForm } from '@formily/core'

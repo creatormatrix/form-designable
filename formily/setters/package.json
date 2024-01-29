@@ -1,5 +1,5 @@
 {
-  "name": "@designable/formily-setters",
+  "name": "@creatormatrix/formily-setters",
   "version": "1.0.0-beta.45",
   "license": "MIT",
   "main": "lib",
@@ -42,10 +42,10 @@
     "react-is": ">=16.8.0 || >=17.0.0"
   },
   "dependencies": {
-    "@designable/core": "1.0.0-beta.45",
-    "@designable/formily-transformer": "1.0.0-beta.45",
-    "@designable/react": "1.0.0-beta.45",
-    "@designable/react-settings-form": "1.0.0-beta.45"
+    "@creatormatrix/core": "1.0.0-beta.45",
+    "@creatormatrix/formily-transformer": "1.0.0-beta.45",
+    "@creatormatrix/react": "1.0.0-beta.45",
+    "@creatormatrix/react-settings-form": "1.0.0-beta.45"
   },
   "publishConfig": {
     "access": "public"

@@ -1,5 +1,5 @@
 {
-  "name": "@designable/react-sandbox",
+  "name": "@creatormatrix/react-sandbox",
   "version": "1.0.0-beta.45",
   "license": "MIT",
   "main": "lib",
@@ -26,8 +26,8 @@
     "react": "16.x || 17.x"
   },
   "dependencies": {
-    "@designable/react": "1.0.0-beta.45",
-    "@designable/shared": "1.0.0-beta.45"
+    "@creatormatrix/react": "1.0.0-beta.45",
+    "@creatormatrix/shared": "1.0.0-beta.45"
   },
   "publishConfig": {
     "access": "public"

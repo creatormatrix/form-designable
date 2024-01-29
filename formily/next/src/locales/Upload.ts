@@ -1,4 +1,4 @@
-import { createLocales } from '@designable/core'
+import { createLocales } from '@creatormatrix/core'
 
 export const Upload = {
   'zh-CN': {

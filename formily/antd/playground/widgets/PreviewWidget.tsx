@@ -30,8 +30,8 @@ import {
   ArrayCards,
 } from '@formily/antd'
 import { Card, Slider, Rate } from 'antd'
-import { TreeNode } from '@designable/core'
-import { transformToSchema } from '@designable/formily-transformer'
+import { TreeNode } from '@creatormatrix/core'
+import { transformToSchema } from '@creatormatrix/formily-transformer'
 
 const Text: React.FC<{
   value?: string

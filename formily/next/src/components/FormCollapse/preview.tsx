@@ -5,14 +5,14 @@ import {
   CollapseProps,
   PanelProps as CollapsePanelProps,
 } from '@alifd/next/types/collapse'
-import { TreeNode, createBehavior, createResource } from '@designable/core'
+import { TreeNode, createBehavior, createResource } from '@creatormatrix/core'
 import {
   useTreeNode,
   useNodeIdProps,
   TreeNodeWidget,
   DroppableWidget,
   DnFC,
-} from '@designable/react'
+} from '@creatormatrix/react'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
 import { createVoidFieldSchema } from '../Field'

@@ -1,3 +1,6 @@
 import baseConfig from '../../scripts/rollup.base.js'
 
-export default baseConfig('designable.react-sandbox', 'Designable.ReactSandbox')
+export default baseConfig(
+  'creatormatrix.react-sandbox',
+  'CreatorMatrix.ReactSandbox'
+)

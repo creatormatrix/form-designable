@@ -1,4 +1,4 @@
-import { ICustomEvent } from '@designable/shared'
+import { ICustomEvent } from '@creatormatrix/shared'
 import { AbstractWorkspaceEvent } from './AbstractWorkspaceEvent'
 
 export class SwitchWorkspaceEvent
