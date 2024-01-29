@@ -10,6 +10,7 @@ import './styles.less'
 export interface IDrawerSetterProps {
   text: React.ReactNode
   triggerProps: ButtonProps
+  wrapperClassName?: string
 }
 
 export const DrawerSetter: React.FC<IDrawerSetterProps> = observer((props) => {
@@ -19,7 +20,9 @@ export const DrawerSetter: React.FC<IDrawerSetterProps> = observer((props) => {
   const [remove, setRemove] = useState(false)
   const [root, setRoot] = useState<Element>()
   const prefix = usePrefix('drawer-setter')
-  const formWrapperCls = usePrefix('settings-form-wrapper')
+  const formWrapperCls = usePrefix(
+    props.wrapperClassName || 'settings-form-wrapper'
+  )
   useLayoutEffect(() => {
     const wrapper = document.querySelector('.' + formWrapperCls)
     if (wrapper) {

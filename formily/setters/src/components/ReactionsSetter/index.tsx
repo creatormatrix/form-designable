@@ -17,14 +17,16 @@ import {
 import { Modal, Card, Button, Tag, Tooltip } from 'antd'
 import { PathSelector } from './PathSelector'
 import { FieldPropertySetter } from './FieldPropertySetter'
-import { FulfillRunHelper } from './helpers'
 import { IReaction } from './types'
-import { initDeclaration } from './declarations'
+import './declarations'
 import './styles.less'
+import type { DefaultOptionType } from 'antd/lib/select'
 
 export interface IReactionsSetterProps {
   value?: IReaction
   onChange?: (value: IReaction) => void
+  independence?: boolean
+  outSource?: DefaultOptionType[]
 }
 
 const TypeView = ({ value }) => {
@@ -155,9 +157,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
     if (modalVisible) {
       requestIdle(
         () => {
-          initDeclaration().then(() => {
-            setInnerVisible(true)
-          })
+          setInnerVisible(true)
         },
         {
           timeout: 400,
@@ -227,16 +227,33 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                             width: 240,
                           }}
                         >
-                          <SchemaField.String
-                            name="source"
-                            x-decorator="FormItem"
-                            x-component="PathSelector"
-                            x-component-props={{
-                              placeholder: GlobalRegistry.getDesignerMessage(
-                                'SettingComponents.ReactionsSetter.pleaseSelect'
-                              ),
-                            }}
-                          />
+                          {props.independence && (
+                            <SchemaField.String
+                              name="source"
+                              x-decorator="FormItem"
+                              x-component="Select"
+                              x-component-props={{
+                                showSearch: true,
+                                placeholder: GlobalRegistry.getDesignerMessage(
+                                  'SettingComponents.ReactionsSetter.pleaseSelect'
+                                ),
+                              }}
+                              enum={props.outSource}
+                            />
+                          )}
+
+                          {!props.independence && (
+                            <SchemaField.String
+                              name="source"
+                              x-decorator="FormItem"
+                              x-component="PathSelector"
+                              x-component-props={{
+                                placeholder: GlobalRegistry.getDesignerMessage(
+                                  'SettingComponents.ReactionsSetter.pleaseSelect'
+                                ),
+                              }}
+                            />
+                          )}
                         </SchemaField.Void>
                         <SchemaField.Void
                           x-component="ArrayTable.Column"
@@ -285,6 +302,10 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                               if (isVoidField(field)) return
                               field.query('.source').take((source) => {
                                 if (isVoidField(source)) return
+                                // 从外部导入的源优先
+                                if (source.value && props.independence) {
+                                  field.value = source.value
+                                }
                                 if (
                                   source.value &&
                                   !field.value &&
@@ -322,7 +343,6 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                               const property = field
                                 .query('.property')
                                 .get('inputValues')
-                              if (!property) return
                               property[0] = property[0] || 'value'
                               field.query('.source').take((source) => {
                                 if (isVoidField(source)) return
@@ -389,7 +409,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                       x-component="FieldPropertySetter"
                     />
                   </SchemaField.Void>
-                  <SchemaField.Void
+                  {/* <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
                       key: 'run',
@@ -427,7 +447,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                         }
                       }}
                     />
-                  </SchemaField.Void>
+                  </SchemaField.Void> */}
                 </SchemaField.Void>
               </SchemaField>
             </Form>

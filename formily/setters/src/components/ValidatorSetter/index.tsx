@@ -8,13 +8,31 @@ import {
   ISchema,
 } from '@formily/react'
 import { GlobalRegistry } from '@designable/core'
-import { ArrayItems } from '@formily/antd'
-import { FoldItem } from '@designable/react-settings-form'
-import { Select } from 'antd'
+import {
+  ArrayItems,
+  FormDialog,
+  FormItem,
+  FormLayout,
+  Input,
+  NumberPicker,
+} from '@formily/antd'
+import {
+  DrawerSetter,
+  FoldItem,
+  SchemaField,
+  ValueInput,
+  useLocales,
+} from '@designable/react-settings-form'
+import { Button, Select } from 'antd'
+import { DesignerLayoutContext } from '@designable/react'
+import '../../locales'
+import locale from '../../locales/zh-CN'
+import { clone } from '@designable/shared'
 
 export interface IValidatorSetterProps {
   value?: any
   onChange?: (value: any) => void
+  independence?: boolean
 }
 
 const ValidatorSchema: ISchema = {
@@ -39,6 +57,7 @@ const ValidatorSchema: ISchema = {
       drawer: {
         type: 'void',
         'x-component': 'DrawerSetter',
+
         properties: {
           triggerType: {
             type: 'string',
@@ -142,31 +161,160 @@ const ValidatorSchema: ISchema = {
     },
   },
 }
-
+const ValidatorSchemaIndependence: any = clone(ValidatorSchema)
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+ValidatorSchemaIndependence?.items?.properties?.drawer['x-component-props'] = {
+  wrapperClassName: 'validator-setter-dialog',
+}
+const ValidatorSetterItem: React.FC<IValidatorSetterProps> = (props) => {
+  const field = useField<ArrayField>()
+  return (
+    <FoldItem label={field.title}>
+      <FoldItem.Base>
+        <Select
+          value={Array.isArray(props.value) ? undefined : props.value}
+          onChange={props.onChange}
+          allowClear
+          placeholder={GlobalRegistry.getDesignerMessage(
+            'SettingComponents.ValidatorSetter.pleaseSelect'
+          )}
+          options={GlobalRegistry.getDesignerMessage(
+            'SettingComponents.ValidatorSetter.formats'
+          )}
+        />
+      </FoldItem.Base>
+      <FoldItem.Extra>
+        <SchemaContext.Provider
+          value={
+            new Schema(
+              props.independence ? ValidatorSchemaIndependence : ValidatorSchema
+            )
+          }
+        >
+          <ArrayItems />
+        </SchemaContext.Provider>
+      </FoldItem.Extra>
+    </FoldItem>
+  )
+}
+// effects={
+//   (form) => {
+//     useLocales({
+//       getMessage: (token: string) => {
+//         return GlobalRegistry.getDesignerMessage(token, Schema.Input.Behavior[0].designerLocales);
+//       },
+//     } as any);
+//   }
+// }
 export const ValidatorSetter: React.FC<IValidatorSetterProps> = observer(
   (props) => {
-    const field = useField<ArrayField>()
-    return (
-      <FoldItem label={field.title}>
-        <FoldItem.Base>
-          <Select
-            value={Array.isArray(props.value) ? undefined : props.value}
-            onChange={props.onChange}
-            allowClear
-            placeholder={GlobalRegistry.getDesignerMessage(
-              'SettingComponents.ValidatorSetter.pleaseSelect'
-            )}
-            options={GlobalRegistry.getDesignerMessage(
-              'SettingComponents.ValidatorSetter.formats'
-            )}
-          />
-        </FoldItem.Base>
-        <FoldItem.Extra>
-          <SchemaContext.Provider value={new Schema(ValidatorSchema)}>
-            <ArrayItems />
-          </SchemaContext.Provider>
-        </FoldItem.Extra>
-      </FoldItem>
-    )
+    if (props.independence) {
+      return (
+        <FormDialog.Portal>
+          <Button
+            onClick={() => {
+              const dialog = FormDialog('弹窗表单', 'formValidator', (form) => {
+                form.addEffects('Locales', () => {
+                  useLocales({
+                    getMessage: (token: string) => {
+                      return (
+                        GlobalRegistry.getDesignerMessage(
+                          token,
+                          locale['zh-CN']
+                        ) ||
+                        GlobalRegistry.getDesignerMessage(
+                          `${token}.title`,
+                          locale['zh-CN']
+                        )
+                      )
+                      // return token
+                    },
+                  } as any)
+                })
+                return (
+                  <div className="dn-validator-setter-dialog">
+                    <DesignerLayoutContext.Provider
+                      value={{
+                        theme: 'light',
+                        prefixCls: 'dn-',
+                        position: 'fixed',
+                      }}
+                    >
+                      <FormLayout
+                        labelWidth={120}
+                        labelAlign="left"
+                        wrapperAlign="right"
+                        feedbackLayout="none"
+                        tooltipLayout="text"
+                      >
+                        <SchemaField
+                          components={{
+                            DrawerSetter,
+                            FormItem,
+                            Input,
+                            ValueInput,
+                            NumberPicker,
+                            Select,
+                            ArrayItems,
+                            FormLayout,
+                          }}
+                        >
+                          <SchemaField.Array
+                            name="x-validator"
+                            title="x-validator"
+                            x-component={ValidatorSetterItem}
+                            x-component-props={{ independence: true }}
+                          />
+                        </SchemaField>
+                        <FormDialog.Footer>
+                          <span
+                            style={{ marginLeft: 4 }}
+                            onClick={() => {
+                              dialog.close()
+                            }}
+                          >
+                            扩展文案：{form.values.aaa}(点击关闭弹窗)
+                          </span>
+                        </FormDialog.Footer>
+                      </FormLayout>
+                    </DesignerLayoutContext.Provider>
+                  </div>
+                )
+              })
+              dialog
+                .forOpen((payload, next) => {
+                  setTimeout(() => {
+                    next({
+                      initialValues: {
+                        aaa: '123',
+                      },
+                    })
+                  }, 0)
+                })
+                .forConfirm((payload, next) => {
+                  setTimeout(() => {
+                    console.log(payload)
+                    next(payload)
+                  }, 10)
+                })
+                .forCancel((payload, next) => {
+                  setTimeout(() => {
+                    console.log(payload)
+                    next(payload)
+                  }, 10)
+                })
+                .open()
+                .then(console.log)
+                .catch(console.error)
+            }}
+          >
+            点我打开表单
+          </Button>
+        </FormDialog.Portal>
+      )
+    } else {
+      return <ValidatorSetterItem {...props} />
+    }
   }
 )
