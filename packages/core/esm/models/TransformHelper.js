@@ -6,19 +6,19 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -35,7 +35,7 @@ let __read =
     }
     return ar
   }
-let __spreadArray =
+var __spreadArray =
   (this && this.__spreadArray) ||
   function (to, from, pack) {
     if (pack || arguments.length === 2)
@@ -47,10 +47,10 @@ let __spreadArray =
       }
     return to.concat(ar || Array.prototype.slice.call(from))
   }
-let __values =
+var __values =
   (this && this.__values) ||
   function (o) {
-    let s = typeof Symbol === 'function' && Symbol.iterator,
+    var s = typeof Symbol === 'function' && Symbol.iterator,
       m = s && o[s],
       i = 0
     if (m) return m.call(o)
@@ -83,7 +83,7 @@ import { SpaceBlock } from './SpaceBlock'
 import { TreeNode } from './TreeNode'
 import { SnapLine } from './SnapLine'
 import { CursorDragType } from './Cursor'
-let TransformHelper = /** @class */ (function () {
+var TransformHelper = /** @class */ (function () {
   function TransformHelper(props) {
     this.dragNodes = []
     this.rulerSnapLines = []
@@ -136,7 +136,7 @@ let TransformHelper = /** @class */ (function () {
   })
   Object.defineProperty(TransformHelper.prototype, 'cursorPosition', {
     get: function () {
-      let position = this.cursor.position
+      var position = this.cursor.position
       return this.operation.workspace.viewport.getOffsetPoint(
         new Point(position.clientX, position.clientY)
       )
@@ -154,9 +154,9 @@ let TransformHelper = /** @class */ (function () {
           this.dragNodesRect.height
         )
       } else if (this.type === 'resize') {
-        let dragNodesRect = this.dragStartNodesRect
-        let deltaX = this.cursor.dragStartToCurrentDelta.clientX
-        let deltaY = this.cursor.dragStartToCurrentDelta.clientY
+        var dragNodesRect = this.dragStartNodesRect
+        var deltaX = this.cursor.dragStartToCurrentDelta.clientX
+        var deltaY = this.cursor.dragStartToCurrentDelta.clientY
         switch (this.direction) {
           case 'left-top':
             return new Rect(
@@ -258,7 +258,7 @@ let TransformHelper = /** @class */ (function () {
   })
   Object.defineProperty(TransformHelper.prototype, 'dragStartCursor', {
     get: function () {
-      let position = this.operation.engine.cursor.dragStartPosition
+      var position = this.operation.engine.cursor.dragStartPosition
       return this.operation.workspace.viewport.getOffsetPoint(
         new Point(position.clientX, position.clientY)
       )
@@ -279,15 +279,15 @@ let TransformHelper = /** @class */ (function () {
   Object.defineProperty(TransformHelper.prototype, 'closestSnapLines', {
     get: function () {
       if (!this.dragging) return []
-      let results = []
-      let cursorDragNodesEdgeLines = this.cursorDragNodesEdgeLines
+      var results = []
+      var cursorDragNodesEdgeLines = this.cursorDragNodesEdgeLines
       this.thresholdSnapLines.forEach(function (line) {
-        let distance = calcDistanceOfSnapLineToEdges(
+        var distance = calcDistanceOfSnapLineToEdges(
           line,
           cursorDragNodesEdgeLines
         )
         if (distance < TransformHelper.threshold) {
-          let existed = results.findIndex(function (l) {
+          var existed = results.findIndex(function (l) {
             return (
               l.distance > distance &&
               l.distance > 0 &&
@@ -308,9 +308,9 @@ let TransformHelper = /** @class */ (function () {
   Object.defineProperty(TransformHelper.prototype, 'closestSpaceBlocks', {
     get: function () {
       if (!this.dragging) return []
-      let cursorDragNodesEdgeLines = this.cursorDragNodesEdgeLines
+      var cursorDragNodesEdgeLines = this.cursorDragNodesEdgeLines
       return this.thresholdSpaceBlocks.filter(function (block) {
-        let line = block.snapLine
+        var line = block.snapLine
         if (!line) return false
         return (
           calcDistanceOfSnapLineToEdges(line, cursorDragNodesEdgeLines) <
@@ -324,7 +324,7 @@ let TransformHelper = /** @class */ (function () {
   Object.defineProperty(TransformHelper.prototype, 'thresholdSnapLines', {
     get: function () {
       if (!this.dragging) return []
-      let lines = []
+      var lines = []
       this.aroundSnapLines.forEach(function (line) {
         lines.push(line)
       })
@@ -333,9 +333,9 @@ let TransformHelper = /** @class */ (function () {
           lines.push(line)
         }
       })
-      for (let type in this.aroundSpaceBlocks) {
-        let block = this.aroundSpaceBlocks[type]
-        let line = block.snapLine
+      for (var type in this.aroundSpaceBlocks) {
+        var block = this.aroundSpaceBlocks[type]
+        var line = block.snapLine
         if (line) {
           lines.push(line)
         }
@@ -347,10 +347,10 @@ let TransformHelper = /** @class */ (function () {
   })
   Object.defineProperty(TransformHelper.prototype, 'thresholdSpaceBlocks', {
     get: function () {
-      let results = []
+      var results = []
       if (!this.dragging) return []
-      for (let type in this.aroundSpaceBlocks) {
-        let block = this.aroundSpaceBlocks[type]
+      for (var type in this.aroundSpaceBlocks) {
+        var block = this.aroundSpaceBlocks[type]
         if (!block.snapLine) return []
         if (block.snapLine.distance !== 0) return []
         if (block.isometrics.length) {
@@ -368,9 +368,9 @@ let TransformHelper = /** @class */ (function () {
   })
   Object.defineProperty(TransformHelper.prototype, 'measurerSpaceBlocks', {
     get: function () {
-      let results = []
+      var results = []
       if (!this.dragging || !this.snapped) return []
-      for (let type in this.aroundSpaceBlocks) {
+      for (var type in this.aroundSpaceBlocks) {
         if (this.aroundSpaceBlocks[type])
           results.push(this.aroundSpaceBlocks[type])
       }
@@ -380,30 +380,30 @@ let TransformHelper = /** @class */ (function () {
     configurable: true,
   })
   TransformHelper.prototype.calcBaseTranslate = function (node) {
-    let _a
-    let dragStartTranslate =
+    var _a
+    var dragStartTranslate =
       (_a = this.dragStartTranslateStore[node.id]) !== null && _a !== void 0
         ? _a
         : {
             x: 0,
             y: 0,
           }
-    let x = dragStartTranslate.x + this.deltaX,
+    var x = dragStartTranslate.x + this.deltaX,
       y = dragStartTranslate.y + this.deltaY
     return { x: x, y: y }
   }
   TransformHelper.prototype.calcBaseResize = function (node) {
-    let _a, _b
-    let deltaX = this.deltaX
-    let deltaY = this.deltaY
-    let dragStartTranslate =
+    var _a, _b
+    var deltaX = this.deltaX
+    var deltaY = this.deltaY
+    var dragStartTranslate =
       (_a = this.dragStartTranslateStore[node.id]) !== null && _a !== void 0
         ? _a
         : {
             x: 0,
             y: 0,
           }
-    let dragStartSize =
+    var dragStartSize =
       (_b = this.dragStartSizeStore[node.id]) !== null && _b !== void 0
         ? _b
         : {
@@ -470,14 +470,14 @@ let TransformHelper = /** @class */ (function () {
     }
   }
   TransformHelper.prototype.calcDragStartStore = function (nodes) {
-    let _this = this
+    var _this = this
     if (nodes === void 0) {
       nodes = []
     }
     this.dragStartNodesRect = this.dragNodesRect
     nodes.forEach(function (node) {
-      let element = node.getElement()
-      let rect = node.getElementOffsetRect()
+      var element = node.getElement()
+      var rect = node.getElementOffsetRect()
       _this.dragStartTranslateStore[node.id] = calcElementTranslate(element)
       _this.dragStartSizeStore[node.id] = {
         width: rect.width,
@@ -486,31 +486,31 @@ let TransformHelper = /** @class */ (function () {
     })
   }
   TransformHelper.prototype.calcRulerSnapLines = function (dragNodesRect) {
-    let edgeLines = calcEdgeLinesOfRect(dragNodesRect)
+    var edgeLines = calcEdgeLinesOfRect(dragNodesRect)
     return this.rulerSnapLines.map(function (line) {
       line.distance = calcDistanceOfSnapLineToEdges(line, edgeLines)
       return line
     })
   }
   TransformHelper.prototype.calcAroundSnapLines = function (dragNodesRect) {
-    let _this = this
-    let results = []
-    let edgeLines = calcEdgeLinesOfRect(dragNodesRect)
+    var _this = this
+    var results = []
+    var edgeLines = calcEdgeLinesOfRect(dragNodesRect)
     this.eachViewportNodes(function (refer, referRect) {
       if (_this.dragNodes.includes(refer)) return
-      let referLines = calcEdgeLinesOfRect(referRect)
-      let add = function (line) {
-        let _a = __read(calcClosestEdges(line, edgeLines), 2),
+      var referLines = calcEdgeLinesOfRect(referRect)
+      var add = function (line) {
+        var _a = __read(calcClosestEdges(line, edgeLines), 2),
           distance = _a[0],
           edge = _a[1]
-        let combined = calcCombineSnapLineSegment(line, edge)
+        var combined = calcCombineSnapLineSegment(line, edge)
         if (distance < TransformHelper.threshold) {
           if (_this.snapping && distance !== 0) return
-          let snapLine = new SnapLine(
+          var snapLine = new SnapLine(
             _this,
             __assign(__assign({}, combined), { distance: distance })
           )
-          let edge_1 = snapLine.snapEdge(dragNodesRect)
+          var edge_1 = snapLine.snapEdge(dragNodesRect)
           if (_this.type === 'translate') {
             results.push(snapLine)
           } else if (edge_1 !== 'hc' && edge_1 !== 'vc') {
@@ -524,13 +524,13 @@ let TransformHelper = /** @class */ (function () {
     return results
   }
   TransformHelper.prototype.calcAroundSpaceBlocks = function (dragNodesRect) {
-    let _this = this
-    let closestSpaces = {}
+    var _this = this
+    var closestSpaces = {}
     this.eachViewportNodes(function (refer, referRect) {
       if (isEqualRect(dragNodesRect, referRect)) return
-      let origin = calcSpaceBlockOfRect(dragNodesRect, referRect)
+      var origin = calcSpaceBlockOfRect(dragNodesRect, referRect)
       if (origin) {
-        let spaceBlock = new SpaceBlock(
+        var spaceBlock = new SpaceBlock(
           _this,
           __assign({ refer: refer }, origin)
         )
@@ -544,10 +544,10 @@ let TransformHelper = /** @class */ (function () {
     return closestSpaces
   }
   TransformHelper.prototype.calcViewportNodes = function () {
-    let _this = this
+    var _this = this
     this.tree.eachTree(function (node) {
-      let topRect = node.getValidElementRect()
-      let offsetRect = node.getValidElementOffsetRect()
+      var topRect = node.getValidElementRect()
+      var offsetRect = node.getValidElementOffsetRect()
       if (_this.dragNodes.includes(node)) return
       if (_this.viewport.isRectInViewport(topRect)) {
         _this.viewportRectsStore[node.id] = offsetRect
@@ -558,14 +558,14 @@ let TransformHelper = /** @class */ (function () {
     return this.viewportRectsStore[node.id]
   }
   TransformHelper.prototype.eachViewportNodes = function (visitor) {
-    for (let id in this.viewportRectsStore) {
+    for (var id in this.viewportRectsStore) {
       visitor(this.tree.findById(id), this.viewportRectsStore[id])
     }
   }
   TransformHelper.prototype.translate = function (node, handler) {
-    let e_1, _a
+    var e_1, _a
     if (!this.dragging) return
-    let translate = this.calcBaseTranslate(node)
+    var translate = this.calcBaseTranslate(node)
     this.snapped = false
     this.snapping = false
     try {
@@ -574,7 +574,7 @@ let TransformHelper = /** @class */ (function () {
         !_c.done;
         _c = _b.next()
       ) {
-        let line = _c.value
+        var line = _c.value
         line.translate(node, translate)
         this.snapping = true
         this.snapped = true
@@ -595,9 +595,9 @@ let TransformHelper = /** @class */ (function () {
     }
   }
   TransformHelper.prototype.resize = function (node, handler) {
-    let e_2, _a
+    var e_2, _a
     if (!this.dragging) return
-    let rect = this.calcBaseResize(node)
+    var rect = this.calcBaseResize(node)
     this.snapping = false
     this.snapping = false
     try {
@@ -606,7 +606,7 @@ let TransformHelper = /** @class */ (function () {
         !_c.done;
         _c = _b.next()
       ) {
-        let line = _c.value
+        var line = _c.value
         line.resize(node, rect)
         this.snapping = true
         this.snapped = true
@@ -643,7 +643,7 @@ let TransformHelper = /** @class */ (function () {
     }
   }
   TransformHelper.prototype.removeRulerSnapLine = function (id) {
-    let matchedLineIndex = this.rulerSnapLines.findIndex(function (item) {
+    var matchedLineIndex = this.rulerSnapLines.findIndex(function (item) {
       return item.id === id
     })
     if (matchedLineIndex > -1) {
@@ -651,10 +651,10 @@ let TransformHelper = /** @class */ (function () {
     }
   }
   TransformHelper.prototype.dragStart = function (props) {
-    let dragNodes =
+    var dragNodes =
       props === null || props === void 0 ? void 0 : props.dragNodes
-    let type = props === null || props === void 0 ? void 0 : props.type
-    let direction =
+    var type = props === null || props === void 0 ? void 0 : props.type
+    var direction =
       props === null || props === void 0 ? void 0 : props.direction
     if (type === 'resize') {
       var nodes = TreeNode.filterResizable(dragNodes)

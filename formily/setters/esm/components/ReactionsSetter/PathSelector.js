@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -16,17 +16,17 @@ var __assign =
 import React from 'react'
 import { useSelectedNode } from '@designable/react'
 import { TreeSelect } from 'antd'
-let transformDataSource = function (node) {
-  let currentNode = node
-  let dots = function (count) {
-    let dots = ''
-    for (let i = 0; i < count; i++) {
+var transformDataSource = function (node) {
+  var currentNode = node
+  var dots = function (count) {
+    var dots = ''
+    for (var i = 0; i < count; i++) {
       dots += '.'
     }
     return dots
   }
-  let targetPath = function (parentNode, targetNode) {
-    let path = []
+  var targetPath = function (parentNode, targetNode) {
+    var path = []
     var transform = function (node) {
       if (node && node !== parentNode) {
         path.push(node.props.name || node.id)
@@ -38,7 +38,7 @@ let transformDataSource = function (node) {
     return path.reverse().join('.')
   }
   var hasNoVoidChildren = function (node) {
-    let _a
+    var _a
     return (_a = node.children) === null || _a === void 0
       ? void 0
       : _a.some(function (node) {
@@ -47,7 +47,7 @@ let transformDataSource = function (node) {
         })
   }
   var findRoot = function (node) {
-    let _a
+    var _a
     if (!(node === null || node === void 0 ? void 0 : node.parent)) return node
     if (
       ((_a = node === null || node === void 0 ? void 0 : node.parent) ===
@@ -64,7 +64,7 @@ let transformDataSource = function (node) {
     if (node.parent === root) return
     return findArrayParent(node.parent)
   }
-  let transformRelativePath = function (arrayNode, targetNode) {
+  var transformRelativePath = function (arrayNode, targetNode) {
     if (targetNode.depth === currentNode.depth)
       return '.'.concat(targetNode.props.name || targetNode.id)
     return ''
@@ -76,20 +76,20 @@ let transformDataSource = function (node) {
       path = []
     }
     return children.reduce(function (buf, node) {
-      let _a
+      var _a
       if (node === currentNode) return buf
       if (node.props.type === 'array' && !node.contains(currentNode)) return buf
       if (node.props.type === 'void' && !hasNoVoidChildren(node)) return buf
-      let currentPath = path.concat(node.props.name || node.id)
-      let arrayNode = findArrayParent(node)
-      let label =
+      var currentPath = path.concat(node.props.name || node.id)
+      var arrayNode = findArrayParent(node)
+      var label =
         node.props.title ||
         ((_a = node.props['x-component-props']) === null || _a === void 0
           ? void 0
           : _a.title) ||
         node.props.name ||
         node.designerProps.title
-      let value = arrayNode
+      var value = arrayNode
         ? transformRelativePath(arrayNode, node)
         : currentPath.join('.')
       return buf.concat({
@@ -107,15 +107,15 @@ let transformDataSource = function (node) {
   return []
 }
 export var PathSelector = function (props) {
-  let baseNode = useSelectedNode()
-  let dataSource = transformDataSource(baseNode)
+  var baseNode = useSelectedNode()
+  var dataSource = transformDataSource(baseNode)
   var findNode = function (dataSource, value) {
-    let _a
-    for (let i = 0; i < dataSource.length; i++) {
-      let item = dataSource[i]
+    var _a
+    for (var i = 0; i < dataSource.length; i++) {
+      var item = dataSource[i]
       if (item.value === value) return item.node
       if ((_a = item.children) === null || _a === void 0 ? void 0 : _a.length) {
-        let fondedChild = findNode(item.children, value)
+        var fondedChild = findNode(item.children, value)
         if (fondedChild) return fondedChild
       }
     }

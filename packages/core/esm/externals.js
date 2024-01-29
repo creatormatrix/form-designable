@@ -6,19 +6,19 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -35,7 +35,7 @@ let __read =
     }
     return ar
   }
-let __spreadArray =
+var __spreadArray =
   (this && this.__spreadArray) ||
   function (to, from, pack) {
     if (pack || arguments.length === 2)
@@ -87,19 +87,19 @@ export var isResource = function (val) {
   )
 }
 export var createLocales = function () {
-  let packages = []
-  for (let _i = 0; _i < arguments.length; _i++) {
+  var packages = []
+  for (var _i = 0; _i < arguments.length; _i++) {
     packages[_i] = arguments[_i]
   }
-  let results = {}
+  var results = {}
   packages.forEach(function (locales) {
     mergeLocales(results, locales)
   })
   return results
 }
 export var createBehavior = function () {
-  let behaviors = []
-  for (let _i = 0; _i < arguments.length; _i++) {
+  var behaviors = []
+  for (var _i = 0; _i < arguments.length; _i++) {
     behaviors[_i] = arguments[_i]
   }
   return behaviors.reduce(function (buf, behavior) {
@@ -107,7 +107,7 @@ export var createBehavior = function () {
       return buf.concat(
         createBehavior.apply(void 0, __spreadArray([], __read(behavior), false))
       )
-    let selector = (behavior || {}).selector
+    var selector = (behavior || {}).selector
     if (!selector) return buf
     if (typeof selector === 'string') {
       behavior.selector = function (node) {
@@ -118,8 +118,8 @@ export var createBehavior = function () {
   }, [])
 }
 export var createResource = function () {
-  let sources = []
-  for (let _i = 0; _i < arguments.length; _i++) {
+  var sources = []
+  for (var _i = 0; _i < arguments.length; _i++) {
     sources[_i] = arguments[_i]
   }
   return sources.reduce(function (buf, source) {
@@ -138,9 +138,9 @@ export var createDesigner = function (props) {
   if (props === void 0) {
     props = {}
   }
-  let drivers = props.drivers || []
-  let effects = props.effects || []
-  let shortcuts = props.shortcuts || []
+  var drivers = props.drivers || []
+  var effects = props.effects || []
+  var shortcuts = props.shortcuts || []
   return untracked(function () {
     return new Engine(
       __assign(__assign({}, props), {

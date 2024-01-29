@@ -16,35 +16,35 @@ import { NodeContext } from './context'
 import cls from 'classnames'
 import './styles.less'
 export var OutlineTreeNode = observer(function (_a) {
-  let _b, _c
-  let node = _a.node,
+  var _b, _c
+  var node = _a.node,
     className = _a.className,
     style = _a.style,
     workspaceId = _a.workspaceId
-  let prefix = usePrefix('outline-tree-node')
-  let engine = useDesigner()
-  let ref = useRef()
-  let ctx = useContext(NodeContext)
-  let request = useRef(null)
-  let cursor = useCursor()
-  let selection = useSelection(workspaceId)
-  let moveHelper = useMoveHelper(workspaceId)
+  var prefix = usePrefix('outline-tree-node')
+  var engine = useDesigner()
+  var ref = useRef()
+  var ctx = useContext(NodeContext)
+  var request = useRef(null)
+  var cursor = useCursor()
+  var selection = useSelection(workspaceId)
+  var moveHelper = useMoveHelper(workspaceId)
   useEffect(
     function () {
       return engine.subscribeTo(DragMoveEvent, function () {
-        let _a
-        let closestNodeId =
+        var _a
+        var closestNodeId =
           (_a =
             moveHelper === null || moveHelper === void 0
               ? void 0
               : moveHelper.closestNode) === null || _a === void 0
             ? void 0
             : _a.id
-        let closestDirection =
+        var closestDirection =
           moveHelper === null || moveHelper === void 0
             ? void 0
             : moveHelper.outlineClosestDirection
-        let id = node.id
+        var id = node.id
         if (!ref.current) return
         if (
           closestNodeId === id &&
@@ -78,12 +78,12 @@ export var OutlineTreeNode = observer(function (_a) {
   useEffect(
     function () {
       return autorun(function () {
-        let _a
-        let selectedIds =
+        var _a
+        var selectedIds =
           (selection === null || selection === void 0
             ? void 0
             : selection.selected) || []
-        let id = node.id
+        var id = node.id
         if (!ref.current) return
         if (selectedIds.includes(id)) {
           if (!ref.current.classList.contains('selected')) {
@@ -112,9 +112,9 @@ export var OutlineTreeNode = observer(function (_a) {
     [node, selection, moveHelper]
   )
   if (!node) return null
-  let renderIcon = function (node) {
-    let _a
-    let icon = node.designerProps.icon
+  var renderIcon = function (node) {
+    var _a
+    var icon = node.designerProps.icon
     if (icon) {
       return React.createElement(IconWidget, { infer: icon, size: 12 })
     }
@@ -129,7 +129,7 @@ export var OutlineTreeNode = observer(function (_a) {
     }
     return React.createElement(IconWidget, { infer: 'Component', size: 12 })
   }
-  let renderTitle = function (node) {
+  var renderTitle = function (node) {
     if (isFn(ctx.renderTitle)) return ctx.renderTitle(node)
     return React.createElement(
       'span',
@@ -137,7 +137,7 @@ export var OutlineTreeNode = observer(function (_a) {
       React.createElement(NodeTitleWidget, { node: node })
     )
   }
-  let renderActions = function (node) {
+  var renderActions = function (node) {
     if (isFn(ctx.renderActions)) return ctx.renderActions(node)
   }
   return React.createElement(
@@ -174,7 +174,7 @@ export var OutlineTreeNode = observer(function (_a) {
               {
                 className: prefix + '-expand',
                 onClick: function (e) {
-                  let _a, _b, _c, _d
+                  var _a, _b, _c, _d
                   e.preventDefault()
                   e.stopPropagation()
                   if (

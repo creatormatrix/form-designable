@@ -6,19 +6,19 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -52,8 +52,8 @@ import { createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
 import { matchComponent } from '../../shared'
-let parseCollapse = function (parent) {
-  let tabs = []
+var parseCollapse = function (parent) {
+  var tabs = []
   parent.children.forEach(function (node) {
     if (matchComponent(node, 'FormCollapse.CollapsePanel')) {
       tabs.push(node)
@@ -62,13 +62,13 @@ let parseCollapse = function (parent) {
   return tabs
 }
 export var FormCollapse = observer(function (props) {
-  let _a = __read(useState([]), 2),
+  var _a = __read(useState([]), 2),
     activeKey = _a[0],
     setActiveKey = _a[1]
-  let node = useTreeNode()
-  let nodeId = useNodeIdProps()
-  let designer = useDropTemplate('FormCollapse', function (source) {
-    let panelNode = new TreeNode({
+  var node = useTreeNode()
+  var nodeId = useNodeIdProps()
+  var designer = useDropTemplate('FormCollapse', function (source) {
+    var panelNode = new TreeNode({
       componentName: 'Field',
       props: {
         type: 'void',
@@ -82,9 +82,9 @@ export var FormCollapse = observer(function (props) {
     setActiveKey(toArr(activeKey).concat(panelNode.id))
     return [panelNode]
   })
-  let panels = parseCollapse(node)
-  let renderCollapse = function () {
-    let _a
+  var panels = parseCollapse(node)
+  var renderCollapse = function () {
+    var _a
     if (!((_a = node.children) === null || _a === void 0 ? void 0 : _a.length))
       return React.createElement(DroppableWidget, null)
     return React.createElement(
@@ -95,8 +95,8 @@ export var FormCollapse = observer(function (props) {
         }),
       }),
       panels.map(function (panel) {
-        let _a
-        let props = panel.props['x-component-props'] || {}
+        var _a
+        var props = panel.props['x-component-props'] || {}
         return React.createElement(
           Collapse.Panel,
           __assign({}, props, {
@@ -137,7 +137,7 @@ export var FormCollapse = observer(function (props) {
           title: node.getMessage('addCollapsePanel'),
           icon: 'AddPanel',
           onClick: function () {
-            let tabPane = new TreeNode({
+            var tabPane = new TreeNode({
               componentName: 'Field',
               props: {
                 type: 'void',
@@ -148,7 +148,7 @@ export var FormCollapse = observer(function (props) {
               },
             })
             node.append(tabPane)
-            let keys = toArr(activeKey)
+            var keys = toArr(activeKey)
             setActiveKey(keys.concat(tabPane.id))
           },
         },

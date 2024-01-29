@@ -4,16 +4,16 @@ import { usePrefix } from '@designable/react'
 import { SketchPicker } from 'react-color'
 import './styles.less'
 export var ColorInput = function (props) {
-  let container = useRef()
-  let prefix = usePrefix('color-input')
-  let color = props.value
+  var container = useRef()
+  var prefix = usePrefix('color-input')
+  var color = props.value
   return React.createElement(
     'div',
     { ref: container, className: prefix },
     React.createElement(Input, {
       value: props.value,
       onChange: function (e) {
-        let _a
+        var _a
         ;(_a = props.onChange) === null || _a === void 0
           ? void 0
           : _a.call(props, e.target.value)
@@ -31,8 +31,8 @@ export var ColorInput = function (props) {
           content: React.createElement(SketchPicker, {
             color: color,
             onChange: function (_a) {
-              let _b
-              let rgb = _a.rgb
+              var _b
+              var rgb = _a.rgb
               ;(_b = props.onChange) === null || _b === void 0
                 ? void 0
                 : _b.call(

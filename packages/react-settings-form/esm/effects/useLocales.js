@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -18,17 +18,17 @@ import { isVoidField, onFieldReact } from '@formily/core'
 import { GlobalRegistry } from '@designable/core'
 import { isStr } from '@designable/shared'
 import { IconWidget } from '@designable/react'
-let takeIcon = function (message) {
+var takeIcon = function (message) {
   if (!isStr(message)) return
-  let matched = message.match(/@([^:\s]+)(?:\s*\:\s*([\s\S]+))?/)
+  var matched = message.match(/@([^:\s]+)(?:\s*\:\s*([\s\S]+))?/)
   if (matched) return [matched[1], matched[2]]
   return
 }
-let mapEnum = function (dataSource) {
+var mapEnum = function (dataSource) {
   return function (item, index) {
-    let _a, _b, _c
-    let label = dataSource[index] || dataSource[item.value] || item.label
-    let icon = takeIcon(label)
+    var _a, _b, _c
+    var label = dataSource[index] || dataSource[item.value] || item.label
+    var icon = takeIcon(label)
     return __assign(__assign({}, item), {
       value:
         (_a = item === null || item === void 0 ? void 0 : item.value) !==
@@ -49,17 +49,17 @@ let mapEnum = function (dataSource) {
 }
 export var useLocales = function (node) {
   onFieldReact('*', function (field) {
-    let _a, _b
-    let path = field.path.toString().replace(/\.[\d+]/g, '')
-    let takeMessage = function (prop) {
-      let token = 'settings.'.concat(path).concat(prop ? '.'.concat(prop) : '')
+    var _a, _b
+    var path = field.path.toString().replace(/\.[\d+]/g, '')
+    var takeMessage = function (prop) {
+      var token = 'settings.'.concat(path).concat(prop ? '.'.concat(prop) : '')
       return node.getMessage(token) || GlobalRegistry.getDesignerMessage(token)
     }
-    let title = takeMessage('title') || takeMessage()
-    let description = takeMessage('description')
-    let tooltip = takeMessage('tooltip')
-    let dataSource = takeMessage('dataSource')
-    let placeholder = takeMessage('placeholder')
+    var title = takeMessage('title') || takeMessage()
+    var description = takeMessage('description')
+    var tooltip = takeMessage('tooltip')
+    var dataSource = takeMessage('dataSource')
+    var placeholder = takeMessage('placeholder')
     if (title) {
       field.title = title
     }

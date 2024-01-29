@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -41,9 +41,9 @@ import { PathSelector } from './PathSelector'
 import { FieldPropertySetter } from './FieldPropertySetter'
 import './declarations'
 import './styles.less'
-let TypeView = function (_a) {
-  let value = _a.value
-  let text = String(value)
+var TypeView = function (_a) {
+  var value = _a.value
+  var text = String(value)
   if (text.length <= 26) return React.createElement(Tag, null, text)
   return React.createElement(
     Tag,
@@ -70,7 +70,7 @@ let TypeView = function (_a) {
     )
   )
 }
-let SchemaField = createSchemaField({
+var SchemaField = createSchemaField({
   components: {
     Card: Card,
     FormCollapse: FormCollapse,
@@ -84,7 +84,7 @@ let SchemaField = createSchemaField({
     MonacoInput: MonacoInput,
   },
 })
-let FieldStateProperties = [
+var FieldStateProperties = [
   'value',
   'initialValue',
   'inputValue',
@@ -115,7 +115,7 @@ let FieldStateProperties = [
   'validateStatus',
   'validating',
 ]
-let FieldStateValueTypes = {
+var FieldStateValueTypes = {
   modified: 'boolean',
   initialized: 'boolean',
   title: 'string',
@@ -144,14 +144,14 @@ let FieldStateValueTypes = {
   validating: 'boolean',
 }
 export var ReactionsSetter = function (props) {
-  let _a = __read(useState(false), 2),
+  var _a = __read(useState(false), 2),
     modalVisible = _a[0],
     setModalVisible = _a[1]
-  let _b = __read(useState(false), 2),
+  var _b = __read(useState(false), 2),
     innerVisible = _b[0],
     setInnerVisible = _b[1]
-  let prefix = usePrefix('reactions-setter')
-  let form = useMemo(
+  var prefix = usePrefix('reactions-setter')
+  var form = useMemo(
     function () {
       return createForm({
         values: clone(props.value),
@@ -159,16 +159,16 @@ export var ReactionsSetter = function (props) {
     },
     [modalVisible, props.value]
   )
-  let formCollapse = useMemo(
+  var formCollapse = useMemo(
     function () {
       return FormCollapse.createFormCollapse(['deps', 'state'])
     },
     [modalVisible]
   )
-  let openModal = function () {
+  var openModal = function () {
     return setModalVisible(true)
   }
-  let closeModal = function () {
+  var closeModal = function () {
     return setModalVisible(false)
   }
   useEffect(
@@ -214,7 +214,7 @@ export var ReactionsSetter = function (props) {
         destroyOnClose: true,
         onOk: function () {
           form.submit(function (values) {
-            let _a
+            var _a
             ;(_a = props.onChange) === null || _a === void 0
               ? void 0
               : _a.call(props, values)
@@ -349,7 +349,7 @@ export var ReactionsSetter = function (props) {
                           'x-reactions': function (field) {
                             if (isVoidField(field)) return
                             field.query('.source').take(function (source) {
-                              let _a, _b
+                              var _a, _b
                               if (isVoidField(source)) return
                               // 从外部导入的源优先
                               if (source.value && props.independence) {
@@ -395,12 +395,12 @@ export var ReactionsSetter = function (props) {
                           'x-component': 'TypeView',
                           'x-reactions': function (field) {
                             if (isVoidField(field)) return
-                            let property = field
+                            var property = field
                               .query('.property')
                               .get('inputValues')
                             property[0] = property[0] || 'value'
                             field.query('.source').take(function (source) {
-                              let _a, _b
+                              var _a, _b
                               if (isVoidField(source)) return
                               if (source.value) {
                                 if (

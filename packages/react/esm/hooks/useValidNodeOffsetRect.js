@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -25,7 +25,7 @@ import { CursorStatus, CursorDragType } from '@designable/core'
 import { LayoutObserver } from '@designable/shared'
 import { useViewport } from './useViewport'
 import { useDesigner } from './useDesigner'
-let isEqualRect = function (rect1, rect2) {
+var isEqualRect = function (rect1, rect2) {
   return (
     (rect1 === null || rect1 === void 0 ? void 0 : rect1.x) ===
       (rect2 === null || rect2 === void 0 ? void 0 : rect2.x) &&
@@ -38,27 +38,27 @@ let isEqualRect = function (rect1, rect2) {
   )
 }
 export var useValidNodeOffsetRect = function (node) {
-  let engine = useDesigner()
-  let viewport = useViewport()
-  let _a = __read(useState(null), 2),
+  var engine = useDesigner()
+  var viewport = useViewport()
+  var _a = __read(useState(null), 2),
     forceUpdate = _a[1]
-  let rectRef = useMemo(
+  var rectRef = useMemo(
     function () {
       return { current: viewport.getValidNodeOffsetRect(node) }
     },
     [viewport]
   )
-  let element = viewport.findElementById(
+  var element = viewport.findElementById(
     node === null || node === void 0 ? void 0 : node.id
   )
-  let compute = useCallback(
+  var compute = useCallback(
     function () {
       if (
         engine.cursor.status !== CursorStatus.Normal &&
         engine.cursor.dragType === CursorDragType.Move
       )
         return
-      let nextRect = viewport.getValidNodeOffsetRect(node)
+      var nextRect = viewport.getValidNodeOffsetRect(node)
       if (!isEqualRect(rectRef.current, nextRect) && nextRect) {
         rectRef.current = nextRect
         forceUpdate([])
@@ -68,7 +68,7 @@ export var useValidNodeOffsetRect = function (node) {
   )
   useEffect(
     function () {
-      let layoutObserver = new LayoutObserver(compute)
+      var layoutObserver = new LayoutObserver(compute)
       if (element) layoutObserver.observe(element)
       return function () {
         layoutObserver.disconnect()

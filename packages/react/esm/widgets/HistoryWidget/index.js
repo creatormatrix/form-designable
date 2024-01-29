@@ -6,22 +6,22 @@ import { TextWidget } from '../TextWidget'
 import cls from 'classnames'
 import './styles.less'
 export var HistoryWidget = observer(function () {
-  let workbench = useWorkbench()
-  let currentWorkspace =
+  var workbench = useWorkbench()
+  var currentWorkspace =
     (workbench === null || workbench === void 0
       ? void 0
       : workbench.activeWorkspace) ||
     (workbench === null || workbench === void 0
       ? void 0
       : workbench.currentWorkspace)
-  let prefix = usePrefix('history')
+  var prefix = usePrefix('history')
   if (!currentWorkspace) return null
   return React.createElement(
     'div',
     { className: prefix },
     currentWorkspace.history.list().map(function (item, index) {
-      let type = item.type || 'default_state'
-      let token = type.replace(/\:/g, '_')
+      var type = item.type || 'default_state'
+      var token = type.replace(/\:/g, '_')
       return React.createElement(
         'div',
         {

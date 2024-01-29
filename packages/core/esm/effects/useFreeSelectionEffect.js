@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -34,43 +34,43 @@ export var useFreeSelectionEffect = function (engine) {
       return
     }
     engine.workbench.eachWorkspace(function (workspace) {
-      let viewport = workspace.viewport
-      let dragEndPoint = new Point(event.data.topClientX, event.data.topClientY)
-      let dragStartOffsetPoint = viewport.getOffsetPoint(
+      var viewport = workspace.viewport
+      var dragEndPoint = new Point(event.data.topClientX, event.data.topClientY)
+      var dragStartOffsetPoint = viewport.getOffsetPoint(
         new Point(
           engine.cursor.dragStartPosition.topClientX,
           engine.cursor.dragStartPosition.topClientY
         )
       )
-      let dragEndOffsetPoint = viewport.getOffsetPoint(
+      var dragEndOffsetPoint = viewport.getOffsetPoint(
         new Point(
           engine.cursor.position.topClientX,
           engine.cursor.position.topClientY
         )
       )
       if (!viewport.isPointInViewport(dragEndPoint, false)) return
-      let tree = workspace.operation.tree
-      let selectionRect = calcRectByStartEndPoint(
+      var tree = workspace.operation.tree
+      var selectionRect = calcRectByStartEndPoint(
         dragStartOffsetPoint,
         dragEndOffsetPoint,
         viewport.dragScrollXDelta,
         viewport.dragScrollYDelta
       )
-      let selected = []
+      var selected = []
       tree.eachChildren(function (node) {
-        let nodeRect = viewport.getValidNodeOffsetRect(node)
+        var nodeRect = viewport.getValidNodeOffsetRect(node)
         if (nodeRect && isCrossRectInRect(selectionRect, nodeRect)) {
           selected.push([node, nodeRect])
         }
       })
-      let selectedNodes = selected.reduce(function (buf, _a) {
-        let _b = __read(_a, 2),
+      var selectedNodes = selected.reduce(function (buf, _a) {
+        var _b = __read(_a, 2),
           node = _b[0],
           nodeRect = _b[1]
         if (isRectInRect(nodeRect, selectionRect)) {
           if (
             selected.some(function (_a) {
-              let _b = __read(_a, 1),
+              var _b = __read(_a, 1),
                 selectNode = _b[0]
               return selectNode.isMyParents(node)
             })

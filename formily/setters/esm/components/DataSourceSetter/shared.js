@@ -1,7 +1,7 @@
-let __values =
+var __values =
   (this && this.__values) ||
   function (o) {
-    let s = typeof Symbol === 'function' && Symbol.iterator,
+    var s = typeof Symbol === 'function' && Symbol.iterator,
       m = s && o[s],
       i = 0
     if (m) return m.call(o)
@@ -16,12 +16,12 @@ let __values =
       s ? 'Object is not iterable.' : 'Symbol.iterator is not defined.'
     )
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -40,8 +40,8 @@ let __read =
   }
 import { uid, clone, toArr } from '@formily/shared'
 export var traverseTree = function (data, callback) {
-  let _a, _b
-  for (let i = 0; i < data.length; i++) {
+  var _a, _b
+  for (var i = 0; i < data.length; i++) {
     callback(data[i], i, data)
     if ((_a = data[i]) === null || _a === void 0 ? void 0 : _a.children) {
       traverseTree(
@@ -52,10 +52,10 @@ export var traverseTree = function (data, callback) {
   }
 }
 export var transformValueToData = function (value) {
-  let data = clone(value)
+  var data = clone(value)
   traverseTree(data, function (item, i, dataSource) {
-    let e_1, _a
-    let dataItem = {
+    var e_1, _a
+    var dataItem = {
       key: '',
       duplicateKey: '',
       map: [],
@@ -67,7 +67,7 @@ export var transformValueToData = function (value) {
         !_c.done;
         _c = _b.next()
       ) {
-        let _d = __read(_c.value, 2),
+        var _d = __read(_c.value, 2),
           key = _d[0],
           value_1 = _d[1]
         if (key !== 'children')
@@ -82,7 +82,7 @@ export var transformValueToData = function (value) {
         if (e_1) throw e_1.error
       }
     }
-    let uuid = uid()
+    var uuid = uid()
     dataItem.key = uuid
     dataItem.duplicateKey = uuid
     dataItem.children = dataSource[i].children || []
@@ -91,10 +91,10 @@ export var transformValueToData = function (value) {
   return data
 }
 export var transformDataToValue = function (data) {
-  let value = clone(data)
+  var value = clone(data)
   traverseTree(value, function (item, i, dataSource) {
-    let _a
-    let valueItem = {
+    var _a
+    var valueItem = {
       children: [],
     }
     toArr(dataSource[i].map).forEach(function (item) {

@@ -1,4 +1,4 @@
-let __extends =
+var __extends =
   (this && this.__extends) ||
   (function () {
     var extendStatics = function (d, b) {
@@ -9,7 +9,7 @@ let __extends =
             d.__proto__ = b
           }) ||
         function (d, b) {
-          for (let p in b)
+          for (var p in b)
             if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]
         }
       return extendStatics(d, b)
@@ -30,18 +30,18 @@ let __extends =
 import { isArr, isWindow } from './types'
 import { Subscribable } from './subscribable'
 import { globalThisPolyfill } from './globalThisPolyfill'
-let ATTACHED_SYMBOL = Symbol('ATTACHED_SYMBOL')
-let EVENTS_SYMBOL = Symbol('__EVENTS_SYMBOL__')
-let EVENTS_ONCE_SYMBOL = Symbol('EVENTS_ONCE_SYMBOL')
-let EVENTS_BATCH_SYMBOL = Symbol('EVENTS_BATCH_SYMBOL')
-let DRIVER_INSTANCES_SYMBOL = Symbol('DRIVER_INSTANCES_SYMBOL')
-let isOnlyMode = function (mode) {
+var ATTACHED_SYMBOL = Symbol('ATTACHED_SYMBOL')
+var EVENTS_SYMBOL = Symbol('__EVENTS_SYMBOL__')
+var EVENTS_ONCE_SYMBOL = Symbol('EVENTS_ONCE_SYMBOL')
+var EVENTS_BATCH_SYMBOL = Symbol('EVENTS_BATCH_SYMBOL')
+var DRIVER_INSTANCES_SYMBOL = Symbol('DRIVER_INSTANCES_SYMBOL')
+var isOnlyMode = function (mode) {
   return mode === 'onlyOne' || mode === 'onlyChild' || mode === 'onlyParent'
 }
 /**
  * 事件驱动器基类
  */
-let EventDriver = /** @class */ (function () {
+var EventDriver = /** @class */ (function () {
   function EventDriver(engine, context) {
     this.container = document
     this.contentWindow = globalThisPolyfill
@@ -67,7 +67,7 @@ let EventDriver = /** @class */ (function () {
     console.error('attach must implement.')
   }
   EventDriver.prototype.eventTarget = function (type) {
-    let _a
+    var _a
     if (type === 'resize' || type === 'scroll') {
       if (
         this.container ===
@@ -81,16 +81,16 @@ let EventDriver = /** @class */ (function () {
     return this.container
   }
   EventDriver.prototype.addEventListener = function (type, listener, options) {
-    let _a, _b, _c, _d
-    let target = this.eventTarget(type)
+    var _a, _b, _c, _d
+    var target = this.eventTarget(type)
     if (
       isOnlyMode(options === null || options === void 0 ? void 0 : options.mode)
     ) {
       target[EVENTS_ONCE_SYMBOL] = target[EVENTS_ONCE_SYMBOL] || {}
-      let constructor = this['constructor']
+      var constructor = this['constructor']
       constructor[EVENTS_ONCE_SYMBOL] = constructor[EVENTS_ONCE_SYMBOL] || {}
-      let handler = target[EVENTS_ONCE_SYMBOL][type]
-      let container = constructor[EVENTS_ONCE_SYMBOL][type]
+      var handler = target[EVENTS_ONCE_SYMBOL][type]
+      var container = constructor[EVENTS_ONCE_SYMBOL][type]
       if (!handler) {
         if (container) {
           if (options.mode === 'onlyChild') {
@@ -136,12 +136,12 @@ let EventDriver = /** @class */ (function () {
     listener,
     options
   ) {
-    let _a, _b
-    let target = this.eventTarget(type)
+    var _a, _b
+    var target = this.eventTarget(type)
     if (
       isOnlyMode(options === null || options === void 0 ? void 0 : options.mode)
     ) {
-      let constructor = this['constructor']
+      var constructor = this['constructor']
       constructor[EVENTS_ONCE_SYMBOL] = constructor[EVENTS_ONCE_SYMBOL] || {}
       target[EVENTS_ONCE_SYMBOL] = target[EVENTS_ONCE_SYMBOL] || {}
       delete constructor[EVENTS_ONCE_SYMBOL][type]
@@ -170,7 +170,7 @@ let EventDriver = /** @class */ (function () {
       this.engine[DRIVER_INSTANCES_SYMBOL].push(this)
     }
     this.engine[DRIVER_INSTANCES_SYMBOL].forEach(function (driver) {
-      let target = driver.eventTarget(type)
+      var target = driver.eventTarget(type)
       target[EVENTS_BATCH_SYMBOL] = target[EVENTS_BATCH_SYMBOL] || {}
       if (!target[EVENTS_BATCH_SYMBOL][type]) {
         target.addEventListener(type, listener, options)
@@ -186,7 +186,7 @@ let EventDriver = /** @class */ (function () {
     this.engine[DRIVER_INSTANCES_SYMBOL] =
       this.engine[DRIVER_INSTANCES_SYMBOL] || []
     this.engine[DRIVER_INSTANCES_SYMBOL].forEach(function (driver) {
-      let target = driver.eventTarget(type)
+      var target = driver.eventTarget(type)
       target[EVENTS_BATCH_SYMBOL] = target[EVENTS_BATCH_SYMBOL] || {}
       target.removeEventListener(type, listener, options)
       delete target[EVENTS_BATCH_SYMBOL][type]
@@ -198,10 +198,10 @@ export { EventDriver }
 /**
  * 事件引擎
  */
-let Event = /** @class */ (function (_super) {
+var Event = /** @class */ (function (_super) {
   __extends(Event, _super)
   function Event(props) {
-    let _this = _super.call(this) || this
+    var _this = _super.call(this) || this
     _this.drivers = []
     _this.containers = []
     if (isArr(props === null || props === void 0 ? void 0 : props.effects)) {
@@ -242,7 +242,7 @@ let Event = /** @class */ (function (_super) {
     })
   }
   Event.prototype.attachEvents = function (container, contentWindow, context) {
-    let _this = this
+    var _this = this
     if (contentWindow === void 0) {
       contentWindow = globalThisPolyfill
     }
@@ -252,7 +252,7 @@ let Event = /** @class */ (function (_super) {
     }
     if (container[ATTACHED_SYMBOL]) return
     container[ATTACHED_SYMBOL] = this.drivers.map(function (EventDriver) {
-      let driver = new EventDriver(_this, context)
+      var driver = new EventDriver(_this, context)
       driver.contentWindow = contentWindow
       driver.container = container
       driver.attach(container)
@@ -263,7 +263,7 @@ let Event = /** @class */ (function (_super) {
     }
   }
   Event.prototype.detachEvents = function (container) {
-    let _this = this
+    var _this = this
     if (!container) {
       this.containers.forEach(function (container) {
         _this.detachEvents(container)

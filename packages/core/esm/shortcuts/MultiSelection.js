@@ -17,13 +17,13 @@ export var SelectAllNodes = new Shortcut({
     [KeyCode.Control, KeyCode.A],
   ],
   handler: function (context) {
-    let operation =
+    var operation =
       context === null || context === void 0
         ? void 0
         : context.workspace.operation
     if (operation) {
-      let tree = operation.tree
-      let selection = operation.selection
+      var tree = operation.tree
+      var selection = operation.selection
       selection.batchSelect(tree.descendants)
     }
   },

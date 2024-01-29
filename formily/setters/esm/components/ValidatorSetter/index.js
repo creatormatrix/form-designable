@@ -6,14 +6,14 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let _a, _b
+var _a, _b
 import React from 'react'
 import { observer, useField, SchemaContext, Schema } from '@formily/react'
 import { GlobalRegistry } from '@designable/core'
@@ -37,7 +37,7 @@ import { DesignerLayoutContext } from '@designable/react'
 import '../../locales'
 import locale from '../../locales/zh-CN'
 import { clone } from '@designable/shared'
-let ValidatorSchema = {
+var ValidatorSchema = {
   type: 'array',
   items: {
     type: 'object',
@@ -162,7 +162,7 @@ let ValidatorSchema = {
     },
   },
 }
-let ValidatorSchemaIndependence = clone(ValidatorSchema)
+var ValidatorSchemaIndependence = clone(ValidatorSchema)
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 ;(_b =
@@ -177,8 +177,8 @@ let ValidatorSchemaIndependence = clone(ValidatorSchema)
   : (_b.drawer['x-component-props'] = {
       wrapperClassName: 'validator-setter-dialog',
     })
-let ValidatorSetterItem = function (props) {
-  let field = useField()
+var ValidatorSetterItem = function (props) {
+  var field = useField()
   return React.createElement(
     FoldItem,
     { label: field.title },

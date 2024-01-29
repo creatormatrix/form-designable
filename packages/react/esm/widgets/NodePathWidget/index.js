@@ -6,14 +6,14 @@ import { NodeTitleWidget } from '../NodeTitleWidget'
 import { observer } from '@formily/reactive-react'
 import './styles.less'
 export var NodePathWidget = observer(function (props) {
-  let _a
-  let selected = useSelectedNode(props.workspaceId)
-  let selection = useSelection(props.workspaceId)
-  let hover = useHover(props.workspaceId)
-  let prefix = usePrefix('node-path')
+  var _a
+  var selected = useSelectedNode(props.workspaceId)
+  var selection = useSelection(props.workspaceId)
+  var hover = useHover(props.workspaceId)
+  var prefix = usePrefix('node-path')
   if (!selected) return React.createElement(React.Fragment, null)
-  let maxItems = (_a = props.maxItems) !== null && _a !== void 0 ? _a : 3
-  let nodes = selected
+  var maxItems = (_a = props.maxItems) !== null && _a !== void 0 ? _a : 3
+  var nodes = selected
     .getParents()
     .slice(0, maxItems - 1)
     .reverse()

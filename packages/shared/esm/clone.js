@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -15,7 +15,7 @@ var __assign =
   }
 import { isFn } from './types'
 import { instOf } from './instanceof'
-let NATIVE_KEYS = [
+var NATIVE_KEYS = [
   [
     'Map',
     function (map) {
@@ -59,9 +59,9 @@ let NATIVE_KEYS = [
     },
   ],
 ]
-let isNativeObject = function (values) {
-  for (let i = 0; i < NATIVE_KEYS.length; i++) {
-    let item = NATIVE_KEYS[i]
+var isNativeObject = function (values) {
+  for (var i = 0; i < NATIVE_KEYS.length; i++) {
+    var item = NATIVE_KEYS[i]
     if (Array.isArray(item) && item[0]) {
       if (instOf(values, item[0])) {
         return item[1] ? item[1] : item[0]
@@ -74,7 +74,7 @@ let isNativeObject = function (values) {
   }
 }
 export var shallowClone = function (values) {
-  let nativeClone
+  var nativeClone
   if (Array.isArray(values)) {
     return values.slice(0)
   } else if (isNativeObject(values)) {
@@ -85,7 +85,7 @@ export var shallowClone = function (values) {
   }
 }
 export var clone = function (values, filter) {
-  let nativeClone
+  var nativeClone
   if (Array.isArray(values)) {
     return values.map(function (item) {
       return clone(item, filter)
@@ -112,8 +112,8 @@ export var clone = function (values, filter) {
     if (Object.getOwnPropertySymbols(values || {}).length) {
       return values
     }
-    let res = {}
-    for (let key in values) {
+    var res = {}
+    for (var key in values) {
       if (Object.hasOwnProperty.call(values, key)) {
         if (isFn(filter)) {
           if (filter(values[key], key)) {

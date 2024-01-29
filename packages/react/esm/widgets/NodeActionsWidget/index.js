@@ -6,17 +6,17 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __rest =
+var __rest =
   (this && this.__rest) ||
   function (s, e) {
-    let t = {}
+    var t = {}
     for (var p in s)
       if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p]
@@ -39,9 +39,9 @@ import { TextWidget } from '../TextWidget'
 import cls from 'classnames'
 import './styles.less'
 export var NodeActionsWidget = observer(function (props) {
-  let node = useTreeNode()
-  let prefix = usePrefix('node-actions')
-  let selected = useSelected()
+  var node = useTreeNode()
+  var prefix = usePrefix('node-actions')
+  var selected = useSelected()
   if (selected.indexOf(node.id) === -1 && props.activeShown) return null
   return React.createElement(
     'div',
@@ -58,10 +58,10 @@ export var NodeActionsWidget = observer(function (props) {
   )
 })
 NodeActionsWidget.Action = function (_a) {
-  let icon = _a.icon,
+  var icon = _a.icon,
     title = _a.title,
     props = __rest(_a, ['icon', 'title'])
-  let prefix = usePrefix('node-actions-item')
+  var prefix = usePrefix('node-actions-item')
   return React.createElement(
     Typography.Link,
     __assign({}, props, {

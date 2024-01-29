@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -15,7 +15,7 @@ var __assign =
   }
 import { Schema } from '@formily/json-schema'
 import { clone, uid } from '@designable/shared'
-let createOptions = function (options) {
+var createOptions = function (options) {
   return __assign(
     { designableFieldName: 'Field', designableFormName: 'Form' },
     options
@@ -25,17 +25,17 @@ var findNode = function (node, finder) {
   if (!node) return
   if (finder(node)) return node
   if (!node.children) return
-  for (let i = 0; i < node.children.length; i++) {
+  for (var i = 0; i < node.children.length; i++) {
     if (findNode(node.children[i])) return node.children[i]
   }
   return
 }
 export var transformToSchema = function (node, options) {
-  let realOptions = createOptions(options)
-  let root = findNode(node, function (child) {
+  var realOptions = createOptions(options)
+  var root = findNode(node, function (child) {
     return child.componentName === realOptions.designableFormName
   })
-  let schema = {
+  var schema = {
     type: 'object',
     properties: {},
   }
@@ -59,7 +59,7 @@ export var transformToSchema = function (node, options) {
       }
       node.children.slice(1).forEach(function (child, index) {
         if (child.componentName !== realOptions.designableFieldName) return
-        let key = child.props.name || child.id
+        var key = child.props.name || child.id
         schema.properties = schema.properties || {}
         schema.properties[key] = createSchema(child)
         schema.properties[key]['x-index'] = index
@@ -67,7 +67,7 @@ export var transformToSchema = function (node, options) {
     } else {
       node.children.forEach(function (child, index) {
         if (child.componentName !== realOptions.designableFieldName) return
-        let key = child.props.name || child.id
+        var key = child.props.name || child.id
         schema.properties = schema.properties || {}
         schema.properties[key] = createSchema(child)
         schema.properties[key]['x-index'] = index
@@ -81,14 +81,14 @@ export var transformToTreeNode = function (formily, options) {
   if (formily === void 0) {
     formily = {}
   }
-  let realOptions = createOptions(options)
-  let root = {
+  var realOptions = createOptions(options)
+  var root = {
     componentName: realOptions.designableFormName,
     props: formily.form,
     children: [],
   }
-  let schema = new Schema(formily.schema)
-  let cleanProps = function (props) {
+  var schema = new Schema(formily.schema)
+  var cleanProps = function (props) {
     if (props['name'] === props['x-designable-id']) {
       delete props.name
     }
@@ -98,7 +98,7 @@ export var transformToTreeNode = function (formily, options) {
   }
   var appendTreeNode = function (parent, schema) {
     if (!schema) return
-    let current = {
+    var current = {
       id: schema['x-designable-id'] || uid(),
       componentName: realOptions.designableFieldName,
       props: cleanProps(schema.toJSON(false)),

@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -19,13 +19,13 @@ import { IconWidget } from '../IconWidget'
 import { useDesigner, usePrefix } from '../../hooks'
 import { Button } from 'antd'
 export var DragHandler = observer(function (_a) {
-  let _b
-  let node = _a.node,
+  var _b
+  var node = _a.node,
     style = _a.style
-  let designer = useDesigner()
-  let prefix = usePrefix('aux-drag-handler')
+  var designer = useDesigner()
+  var prefix = usePrefix('aux-drag-handler')
   if (node === node.root || !node.allowDrag()) return null
-  let handlerProps =
+  var handlerProps =
     ((_b = {}), (_b[designer.props.nodeDragHandlerAttrName] = 'true'), _b)
   return React.createElement(
     Button,

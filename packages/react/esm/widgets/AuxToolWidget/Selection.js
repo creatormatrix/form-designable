@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -28,14 +28,14 @@ import {
 import { observer } from '@formily/reactive-react'
 import { TranslateHandler } from './TranslateHandler'
 export var SelectionBox = function (props) {
-  let _a
-  let _b
-  let designer = useDesigner()
-  let prefix = usePrefix('aux-selection-box')
-  let innerPrefix = usePrefix('aux-selection-box-inner')
-  let nodeRect = useValidNodeOffsetRect(props.node)
-  let createSelectionStyle = function () {
-    let baseStyle = {
+  var _a
+  var _b
+  var designer = useDesigner()
+  var prefix = usePrefix('aux-selection-box')
+  var innerPrefix = usePrefix('aux-selection-box-inner')
+  var nodeRect = useValidNodeOffsetRect(props.node)
+  var createSelectionStyle = function () {
+    var baseStyle = {
       position: 'absolute',
       top: 0,
       left: 0,
@@ -53,7 +53,7 @@ export var SelectionBox = function (props) {
   }
   if (!nodeRect) return null
   if (!nodeRect.width || !nodeRect.height) return null
-  let selectionId =
+  var selectionId =
     ((_a = {}),
     (_a[
       (_b = designer.props) === null || _b === void 0
@@ -78,16 +78,16 @@ export var SelectionBox = function (props) {
   )
 }
 export var Selection = observer(function () {
-  let selection = useSelection()
-  let tree = useTree()
-  let cursor = useCursor()
-  let viewportMoveHelper = useMoveHelper()
+  var selection = useSelection()
+  var tree = useTree()
+  var cursor = useCursor()
+  var viewportMoveHelper = useMoveHelper()
   if (cursor.status !== 'NORMAL' && viewportMoveHelper.touchNode) return null
   return React.createElement(
     Fragment,
     null,
     selection.selected.map(function (id) {
-      let node = tree.findById(id)
+      var node = tree.findById(id)
       if (!node) return
       if (node.hidden) return
       return React.createElement(SelectionBox, {

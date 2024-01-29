@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -18,7 +18,7 @@ import {
   calcOffsetOfSnapLineSegmentToEdge,
 } from '@designable/shared'
 import { TransformHelper } from './TransformHelper'
-let SnapLine = /** @class */ (function () {
+var SnapLine = /** @class */ (function () {
   function SnapLine(helper, line) {
     this.helper = helper
     this.type = line.type || 'normal'
@@ -30,7 +30,7 @@ let SnapLine = /** @class */ (function () {
   }
   Object.defineProperty(SnapLine.prototype, 'id', {
     get: function () {
-      let _a
+      var _a
       return (_a = this._id) !== null && _a !== void 0
         ? _a
         : ''
@@ -44,7 +44,7 @@ let SnapLine = /** @class */ (function () {
   })
   Object.defineProperty(SnapLine.prototype, 'direction', {
     get: function () {
-      let _a, _b
+      var _a, _b
       if (
         ((_a = this.start) === null || _a === void 0 ? void 0 : _a.x) ===
         ((_b = this.end) === null || _b === void 0 ? void 0 : _b.x)
@@ -72,10 +72,10 @@ let SnapLine = /** @class */ (function () {
   SnapLine.prototype.translate = function (node, translate) {
     if (!node || !(node === null || node === void 0 ? void 0 : node.parent))
       return
-    let parent = node.parent
-    let dragNodeRect = node.getValidElementOffsetRect()
-    let parentRect = parent.getValidElementOffsetRect()
-    let edgeOffset = calcOffsetOfSnapLineSegmentToEdge(this, dragNodeRect)
+    var parent = node.parent
+    var dragNodeRect = node.getValidElementOffsetRect()
+    var parentRect = parent.getValidElementOffsetRect()
+    var edgeOffset = calcOffsetOfSnapLineSegmentToEdge(this, dragNodeRect)
     if (this.direction === 'h') {
       translate.y = this.start.y - parentRect.y - edgeOffset.y
     } else {
@@ -85,14 +85,14 @@ let SnapLine = /** @class */ (function () {
   SnapLine.prototype.resize = function (node, rect) {
     if (!node || !(node === null || node === void 0 ? void 0 : node.parent))
       return
-    let parent = node.parent
-    let dragNodeRect = node.getValidElementOffsetRect()
-    let parentRect = parent.getValidElementOffsetRect()
-    let edgeOffset = calcOffsetOfSnapLineSegmentToEdge(this, dragNodeRect)
-    let cursorRect = this.helper.cursorDragNodesRect
-    let snapEdge = this.snapEdge(rect)
+    var parent = node.parent
+    var dragNodeRect = node.getValidElementOffsetRect()
+    var parentRect = parent.getValidElementOffsetRect()
+    var edgeOffset = calcOffsetOfSnapLineSegmentToEdge(this, dragNodeRect)
+    var cursorRect = this.helper.cursorDragNodesRect
+    var snapEdge = this.snapEdge(rect)
     if (this.direction === 'h') {
-      let y = this.start.y - parentRect.y - edgeOffset.y
+      var y = this.start.y - parentRect.y - edgeOffset.y
       switch (this.helper.direction) {
         case 'left-top':
         case 'center-top':
@@ -109,7 +109,7 @@ let SnapLine = /** @class */ (function () {
           break
       }
     } else {
-      let x = this.start.x - parentRect.x - edgeOffset.x
+      var x = this.start.x - parentRect.x - edgeOffset.x
       switch (this.helper.direction) {
         case 'left-top':
         case 'left-bottom':
@@ -128,7 +128,7 @@ let SnapLine = /** @class */ (function () {
     }
   }
   SnapLine.prototype.snapEdge = function (rect) {
-    let threshold = TransformHelper.threshold
+    var threshold = TransformHelper.threshold
     if (this.direction === 'h') {
       if (Math.abs(this.start.y - rect.top) < threshold) return 'ht'
       if (Math.abs(this.start.y - (rect.top + rect.height / 2)) < threshold)

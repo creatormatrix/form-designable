@@ -6,19 +6,19 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -35,7 +35,7 @@ let __read =
     }
     return ar
   }
-let __spread =
+var __spread =
   (this && this.__spread) ||
   function () {
     for (var ar = [], i = 0; i < arguments.length; i++)
@@ -65,8 +65,8 @@ import {
 import { createArrayBehavior } from '../ArrayBase'
 import cls from 'classnames'
 import './styles.less'
-let ensureObjectItemsNode = createEnsureTypeItemsNode('object')
-let isArrayCardsOperation = function (name) {
+var ensureObjectItemsNode = createEnsureTypeItemsNode('object')
+var isArrayCardsOperation = function (name) {
   return (
     name === 'ArrayCards.Remove' ||
     name === 'ArrayCards.MoveDown' ||
@@ -74,17 +74,17 @@ let isArrayCardsOperation = function (name) {
   )
 }
 export var ArrayCards = observer(function (props) {
-  let node = useTreeNode()
-  let nodeId = useNodeIdProps()
-  let designer = useDropTemplate('ArrayCards', function (source) {
-    let indexNode = new TreeNode({
+  var node = useTreeNode()
+  var nodeId = useNodeIdProps()
+  var designer = useDropTemplate('ArrayCards', function (source) {
+    var indexNode = new TreeNode({
       componentName: node.componentName,
       props: {
         type: 'void',
         'x-component': 'ArrayCards.Index',
       },
     })
-    let additionNode = new TreeNode({
+    var additionNode = new TreeNode({
       componentName: node.componentName,
       props: {
         type: 'void',
@@ -92,7 +92,7 @@ export var ArrayCards = observer(function (props) {
         'x-component': 'ArrayCards.Addition',
       },
     })
-    let removeNode = new TreeNode({
+    var removeNode = new TreeNode({
       componentName: node.componentName,
       props: {
         type: 'void',
@@ -100,7 +100,7 @@ export var ArrayCards = observer(function (props) {
         'x-component': 'ArrayCards.Remove',
       },
     })
-    let moveDownNode = new TreeNode({
+    var moveDownNode = new TreeNode({
       componentName: node.componentName,
       props: {
         type: 'void',
@@ -108,7 +108,7 @@ export var ArrayCards = observer(function (props) {
         'x-component': 'ArrayCards.MoveDown',
       },
     })
-    let moveUpNode = new TreeNode({
+    var moveUpNode = new TreeNode({
       componentName: node.componentName,
       props: {
         type: 'void',
@@ -116,7 +116,7 @@ export var ArrayCards = observer(function (props) {
         'x-component': 'ArrayCards.MoveUp',
       },
     })
-    let objectNode = new TreeNode({
+    var objectNode = new TreeNode({
       componentName: node.componentName,
       props: {
         type: 'object',
@@ -129,24 +129,24 @@ export var ArrayCards = observer(function (props) {
     })
     return [objectNode, additionNode]
   })
-  let renderCard = function () {
+  var renderCard = function () {
     if (node.children.length === 0)
       return React.createElement(DroppableWidget, null)
-    let additions = queryNodesByComponentPath(node, [
+    var additions = queryNodesByComponentPath(node, [
       'ArrayCards',
       'ArrayCards.Addition',
     ])
-    let indexes = queryNodesByComponentPath(node, [
+    var indexes = queryNodesByComponentPath(node, [
       'ArrayCards',
       '*',
       'ArrayCards.Index',
     ])
-    let operations = queryNodesByComponentPath(node, [
+    var operations = queryNodesByComponentPath(node, [
       'ArrayCards',
       '*',
       isArrayCardsOperation,
     ])
-    let children = queryNodesByComponentPath(node, [
+    var children = queryNodesByComponentPath(node, [
       'ArrayCards',
       '*',
       function (name) {
@@ -230,7 +230,7 @@ export var ArrayCards = observer(function (props) {
               ])
             )
               return
-            let indexNode = new TreeNode({
+            var indexNode = new TreeNode({
               componentName: node.componentName,
               props: {
                 type: 'void',
@@ -244,12 +244,12 @@ export var ArrayCards = observer(function (props) {
           title: node.getMessage('addOperation'),
           icon: 'AddOperation',
           onClick: function () {
-            let oldAdditionNode = findNodeByComponentPath(node, [
+            var oldAdditionNode = findNodeByComponentPath(node, [
               'ArrayCards',
               'ArrayCards.Addition',
             ])
             if (!oldAdditionNode) {
-              let additionNode = new TreeNode({
+              var additionNode = new TreeNode({
                 componentName: node.componentName,
                 props: {
                   type: 'void',
@@ -259,17 +259,17 @@ export var ArrayCards = observer(function (props) {
               })
               ensureObjectItemsNode(node).insertAfter(additionNode)
             }
-            let oldRemoveNode = findNodeByComponentPath(node, [
+            var oldRemoveNode = findNodeByComponentPath(node, [
               'ArrayCards',
               '*',
               'ArrayCards.Remove',
             ])
-            let oldMoveDownNode = findNodeByComponentPath(node, [
+            var oldMoveDownNode = findNodeByComponentPath(node, [
               'ArrayCards',
               '*',
               'ArrayCards.MoveDown',
             ])
-            let oldMoveUpNode = findNodeByComponentPath(node, [
+            var oldMoveUpNode = findNodeByComponentPath(node, [
               'ArrayCards',
               '*',
               'ArrayCards.MoveUp',

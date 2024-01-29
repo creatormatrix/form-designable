@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -23,15 +23,15 @@ let __read =
 import { observable, define, action } from '@formily/reactive'
 import { KeyCode } from '@designable/shared'
 import { Shortcut } from './Shortcut'
-let Modifiers = [
+var Modifiers = [
   ['metaKey', KeyCode.Meta],
   ['shiftKey', KeyCode.Shift],
   ['ctrlKey', KeyCode.Control],
   ['altKey', KeyCode.Alt],
 ]
-let Keyboard = /** @class */ (function () {
+var Keyboard = /** @class */ (function () {
   function Keyboard(engine) {
-    let _a
+    var _a
     this.shortcuts = []
     this.sequence = []
     this.keyDown = null
@@ -44,8 +44,8 @@ let Keyboard = /** @class */ (function () {
     this.makeObservable()
   }
   Keyboard.prototype.matchCodes = function (context) {
-    for (let i = 0; i < this.shortcuts.length; i++) {
-      let shortcut = this.shortcuts[i]
+    for (var i = 0; i < this.shortcuts.length; i++) {
+      var shortcut = this.shortcuts[i]
       if (shortcut.match(this.sequence, context)) {
         return true
       }
@@ -53,7 +53,7 @@ let Keyboard = /** @class */ (function () {
     return false
   }
   Keyboard.prototype.preventCodes = function () {
-    let _this = this
+    var _this = this
     return this.shortcuts.some(function (shortcut) {
       return shortcut.preventCodes(_this.sequence)
     })
@@ -84,9 +84,9 @@ let Keyboard = /** @class */ (function () {
     })
   }
   Keyboard.prototype.handleModifiers = function (event) {
-    let _this = this
+    var _this = this
     Modifiers.forEach(function (_a) {
-      let _b = __read(_a, 2),
+      var _b = __read(_a, 2),
         key = _b[0],
         code = _b[1]
       if (event[key]) {
@@ -120,7 +120,7 @@ let Keyboard = /** @class */ (function () {
     return this.keyDown === code
   }
   Keyboard.prototype.requestClean = function (duration) {
-    let _this = this
+    var _this = this
     if (duration === void 0) {
       duration = 320
     }

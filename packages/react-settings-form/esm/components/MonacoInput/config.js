@@ -1,4 +1,4 @@
-let __awaiter =
+var __awaiter =
   (this && this.__awaiter) ||
   function (thisArg, _arguments, P, generator) {
     function adopt(value) {
@@ -31,10 +31,10 @@ let __awaiter =
       step((generator = generator.apply(thisArg, _arguments || [])).next())
     })
   }
-let __generator =
+var __generator =
   (this && this.__generator) ||
   function (thisArg, body) {
-    let _ = {
+    var _ = {
         label: 0,
         sent: function () {
           if (t[0] & 1) throw t[1]
@@ -135,7 +135,7 @@ import { loader } from '@monaco-editor/react'
 import chromeTheme from './themes/chrome'
 import monokaiTheme from './themes/monokai'
 import { format } from './format'
-let initialized = false
+var initialized = false
 export var initMonaco = function () {
   if (initialized) return
   loader.init().then(function (monaco) {
@@ -158,9 +158,9 @@ export var initMonaco = function () {
     })
     monaco.languages.registerDocumentFormattingEditProvider('typescript', {
       provideDocumentFormattingEdits: function (model) {
-        let _a
+        var _a
         return __awaiter(this, void 0, void 0, function () {
-          let _b
+          var _b
           return __generator(this, function (_c) {
             switch (_c.label) {
               case 0:

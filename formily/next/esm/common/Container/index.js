@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -18,8 +18,8 @@ import { observer } from '@formily/reactive-react'
 import { useNodeIdProps, useTreeNode, DroppableWidget } from '@designable/react'
 import './styles.less'
 export var Container = observer(function (props) {
-  let node = useTreeNode()
-  let nodeId = useNodeIdProps()
+  var node = useTreeNode()
+  var nodeId = useNodeIdProps()
   if (node.children.length === 0)
     return React.createElement(DroppableWidget, __assign({}, nodeId))
   return React.createElement('div', __assign({}, nodeId), props.children)

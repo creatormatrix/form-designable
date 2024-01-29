@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -22,8 +22,8 @@ import { Layout } from './Layout'
 import * as icons from '../icons'
 GlobalRegistry.registerDesignerIcons(icons)
 export var Designer = function (props) {
-  let engine = useDesigner()
-  let ref = useRef()
+  var engine = useDesigner()
+  var ref = useRef()
   useEffect(
     function () {
       if (props.engine) {

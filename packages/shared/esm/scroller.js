@@ -1,6 +1,6 @@
 import { createUniformSpeedAnimation, calcSpeedFactor } from './animation'
 import { isFn, isWindow } from './types'
-let MAX_SPEED = 80 // px/s
+var MAX_SPEED = 80 // px/s
 export var calcAutoScrollBasicInfo = function (
   point,
   axis,
@@ -10,16 +10,16 @@ export var calcAutoScrollBasicInfo = function (
   if (maxSpeed === void 0) {
     maxSpeed = MAX_SPEED
   }
-  let left = viewport.left,
+  var left = viewport.left,
     right = viewport.right,
     top = viewport.top,
     bottom = viewport.bottom
-  let x = point.x,
+  var x = point.x,
     y = point.y
-  let begin
-  let end
-  let pos
-  let speedFactor
+  var begin
+  var end
+  var pos
+  var speedFactor
   if (axis === 'x') {
     begin = left
     end = right
@@ -29,8 +29,8 @@ export var calcAutoScrollBasicInfo = function (
     end = bottom
     pos = y
   }
-  let scrollerSize = end - begin
-  let moveDistance = scrollerSize > 400 ? 100 : scrollerSize / 3
+  var scrollerSize = end - begin
+  var moveDistance = scrollerSize > 400 ? 100 : scrollerSize / 3
   if (end - pos < moveDistance) {
     return {
       direction: 'end',

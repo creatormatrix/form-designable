@@ -6,17 +6,17 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __rest =
+var __rest =
   (this && this.__rest) ||
   function (s, e) {
-    let t = {}
+    var t = {}
     for (var p in s)
       if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p]
@@ -37,20 +37,20 @@ import { observable } from '@formily/reactive'
 import { IconWidget, usePrefix } from '@designable/react'
 import cls from 'classnames'
 import './styles.less'
-let ExpandedMap = new Map()
+var ExpandedMap = new Map()
 export var FoldItem = observer(function (_a) {
-  let className = _a.className,
+  var className = _a.className,
     style = _a.style,
     children = _a.children,
     props = __rest(_a, ['className', 'style', 'children'])
-  let prefix = usePrefix('fold-item')
-  let field = useField()
-  let expand = useMemo(function () {
+  var prefix = usePrefix('fold-item')
+  var field = useField()
+  var expand = useMemo(function () {
     return observable.ref(ExpandedMap.get(field.address.toString()))
   }, [])
-  let slots = useRef({ base: null, extra: null })
+  var slots = useRef({ base: null, extra: null })
   React.Children.forEach(children, function (node) {
-    let _a, _b
+    var _a, _b
     if (React.isValidElement(node)) {
       if (
         ((_a = node === null || node === void 0 ? void 0 : node['type']) ===
@@ -118,11 +118,11 @@ export var FoldItem = observer(function (_a) {
       )
   )
 })
-let Base = function () {
+var Base = function () {
   return React.createElement(Fragment, null)
 }
 Base.displayName = 'FoldItem.Base'
-let Extra = function () {
+var Extra = function () {
   return React.createElement(Fragment, null)
 }
 Extra.displayName = 'FoldItem.Extra'

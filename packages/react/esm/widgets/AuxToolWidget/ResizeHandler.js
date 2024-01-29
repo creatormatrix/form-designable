@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -17,10 +17,10 @@ import React from 'react'
 import cls from 'classnames'
 import { useDesigner, usePrefix } from '../../hooks'
 export var ResizeHandler = function (props) {
-  let designer = useDesigner()
-  let prefix = usePrefix('aux-node-resize-handler')
-  let createHandler = function (value) {
-    let _a
+  var designer = useDesigner()
+  var prefix = usePrefix('aux-node-resize-handler')
+  var createHandler = function (value) {
+    var _a
     return (
       (_a = {}),
       (_a[designer.props.nodeResizeHandlerAttrName] = value),
@@ -28,10 +28,10 @@ export var ResizeHandler = function (props) {
       _a
     )
   }
-  let allowResize = props.node.allowResize()
+  var allowResize = props.node.allowResize()
   if (!allowResize) return null
-  let allowX = allowResize.includes('x')
-  let allowY = allowResize.includes('y')
+  var allowX = allowResize.includes('x')
+  var allowY = allowResize.includes('y')
   return React.createElement(
     React.Fragment,
     null,

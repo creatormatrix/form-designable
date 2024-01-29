@@ -1,4 +1,4 @@
-let __awaiter =
+var __awaiter =
   (this && this.__awaiter) ||
   function (thisArg, _arguments, P, generator) {
     function adopt(value) {
@@ -31,10 +31,10 @@ let __awaiter =
       step((generator = generator.apply(thisArg, _arguments || [])).next())
     })
   }
-let __generator =
+var __generator =
   (this && this.__generator) ||
   function (thisArg, body) {
-    let _ = {
+    var _ = {
         label: 0,
         sent: function () {
           if (t[0] & 1) throw t[1]
@@ -133,7 +133,7 @@ let __generator =
   }
 import { parse } from '@babel/parser'
 import { getNpmCDNRegistry } from '../../registry'
-let cache = {
+var cache = {
   prettier: null,
 }
 export var format = function (language, source) {

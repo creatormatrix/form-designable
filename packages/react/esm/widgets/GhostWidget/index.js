@@ -6,17 +6,17 @@ import { observer } from '@formily/reactive-react'
 import { NodeTitleWidget } from '../NodeTitleWidget'
 import './styles.less'
 export var GhostWidget = observer(function () {
-  let designer = useDesigner()
-  let cursor = useCursor()
-  let ref = useRef()
-  let prefix = usePrefix('ghost')
-  let movingNodes = designer.findMovingNodes()
-  let firstNode = movingNodes[0]
+  var designer = useDesigner()
+  var cursor = useCursor()
+  var ref = useRef()
+  var prefix = usePrefix('ghost')
+  var movingNodes = designer.findMovingNodes()
+  var firstNode = movingNodes[0]
   useEffect(
     function () {
       return autorun(function () {
-        let _a, _b
-        let transform = 'perspective(1px) translate3d('
+        var _a, _b
+        var transform = 'perspective(1px) translate3d('
           .concat(
             ((_a = cursor.position) === null || _a === void 0
               ? void 0
@@ -35,7 +35,7 @@ export var GhostWidget = observer(function () {
     },
     [designer, cursor]
   )
-  let renderNodes = function () {
+  var renderNodes = function () {
     return React.createElement(
       'span',
       {

@@ -1,8 +1,8 @@
 import { TreeNode } from '@designable/core'
 export var matchComponent = function (node, name, context) {
-  let _a
+  var _a
   if (name === '*') return true
-  let componentName =
+  var componentName =
     (_a = node === null || node === void 0 ? void 0 : node.props) === null ||
     _a === void 0
       ? void 0
@@ -13,9 +13,9 @@ export var matchComponent = function (node, name, context) {
   return componentName === name
 }
 export var matchChildComponent = function (node, name, context) {
-  let _a
+  var _a
   if (name === '*') return true
-  let componentName =
+  var componentName =
     (_a = node === null || node === void 0 ? void 0 : node.props) === null ||
     _a === void 0
       ? void 0
@@ -52,8 +52,8 @@ export var findNodeByComponentPath = function (node, path) {
     }
   }
   if (matchComponent(node, path[0])) {
-    for (let i = 0; i < node.children.length; i++) {
-      let next = findNodeByComponentPath(node.children[i], path.slice(1))
+    for (var i = 0; i < node.children.length; i++) {
+      var next = findNodeByComponentPath(node.children[i], path.slice(1))
       if (next) {
         return next
       }
@@ -64,7 +64,7 @@ export var hasNodeByComponentPath = function (node, path) {
   return !!findNodeByComponentPath(node, path)
 }
 export var matchArrayItemsNode = function (node) {
-  let _a, _b, _c, _d
+  var _a, _b, _c, _d
   return (
     ((_b =
       (_a = node === null || node === void 0 ? void 0 : node.parent) === null ||
@@ -83,18 +83,18 @@ export var matchArrayItemsNode = function (node) {
   )
 }
 export var createNodeId = function (designer, id) {
-  let _a
+  var _a
   return (_a = {}), (_a[designer.props.nodeIdAttrName] = id), _a
 }
 export var createEnsureTypeItemsNode = function (type) {
   return function (node) {
-    let objectNode = node.children.find(function (child) {
+    var objectNode = node.children.find(function (child) {
       return child.props['type'] === type
     })
     if (objectNode) {
       return objectNode
     } else {
-      let newObjectNode = new TreeNode({
+      var newObjectNode = new TreeNode({
         componentName: 'Field',
         props: {
           type: type,

@@ -6,17 +6,17 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __rest =
+var __rest =
   (this && this.__rest) ||
   function (s, e) {
-    let t = {}
+    var t = {}
     for (var p in s)
       if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p]
@@ -37,8 +37,8 @@ import { NodeTitleWidget } from '../NodeTitleWidget'
 import { NodeActionsWidget } from '../NodeActionsWidget'
 import './styles.less'
 export var DroppableWidget = observer(function (_a) {
-  let _b
-  let node = _a.node,
+  var _b
+  var node = _a.node,
     actions = _a.actions,
     height = _a.height,
     placeholder = _a.placeholder,
@@ -54,10 +54,10 @@ export var DroppableWidget = observer(function (_a) {
       'className',
       'hasChildren',
     ])
-  let currentNode = useTreeNode()
-  let nodeId = useNodeIdProps(node)
-  let target = node !== null && node !== void 0 ? node : currentNode
-  let hasChildren =
+  var currentNode = useTreeNode()
+  var nodeId = useNodeIdProps(node)
+  var target = node !== null && node !== void 0 ? node : currentNode
+  var hasChildren =
     hasChildrenProp !== null && hasChildrenProp !== void 0
       ? hasChildrenProp
       : ((_b = target.children) === null || _b === void 0

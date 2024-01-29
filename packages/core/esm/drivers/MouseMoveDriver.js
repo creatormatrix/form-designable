@@ -1,4 +1,4 @@
-let __extends =
+var __extends =
   (this && this.__extends) ||
   (function () {
     var extendStatics = function (d, b) {
@@ -9,7 +9,7 @@ let __extends =
             d.__proto__ = b
           }) ||
         function (d, b) {
-          for (let p in b)
+          for (var p in b)
             if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]
         }
       return extendStatics(d, b)
@@ -29,10 +29,10 @@ let __extends =
   })()
 import { EventDriver } from '@designable/shared'
 import { MouseMoveEvent } from '../events'
-let MouseMoveDriver = /** @class */ (function (_super) {
+var MouseMoveDriver = /** @class */ (function (_super) {
   __extends(MouseMoveDriver, _super)
   function MouseMoveDriver() {
-    let _this = (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.request = null
     _this.onMouseMove = function (e) {
       _this.request = requestAnimationFrame(function () {

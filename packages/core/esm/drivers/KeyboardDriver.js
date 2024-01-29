@@ -1,4 +1,4 @@
-let __extends =
+var __extends =
   (this && this.__extends) ||
   (function () {
     var extendStatics = function (d, b) {
@@ -9,7 +9,7 @@ let __extends =
             d.__proto__ = b
           }) ||
         function (d, b) {
-          for (let p in b)
+          for (var p in b)
             if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]
         }
       return extendStatics(d, b)
@@ -30,9 +30,9 @@ let __extends =
 import { EventDriver } from '@designable/shared'
 import { KeyDownEvent, KeyUpEvent } from '../events'
 function filter(event) {
-  let target = event.target
-  let tagName = target.tagName
-  let flag = true
+  var target = event.target
+  var tagName = target.tagName
+  var flag = true
   // ignore: isContentEditable === 'true', <input> and <textarea> when readOnly state is false, <select>、Web Components
   if (
     target['isContentEditable'] ||
@@ -46,10 +46,10 @@ function filter(event) {
   }
   return flag
 }
-let KeyboardDriver = /** @class */ (function (_super) {
+var KeyboardDriver = /** @class */ (function (_super) {
   __extends(KeyboardDriver, _super)
   function KeyboardDriver() {
-    let _this = (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.onKeyDown = function (e) {
       if (!filter(e)) return
       _this.dispatch(new KeyDownEvent(e))

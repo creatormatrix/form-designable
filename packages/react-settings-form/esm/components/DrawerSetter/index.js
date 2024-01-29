@@ -6,19 +6,19 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -44,31 +44,31 @@ import { Button } from 'antd'
 import cls from 'classnames'
 import './styles.less'
 export var DrawerSetter = observer(function (props) {
-  let node = useTreeNode()
-  let field = useField()
-  let _a = __read(useState(false), 2),
+  var node = useTreeNode()
+  var field = useField()
+  var _a = __read(useState(false), 2),
     visible = _a[0],
     setVisible = _a[1]
-  let _b = __read(useState(false), 2),
+  var _b = __read(useState(false), 2),
     remove = _b[0],
     setRemove = _b[1]
-  let _c = __read(useState(), 2),
+  var _c = __read(useState(), 2),
     root = _c[0],
     setRoot = _c[1]
-  let prefix = usePrefix('drawer-setter')
-  let formWrapperCls = usePrefix(
+  var prefix = usePrefix('drawer-setter')
+  var formWrapperCls = usePrefix(
     props.wrapperClassName || 'settings-form-wrapper'
   )
   useLayoutEffect(
     function () {
-      let wrapper = document.querySelector('.' + formWrapperCls)
+      var wrapper = document.querySelector('.' + formWrapperCls)
       if (wrapper) {
         setRoot(wrapper)
       }
     },
     [node]
   )
-  let renderDrawer = function () {
+  var renderDrawer = function () {
     if (root && visible) {
       return createPortal(
         React.createElement(
@@ -110,7 +110,7 @@ export var DrawerSetter = observer(function (props) {
     }
     return null
   }
-  let handleOpen = function () {
+  var handleOpen = function () {
     setVisible(true)
   }
   var handleClose = function () {

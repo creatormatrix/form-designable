@@ -6,14 +6,14 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __awaiter =
+var __awaiter =
   (this && this.__awaiter) ||
   function (thisArg, _arguments, P, generator) {
     function adopt(value) {
@@ -46,10 +46,10 @@ let __awaiter =
       step((generator = generator.apply(thisArg, _arguments || [])).next())
     })
   }
-let __generator =
+var __generator =
   (this && this.__generator) ||
   function (thisArg, body) {
-    let _ = {
+    var _ = {
         label: 0,
         sent: function () {
           if (t[0] & 1) throw t[1]
@@ -150,7 +150,7 @@ import { getNpmCDNRegistry } from '../registry'
 import { globalThisPolyfill } from '@designable/shared'
 export var loadScript = function (props) {
   return __awaiter(void 0, void 0, void 0, function () {
-    let options, path
+    var options, path
     return __generator(this, function (_a) {
       options = __assign({ base: getNpmCDNRegistry() }, props)
       if (globalThisPolyfill[props.root])
@@ -162,12 +162,12 @@ export var loadScript = function (props) {
       return [
         2 /*return*/,
         new Promise(function (resolve, reject) {
-          let script = document.createElement('script')
+          var script = document.createElement('script')
           script.type = 'text/javascript'
           script.async = false
           script.src = path
           script.onload = function () {
-            let module = globalThisPolyfill[options.root]
+            var module = globalThisPolyfill[options.root]
             globalThisPolyfill['define'] = define
             resolve(module)
             script.remove()

@@ -6,19 +6,19 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -41,18 +41,18 @@ import { Menu } from 'antd'
 import { MonacoInput } from '@designable/react-settings-form'
 import { isPlainObj, reduce } from '@formily/shared'
 import { FieldProperties } from './properties'
-let template = function (code) {
+var template = function (code) {
   if (!code) return
   return code.trim()
 }
 export var FieldPropertySetter = function (props) {
-  let _a = __read(useState(['visible']), 2),
+  var _a = __read(useState(['visible']), 2),
     selectKeys = _a[0],
     setSelectKeys = _a[1]
-  let prefix = usePrefix('field-property-setter')
-  let value = __assign({}, props.value)
-  let parseExpression = function (expression) {
-    let _a
+  var prefix = usePrefix('field-property-setter')
+  var value = __assign({}, props.value)
+  var parseExpression = function (expression) {
+    var _a
     if (!expression) return ''
     return (
       ((_a = String(expression).match(/^\{\{([\s\S]*)\}\}$/)) === null ||
@@ -61,7 +61,7 @@ export var FieldPropertySetter = function (props) {
         : _a[1]) || ''
     )
   }
-  let filterEmpty = function (value) {
+  var filterEmpty = function (value) {
     return reduce(
       value,
       function (buf, value, key) {
@@ -72,7 +72,7 @@ export var FieldPropertySetter = function (props) {
       {}
     )
   }
-  let currentProperty = FieldProperties.find(function (item) {
+  var currentProperty = FieldProperties.find(function (item) {
     return item.key === selectKeys[0]
   })
   return React.createElement(
@@ -92,7 +92,7 @@ export var FieldPropertySetter = function (props) {
         defaultSelectedKeys: selectKeys,
         selectedKeys: selectKeys,
         onSelect: function (_a) {
-          let selectedKeys = _a.selectedKeys
+          var selectedKeys = _a.selectedKeys
           setSelectKeys(selectedKeys)
         },
       },
@@ -172,8 +172,8 @@ export var FieldPropertySetter = function (props) {
             },
           },
           onChange: function (expression) {
-            let _a
-            let _b
+            var _a
+            var _b
             ;(_b = props.onChange) === null || _b === void 0
               ? void 0
               : _b.call(

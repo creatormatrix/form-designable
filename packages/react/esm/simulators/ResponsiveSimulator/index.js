@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -30,22 +30,22 @@ import { IconWidget } from '../../widgets'
 import { ResizeHandle, ResizeHandleType } from './handle'
 import cls from 'classnames'
 import './styles.less'
-let useResizeEffect = function (container, content, engine) {
-  let status = null
-  let startX = 0
-  let startY = 0
-  let startWidth = 0
-  let startHeight = 0
-  let animationX = null
-  let animationY = null
-  let getStyle = function (status) {
+var useResizeEffect = function (container, content, engine) {
+  var status = null
+  var startX = 0
+  var startY = 0
+  var startWidth = 0
+  var startHeight = 0
+  var animationX = null
+  var animationY = null
+  var getStyle = function (status) {
     if (status === ResizeHandleType.Resize) return 'nwse-resize'
     if (status === ResizeHandleType.ResizeHeight) return 'ns-resize'
     if (status === ResizeHandleType.ResizeWidth) return 'ew-resize'
   }
-  let updateSize = function (deltaX, deltaY) {
-    let _a
-    let containerRect =
+  var updateSize = function (deltaX, deltaY) {
+    var _a
+    var containerRect =
       (_a = container.current) === null || _a === void 0
         ? void 0
         : _a.getBoundingClientRect()
@@ -70,14 +70,14 @@ let useResizeEffect = function (container, content, engine) {
     }
   }
   engine.subscribeTo(DragStartEvent, function (e) {
-    let _a, _b
+    var _a, _b
     if (
       !((_a = engine.workbench.currentWorkspace) === null || _a === void 0
         ? void 0
         : _a.viewport)
     )
       return
-    let target = e.data.target
+    var target = e.data.target
     if (
       target === null || target === void 0
         ? void 0
@@ -85,7 +85,7 @@ let useResizeEffect = function (container, content, engine) {
             '*['.concat(engine.props.screenResizeHandlerAttrName, ']')
           )
     ) {
-      let rect =
+      var rect =
         (_b = content.current) === null || _b === void 0
           ? void 0
           : _b.getBoundingClientRect()
@@ -100,7 +100,7 @@ let useResizeEffect = function (container, content, engine) {
     }
   })
   engine.subscribeTo(DragMoveEvent, function (e) {
-    let _a, _b
+    var _a, _b
     if (
       !((_a = engine.workbench.currentWorkspace) === null || _a === void 0
         ? void 0
@@ -108,16 +108,16 @@ let useResizeEffect = function (container, content, engine) {
     )
       return
     if (!status) return
-    let deltaX = e.data.topClientX - startX
-    let deltaY = e.data.topClientY - startY
-    let containerRect =
+    var deltaX = e.data.topClientX - startX
+    var deltaY = e.data.topClientY - startY
+    var containerRect =
       (_b = container.current) === null || _b === void 0
         ? void 0
         : _b.getBoundingClientRect()
-    let distanceX = Math.floor(containerRect.right - e.data.topClientX)
-    let distanceY = Math.floor(containerRect.bottom - e.data.topClientY)
-    let factorX = calcSpeedFactor(distanceX, 10)
-    let factorY = calcSpeedFactor(distanceY, 10)
+    var distanceX = Math.floor(containerRect.right - e.data.topClientX)
+    var distanceY = Math.floor(containerRect.bottom - e.data.topClientY)
+    var factorX = calcSpeedFactor(distanceX, 10)
+    var factorY = calcSpeedFactor(distanceY, 10)
     updateSize(deltaX, deltaY)
     if (distanceX <= 10) {
       if (!animationX) {
@@ -162,10 +162,10 @@ let useResizeEffect = function (container, content, engine) {
   })
 }
 export var ResponsiveSimulator = observer(function (props) {
-  let container = useRef()
-  let content = useRef()
-  let prefix = usePrefix('responsive-simulator')
-  let screen = useScreen()
+  var container = useRef()
+  var content = useRef()
+  var prefix = usePrefix('responsive-simulator')
+  var screen = useScreen()
   useDesigner(function (engine) {
     useResizeEffect(container, content, engine)
   })

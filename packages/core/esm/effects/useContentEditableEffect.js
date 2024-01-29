@@ -2,9 +2,9 @@ import { Path } from '@formily/path'
 import { requestIdle, globalThisPolyfill } from '@designable/shared'
 import { MouseDoubleClickEvent, MouseClickEvent } from '../events'
 function getAllRanges(sel) {
-  let ranges = []
-  for (let i = 0; i < sel.rangeCount; i++) {
-    let range = sel.getRangeAt(i)
+  var ranges = []
+  for (var i = 0; i < sel.rangeCount; i++) {
+    var range = sel.getRangeAt(i)
     ranges[i] = {
       collapsed: range.collapsed,
       startOffset: range.startOffset,
@@ -14,27 +14,27 @@ function getAllRanges(sel) {
   return ranges
 }
 function setEndOfContenteditable(contentEditableElement) {
-  let range = document.createRange()
+  var range = document.createRange()
   range.selectNodeContents(contentEditableElement)
   range.collapse(false)
-  let selection = globalThisPolyfill.getSelection()
+  var selection = globalThisPolyfill.getSelection()
   selection.removeAllRanges()
   selection.addRange(range)
 }
 function createCaretCache(el) {
-  let currentSelection = globalThisPolyfill.getSelection()
+  var currentSelection = globalThisPolyfill.getSelection()
   if (currentSelection.containsNode(el)) return
-  let ranges = getAllRanges(currentSelection)
+  var ranges = getAllRanges(currentSelection)
   return function (offset) {
     if (offset === void 0) {
       offset = 0
     }
-    let sel = globalThisPolyfill.getSelection()
-    let firstNode = el.childNodes[0]
+    var sel = globalThisPolyfill.getSelection()
+    var firstNode = el.childNodes[0]
     if (!firstNode) return
     sel.removeAllRanges()
     ranges.forEach(function (item) {
-      let range = document.createRange()
+      var range = document.createRange()
       range.collapse(item.collapsed)
       range.setStart(firstNode, item.startOffset + offset)
       range.setEnd(firstNode, item.endOffset + offset)
@@ -43,7 +43,7 @@ function createCaretCache(el) {
   }
 }
 export var useContentEditableEffect = function (engine) {
-  let globalState = {
+  var globalState = {
     activeElements: new Map(),
     queue: [],
     requestTimer: null,
@@ -56,16 +56,16 @@ export var useContentEditableEffect = function (engine) {
     }
   }
   function onInputHandler(event) {
-    let _this = this
-    let node = globalState.activeElements.get(this)
+    var _this = this
+    var node = globalState.activeElements.get(this)
     event.stopPropagation()
     event.preventDefault()
     if (node) {
-      let target_1 = event.target
-      let handler = function () {
+      var target_1 = event.target
+      var handler = function () {
         globalState.queue.length = 0
         if (globalState.isComposition) return
-        let restore = createCaretCache(target_1)
+        var restore = createCaretCache(target_1)
         Path.setIn(
           node.props,
           _this.getAttribute(engine.props.contentEditableAttrName),
@@ -101,12 +101,12 @@ export var useContentEditableEffect = function (engine) {
   }
   function onPastHandler(event) {
     event.preventDefault()
-    let node = globalState.activeElements.get(this)
-    let text = event.clipboardData.getData('text')
-    let selObj = globalThisPolyfill.getSelection()
-    let target = event.target
-    let selRange = selObj.getRangeAt(0)
-    let restore = createCaretCache(target)
+    var node = globalState.activeElements.get(this)
+    var text = event.clipboardData.getData('text')
+    var selObj = globalThisPolyfill.getSelection()
+    var target = event.target
+    var selRange = selObj.getRangeAt(0)
+    var restore = createCaretCache(target)
     selRange.deleteContents()
     selRange.insertNode(document.createTextNode(text))
     Path.setIn(
@@ -118,17 +118,17 @@ export var useContentEditableEffect = function (engine) {
   }
   function findTargetNodeId(element) {
     if (!element) return
-    let nodeId = element.getAttribute(
+    var nodeId = element.getAttribute(
       engine.props.contentEditableNodeIdAttrName
     )
     if (nodeId) return nodeId
-    let parent = element.closest('*['.concat(engine.props.nodeIdAttrName, ']'))
+    var parent = element.closest('*['.concat(engine.props.nodeIdAttrName, ']'))
     if (parent) return parent.getAttribute(engine.props.nodeIdAttrName)
   }
   engine.subscribeTo(MouseClickEvent, function (event) {
-    let _a
-    let target = event.data.target
-    let editableElement =
+    var _a
+    var target = event.data.target
+    var editableElement =
       (_a = target === null || target === void 0 ? void 0 : target.closest) ===
         null || _a === void 0
         ? void 0
@@ -154,9 +154,9 @@ export var useContentEditableEffect = function (engine) {
     })
   })
   engine.subscribeTo(MouseDoubleClickEvent, function (event) {
-    let _a
-    let target = event.data.target
-    let editableElement =
+    var _a
+    var target = event.data.target
+    var editableElement =
       (_a = target === null || target === void 0 ? void 0 : target.closest) ===
         null || _a === void 0
         ? void 0
@@ -164,14 +164,14 @@ export var useContentEditableEffect = function (engine) {
             target,
             '*['.concat(engine.props.contentEditableAttrName, ']')
           )
-    let workspace = engine.workbench.activeWorkspace
-    let tree = workspace.operation.tree
+    var workspace = engine.workbench.activeWorkspace
+    var tree = workspace.operation.tree
     if (editableElement) {
-      let editable = editableElement.getAttribute('contenteditable')
+      var editable = editableElement.getAttribute('contenteditable')
       if (editable === 'false' || !editable) {
-        let nodeId = findTargetNodeId(editableElement)
+        var nodeId = findTargetNodeId(editableElement)
         if (nodeId) {
-          let targetNode = tree.findById(nodeId)
+          var targetNode = tree.findById(nodeId)
           if (targetNode) {
             globalState.activeElements.set(editableElement, targetNode)
             editableElement.setAttribute('spellcheck', 'false')

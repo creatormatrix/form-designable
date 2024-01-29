@@ -1,9 +1,9 @@
-let LayoutObserver = /** @class */ (function () {
+var LayoutObserver = /** @class */ (function () {
   function LayoutObserver(observer) {
     if (observer === void 0) {
       observer = function () {}
     }
-    let _this = this
+    var _this = this
     this.connected = false
     this.observe = function (target) {
       _this.resizeObserver.observe(target)

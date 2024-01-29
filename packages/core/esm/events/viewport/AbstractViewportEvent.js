@@ -1,5 +1,5 @@
 import { globalThisPolyfill } from '@designable/shared'
-let AbstractViewportEvent = /** @class */ (function () {
+var AbstractViewportEvent = /** @class */ (function () {
   function AbstractViewportEvent(data) {
     this.data = data || {
       scrollX: globalThisPolyfill.scrollX,

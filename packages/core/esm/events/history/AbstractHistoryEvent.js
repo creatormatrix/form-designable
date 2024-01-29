@@ -1,4 +1,4 @@
-let AbstractHistoryEvent = /** @class */ (function () {
+var AbstractHistoryEvent = /** @class */ (function () {
   function AbstractHistoryEvent(data) {
     this.data = data
   }

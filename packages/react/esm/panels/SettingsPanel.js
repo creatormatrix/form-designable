@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -27,15 +27,15 @@ import { TextWidget, IconWidget } from '../widgets'
 import { usePrefix, useWorkbench } from '../hooks'
 import cls from 'classnames'
 export var SettingsPanel = observer(function (props) {
-  let prefix = usePrefix('settings-panel')
-  let workbench = useWorkbench()
-  let _a = __read(useState(true), 2),
+  var prefix = usePrefix('settings-panel')
+  var workbench = useWorkbench()
+  var _a = __read(useState(true), 2),
     innerVisible = _a[0],
     setInnerVisible = _a[1]
-  let _b = __read(useState(false), 2),
+  var _b = __read(useState(false), 2),
     pinning = _b[0],
     setPinning = _b[1]
-  let _c = __read(useState(true), 2),
+  var _c = __read(useState(true), 2),
     visible = _c[0],
     setVisible = _c[1]
   useEffect(

@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -20,24 +20,24 @@ import { Tooltip } from 'antd'
 import { usePrefix, useRegistry, useTheme } from '../../hooks'
 import cls from 'classnames'
 import './styles.less'
-let IconContext = createContext(null)
-let isNumSize = function (val) {
+var IconContext = createContext(null)
+var isNumSize = function (val) {
   return /^[\d.]+$/.test(val)
 }
 export var IconWidget = observer(function (props) {
-  let _a, _b, _c
-  let theme = useTheme()
-  let context = useContext(IconContext)
-  let registry = useRegistry()
-  let prefix = usePrefix('icon')
-  let size = props.size || '1em'
-  let height =
+  var _a, _b, _c
+  var theme = useTheme()
+  var context = useContext(IconContext)
+  var registry = useRegistry()
+  var prefix = usePrefix('icon')
+  var size = props.size || '1em'
+  var height =
     ((_a = props.style) === null || _a === void 0 ? void 0 : _a.height) || size
-  let width =
+  var width =
     ((_b = props.style) === null || _b === void 0 ? void 0 : _b.width) || size
   var takeIcon = function (infer) {
     if (isStr(infer)) {
-      let finded = registry.getDesignerIcon(infer)
+      var finded = registry.getDesignerIcon(infer)
       if (finded) {
         return takeIcon(finded)
       }
@@ -90,20 +90,20 @@ export var IconWidget = observer(function (props) {
       return null
     }
   }
-  let renderTooltips = function (children) {
+  var renderTooltips = function (children) {
     if (
       !isStr(props.infer) &&
       (context === null || context === void 0 ? void 0 : context.tooltip)
     )
       return children
-    let tooltip =
+    var tooltip =
       props.tooltip || registry.getDesignerMessage('icons.'.concat(props.infer))
     if (tooltip) {
-      let title =
+      var title =
         React.isValidElement(tooltip) || isStr(tooltip)
           ? tooltip
           : tooltip.title
-      let props_1 =
+      var props_1 =
         React.isValidElement(tooltip) || isStr(tooltip)
           ? {}
           : isObj(tooltip)
@@ -136,16 +136,16 @@ export var IconWidget = observer(function (props) {
   )
 })
 IconWidget.ShadowSVG = function (props) {
-  let ref = useRef()
-  let width = isNumSize(props.width)
+  var ref = useRef()
+  var width = isNumSize(props.width)
     ? ''.concat(props.width, 'px')
     : props.width
-  let height = isNumSize(props.height)
+  var height = isNumSize(props.height)
     ? ''.concat(props.height, 'px')
     : props.height
   useEffect(function () {
     if (ref.current) {
-      let root = ref.current.attachShadow({
+      var root = ref.current.attachShadow({
         mode: 'open',
       })
       root.innerHTML = '<svg viewBox="0 0 1024 1024" style="width:'

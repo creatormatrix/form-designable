@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -20,7 +20,7 @@ let __read =
     }
     return ar
   }
-let __spreadArray =
+var __spreadArray =
   (this && this.__spreadArray) ||
   function (to, from, pack) {
     if (pack || arguments.length === 2)
@@ -49,9 +49,9 @@ import {
 } from '../events'
 import { GlobalRegistry } from '../registry'
 import { mergeLocales } from '../internals'
-let TreeNodes = new Map()
-let CommonDesignerPropsMap = new Map()
-let removeNode = function (node) {
+var TreeNodes = new Map()
+var CommonDesignerPropsMap = new Map()
+var removeNode = function (node) {
   if (node.parent) {
     node.parent.children = node.parent.children.filter(function (child) {
       return child !== node
@@ -63,17 +63,17 @@ var resetNodesParent = function (nodes, parent) {
     node.depth = node.parent ? node.parent.depth + 1 : 0
     node.children.forEach(resetDepth)
   }
-  let shallowReset = function (node) {
+  var shallowReset = function (node) {
     node.parent = parent
     node.root = parent.root
     resetDepth(node)
   }
-  let deepReset = function (node) {
+  var deepReset = function (node) {
     shallowReset(node)
     resetNodesParent(node.children, node)
   }
   return nodes.map(function (node) {
-    let _a
+    var _a
     if (node === parent) return node
     if (!parent.isSourceNode) {
       if (node.isSourceNode) {
@@ -98,14 +98,14 @@ var resetNodesParent = function (nodes, parent) {
     return node
   })
 }
-let resetParent = function (node, parent) {
+var resetParent = function (node, parent) {
   return resetNodesParent([node], parent)[0]
 }
-let resolveDesignerProps = function (node, props) {
+var resolveDesignerProps = function (node, props) {
   if (isFn(props)) return props(node)
   return props
 }
-let TreeNode = /** @class */ (function () {
+var TreeNode = /** @class */ (function () {
   function TreeNode(node, parent) {
     this.depth = 0
     this.hidden = false
@@ -154,9 +154,9 @@ let TreeNode = /** @class */ (function () {
   }
   Object.defineProperty(TreeNode.prototype, 'designerProps', {
     get: function () {
-      let _this = this
-      let behaviors = GlobalRegistry.getDesignerBehaviors(this)
-      let designerProps = behaviors.reduce(function (buf, pattern) {
+      var _this = this
+      var behaviors = GlobalRegistry.getDesignerBehaviors(this)
+      var designerProps = behaviors.reduce(function (buf, pattern) {
         if (!pattern.designerProps) return buf
         Object.assign(buf, resolveDesignerProps(_this, pattern.designerProps))
         return buf
@@ -168,8 +168,8 @@ let TreeNode = /** @class */ (function () {
   })
   Object.defineProperty(TreeNode.prototype, 'designerLocales', {
     get: function () {
-      let behaviors = GlobalRegistry.getDesignerBehaviors(this)
-      let designerLocales = behaviors.reduce(function (buf, pattern) {
+      var behaviors = GlobalRegistry.getDesignerBehaviors(this)
+      var designerLocales = behaviors.reduce(function (buf, pattern) {
         if (!pattern.designerLocales) return buf
         mergeLocales(buf, pattern.designerLocales)
         return buf
@@ -197,7 +197,7 @@ let TreeNode = /** @class */ (function () {
   })
   Object.defineProperty(TreeNode.prototype, 'siblings', {
     get: function () {
-      let _this = this
+      var _this = this
       if (this.parent) {
         return this.parent.children.filter(function (node) {
           return node !== _this
@@ -262,7 +262,7 @@ let TreeNode = /** @class */ (function () {
   })
   Object.defineProperty(TreeNode.prototype, 'operation', {
     get: function () {
-      let _a
+      var _a
       return (_a = this.root) === null || _a === void 0
         ? void 0
         : _a.rootOperation
@@ -272,7 +272,7 @@ let TreeNode = /** @class */ (function () {
   })
   Object.defineProperty(TreeNode.prototype, 'viewport', {
     get: function () {
-      let _a, _b
+      var _a, _b
       return (_b =
         (_a = this.operation) === null || _a === void 0
           ? void 0
@@ -285,7 +285,7 @@ let TreeNode = /** @class */ (function () {
   })
   Object.defineProperty(TreeNode.prototype, 'outline', {
     get: function () {
-      let _a, _b
+      var _a, _b
       return (_b =
         (_a = this.operation) === null || _a === void 0
           ? void 0
@@ -298,7 +298,7 @@ let TreeNode = /** @class */ (function () {
   })
   Object.defineProperty(TreeNode.prototype, 'moveLayout', {
     get: function () {
-      let _a
+      var _a
       return (_a = this.viewport) === null || _a === void 0
         ? void 0
         : _a.getValidNodeLayout(this)
@@ -307,7 +307,7 @@ let TreeNode = /** @class */ (function () {
     configurable: true,
   })
   TreeNode.prototype.getElement = function (area) {
-    let _a
+    var _a
     if (area === void 0) {
       area = 'viewport'
     }
@@ -316,7 +316,7 @@ let TreeNode = /** @class */ (function () {
       : _a.findElementById(this.id)
   }
   TreeNode.prototype.getValidElement = function (area) {
-    let _a
+    var _a
     if (area === void 0) {
       area = 'viewport'
     }
@@ -325,7 +325,7 @@ let TreeNode = /** @class */ (function () {
       : _a.getValidNodeElement(this)
   }
   TreeNode.prototype.getElementRect = function (area) {
-    let _a
+    var _a
     if (area === void 0) {
       area = 'viewport'
     }
@@ -334,7 +334,7 @@ let TreeNode = /** @class */ (function () {
       : _a.getElementRect(this.getElement(area))
   }
   TreeNode.prototype.getValidElementRect = function (area) {
-    let _a
+    var _a
     if (area === void 0) {
       area = 'viewport'
     }
@@ -343,7 +343,7 @@ let TreeNode = /** @class */ (function () {
       : _a.getValidNodeRect(this)
   }
   TreeNode.prototype.getElementOffsetRect = function (area) {
-    let _a
+    var _a
     if (area === void 0) {
       area = 'viewport'
     }
@@ -352,7 +352,7 @@ let TreeNode = /** @class */ (function () {
       : _a.getElementOffsetRect(this.getElement(area))
   }
   TreeNode.prototype.getValidElementOffsetRect = function (area) {
-    let _a
+    var _a
     if (area === void 0) {
       area = 'viewport'
     }
@@ -379,7 +379,7 @@ let TreeNode = /** @class */ (function () {
     return this.parent.children[index]
   }
   TreeNode.prototype.getParents = function (node) {
-    let _node = node || this
+    var _node = node || this
     return (_node === null || _node === void 0 ? void 0 : _node.parent)
       ? [_node.parent].concat(this.getParents(_node.parent))
       : []
@@ -388,7 +388,7 @@ let TreeNode = /** @class */ (function () {
     if (depth === void 0) {
       depth = 0
     }
-    let parent = this.parent
+    var parent = this.parent
     if (
       (parent === null || parent === void 0 ? void 0 : parent.depth) === depth
     ) {
@@ -420,14 +420,14 @@ let TreeNode = /** @class */ (function () {
     return node.isMyParents(this)
   }
   TreeNode.prototype.takeSnapshot = function (type) {
-    let _a
+    var _a
     ;(_a = this.operation) === null || _a === void 0
       ? void 0
       : _a.snapshot(type)
   }
   TreeNode.prototype.triggerMutation = function (event, callback, defaults) {
     if (this.operation) {
-      let result = this.operation.dispatch(event, callback) || defaults
+      var result = this.operation.dispatch(event, callback) || defaults
       this.takeSnapshot(
         event === null || event === void 0 ? void 0 : event.type
       )
@@ -440,7 +440,7 @@ let TreeNode = /** @class */ (function () {
     if (finder(this)) {
       return this
     } else {
-      let result_1 = undefined
+      var result_1 = undefined
       this.eachChildren(function (node) {
         if (finder(node)) {
           result_1 = node
@@ -451,7 +451,7 @@ let TreeNode = /** @class */ (function () {
     }
   }
   TreeNode.prototype.findAll = function (finder) {
-    let results = []
+    var results = []
     if (finder(this)) {
       results.push(this)
     }
@@ -473,16 +473,16 @@ let TreeNode = /** @class */ (function () {
   }
   TreeNode.prototype.crossSiblings = function (node) {
     if (this.parent !== node.parent) return []
-    let minIndex = Math.min(this.index, node.index)
-    let maxIndex = Math.max(this.index, node.index)
-    let results = []
-    for (let i = minIndex + 1; i < maxIndex; i++) {
+    var minIndex = Math.min(this.index, node.index)
+    var maxIndex = Math.max(this.index, node.index)
+    var results = []
+    for (var i = minIndex + 1; i < maxIndex; i++) {
       results.push(this.parent.children[i])
     }
     return results
   }
   TreeNode.prototype.allowSibling = function (nodes) {
-    let _a, _b, _c
+    var _a, _b, _c
     if (
       ((_b =
         (_a = this.designerProps) === null || _a === void 0
@@ -501,8 +501,8 @@ let TreeNode = /** @class */ (function () {
     return this.designerProps.allowDrop(parent)
   }
   TreeNode.prototype.allowAppend = function (nodes) {
-    let _this = this
-    let _a, _b, _c
+    var _this = this
+    var _a, _b, _c
     if (
       !((_a = this.designerProps) === null || _a === void 0
         ? void 0
@@ -528,14 +528,14 @@ let TreeNode = /** @class */ (function () {
     return true
   }
   TreeNode.prototype.allowClone = function () {
-    let _a
+    var _a
     if (this === this.root) return false
     return (_a = this.designerProps.cloneable) !== null && _a !== void 0
       ? _a
       : true
   }
   TreeNode.prototype.allowDrag = function () {
-    let _a
+    var _a
     if (this === this.root && !this.isSourceNode) return false
     return (_a = this.designerProps.draggable) !== null && _a !== void 0
       ? _a
@@ -543,7 +543,7 @@ let TreeNode = /** @class */ (function () {
   }
   TreeNode.prototype.allowResize = function () {
     if (this === this.root && !this.isSourceNode) return false
-    let resizable = this.designerProps.resizable
+    var resizable = this.designerProps.resizable
     if (!resizable) return false
     if (resizable.width && resizable.height) return ['x', 'y']
     if (resizable.width) return ['x']
@@ -554,7 +554,7 @@ let TreeNode = /** @class */ (function () {
   TreeNode.prototype.allowScale = function () {}
   TreeNode.prototype.allowTranslate = function () {
     if (this === this.root && !this.isSourceNode) return false
-    let translatable = this.designerProps.translatable
+    var translatable = this.designerProps.translatable
     if (
       (translatable === null || translatable === void 0
         ? void 0
@@ -567,14 +567,14 @@ let TreeNode = /** @class */ (function () {
     return false
   }
   TreeNode.prototype.allowDelete = function () {
-    let _a
+    var _a
     if (this === this.root) return false
     return (_a = this.designerProps.deletable) !== null && _a !== void 0
       ? _a
       : true
   }
   TreeNode.prototype.findById = function (id) {
-    let _a
+    var _a
     if (!id) return
     if (this.id === id) return this
     if (
@@ -584,9 +584,9 @@ let TreeNode = /** @class */ (function () {
     }
   }
   TreeNode.prototype.contains = function () {
-    let _this = this
-    let nodes = []
-    for (let _i = 0; _i < arguments.length; _i++) {
+    var _this = this
+    var nodes = []
+    for (var _i = 0; _i < arguments.length; _i++) {
       nodes[_i] = arguments[_i]
     }
     return nodes.every(function (node) {
@@ -603,7 +603,7 @@ let TreeNode = /** @class */ (function () {
     })
   }
   TreeNode.prototype.eachTree = function (callback) {
-    let _a
+    var _a
     if (isFn(callback)) {
       callback(this.root)
       ;(_a = this.root) === null || _a === void 0
@@ -613,15 +613,15 @@ let TreeNode = /** @class */ (function () {
   }
   TreeNode.prototype.eachChildren = function (callback) {
     if (isFn(callback)) {
-      for (let i = 0; i < this.children.length; i++) {
-        let node = this.children[i]
+      for (var i = 0; i < this.children.length; i++) {
+        var node = this.children[i]
         if (callback(node) === false) return
         node.eachChildren(callback)
       }
     }
   }
   TreeNode.prototype.resetNodesParent = function (nodes, parent) {
-    let _this = this
+    var _this = this
     return resetNodesParent(
       nodes.filter(function (node) {
         return node !== _this
@@ -630,7 +630,7 @@ let TreeNode = /** @class */ (function () {
     )
   }
   TreeNode.prototype.setProps = function (props) {
-    let _this = this
+    var _this = this
     return this.triggerMutation(
       new UpdateNodePropsEvent({
         target: this,
@@ -645,9 +645,9 @@ let TreeNode = /** @class */ (function () {
     this.componentName = componentName
   }
   TreeNode.prototype.prepend = function () {
-    let _this = this
-    let nodes = []
-    for (let _i = 0; _i < arguments.length; _i++) {
+    var _this = this
+    var nodes = []
+    for (var _i = 0; _i < arguments.length; _i++) {
       nodes[_i] = arguments[_i]
     }
     if (
@@ -656,10 +656,10 @@ let TreeNode = /** @class */ (function () {
       })
     )
       return []
-    let originSourceParents = nodes.map(function (node) {
+    var originSourceParents = nodes.map(function (node) {
       return node.parent
     })
-    let newNodes = this.resetNodesParent(nodes, this)
+    var newNodes = this.resetNodesParent(nodes, this)
     if (!newNodes.length) return []
     return this.triggerMutation(
       new PrependNodeEvent({
@@ -675,9 +675,9 @@ let TreeNode = /** @class */ (function () {
     )
   }
   TreeNode.prototype.append = function () {
-    let _this = this
-    let nodes = []
-    for (let _i = 0; _i < arguments.length; _i++) {
+    var _this = this
+    var nodes = []
+    for (var _i = 0; _i < arguments.length; _i++) {
       nodes[_i] = arguments[_i]
     }
     if (
@@ -686,10 +686,10 @@ let TreeNode = /** @class */ (function () {
       })
     )
       return []
-    let originSourceParents = nodes.map(function (node) {
+    var originSourceParents = nodes.map(function (node) {
       return node.parent
     })
-    let newNodes = this.resetNodesParent(nodes, this)
+    var newNodes = this.resetNodesParent(nodes, this)
     if (!newNodes.length) return []
     return this.triggerMutation(
       new AppendNodeEvent({
@@ -705,9 +705,9 @@ let TreeNode = /** @class */ (function () {
     )
   }
   TreeNode.prototype.wrap = function (wrapper) {
-    let _this = this
+    var _this = this
     if (wrapper === this) return
-    let parent = this.parent
+    var parent = this.parent
     return this.triggerMutation(
       new WrapNodeEvent({
         target: this,
@@ -721,13 +721,13 @@ let TreeNode = /** @class */ (function () {
     )
   }
   TreeNode.prototype.insertAfter = function () {
-    let _this = this
-    let _a
-    let nodes = []
-    for (let _i = 0; _i < arguments.length; _i++) {
+    var _this = this
+    var _a
+    var nodes = []
+    for (var _i = 0; _i < arguments.length; _i++) {
       nodes[_i] = arguments[_i]
     }
-    let parent = this.parent
+    var parent = this.parent
     if (
       nodes.some(function (node) {
         return node.contains(_this)
@@ -740,10 +740,10 @@ let TreeNode = /** @class */ (function () {
         ? void 0
         : _a.length
     ) {
-      let originSourceParents = nodes.map(function (node) {
+      var originSourceParents = nodes.map(function (node) {
         return node.parent
       })
-      let newNodes_1 = this.resetNodesParent(nodes, parent)
+      var newNodes_1 = this.resetNodesParent(nodes, parent)
       if (!newNodes_1.length) return []
       return this.triggerMutation(
         new InsertAfterEvent({
@@ -767,13 +767,13 @@ let TreeNode = /** @class */ (function () {
     return []
   }
   TreeNode.prototype.insertBefore = function () {
-    let _this = this
-    let _a
-    let nodes = []
-    for (let _i = 0; _i < arguments.length; _i++) {
+    var _this = this
+    var _a
+    var nodes = []
+    for (var _i = 0; _i < arguments.length; _i++) {
       nodes[_i] = arguments[_i]
     }
-    let parent = this.parent
+    var parent = this.parent
     if (
       nodes.some(function (node) {
         return node.contains(_this)
@@ -786,10 +786,10 @@ let TreeNode = /** @class */ (function () {
         ? void 0
         : _a.length
     ) {
-      let originSourceParents = nodes.map(function (node) {
+      var originSourceParents = nodes.map(function (node) {
         return node.parent
       })
-      let newNodes_2 = this.resetNodesParent(nodes, parent)
+      var newNodes_2 = this.resetNodesParent(nodes, parent)
       if (!newNodes_2.length) return []
       return this.triggerMutation(
         new InsertBeforeEvent({
@@ -813,10 +813,10 @@ let TreeNode = /** @class */ (function () {
     return []
   }
   TreeNode.prototype.insertChildren = function (start) {
-    let _this = this
-    let _a
-    let nodes = []
-    for (let _i = 1; _i < arguments.length; _i++) {
+    var _this = this
+    var _a
+    var nodes = []
+    for (var _i = 1; _i < arguments.length; _i++) {
       nodes[_i - 1] = arguments[_i]
     }
     if (
@@ -826,10 +826,10 @@ let TreeNode = /** @class */ (function () {
     )
       return []
     if ((_a = this.children) === null || _a === void 0 ? void 0 : _a.length) {
-      let originSourceParents = nodes.map(function (node) {
+      var originSourceParents = nodes.map(function (node) {
         return node.parent
       })
-      let newNodes_3 = this.resetNodesParent(nodes, this)
+      var newNodes_3 = this.resetNodesParent(nodes, this)
       if (!newNodes_3.length) return []
       return this.triggerMutation(
         new InsertChildrenEvent({
@@ -852,15 +852,15 @@ let TreeNode = /** @class */ (function () {
     return []
   }
   TreeNode.prototype.setChildren = function () {
-    let _this = this
-    let nodes = []
-    for (let _i = 0; _i < arguments.length; _i++) {
+    var _this = this
+    var nodes = []
+    for (var _i = 0; _i < arguments.length; _i++) {
       nodes[_i] = arguments[_i]
     }
-    let originSourceParents = nodes.map(function (node) {
+    var originSourceParents = nodes.map(function (node) {
       return node.parent
     })
-    let newNodes = this.resetNodesParent(nodes, this)
+    var newNodes = this.resetNodesParent(nodes, this)
     return this.triggerMutation(
       new UpdateChildrenEvent({
         originSourceParents: originSourceParents,
@@ -879,14 +879,14 @@ let TreeNode = /** @class */ (function () {
    * please use `setChildren`
    */
   TreeNode.prototype.setNodeChildren = function () {
-    let nodes = []
-    for (let _i = 0; _i < arguments.length; _i++) {
+    var nodes = []
+    for (var _i = 0; _i < arguments.length; _i++) {
       nodes[_i] = arguments[_i]
     }
     return this.setChildren.apply(this, __spreadArray([], __read(nodes), false))
   }
   TreeNode.prototype.remove = function () {
-    let _this = this
+    var _this = this
     return this.triggerMutation(
       new RemoveNodeEvent({
         target: this,
@@ -899,7 +899,7 @@ let TreeNode = /** @class */ (function () {
     )
   }
   TreeNode.prototype.clone = function (parent) {
-    let newNode = new TreeNode(
+    var newNode = new TreeNode(
       {
         id: uid(),
         componentName: this.componentName,
@@ -926,7 +926,7 @@ let TreeNode = /** @class */ (function () {
     )
   }
   TreeNode.prototype.from = function (node) {
-    let _this = this
+    var _this = this
     if (!node) return
     return this.triggerMutation(
       new FromNodeEvent({
@@ -934,7 +934,7 @@ let TreeNode = /** @class */ (function () {
         source: node,
       }),
       function () {
-        let _a, _b, _c
+        var _a, _b, _c
         if (node.id && node.id !== _this.id) {
           TreeNodes.delete(_this.id)
           TreeNodes.set(node.id, _this)
@@ -980,15 +980,15 @@ let TreeNode = /** @class */ (function () {
     return TreeNodes.get(id)
   }
   TreeNode.remove = function (nodes) {
-    let _a, _b
+    var _a, _b
     if (nodes === void 0) {
       nodes = []
     }
-    for (let i = nodes.length - 1; i >= 0; i--) {
-      let node = nodes[i]
+    for (var i = nodes.length - 1; i >= 0; i--) {
+      var node = nodes[i]
       if (node.allowDelete()) {
-        let previous = node.previous
-        let next = node.next
+        var previous = node.previous
+        var next = node.next
         node.remove()
         ;(_a = node.operation) === null || _a === void 0
           ? void 0
@@ -1012,15 +1012,15 @@ let TreeNode = /** @class */ (function () {
     if (nodes === void 0) {
       nodes = []
     }
-    let groups = {}
-    let lastGroupNode = {}
-    let filterNestedNode = TreeNode.sort(nodes).filter(function (node) {
+    var groups = {}
+    var lastGroupNode = {}
+    var filterNestedNode = TreeNode.sort(nodes).filter(function (node) {
       return !nodes.some(function (parent) {
         return node.isMyParents(parent)
       })
     })
     each(filterNestedNode, function (node) {
-      let _a, _b, _c, _d, _e, _f, _g
+      var _a, _b, _c, _d, _e, _f, _g
       if (node === node.root) return
       if (!node.allowClone()) return
       if (!(node === null || node === void 0 ? void 0 : node.operation)) return
@@ -1075,13 +1075,13 @@ let TreeNode = /** @class */ (function () {
         ] = node
       }
     })
-    let parents = new Map()
+    var parents = new Map()
     each(groups, function (nodes, parentId) {
-      let lastNode = lastGroupNode[parentId]
-      let insertPoint = lastNode
+      var lastNode = lastGroupNode[parentId]
+      var insertPoint = lastNode
       each(nodes, function (node) {
-        let _a, _b
-        let cloned = node.clone()
+        var _a, _b
+        var cloned = node.clone()
         if (!cloned) return
         if (
           ((_a = node.operation) === null || _a === void 0
@@ -1092,11 +1092,11 @@ let TreeNode = /** @class */ (function () {
           insertPoint.insertAfter(cloned)
           insertPoint = insertPoint.next
         } else if (node.operation.selection.length === 1) {
-          let targetNode =
+          var targetNode =
             (_b = node.operation) === null || _b === void 0
               ? void 0
               : _b.tree.findById(node.operation.selection.first)
-          let cloneNodes = parents.get(targetNode)
+          var cloneNodes = parents.get(targetNode)
           if (!cloneNodes) {
             cloneNodes = []
             parents.set(targetNode, cloneNodes)
@@ -1157,7 +1157,7 @@ let TreeNode = /** @class */ (function () {
       nodes = []
     }
     return nodes.reduce(function (buf, node) {
-      let _a
+      var _a
       if (!node.allowDrag()) return buf
       if (
         isFn(
@@ -1168,7 +1168,7 @@ let TreeNode = /** @class */ (function () {
             : _a.getDragNodes
         )
       ) {
-        let transformed = node.designerProps.getDragNodes(node)
+        var transformed = node.designerProps.getDragNodes(node)
         return transformed ? buf.concat(transformed) : buf
       }
       if (node.componentName === '$$ResourceNode$$')
@@ -1181,7 +1181,7 @@ let TreeNode = /** @class */ (function () {
       nodes = []
     }
     return nodes.reduce(function (buf, node) {
-      let _a
+      var _a
       if (!node.allowDrop(parent)) return buf
       if (
         isFn(
@@ -1190,8 +1190,8 @@ let TreeNode = /** @class */ (function () {
             : _a.getDropNodes
         )
       ) {
-        let cloned = node.isSourceNode ? node.clone(node.parent) : node
-        let transformed = node.designerProps.getDropNodes(cloned, parent)
+        var cloned = node.isSourceNode ? node.clone(node.parent) : node
+        var transformed = node.designerProps.getDropNodes(cloned, parent)
         return transformed ? buf.concat(transformed) : buf
       }
       if (node.componentName === '$$ResourceNode$$')

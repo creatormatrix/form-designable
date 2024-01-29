@@ -1,4 +1,4 @@
-let __extends =
+var __extends =
   (this && this.__extends) ||
   (function () {
     var extendStatics = function (d, b) {
@@ -9,7 +9,7 @@ let __extends =
             d.__proto__ = b
           }) ||
         function (d, b) {
-          for (let p in b)
+          for (var p in b)
             if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]
         }
       return extendStatics(d, b)
@@ -31,10 +31,10 @@ import { EventDriver } from '@designable/shared'
 import { ViewportResizeEvent } from '../events'
 import { ResizeObserver } from '@juggle/resize-observer'
 import { globalThisPolyfill } from '@designable/shared'
-let ViewportResizeDriver = /** @class */ (function (_super) {
+var ViewportResizeDriver = /** @class */ (function (_super) {
   __extends(ViewportResizeDriver, _super)
   function ViewportResizeDriver() {
-    let _this = (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.request = null
     _this.resizeObserver = null
     _this.onResize = function (e) {

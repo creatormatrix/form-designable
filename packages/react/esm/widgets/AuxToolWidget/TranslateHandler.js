@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -18,10 +18,10 @@ import cls from 'classnames'
 import { useDesigner, usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 export var TranslateHandler = function (props) {
-  let designer = useDesigner()
-  let prefix = usePrefix('aux-node-translate-handler')
-  let createHandler = function (value) {
-    let _a
+  var designer = useDesigner()
+  var prefix = usePrefix('aux-node-translate-handler')
+  var createHandler = function (value) {
+    var _a
     return (
       (_a = {}),
       (_a[designer.props.nodeTranslateAttrName] = value),
@@ -29,7 +29,7 @@ export var TranslateHandler = function (props) {
       _a
     )
   }
-  let allowTranslate = props.node.allowTranslate()
+  var allowTranslate = props.node.allowTranslate()
   if (!allowTranslate) return null
   return React.createElement(
     React.Fragment,

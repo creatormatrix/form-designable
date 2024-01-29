@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -26,11 +26,11 @@ import { useTree, useWorkbench } from '../hooks'
 import { Viewport } from '../containers'
 import { requestIdle } from '@designable/shared'
 export var ViewPanel = observer(function (props) {
-  let _a = __read(useState(true), 2),
+  var _a = __read(useState(true), 2),
     visible = _a[0],
     setVisible = _a[1]
-  let workbench = useWorkbench()
-  let tree = useTree()
+  var workbench = useWorkbench()
+  var tree = useTree()
   useEffect(
     function () {
       if (workbench.type === props.type) {
@@ -46,7 +46,7 @@ export var ViewPanel = observer(function (props) {
     [workbench.type]
   )
   if (workbench.type !== props.type) return null
-  let render = function () {
+  var render = function () {
     return props.children(tree, function (payload) {
       tree.from(payload)
       tree.takeSnapshot()

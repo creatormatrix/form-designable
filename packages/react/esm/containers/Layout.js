@@ -3,9 +3,9 @@ import { each } from '@designable/shared'
 import { DesignerLayoutContext } from '../context'
 import cls from 'classnames'
 export var Layout = function (props) {
-  let _a
-  let layout = useContext(DesignerLayoutContext)
-  let ref = useRef()
+  var _a
+  var layout = useContext(DesignerLayoutContext)
+  var ref = useRef()
   useLayoutEffect(function () {
     if (ref.current) {
       each(props.variables, function (value, key) {

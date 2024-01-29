@@ -5,7 +5,7 @@ import {
   RemoveWorkspaceEvent,
   SwitchWorkspaceEvent,
 } from '../events'
-let Workbench = /** @class */ (function () {
+var Workbench = /** @class */ (function () {
   function Workbench(engine) {
     this.type = 'DESIGNABLE'
     this.engine = engine
@@ -36,7 +36,7 @@ let Workbench = /** @class */ (function () {
     }
   }
   Workbench.prototype.switchWorkspace = function (id) {
-    let finded = this.findWorkspaceById(id)
+    var finded = this.findWorkspaceById(id)
     if (finded) {
       this.currentWorkspace = finded
       this.engine.dispatch(new SwitchWorkspaceEvent(finded))
@@ -51,7 +51,7 @@ let Workbench = /** @class */ (function () {
     this.type = type
   }
   Workbench.prototype.addWorkspace = function (props) {
-    let finded = this.findWorkspaceById(props.id)
+    var finded = this.findWorkspaceById(props.id)
     if (!finded) {
       this.currentWorkspace = new Workspace(this.engine, props)
       this.workspaces.push(this.currentWorkspace)
@@ -61,9 +61,9 @@ let Workbench = /** @class */ (function () {
     return finded
   }
   Workbench.prototype.removeWorkspace = function (id) {
-    let findIndex = this.findWorkspaceIndexById(id)
+    var findIndex = this.findWorkspaceIndexById(id)
     if (findIndex > -1 && findIndex < this.workspaces.length) {
-      let findedWorkspace = this.workspaces[findIndex]
+      var findedWorkspace = this.workspaces[findIndex]
       findedWorkspace.viewport.detachEvents()
       this.workspaces.splice(findIndex, 1)
       if (findedWorkspace === this.currentWorkspace) {
@@ -80,7 +80,7 @@ let Workbench = /** @class */ (function () {
     if (props === void 0) {
       props = {}
     }
-    let workspace = this.findWorkspaceById(props.id)
+    var workspace = this.findWorkspaceById(props.id)
     if (workspace) return workspace
     this.addWorkspace(props)
     return this.currentWorkspace

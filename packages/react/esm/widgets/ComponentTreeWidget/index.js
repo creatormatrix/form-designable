@@ -6,19 +6,19 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -35,7 +35,7 @@ let __read =
     }
     return ar
   }
-let __spreadArray =
+var __spreadArray =
   (this && this.__spreadArray) ||
   function (to, from, pack) {
     if (pack || arguments.length === 2)
@@ -55,8 +55,8 @@ import { observer } from '@formily/reactive-react'
 import cls from 'classnames'
 import './styles.less'
 export var TreeNodeWidget = observer(function (props) {
-  let _a, _b
-  let designer = useDesigner(
+  var _a, _b
+  var designer = useDesigner(
     (_b =
       (_a = props.node) === null || _a === void 0
         ? void 0
@@ -64,10 +64,10 @@ export var TreeNodeWidget = observer(function (props) {
       ? void 0
       : _b.effects
   )
-  let components = useComponents()
-  let node = props.node
-  let renderChildren = function () {
-    let _a, _b
+  var components = useComponents()
+  var node = props.node
+  var renderChildren = function () {
+    var _a, _b
     if (
       (_a = node === null || node === void 0 ? void 0 : node.designerProps) ===
         null || _a === void 0
@@ -85,12 +85,12 @@ export var TreeNodeWidget = observer(function (props) {
           })
         })
   }
-  let renderProps = function (extendsProps) {
-    let _a, _b, _c
+  var renderProps = function (extendsProps) {
+    var _a, _b, _c
     if (extendsProps === void 0) {
       extendsProps = {}
     }
-    let props = __assign(
+    var props = __assign(
       __assign(
         __assign(
           __assign(
@@ -115,11 +115,11 @@ export var TreeNodeWidget = observer(function (props) {
     }
     return props
   }
-  let renderComponent = function () {
-    let _a, _b
-    let componentName = node.componentName
-    let Component = components[componentName]
-    let dataId = {}
+  var renderComponent = function () {
+    var _a, _b
+    var componentName = node.componentName
+    var Component = components[componentName]
+    var dataId = {}
     if (Component) {
       if (designer) {
         dataId[
@@ -159,11 +159,11 @@ export var TreeNodeWidget = observer(function (props) {
   )
 })
 export var ComponentTreeWidget = observer(function (props) {
-  let _a, _b
-  let tree = useTree()
-  let prefix = usePrefix('component-tree')
-  let designer = useDesigner()
-  let dataId = {}
+  var _a, _b
+  var tree = useTree()
+  var prefix = usePrefix('component-tree')
+  var designer = useDesigner()
+  var dataId = {}
   if (designer && tree) {
     dataId[
       (_a =

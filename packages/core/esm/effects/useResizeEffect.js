@@ -1,27 +1,27 @@
 import { CursorDragType } from '../models'
 import { DragStartEvent, DragMoveEvent, DragStopEvent } from '../events'
 export var useResizeEffect = function (engine) {
-  let findStartNodeHandler = function (target) {
-    let handler =
+  var findStartNodeHandler = function (target) {
+    var handler =
       target === null || target === void 0
         ? void 0
         : target.closest(
             '*['.concat(engine.props.nodeResizeHandlerAttrName, ']')
           )
     if (handler) {
-      let direction = handler.getAttribute(
+      var direction = handler.getAttribute(
         engine.props.nodeResizeHandlerAttrName
       )
       if (direction) {
-        let element = handler.closest(
+        var element = handler.closest(
           '*['.concat(engine.props.nodeSelectionIdAttrName, ']')
         )
         if (element) {
-          let nodeId = element.getAttribute(
+          var nodeId = element.getAttribute(
             engine.props.nodeSelectionIdAttrName
           )
           if (nodeId) {
-            let node = engine.findNodeById(nodeId)
+            var node = engine.findNodeById(nodeId)
             if (node) {
               return { direction: direction, node: node, element: element }
             }
@@ -32,9 +32,9 @@ export var useResizeEffect = function (engine) {
     return
   }
   engine.subscribeTo(DragStartEvent, function (event) {
-    let _a, _b
-    let target = event.data.target
-    let currentWorkspace =
+    var _a, _b
+    var target = event.data.target
+    var currentWorkspace =
       (_b =
         (_a = event.context) === null || _a === void 0
           ? void 0
@@ -42,18 +42,18 @@ export var useResizeEffect = function (engine) {
         ? _b
         : engine.workbench.activeWorkspace
     if (!currentWorkspace) return
-    let handler = findStartNodeHandler(target)
-    let helper = currentWorkspace.operation.transformHelper
+    var handler = findStartNodeHandler(target)
+    var helper = currentWorkspace.operation.transformHelper
     if (handler) {
-      let selectionElement = handler.element.closest(
+      var selectionElement = handler.element.closest(
         '*['.concat(engine.props.nodeSelectionIdAttrName, ']')
       )
       if (selectionElement) {
-        let nodeId = selectionElement.getAttribute(
+        var nodeId = selectionElement.getAttribute(
           engine.props.nodeSelectionIdAttrName
         )
         if (nodeId) {
-          let node = engine.findNodeById(nodeId)
+          var node = engine.findNodeById(nodeId)
           if (node) {
             helper.dragStart({
               dragNodes: [node],
@@ -66,24 +66,24 @@ export var useResizeEffect = function (engine) {
     }
   })
   engine.subscribeTo(DragMoveEvent, function (event) {
-    let _a, _b
+    var _a, _b
     if (engine.cursor.dragType !== CursorDragType.Resize) return
-    let currentWorkspace =
+    var currentWorkspace =
       (_b =
         (_a = event.context) === null || _a === void 0
           ? void 0
           : _a.workspace) !== null && _b !== void 0
         ? _b
         : engine.workbench.activeWorkspace
-    let helper =
+    var helper =
       currentWorkspace === null || currentWorkspace === void 0
         ? void 0
         : currentWorkspace.operation.transformHelper
-    let dragNodes = helper.dragNodes
+    var dragNodes = helper.dragNodes
     if (!dragNodes.length) return
     helper.dragMove()
     dragNodes.forEach(function (node) {
-      let element = node.getElement()
+      var element = node.getElement()
       helper.resize(node, function (rect) {
         element.style.width = rect.width + 'px'
         element.style.height = rect.height + 'px'
@@ -97,16 +97,16 @@ export var useResizeEffect = function (engine) {
     })
   })
   engine.subscribeTo(DragStopEvent, function (event) {
-    let _a, _b
+    var _a, _b
     if (engine.cursor.dragType !== CursorDragType.Resize) return
-    let currentWorkspace =
+    var currentWorkspace =
       (_b =
         (_a = event.context) === null || _a === void 0
           ? void 0
           : _a.workspace) !== null && _b !== void 0
         ? _b
         : engine.workbench.activeWorkspace
-    let helper =
+    var helper =
       currentWorkspace === null || currentWorkspace === void 0
         ? void 0
         : currentWorkspace.operation.transformHelper

@@ -12,7 +12,7 @@ export var ScreenStatus
   ScreenStatus['Resizing'] = 'Resizing'
   ScreenStatus['Zooming'] = 'Zooming'
 })(ScreenStatus || (ScreenStatus = {}))
-let Screen = /** @class */ (function () {
+var Screen = /** @class */ (function () {
   function Screen(engine) {
     this.scale = 1
     this.width = '100%'

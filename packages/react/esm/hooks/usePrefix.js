@@ -1,6 +1,6 @@
 import { useLayout } from './useLayout'
 export var usePrefix = function (after) {
-  let _a
+  var _a
   if (after === void 0) {
     after = ''
   }

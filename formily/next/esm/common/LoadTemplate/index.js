@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -16,7 +16,7 @@ var __assign =
 import React from 'react'
 import { NodeActionsWidget } from '@designable/react'
 export var LoadTemplate = function (props) {
-  let _a
+  var _a
   return React.createElement(
     NodeActionsWidget,
     null,

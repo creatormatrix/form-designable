@@ -3,8 +3,8 @@ import { observer } from '@formily/reactive-react'
 import { useWorkbench } from '../hooks'
 import { Workspace } from './Workspace'
 export var Workbench = observer(function (props) {
-  let _a
-  let workbench = useWorkbench()
+  var _a
+  var workbench = useWorkbench()
   return React.createElement(
     Workspace,
     {

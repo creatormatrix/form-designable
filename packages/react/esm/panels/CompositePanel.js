@@ -6,19 +6,19 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -40,10 +40,10 @@ import { isValid } from '@designable/shared'
 import cls from 'classnames'
 import { IconWidget, TextWidget } from '../widgets'
 import { usePrefix } from '../hooks'
-let parseItems = function (children) {
-  let items = []
+var parseItems = function (children) {
+  var items = []
   React.Children.forEach(children, function (child, index) {
-    let _a
+    var _a
     if (
       (child === null || child === void 0 ? void 0 : child['type']) ===
       CompositePanel.Item
@@ -58,22 +58,22 @@ let parseItems = function (children) {
   })
   return items
 }
-let findItem = function (items, key) {
-  for (let index = 0; index < items.length; index++) {
-    let item = items[index]
+var findItem = function (items, key) {
+  for (var index = 0; index < items.length; index++) {
+    var item = items[index]
     if (key === index) return item
     if (key === item.key) return item
   }
 }
-let getDefaultKey = function (children) {
-  let items = parseItems(children)
+var getDefaultKey = function (children) {
+  var items = parseItems(children)
   return items === null || items === void 0 ? void 0 : items[0].key
 }
 export var CompositePanel = function (props) {
-  let _a
-  let _b, _c, _d
-  let prefix = usePrefix('composite-panel')
-  let _e = __read(
+  var _a
+  var _b, _c, _d
+  var prefix = usePrefix('composite-panel')
+  var _e = __read(
       useState(
         (_b = props.defaultActiveKey) !== null && _b !== void 0
           ? _b
@@ -83,8 +83,8 @@ export var CompositePanel = function (props) {
     ),
     activeKey = _e[0],
     setActiveKey = _e[1]
-  let activeKeyRef = useRef(null)
-  let _f = __read(
+  var activeKeyRef = useRef(null)
+  var _f = __read(
       useState(
         (_c = props.defaultPinning) !== null && _c !== void 0 ? _c : false
       ),
@@ -92,15 +92,15 @@ export var CompositePanel = function (props) {
     ),
     pinning = _f[0],
     setPinning = _f[1]
-  let _g = __read(
+  var _g = __read(
       useState((_d = props.defaultOpen) !== null && _d !== void 0 ? _d : true),
       2
     ),
     visible = _g[0],
     setVisible = _g[1]
-  let items = parseItems(props.children)
-  let currentItem = findItem(items, activeKey)
-  let content =
+  var items = parseItems(props.children)
+  var currentItem = findItem(items, activeKey)
+  var content =
     currentItem === null || currentItem === void 0
       ? void 0
       : currentItem.children
@@ -115,7 +115,7 @@ export var CompositePanel = function (props) {
     },
     [props.activeKey]
   )
-  let renderContent = function () {
+  var renderContent = function () {
     if (!content || !visible) return
     return React.createElement(
       'div',
@@ -182,8 +182,8 @@ export var CompositePanel = function (props) {
       'div',
       { className: prefix + '-tabs' },
       items.map(function (item, index) {
-        let _a
-        let takeTab = function () {
+        var _a
+        var takeTab = function () {
           if (item.href) {
             return React.createElement('a', { href: item.href }, item.icon)
           }
@@ -197,8 +197,8 @@ export var CompositePanel = function (props) {
             infer: item.icon,
           })
         }
-        let shape = (_a = item.shape) !== null && _a !== void 0 ? _a : 'tab'
-        let Comp = shape === 'link' ? 'a' : 'div'
+        var shape = (_a = item.shape) !== null && _a !== void 0 ? _a : 'tab'
+        var Comp = shape === 'link' ? 'a' : 'div'
         return React.createElement(
           Comp,
           {
@@ -208,7 +208,7 @@ export var CompositePanel = function (props) {
             key: index,
             href: item.href,
             onClick: function (e) {
-              let _a, _b
+              var _a, _b
               if (shape === 'tab') {
                 if (activeKey === item.key) {
                   setVisible(!visible)

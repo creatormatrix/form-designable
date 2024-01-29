@@ -3,11 +3,11 @@ import { useTransformHelper, useCursor, usePrefix } from '../../hooks'
 import { observer } from '@formily/reactive-react'
 import { CursorStatus } from '@designable/core'
 export var SnapLine = observer(function () {
-  let cursor = useCursor()
-  let transformHelper = useTransformHelper()
-  let prefix = usePrefix('aux-snap-line')
-  let createLineStyle = function (rect) {
-    let baseStyle = {
+  var cursor = useCursor()
+  var transformHelper = useTransformHelper()
+  var prefix = usePrefix('aux-snap-line')
+  var createLineStyle = function (rect) {
+    var baseStyle = {
       top: 0,
       left: 0,
       height: rect.height || 1,

@@ -9,11 +9,11 @@ import {
 import { observer } from '@formily/reactive-react'
 import { CursorStatus, ClosestPosition } from '@designable/core'
 import cls from 'classnames'
-let CoverRect = function (props) {
-  let prefix = usePrefix('aux-cover-rect')
-  let rect = useValidNodeOffsetRect(props.node)
-  let createCoverStyle = function () {
-    let baseStyle = {
+var CoverRect = function (props) {
+  var prefix = usePrefix('aux-cover-rect')
+  var rect = useValidNodeOffsetRect(props.node)
+  var createCoverStyle = function () {
+    var baseStyle = {
       position: 'absolute',
       top: 0,
       left: 0,
@@ -37,11 +37,11 @@ let CoverRect = function (props) {
   })
 }
 export var Cover = observer(function () {
-  let viewportMoveHelper = useMoveHelper()
-  let viewport = useViewport()
-  let cursor = useCursor()
-  let renderDropCover = function () {
-    let _a
+  var viewportMoveHelper = useMoveHelper()
+  var viewport = useViewport()
+  var cursor = useCursor()
+  var renderDropCover = function () {
+    var _a
     if (
       !viewportMoveHelper.closestNode ||
       !((_a = viewportMoveHelper.closestNode) === null || _a === void 0

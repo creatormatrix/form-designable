@@ -6,8 +6,8 @@ import { InputItems } from '../InputItems'
 import cls from 'classnames'
 import './styles.less'
 export var FlexStyleSetter = observer(function (props) {
-  let field = useField()
-  let prefix = usePrefix('flex-style-setter')
+  var field = useField()
+  var prefix = usePrefix('flex-style-setter')
   return React.createElement(
     'div',
     { className: cls(prefix, props.className), style: props.style },

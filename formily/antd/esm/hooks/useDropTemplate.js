@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -20,7 +20,7 @@ let __read =
     }
     return ar
   }
-let __spread =
+var __spread =
   (this && this.__spread) ||
   function () {
     for (var ar = [], i = 0; i < arguments.length; i++)
@@ -33,7 +33,7 @@ import { matchComponent, matchChildComponent } from '../shared'
 export var useDropTemplate = function (name, getChildren) {
   return useDesigner(function (designer) {
     return designer.subscribeTo(AppendNodeEvent, function (event) {
-      let _a = event.data,
+      var _a = event.data,
         source = _a.source,
         target = _a.target
       if (Array.isArray(target)) return

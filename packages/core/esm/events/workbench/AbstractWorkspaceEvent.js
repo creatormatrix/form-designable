@@ -1,4 +1,4 @@
-let AbstractWorkspaceEvent = /** @class */ (function () {
+var AbstractWorkspaceEvent = /** @class */ (function () {
   function AbstractWorkspaceEvent(data) {
     this.data = data
   }

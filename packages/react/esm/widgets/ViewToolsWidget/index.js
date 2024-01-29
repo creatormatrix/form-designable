@@ -5,11 +5,11 @@ import { IconWidget } from '../IconWidget'
 import { usePrefix, useWorkbench } from '../../hooks'
 import cls from 'classnames'
 export var ViewToolsWidget = observer(function (_a) {
-  let use = _a.use,
+  var use = _a.use,
     style = _a.style,
     className = _a.className
-  let workbench = useWorkbench()
-  let prefix = usePrefix('view-tools')
+  var workbench = useWorkbench()
+  var prefix = usePrefix('view-tools')
   return React.createElement(
     Button.Group,
     { style: style, className: cls(prefix, className) },

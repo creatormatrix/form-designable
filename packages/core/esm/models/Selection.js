@@ -1,7 +1,7 @@
 import { observable, define, action } from '@formily/reactive'
 import { SelectNodeEvent, UnSelectNodeEvent } from '../events'
 import { isStr, isArr } from '@designable/shared'
-let Selection = /** @class */ (function () {
+var Selection = /** @class */ (function () {
   function Selection(props) {
     this.selected = []
     this.indexes = {}
@@ -36,7 +36,7 @@ let Selection = /** @class */ (function () {
     )
   }
   Selection.prototype.select = function (id) {
-    let _a
+    var _a
     if (isStr(id)) {
       if (this.selected.length === 1 && this.selected.includes(id)) {
         this.trigger(SelectNodeEvent)
@@ -78,7 +78,7 @@ let Selection = /** @class */ (function () {
   }
   Object.defineProperty(Selection.prototype, 'selectedNodes', {
     get: function () {
-      let _this = this
+      var _this = this
       return this.selected.map(function (id) {
         return _this.operation.tree.findById(id)
       })
@@ -109,9 +109,9 @@ let Selection = /** @class */ (function () {
     configurable: true,
   })
   Selection.prototype.add = function () {
-    let _this = this
-    let ids = []
-    for (let _i = 0; _i < arguments.length; _i++) {
+    var _this = this
+    var ids = []
+    for (var _i = 0; _i < arguments.length; _i++) {
       ids[_i] = arguments[_i]
     }
     this.mapIds(ids).forEach(function (id) {
@@ -127,13 +127,13 @@ let Selection = /** @class */ (function () {
     this.trigger()
   }
   Selection.prototype.crossAddTo = function (node) {
-    let _this = this
+    var _this = this
     if (node.parent) {
-      let selectedNodes = this.selectedNodes
+      var selectedNodes = this.selectedNodes
       if (this.has(node)) {
         this.remove(node)
       } else {
-        let minDistanceNode = selectedNodes.reduce(function (
+        var minDistanceNode = selectedNodes.reduce(function (
           minDistanceNode,
           item
         ) {
@@ -143,7 +143,7 @@ let Selection = /** @class */ (function () {
         },
         selectedNodes[0])
         if (minDistanceNode) {
-          let crossNodes = node.crossSiblings(minDistanceNode)
+          var crossNodes = node.crossSiblings(minDistanceNode)
           crossNodes.forEach(function (node) {
             if (!_this.has(node.id)) {
               _this.selected.push(node.id)
@@ -159,9 +159,9 @@ let Selection = /** @class */ (function () {
     }
   }
   Selection.prototype.remove = function () {
-    let _this = this
-    let ids = []
-    for (let _i = 0; _i < arguments.length; _i++) {
+    var _this = this
+    var ids = []
+    for (var _i = 0; _i < arguments.length; _i++) {
       ids[_i] = arguments[_i]
     }
     this.mapIds(ids).forEach(function (id) {
@@ -177,9 +177,9 @@ let Selection = /** @class */ (function () {
     this.trigger(UnSelectNodeEvent)
   }
   Selection.prototype.has = function () {
-    let _this = this
-    let ids = []
-    for (let _i = 0; _i < arguments.length; _i++) {
+    var _this = this
+    var ids = []
+    for (var _i = 0; _i < arguments.length; _i++) {
       ids[_i] = arguments[_i]
     }
     return this.mapIds(ids).some(function (id) {

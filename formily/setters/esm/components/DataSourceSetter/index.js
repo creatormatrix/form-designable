@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -31,7 +31,7 @@ import { TreePanel } from './TreePanel'
 import { transformDataToValue, transformValueToData } from './shared'
 import './styles.less'
 export var DataSourceSetter = observer(function (props) {
-  let className = props.className,
+  var className = props.className,
     _a = props.value,
     value = _a === void 0 ? [] : _a,
     onChange = props.onChange,
@@ -42,12 +42,12 @@ export var DataSourceSetter = observer(function (props) {
     defaultOptionValue = props.defaultOptionValue,
     _d = props.effects,
     effects = _d === void 0 ? function () {} : _d
-  let theme = useTheme()
-  let prefix = usePrefix('data-source-setter')
-  let _e = __read(useState(false), 2),
+  var theme = useTheme()
+  var prefix = usePrefix('data-source-setter')
+  var _e = __read(useState(false), 2),
     modalVisible = _e[0],
     setModalVisible = _e[1]
-  let treeDataSource = useMemo(
+  var treeDataSource = useMemo(
     function () {
       return observable({
         dataSource: transformValueToData(value),
@@ -56,10 +56,10 @@ export var DataSourceSetter = observer(function (props) {
     },
     [value, modalVisible]
   )
-  let openModal = function () {
+  var openModal = function () {
     return setModalVisible(true)
   }
-  let closeModal = function () {
+  var closeModal = function () {
     return setModalVisible(false)
   }
   return React.createElement(

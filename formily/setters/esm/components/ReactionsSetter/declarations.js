@@ -1,4 +1,4 @@
-let __awaiter =
+var __awaiter =
   (this && this.__awaiter) ||
   function (thisArg, _arguments, P, generator) {
     function adopt(value) {
@@ -31,10 +31,10 @@ let __awaiter =
       step((generator = generator.apply(thisArg, _arguments || [])).next())
     })
   }
-let __generator =
+var __generator =
   (this && this.__generator) ||
   function (thisArg, body) {
-    let _ = {
+    var _ = {
         label: 0,
         sent: function () {
           if (t[0] & 1) throw t[1]
@@ -132,17 +132,17 @@ let __generator =
     }
   }
 import { MonacoInput, getNpmCDNRegistry } from '@designable/react-settings-form'
-let loadDependencies = function (deps) {
+var loadDependencies = function (deps) {
   return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
       return [
         2 /*return*/,
         Promise.all(
           deps.map(function (_a) {
-            let name = _a.name,
+            var name = _a.name,
               path = _a.path
             return __awaiter(void 0, void 0, void 0, function () {
-              let _b
+              var _b
               return __generator(this, function (_c) {
                 switch (_c.label) {
                   case 0:
@@ -179,7 +179,7 @@ export var initDeclaration = function () {
         2 /*return*/,
         MonacoInput.loader.init().then(function (monaco) {
           return __awaiter(void 0, void 0, void 0, function () {
-            let deps
+            var deps
             return __generator(this, function (_a) {
               switch (_a.label) {
                 case 0:
@@ -197,7 +197,7 @@ export var initDeclaration = function () {
                   deps === null || deps === void 0
                     ? void 0
                     : deps.forEach(function (_a) {
-                        let name = _a.name,
+                        var name = _a.name,
                           library = _a.library
                         monaco.languages.typescript.typescriptDefaults.addExtraLib(
                           "declare module '"

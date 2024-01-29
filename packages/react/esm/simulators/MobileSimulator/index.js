@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -19,7 +19,7 @@ import { usePrefix } from '../../hooks'
 import cls from 'classnames'
 import './styles.less'
 export var MobileSimulator = function (props) {
-  let prefix = usePrefix('mobile-simulator')
+  var prefix = usePrefix('mobile-simulator')
   return React.createElement(
     'div',
     __assign({}, props, { className: cls(prefix, props.className) }),

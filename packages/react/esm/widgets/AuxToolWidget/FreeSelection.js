@@ -5,26 +5,26 @@ import { CursorDragType, CursorStatus } from '@designable/core'
 import { calcRectByStartEndPoint } from '@designable/shared'
 import cls from 'classnames'
 export var FreeSelection = observer(function () {
-  let cursor = useCursor()
-  let viewport = useViewport()
-  let operation = useOperation()
-  let prefix = usePrefix('aux-free-selection')
-  let createSelectionStyle = function () {
-    let startDragPoint = viewport.getOffsetPoint({
+  var cursor = useCursor()
+  var viewport = useViewport()
+  var operation = useOperation()
+  var prefix = usePrefix('aux-free-selection')
+  var createSelectionStyle = function () {
+    var startDragPoint = viewport.getOffsetPoint({
       x: cursor.dragStartPosition.topClientX,
       y: cursor.dragStartPosition.topClientY,
     })
-    let currentPoint = viewport.getOffsetPoint({
+    var currentPoint = viewport.getOffsetPoint({
       x: cursor.position.topClientX,
       y: cursor.position.topClientY,
     })
-    let rect = calcRectByStartEndPoint(
+    var rect = calcRectByStartEndPoint(
       startDragPoint,
       currentPoint,
       viewport.dragScrollXDelta,
       viewport.dragScrollYDelta
     )
-    let baseStyle = {
+    var baseStyle = {
       position: 'absolute',
       top: 0,
       left: 0,

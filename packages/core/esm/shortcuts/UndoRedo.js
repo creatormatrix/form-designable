@@ -5,7 +5,7 @@ export var UndoMutation = new Shortcut({
     [KeyCode.Control, KeyCode.Z],
   ],
   handler: function (context) {
-    let workspace =
+    var workspace =
       context === null || context === void 0 ? void 0 : context.workspace
     if (workspace) {
       workspace.history.undo()
@@ -19,7 +19,7 @@ export var RedoMutation = new Shortcut({
     [KeyCode.Control, KeyCode.Shift, KeyCode.Z],
   ],
   handler: function (context) {
-    let workspace =
+    var workspace =
       context === null || context === void 0 ? void 0 : context.workspace
     if (workspace) {
       workspace.history.redo()

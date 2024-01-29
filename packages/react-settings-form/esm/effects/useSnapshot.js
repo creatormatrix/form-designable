@@ -1,5 +1,5 @@
 import { onFieldInputValueChange } from '@formily/core'
-let timeRequest = null
+var timeRequest = null
 export var useSnapshot = function (operation) {
   onFieldInputValueChange('*', function () {
     clearTimeout(timeRequest)

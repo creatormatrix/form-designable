@@ -4,10 +4,10 @@ import { observer } from '@formily/reactive-react'
 import { IconWidget } from '../IconWidget'
 import './styles.less'
 export var EmptyWidget = observer(function (props) {
-  let _a
-  let tree = useTree()
-  let prefix = usePrefix('empty')
-  let renderEmpty = function () {
+  var _a
+  var tree = useTree()
+  var prefix = usePrefix('empty')
+  var renderEmpty = function () {
     return React.createElement(
       'div',
       { style: { display: 'flex', flexDirection: 'column' } },

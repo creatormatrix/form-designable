@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -32,7 +32,7 @@ import { isArr, isStr } from '@designable/shared'
 import { Container } from '../../common/Container'
 import { AllLocales } from '../../locales'
 Schema.silent(true)
-let SchemaStateMap = {
+var SchemaStateMap = {
   title: 'title',
   description: 'description',
   default: 'value',
@@ -51,26 +51,26 @@ let SchemaStateMap = {
   'x-display': 'display',
   'x-pattern': 'pattern',
 }
-let NeedShownExpression = {
+var NeedShownExpression = {
   title: true,
   description: true,
   default: true,
   'x-content': true,
   'x-value': true,
 }
-let isExpression = function (val) {
+var isExpression = function (val) {
   return isStr(val) && /^\{\{.*\}\}$/.test(val)
 }
 var filterExpression = function (val) {
   if (typeof val === 'object') {
-    let isArray_1 = isArr(val)
-    let results = reduce(
+    var isArray_1 = isArr(val)
+    var results = reduce(
       val,
       function (buf, value, key) {
         if (isExpression(value)) {
           return buf
         } else {
-          let results_1 = filterExpression(value)
+          var results_1 = filterExpression(value)
           if (results_1 === undefined || results_1 === null) return buf
           if (isArray_1) {
             return buf.concat([results_1])
@@ -88,10 +88,10 @@ var filterExpression = function (val) {
   }
   return val
 }
-let toDesignableFieldProps = function (schema, components, nodeIdAttrName, id) {
-  let results = {}
+var toDesignableFieldProps = function (schema, components, nodeIdAttrName, id) {
+  var results = {}
   each(SchemaStateMap, function (fieldKey, schemaKey) {
-    let value = schema[schemaKey]
+    var value = schema[schemaKey]
     if (isExpression(value)) {
       if (!NeedShownExpression[schemaKey]) return
       if (value) {
@@ -105,12 +105,12 @@ let toDesignableFieldProps = function (schema, components, nodeIdAttrName, id) {
   if (!components['FormItem']) {
     components['FormItem'] = FormItem
   }
-  let decorator =
+  var decorator =
     schema['x-decorator'] && FormPath.getIn(components, schema['x-decorator'])
-  let component =
+  var component =
     schema['x-component'] && FormPath.getIn(components, schema['x-component'])
-  let decoratorProps = schema['x-decorator-props'] || {}
-  let componentProps = schema['x-component-props'] || {}
+  var decoratorProps = schema['x-decorator-props'] || {}
+  var componentProps = schema['x-component-props'] || {}
   if (decorator) {
     results.decorator = [decorator, toJS(decoratorProps)]
   }
@@ -139,11 +139,11 @@ let toDesignableFieldProps = function (schema, components, nodeIdAttrName, id) {
   return results
 }
 export var Field = observer(function (props) {
-  let designer = useDesigner()
-  let components = useComponents()
-  let node = useTreeNode()
+  var designer = useDesigner()
+  var components = useComponents()
+  var node = useTreeNode()
   if (!node) return null
-  let fieldProps = toDesignableFieldProps(
+  var fieldProps = toDesignableFieldProps(
     props,
     components,
     designer.props.nodeIdAttrName,

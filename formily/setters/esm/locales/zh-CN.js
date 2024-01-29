@@ -1,4 +1,4 @@
-let ValidatorFormats = [
+var ValidatorFormats = [
   { label: 'URL地址', value: 'url' },
   { label: '邮箱格式', value: 'email' },
   { label: '数字格式', value: 'number' },

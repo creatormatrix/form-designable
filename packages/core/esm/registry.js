@@ -4,9 +4,9 @@ import { observable } from '@formily/reactive'
 import { mergeLocales, lowerSnake, getBrowserLanguage } from './internals'
 import { isBehaviorHost } from './externals'
 import { isBehaviorList } from './externals'
-let getISOCode = function (language) {
-  let isoCode = DESIGNER_LANGUAGE_STORE.value
-  let lang = lowerSnake(language)
+var getISOCode = function (language) {
+  var isoCode = DESIGNER_LANGUAGE_STORE.value
+  var lang = lowerSnake(language)
   if (DESIGNER_LOCALES_STORE.value[lang]) {
     return lang
   }
@@ -18,14 +18,14 @@ let getISOCode = function (language) {
   })
   return isoCode
 }
-let reSortBehaviors = function (target, sources) {
-  let findTargetBehavior = function (behavior) {
+var reSortBehaviors = function (target, sources) {
+  var findTargetBehavior = function (behavior) {
     return target.includes(behavior)
   }
-  let findSourceBehavior = function (name) {
-    for (let key in sources) {
-      let Behavior = sources[key].Behavior
-      for (let i = 0; i < Behavior.length; i++) {
+  var findSourceBehavior = function (name) {
+    for (var key in sources) {
+      var Behavior = sources[key].Behavior
+      for (var i = 0; i < Behavior.length; i++) {
         if (Behavior[i].name === name) return Behavior[i]
       }
     }
@@ -33,12 +33,12 @@ let reSortBehaviors = function (target, sources) {
   each(sources, function (item) {
     if (!item) return
     if (!isBehaviorHost(item)) return
-    let Behavior = item.Behavior
+    var Behavior = item.Behavior
     each(Behavior, function (behavior) {
       if (findTargetBehavior(behavior)) return
-      let name = behavior.name
+      var name = behavior.name
       each(behavior.extends, function (dep) {
-        let behavior = findSourceBehavior(dep)
+        var behavior = findSourceBehavior(dep)
         if (!behavior)
           throw new Error(
             'No '.concat(dep, ' behavior that ').concat(name, ' depends on')
@@ -51,11 +51,11 @@ let reSortBehaviors = function (target, sources) {
     })
   })
 }
-let DESIGNER_BEHAVIORS_STORE = observable.ref([])
-let DESIGNER_ICONS_STORE = observable.ref({})
+var DESIGNER_BEHAVIORS_STORE = observable.ref([])
+var DESIGNER_ICONS_STORE = observable.ref({})
 var DESIGNER_LOCALES_STORE = observable.ref({})
 var DESIGNER_LANGUAGE_STORE = observable.ref(getBrowserLanguage())
-let DESIGNER_GlobalRegistry = {
+var DESIGNER_GlobalRegistry = {
   setDesignerLanguage: function (lang) {
     DESIGNER_LANGUAGE_STORE.value = lang
   },
@@ -81,11 +81,11 @@ let DESIGNER_GlobalRegistry = {
     return getISOCode(DESIGNER_LANGUAGE_STORE.value)
   },
   getDesignerMessage: function (token, locales) {
-    let lang = getISOCode(DESIGNER_LANGUAGE_STORE.value)
-    let locale = locales ? locales[lang] : DESIGNER_LOCALES_STORE.value[lang]
+    var lang = getISOCode(DESIGNER_LANGUAGE_STORE.value)
+    var locale = locales ? locales[lang] : DESIGNER_LOCALES_STORE.value[lang]
     if (!locale) {
-      for (let key in DESIGNER_LOCALES_STORE.value) {
-        let message = Path.getIn(
+      for (var key in DESIGNER_LOCALES_STORE.value) {
+        var message = Path.getIn(
           DESIGNER_LOCALES_STORE.value[key],
           lowerSnake(token)
         )
@@ -99,8 +99,8 @@ let DESIGNER_GlobalRegistry = {
     Object.assign(DESIGNER_ICONS_STORE, map)
   },
   registerDesignerLocales: function () {
-    let packages = []
-    for (let _i = 0; _i < arguments.length; _i++) {
+    var packages = []
+    for (var _i = 0; _i < arguments.length; _i++) {
       packages[_i] = arguments[_i]
     }
     packages.forEach(function (locales) {
@@ -108,11 +108,11 @@ let DESIGNER_GlobalRegistry = {
     })
   },
   registerDesignerBehaviors: function () {
-    let packages = []
-    for (let _i = 0; _i < arguments.length; _i++) {
+    var packages = []
+    for (var _i = 0; _i < arguments.length; _i++) {
       packages[_i] = arguments[_i]
     }
-    let results = []
+    var results = []
     packages.forEach(function (sources) {
       reSortBehaviors(results, sources)
     })

@@ -18,7 +18,7 @@ export function each(val, iterator, revert) {
       }
     }
   } else if (isObj(val)) {
-    let key = void 0
+    var key = void 0
     for (key in val) {
       if (Object.hasOwnProperty.call(val, key)) {
         if (iterator(val[key], key) === false) {
@@ -29,11 +29,11 @@ export function each(val, iterator, revert) {
   }
 }
 export function map(val, iterator, revert) {
-  let res = isArr(val) || isStr(val) ? [] : {}
+  var res = isArr(val) || isStr(val) ? [] : {}
   each(
     val,
     function (item, key) {
-      let value = iterator(item, key)
+      var value = iterator(item, key)
       if (isArr(res)) {
         res.push(value)
       } else {
@@ -45,7 +45,7 @@ export function map(val, iterator, revert) {
   return res
 }
 export function reduce(val, iterator, accumulator, revert) {
-  let result = accumulator
+  var result = accumulator
   each(
     val,
     function (item, key) {
@@ -56,7 +56,7 @@ export function reduce(val, iterator, accumulator, revert) {
   return result
 }
 export function every(val, iterator, revert) {
-  let res = true
+  var res = true
   each(
     val,
     function (item, key) {
@@ -70,7 +70,7 @@ export function every(val, iterator, revert) {
   return res
 }
 export function some(val, iterator, revert) {
-  let res = false
+  var res = false
   each(
     val,
     function (item, key) {
@@ -84,7 +84,7 @@ export function some(val, iterator, revert) {
   return res
 }
 export function findIndex(val, iterator, revert) {
-  let res = -1
+  var res = -1
   each(
     val,
     function (item, key) {
@@ -98,7 +98,7 @@ export function findIndex(val, iterator, revert) {
   return res
 }
 export function find(val, iterator, revert) {
-  let res
+  var res
   each(
     val,
     function (item, key) {

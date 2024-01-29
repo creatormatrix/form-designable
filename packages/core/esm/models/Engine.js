@@ -1,4 +1,4 @@
-let __extends =
+var __extends =
   (this && this.__extends) ||
   (function () {
     var extendStatics = function (d, b) {
@@ -9,7 +9,7 @@ let __extends =
             d.__proto__ = b
           }) ||
         function (d, b) {
-          for (let p in b)
+          for (var p in b)
             if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]
         }
       return extendStatics(d, b)
@@ -35,7 +35,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -51,10 +51,10 @@ import { Event, uid, globalThisPolyfill } from '@designable/shared'
 /**
  * 设计器引擎
  */
-let Engine = /** @class */ (function (_super) {
+var Engine = /** @class */ (function (_super) {
   __extends(Engine, _super)
   function Engine(props) {
-    let _this = _super.call(this, props) || this
+    var _this = _super.call(this, props) || this
     _this.props = __assign(__assign({}, Engine.defaultProps), props)
     _this.init()
     _this.id = uid()
@@ -72,7 +72,7 @@ let Engine = /** @class */ (function (_super) {
     }
   }
   Engine.prototype.getCurrentTree = function () {
-    let _a, _b, _c
+    var _a, _b, _c
     return (_c =
       (_b =
         (_a = this.workbench) === null || _a === void 0
@@ -84,9 +84,9 @@ let Engine = /** @class */ (function (_super) {
       : _c.tree
   }
   Engine.prototype.getAllSelectedNodes = function () {
-    let results = []
-    for (let i = 0; i < this.workbench.workspaces.length; i++) {
-      let workspace = this.workbench.workspaces[i]
+    var results = []
+    for (var i = 0; i < this.workbench.workspaces.length; i++) {
+      var workspace = this.workbench.workspaces[i]
       results = results.concat(workspace.operation.selection.selectedNodes)
     }
     return results
@@ -95,9 +95,9 @@ let Engine = /** @class */ (function (_super) {
     return TreeNode.findById(id)
   }
   Engine.prototype.findMovingNodes = function () {
-    let results = []
+    var results = []
     this.workbench.eachWorkspace(function (workspace) {
-      let _a
+      var _a
       ;(_a = workspace.operation.moveHelper.dragNodes) === null || _a === void 0
         ? void 0
         : _a.forEach(function (node) {

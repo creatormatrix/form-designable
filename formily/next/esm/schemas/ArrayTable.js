@@ -92,7 +92,7 @@ export var ArrayTable = {
     },
   },
 }
-let Column = {
+var Column = {
   type: 'object',
   properties: {
     title: {
@@ -149,7 +149,7 @@ let Column = {
     },
   },
 }
-let Addition = {
+var Addition = {
   type: 'object',
   properties: {
     title: {

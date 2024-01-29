@@ -6,17 +6,17 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __rest =
+var __rest =
   (this && this.__rest) ||
   function (s, e) {
-    let t = {}
+    var t = {}
     for (var p in s)
       if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p]
@@ -30,12 +30,12 @@ let __rest =
       }
     return t
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -57,10 +57,10 @@ import { Button } from 'antd'
 import { usePrefix, IconWidget } from '@designable/react'
 import cls from 'classnames'
 import './styles.less'
-let isValid = function (val) {
+var isValid = function (val) {
   return val !== undefined && val !== null
 }
-let getEventValue = function (event) {
+var getEventValue = function (event) {
   if (event === null || event === void 0 ? void 0 : event.target) {
     if (isValid(event.target.value)) return event.target.value
     if (isValid(event.target.checked)) return event.target.checked
@@ -68,9 +68,9 @@ let getEventValue = function (event) {
   }
   return event
 }
-let createTypes = function (types, exclude, include) {
+var createTypes = function (types, exclude, include) {
   return types.filter(function (_a) {
-    let type = _a.type
+    var type = _a.type
     if (Array.isArray(include) && include.length) {
       return include.includes(type)
     }
@@ -85,8 +85,8 @@ export function createPolyInput(polyTypes) {
     polyTypes = []
   }
   return function (_a) {
-    let _b
-    let className = _a.className,
+    var _b
+    var className = _a.className,
       style = _a.style,
       value = _a.value,
       onChange = _a.onChange,
@@ -100,29 +100,29 @@ export function createPolyInput(polyTypes) {
         'exclude',
         'include',
       ])
-    let prefix = usePrefix('poly-input')
-    let types = createTypes(polyTypes, exclude, include)
-    let _c = __read(
+    var prefix = usePrefix('poly-input')
+    var types = createTypes(polyTypes, exclude, include)
+    var _c = __read(
         useState((_b = types[0]) === null || _b === void 0 ? void 0 : _b.type),
         2
       ),
       current = _c[0],
       setCurrent = _c[1]
-    let type =
+    var type =
       types === null || types === void 0
         ? void 0
         : types.find(function (_a) {
-            let type = _a.type
+            var type = _a.type
             return type === current
           })
-    let component = type === null || type === void 0 ? void 0 : type.component
-    let typesValue = useRef({})
+    var component = type === null || type === void 0 ? void 0 : type.component
+    var typesValue = useRef({})
     useEffect(
       function () {
         types === null || types === void 0
           ? void 0
           : types.forEach(function (_a) {
-              let checker = _a.checker,
+              var checker = _a.checker,
                 type = _a.type
               if (checker(value)) {
                 setCurrent(type)
@@ -131,22 +131,22 @@ export function createPolyInput(polyTypes) {
       },
       [value]
     )
-    let getNextType = function () {
-      let currentIndex =
+    var getNextType = function () {
+      var currentIndex =
         types === null || types === void 0
           ? void 0
           : types.findIndex(function (_a) {
-              let type = _a.type
+              var type = _a.type
               return type === current
             })
-      let nextIndex =
+      var nextIndex =
         currentIndex + 1 >
         (types === null || types === void 0 ? void 0 : types.length) - 1
           ? 0
           : currentIndex + 1
       return types[nextIndex]
     }
-    let transformOnChangeValue = function (value, type) {
+    var transformOnChangeValue = function (value, type) {
       return (type === null || type === void 0 ? void 0 : type.toChangeValue)
         ? type === null || type === void 0
           ? void 0
@@ -171,7 +171,7 @@ export function createPolyInput(polyTypes) {
                   : type.toInputValue(value)
                 : value,
               onChange: function (event) {
-                let value = getEventValue(event)
+                var value = getEventValue(event)
                 typesValue.current[
                   type === null || type === void 0 ? void 0 : type.type
                 ] = value
@@ -191,7 +191,7 @@ export function createPolyInput(polyTypes) {
           },
           block: true,
           onClick: function () {
-            let nextType = getNextType()
+            var nextType = getNextType()
             if (nextType === type) return
             setCurrent(
               nextType === null || nextType === void 0 ? void 0 : nextType.type

@@ -4,9 +4,9 @@ import { usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { Button } from 'antd'
 export var Copy = function (_a) {
-  let node = _a.node,
+  var node = _a.node,
     style = _a.style
-  let prefix = usePrefix('aux-copy')
+  var prefix = usePrefix('aux-copy')
   if (node === node.root) return null
   return React.createElement(
     Button,

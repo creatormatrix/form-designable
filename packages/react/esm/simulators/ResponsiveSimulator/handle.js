@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -23,9 +23,9 @@ export var ResizeHandleType
   ResizeHandleType['ResizeHeight'] = 'RESIZE_HEIGHT'
 })(ResizeHandleType || (ResizeHandleType = {}))
 export var ResizeHandle = function (props) {
-  let _a, _b
-  let prefix = usePrefix('resize-handle')
-  let designer = useDesigner()
+  var _a, _b
+  var prefix = usePrefix('resize-handle')
+  var designer = useDesigner()
   return React.createElement(
     'div',
     __assign(

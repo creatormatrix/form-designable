@@ -1,5 +1,5 @@
 import loader from '@monaco-editor/loader'
-let Registry = {
+var Registry = {
   cdn: '//cdn.jsdelivr.net/npm',
 }
 export var setNpmCDNRegistry = function (registry) {

@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -28,22 +28,22 @@ import { Copy } from './Copy'
 import { Delete } from './Delete'
 import { DragHandler } from './DragHandler'
 import cls from 'classnames'
-let HELPER_DEBOUNCE_TIMEOUT = 100
+var HELPER_DEBOUNCE_TIMEOUT = 100
 export var Helpers = function (_a) {
-  let _b
-  let node = _a.node,
+  var _b
+  var node = _a.node,
     nodeRect = _a.nodeRect
-  let prefix = usePrefix('aux-helpers')
-  let viewport = useViewport()
-  let unmountRef = useRef(false)
-  let ref = useRef()
-  let _c = __read(useState('top-right'), 2),
+  var prefix = usePrefix('aux-helpers')
+  var viewport = useViewport()
+  var unmountRef = useRef(false)
+  var ref = useRef()
+  var _c = __read(useState('top-right'), 2),
     position = _c[0],
     setPosition = _c[1]
   useLayoutEffect(
     function () {
-      let request = null
-      let getYInViewport = function (nodeRect, helpersRect) {
+      var request = null
+      var getYInViewport = function (nodeRect, helpersRect) {
         if (nodeRect.top - viewport.scrollY > helpersRect.height) {
           return 'top'
         } else if (
@@ -59,8 +59,8 @@ export var Helpers = function (_a) {
         }
         return 'bottom'
       }
-      let getXInViewport = function (nodeRect, helpersRect) {
-        let widthDelta = helpersRect.width - nodeRect.width
+      var getXInViewport = function (nodeRect, helpersRect) {
+        var widthDelta = helpersRect.width - nodeRect.width
         if (widthDelta >= 0) {
           if (nodeRect.x < widthDelta) {
             return 'left'
@@ -72,9 +72,9 @@ export var Helpers = function (_a) {
         }
         return 'right'
       }
-      let update = function () {
-        let _a
-        let helpersRect =
+      var update = function () {
+        var _a
+        var helpersRect =
           (_a = ref.current) === null || _a === void 0
             ? void 0
             : _a.getBoundingClientRect()

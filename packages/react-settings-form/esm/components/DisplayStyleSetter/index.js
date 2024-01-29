@@ -7,8 +7,8 @@ import { FlexStyleSetter } from '../FlexStyleSetter'
 import cls from 'classnames'
 import './styles.less'
 export var DisplayStyleSetter = observer(function (props) {
-  let field = useField()
-  let prefix = usePrefix('display-style-setter')
+  var field = useField()
+  var prefix = usePrefix('display-style-setter')
   return React.createElement(
     React.Fragment,
     null,
@@ -53,7 +53,7 @@ export var DisplayStyleSetter = observer(function (props) {
         ],
         value: props.value,
         onChange: function (e) {
-          let _a
+          var _a
           ;(_a = props.onChange) === null || _a === void 0
             ? void 0
             : _a.call(props, e.target.value)

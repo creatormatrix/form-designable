@@ -6,19 +6,19 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -40,8 +40,8 @@ import { usePrefix } from '@designable/react'
 import cls from 'classnames'
 import './styles.less'
 export var PositionInput = function (props) {
-  let prefix = usePrefix('position-input')
-  let _a = __read(useState(props.value), 2),
+  var prefix = usePrefix('position-input')
+  var _a = __read(useState(props.value), 2),
     current = _a[0],
     setCurrent = _a[1]
   useEffect(
@@ -52,11 +52,11 @@ export var PositionInput = function (props) {
     },
     [props.value]
   )
-  let createCellProps = function (type) {
+  var createCellProps = function (type) {
     return {
       className: cls(prefix + '-cell', { active: current === type }),
       onClick: function () {
-        let _a
+        var _a
         setCurrent(type)
         ;(_a = props.onChange) === null || _a === void 0
           ? void 0

@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -30,13 +30,13 @@ import { TextWidget } from '../TextWidget'
 import cls from 'classnames'
 import './styles.less'
 export var ResourceWidget = observer(function (props) {
-  let prefix = usePrefix('resource')
-  let _a = __read(useState(props.defaultExpand), 2),
+  var prefix = usePrefix('resource')
+  var _a = __read(useState(props.defaultExpand), 2),
     expand = _a[0],
     setExpand = _a[1]
-  let renderNode = function (source) {
-    let _a
-    let node = source.node,
+  var renderNode = function (source) {
+    var _a
+    var node = source.node,
       icon = source.icon,
       title = source.title,
       thumb = source.thumb,
@@ -75,7 +75,7 @@ export var ResourceWidget = observer(function (props) {
       )
     )
   }
-  let sources = props.sources.reduce(function (buf, source) {
+  var sources = props.sources.reduce(function (buf, source) {
     if (isResourceList(source)) {
       return buf.concat(source)
     } else if (isResourceHost(source)) {
@@ -83,9 +83,9 @@ export var ResourceWidget = observer(function (props) {
     }
     return buf
   }, [])
-  let remainItems =
+  var remainItems =
     sources.reduce(function (length, source) {
-      let _a
+      var _a
       return length + ((_a = source.span) !== null && _a !== void 0 ? _a : 1)
     }, 0) % 3
   return React.createElement(

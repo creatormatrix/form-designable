@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -22,16 +22,16 @@ import { SizeInput } from '../SizeInput'
 import { InputItems } from '../InputItems'
 import cls from 'classnames'
 export var BoxShadowStyleSetter = observer(function (props) {
-  let field = useField()
-  let prefix = usePrefix('shadow-style-setter')
-  let createBoxShadowConnector = function (position) {
-    let splited = String(props.value || '')
+  var field = useField()
+  var prefix = usePrefix('shadow-style-setter')
+  var createBoxShadowConnector = function (position) {
+    var splited = String(props.value || '')
       .trim()
       .split(' ')
     return {
       value: splited[position],
       onChange: function (value) {
-        let _a
+        var _a
         splited[position] = value
         ;(_a = props.onChange) === null || _a === void 0
           ? void 0

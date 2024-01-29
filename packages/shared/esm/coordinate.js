@@ -6,19 +6,19 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -56,7 +56,7 @@ export function isLineSegment(val) {
     isPoint(val === null || val === void 0 ? void 0 : val.end)
   )
 }
-let Point = /** @class */ (function () {
+var Point = /** @class */ (function () {
   function Point(x, y) {
     this.x = x
     this.y = y
@@ -64,7 +64,7 @@ let Point = /** @class */ (function () {
   return Point
 })()
 export { Point }
-let Rect = /** @class */ (function () {
+var Rect = /** @class */ (function () {
   function Rect(x, y, width, height) {
     this.x = 0
     this.y = 0
@@ -106,7 +106,7 @@ let Rect = /** @class */ (function () {
   return Rect
 })()
 export { Rect }
-let LineSegment = /** @class */ (function () {
+var LineSegment = /** @class */ (function () {
   function LineSegment(start, end) {
     this.start = __assign({}, start)
     this.end = __assign({}, end)
@@ -129,9 +129,9 @@ export function isPointInRect(point, rect, sensitive) {
   if (sensitive === void 0) {
     sensitive = true
   }
-  let boundSensor = function (value) {
+  var boundSensor = function (value) {
     if (!sensitive) return 0
-    let sensor = value * 0.1
+    var sensor = value * 0.1
     if (sensor > 20) return 20
     if (sensor < 10) return 10
     return sensor
@@ -153,14 +153,14 @@ export function isEqualRect(target, source) {
   )
 }
 export function getRectPoints(source) {
-  let p1 = new Point(source.x, source.y)
-  let p2 = new Point(source.x + source.width, source.y)
-  let p3 = new Point(source.x + source.width, source.y + source.height)
-  let p4 = new Point(source.x, source.y + source.height)
+  var p1 = new Point(source.x, source.y)
+  var p2 = new Point(source.x + source.width, source.y)
+  var p3 = new Point(source.x + source.width, source.y + source.height)
+  var p4 = new Point(source.x, source.y + source.height)
   return [p1, p2, p3, p4]
 }
 export function isRectInRect(target, source) {
-  let _a = __read(getRectPoints(target), 4),
+  var _a = __read(getRectPoints(target), 4),
     p1 = _a[0],
     p2 = _a[1],
     p3 = _a[2],
@@ -173,11 +173,11 @@ export function isRectInRect(target, source) {
   )
 }
 export function isCrossRectInRect(target, source) {
-  let targetCenterPoint = new Point(
+  var targetCenterPoint = new Point(
     target.x + target.width / 2,
     target.y + target.height / 2
   )
-  let sourceCenterPoint = new Point(
+  var sourceCenterPoint = new Point(
     source.x + source.width / 2,
     source.y + source.height / 2
   )
@@ -194,7 +194,7 @@ export function isCrossRectInRect(target, source) {
  * @param rect
  */
 export function calcQuadrantOfPointToRect(point, rect) {
-  let isInner = isPointInRect(point, rect)
+  var isInner = isPointInRect(point, rect)
   if (point.x <= rect.x + rect.width / 2) {
     if (point.y <= rect.y + rect.height / 2) {
       if (isInner) {
@@ -226,11 +226,11 @@ export function calcQuadrantOfPointToRect(point, rect) {
   }
 }
 export function calcDistanceOfPointToRect(point, rect) {
-  let minX = Math.min(
+  var minX = Math.min(
     Math.abs(point.x - rect.x),
     Math.abs(point.x - (rect.x + rect.width))
   )
-  let minY = Math.min(
+  var minY = Math.min(
     Math.abs(point.y - rect.y),
     Math.abs(point.y - (rect.y + rect.height))
   )
@@ -243,10 +243,10 @@ export function calcDistanceOfPointToRect(point, rect) {
   return Math.sqrt(Math.pow(minX, 2) + Math.pow(minY, 2))
 }
 export function calcDistancePointToEdge(point, rect) {
-  let distanceTop = Math.abs(point.y - rect.y)
-  let distanceBottom = Math.abs(point.y - (rect.y + rect.height))
-  let distanceLeft = Math.abs(point.x - rect.x)
-  let distanceRight = Math.abs(point.x - (rect.x + rect.width))
+  var distanceTop = Math.abs(point.y - rect.y)
+  var distanceBottom = Math.abs(point.y - (rect.y + rect.height))
+  var distanceLeft = Math.abs(point.x - rect.x)
+  var distanceRight = Math.abs(point.x - (rect.x + rect.width))
   return Math.min(distanceTop, distanceBottom, distanceLeft, distanceRight)
 }
 export function isNearAfter(point, rect, inline) {
@@ -268,8 +268,8 @@ export function isNearAfter(point, rect, inline) {
  * @param rect
  */
 export function calcRelativeOfPointToRect(point, rect) {
-  let distance = calcDistanceOfPointToRect(point, rect)
-  let quadrant = calcQuadrantOfPointToRect(point, rect)
+  var distance = calcDistanceOfPointToRect(point, rect)
+  var quadrant = calcQuadrantOfPointToRect(point, rect)
   return {
     quadrant: quadrant,
     distance: distance,
@@ -282,12 +282,12 @@ export function calcBoundingRect(rects) {
     !rects[0]
   )
     return
-  let minTop = Infinity
-  let maxBottom = -Infinity
-  let minLeft = Infinity
-  let maxRight = -Infinity
+  var minTop = Infinity
+  var maxBottom = -Infinity
+  var minLeft = Infinity
+  var maxRight = -Infinity
   rects.forEach(function (item) {
-    let rect = new Rect(item.x, item.y, item.width, item.height)
+    var rect = new Rect(item.x, item.y, item.width, item.height)
     if (rect.top <= minTop) {
       minTop = rect.top
     }
@@ -315,7 +315,7 @@ export function calcRectByStartEndPoint(
   if (scrollY === void 0) {
     scrollY = 0
   }
-  let drawStartX = 0,
+  var drawStartX = 0,
     drawStartY = 0
   if (
     endPoint.x + scrollX >= startPoint.x &&
@@ -402,7 +402,7 @@ export function calcEdgeLinesOfRect(rect) {
 }
 export function calcRectOfAxisLineSegment(line) {
   if (!isLineSegment(line)) return
-  let isXAxis = line.start.x === line.end.x
+  var isXAxis = line.start.x === line.end.x
   return new Rect(
     line.start.x,
     line.start.y,
@@ -411,8 +411,8 @@ export function calcRectOfAxisLineSegment(line) {
   )
 }
 export function calcSpaceBlockOfRect(target, source, type) {
-  let targetRect = new Rect(target.x, target.y, target.width, target.height)
-  let sourceRect = new Rect(source.x, source.y, source.width, source.height)
+  var targetRect = new Rect(target.x, target.y, target.width, target.height)
+  var sourceRect = new Rect(source.x, source.y, source.width, source.height)
   if (sourceRect.bottom < targetRect.top && sourceRect.left > targetRect.right)
     return
   if (sourceRect.top > targetRect.bottom && sourceRect.left > targetRect.right)
@@ -443,7 +443,7 @@ export function calcSpaceBlockOfRect(target, source, type) {
     }
   } else if (sourceRect.right < targetRect.left) {
     var distance = targetRect.left - sourceRect.right
-    let top_1 = Math.min(sourceRect.top, targetRect.top)
+    var top_1 = Math.min(sourceRect.top, targetRect.top)
     var bottom = Math.max(sourceRect.bottom, targetRect.bottom)
     if (type && type !== 'left') return
     return {
@@ -453,7 +453,7 @@ export function calcSpaceBlockOfRect(target, source, type) {
     }
   } else if (sourceRect.left > targetRect.right) {
     var distance = sourceRect.left - targetRect.right
-    let top_2 = Math.min(sourceRect.top, targetRect.top)
+    var top_2 = Math.min(sourceRect.top, targetRect.top)
     var bottom = Math.max(sourceRect.bottom, targetRect.bottom)
     if (type && type !== 'right') return
     return {
@@ -537,8 +537,8 @@ export function calcExtendsLineSegmentOfRect(targetRect, referRect) {
   }
 }
 export function calcOffsetOfSnapLineSegmentToEdge(line, current) {
-  let edges = calcEdgeLinesOfRect(current)
-  let isVerticalLine = line.start.x === line.end.x
+  var edges = calcEdgeLinesOfRect(current)
+  var isVerticalLine = line.start.x === line.end.x
   if (isVerticalLine) {
     return { x: calcMinDistanceValue(edges.x, line.start.x) - current.x, y: 0 }
   }
@@ -549,10 +549,10 @@ export function calcOffsetOfSnapLineSegmentToEdge(line, current) {
     }
   }
   function calcMinDistanceValue(edges, targetValue) {
-    let minDistance = Infinity,
+    var minDistance = Infinity,
       minDistanceIndex = -1
-    for (let i = 0; i < edges.length; i++) {
-      let distance = Math.abs(edges[i] - targetValue)
+    for (var i = 0; i < edges.length; i++) {
+      var distance = Math.abs(edges[i] - targetValue)
       if (minDistance > distance) {
         minDistance = distance
         minDistanceIndex = i
@@ -563,8 +563,8 @@ export function calcOffsetOfSnapLineSegmentToEdge(line, current) {
   return { x: 0, y: calcMinDistanceValue(edges.y, line.start.y) - current.y }
 }
 export function calcDistanceOfSnapLineToEdges(line, edges) {
-  let _a, _b, _c, _d
-  let distance = Infinity
+  var _a, _b, _c, _d
+  var distance = Infinity
   if (
     ((_a = line === null || line === void 0 ? void 0 : line.start) === null ||
     _a === void 0
@@ -576,7 +576,7 @@ export function calcDistanceOfSnapLineToEdges(line, edges) {
       : _b.y)
   ) {
     edges.h.forEach(function (target) {
-      let _distance = Math.abs(target.start.y - line.start.y)
+      var _distance = Math.abs(target.start.y - line.start.y)
       if (_distance < distance) {
         distance = _distance
       }
@@ -592,7 +592,7 @@ export function calcDistanceOfSnapLineToEdges(line, edges) {
       : _d.x)
   ) {
     edges.v.forEach(function (target) {
-      let _distance = Math.abs(target.start.x - line.start.x)
+      var _distance = Math.abs(target.start.x - line.start.x)
       if (_distance < distance) {
         distance = _distance
       }
@@ -627,9 +627,9 @@ export function calcCombineSnapLineSegment(target, source) {
   )
 }
 export function calcClosestEdges(line, edges) {
-  let _a, _b, _c, _d
-  let result
-  let distance = Infinity
+  var _a, _b, _c, _d
+  var result
+  var distance = Infinity
   if (
     ((_a = line === null || line === void 0 ? void 0 : line.start) === null ||
     _a === void 0
@@ -641,7 +641,7 @@ export function calcClosestEdges(line, edges) {
       : _b.y)
   ) {
     edges.h.forEach(function (target) {
-      let _distance = Math.abs(target.start.y - line.start.y)
+      var _distance = Math.abs(target.start.y - line.start.y)
       if (_distance < distance) {
         distance = _distance
         result = target
@@ -658,7 +658,7 @@ export function calcClosestEdges(line, edges) {
       : _d.x)
   ) {
     edges.v.forEach(function (target) {
-      let _distance = Math.abs(target.start.x - line.start.x)
+      var _distance = Math.abs(target.start.x - line.start.x)
       if (_distance < distance) {
         distance = _distance
         result = target

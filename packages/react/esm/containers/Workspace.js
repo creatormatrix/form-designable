@@ -1,7 +1,7 @@
-let __rest =
+var __rest =
   (this && this.__rest) ||
   function (s, e) {
-    let t = {}
+    var t = {}
     for (var p in s)
       if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p]
@@ -19,20 +19,20 @@ import React, { useMemo, useRef, Fragment } from 'react'
 import { useDesigner } from '../hooks'
 import { WorkspaceContext } from '../context'
 export var Workspace = function (_a) {
-  let id = _a.id,
+  var id = _a.id,
     title = _a.title,
     description = _a.description,
     props = __rest(_a, ['id', 'title', 'description'])
-  let oldId = useRef()
-  let designer = useDesigner()
-  let workspace = useMemo(
+  var oldId = useRef()
+  var designer = useDesigner()
+  var workspace = useMemo(
     function () {
       if (!designer) return
       if (oldId.current && oldId.current !== id) {
-        let old = designer.workbench.findWorkspaceById(oldId.current)
+        var old = designer.workbench.findWorkspaceById(oldId.current)
         if (old) old.viewport.detachEvents()
       }
-      let workspace = {
+      var workspace = {
         id: id || 'index',
         title: title,
         description: description,

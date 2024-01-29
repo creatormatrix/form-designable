@@ -1,4 +1,4 @@
-let __extends =
+var __extends =
   (this && this.__extends) ||
   (function () {
     var extendStatics = function (d, b) {
@@ -9,7 +9,7 @@ let __extends =
             d.__proto__ = b
           }) ||
         function (d, b) {
-          for (let p in b)
+          for (var p in b)
             if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]
         }
       return extendStatics(d, b)
@@ -29,19 +29,19 @@ let __extends =
   })()
 import { EventDriver } from '@designable/shared'
 import { DragStartEvent, DragMoveEvent, DragStopEvent } from '../events'
-let GlobalState = {
+var GlobalState = {
   dragging: false,
   onMouseDownAt: 0,
   startEvent: null,
   moveEvent: null,
 }
-let DragDropDriver = /** @class */ (function (_super) {
+var DragDropDriver = /** @class */ (function (_super) {
   __extends(DragDropDriver, _super)
   function DragDropDriver() {
-    let _this = (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.mouseDownTimer = null
     _this.onMouseDown = function (e) {
-      let _a, _b
+      var _a, _b
       if (e.button !== 0 || e.ctrlKey || e.metaKey) {
         return
       }
@@ -94,7 +94,7 @@ let DragDropDriver = /** @class */ (function (_super) {
       GlobalState.dragging = false
     }
     _this.onMouseMove = function (e) {
-      let _a, _b
+      var _a, _b
       if (
         e.clientX ===
           ((_a = GlobalState.moveEvent) === null || _a === void 0
@@ -144,11 +144,11 @@ let DragDropDriver = /** @class */ (function (_super) {
       GlobalState.dragging = true
     }
     _this.onDistanceChange = function (e) {
-      let distance = Math.sqrt(
+      var distance = Math.sqrt(
         Math.pow(e.pageX - GlobalState.startEvent.pageX, 2) +
           Math.pow(e.pageY - GlobalState.startEvent.pageY, 2)
       )
-      let timeDelta = Date.now() - GlobalState.onMouseDownAt
+      var timeDelta = Date.now() - GlobalState.onMouseDownAt
       if (timeDelta > 10 && e !== GlobalState.startEvent && distance > 4) {
         _this.batchRemoveEventListener('mousemove', _this.onDistanceChange)
         _this.onStartDrag(e)

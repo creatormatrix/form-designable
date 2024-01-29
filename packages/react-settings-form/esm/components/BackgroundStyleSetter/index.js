@@ -9,8 +9,8 @@ import { BackgroundImageInput } from '../ImageInput'
 import { InputItems } from '../InputItems'
 import cls from 'classnames'
 export var BackgroundStyleSetter = observer(function (props) {
-  let field = useField()
-  let prefix = usePrefix('background-style-setter')
+  var field = useField()
+  var prefix = usePrefix('background-style-setter')
   return React.createElement(
     FoldItem,
     { className: cls(prefix, props.className), label: field.title },

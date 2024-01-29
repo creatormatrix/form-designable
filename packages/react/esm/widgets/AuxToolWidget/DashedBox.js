@@ -7,14 +7,14 @@ import {
 } from '../../hooks'
 import { observer } from '@formily/reactive-react'
 export var DashedBox = observer(function () {
-  let hover = useHover()
-  let prefix = usePrefix('aux-dashed-box')
-  let selection = useSelection()
-  let rect = useValidNodeOffsetRect(
+  var hover = useHover()
+  var prefix = usePrefix('aux-dashed-box')
+  var selection = useSelection()
+  var rect = useValidNodeOffsetRect(
     hover === null || hover === void 0 ? void 0 : hover.node
   )
-  let createTipsStyle = function () {
-    let baseStyle = {
+  var createTipsStyle = function () {
+    var baseStyle = {
       top: 0,
       left: 0,
       pointerEvents: 'none',

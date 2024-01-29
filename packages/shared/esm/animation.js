@@ -2,16 +2,16 @@ export var createUniformSpeedAnimation = function (speed, callback) {
   if (speed === void 0) {
     speed = 10
   }
-  let request = null
-  let startTime = null
+  var request = null
+  var startTime = null
   var start = function () {
     if (request) return
     request = requestAnimationFrame(function (timestamp) {
       if (startTime === null) {
         startTime = timestamp
       }
-      let deltaTime = timestamp - startTime
-      let delta = (deltaTime / 1000) * speed
+      var deltaTime = timestamp - startTime
+      var delta = (deltaTime / 1000) * speed
       callback(delta)
       request = null
       start()

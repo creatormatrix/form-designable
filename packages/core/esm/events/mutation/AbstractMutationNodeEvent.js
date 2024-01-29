@@ -1,4 +1,4 @@
-let AbstractMutationNodeEvent = /** @class */ (function () {
+var AbstractMutationNodeEvent = /** @class */ (function () {
   function AbstractMutationNodeEvent(data) {
     this.data = data
   }

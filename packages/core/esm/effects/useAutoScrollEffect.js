@@ -6,11 +6,11 @@ import {
   Point,
 } from '@designable/shared'
 export var useAutoScrollEffect = function (engine) {
-  let xScroller = null
-  let yScroller = null
-  let xScrollerAnimationStop = null
-  let yScrollerAnimationStop = null
-  let scrolling = function (point, viewport) {
+  var xScroller = null
+  var yScroller = null
+  var xScrollerAnimationStop = null
+  var yScrollerAnimationStop = null
+  var scrolling = function (point, viewport) {
     if (engine.cursor.status === CursorStatus.Dragging) {
       xScroller = calcAutoScrollBasicInfo(point, 'x', viewport.rect)
       yScroller = calcAutoScrollBasicInfo(point, 'y', viewport.rect)
@@ -53,9 +53,9 @@ export var useAutoScrollEffect = function (engine) {
   })
   engine.subscribeTo(DragMoveEvent, function (event) {
     engine.workbench.eachWorkspace(function (workspace) {
-      let viewport = workspace.viewport
-      let outline = workspace.outline
-      let point = new Point(event.data.topClientX, event.data.topClientY)
+      var viewport = workspace.viewport
+      var outline = workspace.outline
+      var point = new Point(event.data.topClientX, event.data.topClientY)
       if (outline.isPointInViewport(point)) {
         scrolling(point, outline)
       } else if (viewport.isPointInViewport(point)) {

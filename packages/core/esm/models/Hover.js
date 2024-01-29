@@ -1,6 +1,6 @@
 import { observable, define, action } from '@formily/reactive'
 import { HoverNodeEvent } from '../events'
-let Hover = /** @class */ (function () {
+var Hover = /** @class */ (function () {
   function Hover(props) {
     this.node = null
     this.operation =

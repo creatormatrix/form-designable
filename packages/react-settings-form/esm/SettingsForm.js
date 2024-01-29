@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -33,43 +33,43 @@ import { useLocales, useSnapshot } from './effects'
 import { Empty } from 'antd'
 import cls from 'classnames'
 import './styles.less'
-let GlobalState = {
+var GlobalState = {
   idleRequest: null,
 }
 export var SettingsForm = observer(
   function (props) {
-    let _a, _b
-    let workbench = useWorkbench()
-    let currentWorkspace =
+    var _a, _b
+    var workbench = useWorkbench()
+    var currentWorkspace =
       (workbench === null || workbench === void 0
         ? void 0
         : workbench.activeWorkspace) ||
       (workbench === null || workbench === void 0
         ? void 0
         : workbench.currentWorkspace)
-    let currentWorkspaceId =
+    var currentWorkspaceId =
       currentWorkspace === null || currentWorkspace === void 0
         ? void 0
         : currentWorkspace.id
-    let operation = useOperation(currentWorkspaceId)
-    let node = useCurrentNode(currentWorkspaceId)
-    let selected = useSelected(currentWorkspaceId)
-    let prefix = usePrefix('settings-form')
-    let schema =
+    var operation = useOperation(currentWorkspaceId)
+    var node = useCurrentNode(currentWorkspaceId)
+    var selected = useSelected(currentWorkspaceId)
+    var prefix = usePrefix('settings-form')
+    var schema =
       (_a = node === null || node === void 0 ? void 0 : node.designerProps) ===
         null || _a === void 0
         ? void 0
         : _a.propsSchema
-    let isEmpty = !(
+    var isEmpty = !(
       node &&
       ((_b = node.designerProps) === null || _b === void 0
         ? void 0
         : _b.propsSchema) &&
       selected.length === 1
     )
-    let form = useMemo(
+    var form = useMemo(
       function () {
-        let _a
+        var _a
         return createForm({
           initialValues:
             (_a =
@@ -80,7 +80,7 @@ export var SettingsForm = observer(
               : _a.defaultProps,
           values: node === null || node === void 0 ? void 0 : node.props,
           effects: function (form) {
-            let _a
+            var _a
             useLocales(node)
             useSnapshot(operation)
             ;(_a = props.effects) === null || _a === void 0
@@ -97,7 +97,7 @@ export var SettingsForm = observer(
         isEmpty,
       ]
     )
-    let render = function () {
+    var render = function () {
       if (!isEmpty) {
         return React.createElement(
           'div',

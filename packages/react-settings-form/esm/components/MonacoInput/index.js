@@ -6,17 +6,17 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __rest =
+var __rest =
   (this && this.__rest) ||
   function (s, e) {
-    let t = {}
+    var t = {}
     for (var p in s)
       if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p]
@@ -30,12 +30,12 @@ let __rest =
       }
     return t
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -64,7 +64,7 @@ import './styles.less'
 import './config'
 import { initMonaco } from './config'
 export var MonacoInput = function (_a) {
-  let className = _a.className,
+  var className = _a.className,
     language = _a.language,
     defaultLanguage = _a.defaultLanguage,
     width = _a.width,
@@ -86,24 +86,24 @@ export var MonacoInput = function (_a) {
       'onMount',
       'onChange',
     ])
-  let _b = __read(useState(false), 2),
+  var _b = __read(useState(false), 2),
     loaded = _b[0],
     setLoaded = _b[1]
-  let theme = useTheme()
-  let valueRef = useRef('')
-  let validateRef = useRef(null)
-  let submitRef = useRef(null)
-  let declarationRef = useRef([])
-  let extraLibRef = useRef(null)
-  let monacoRef = useRef()
-  let editorRef = useRef()
-  let computedLanguage = useRef(language || defaultLanguage)
-  let realLanguage = useRef('')
-  let unmountedRef = useRef(false)
-  let changedRef = useRef(false)
-  let uidRef = useRef(uid())
-  let prefix = usePrefix('monaco-input')
-  let input = props.value || props.defaultValue
+  var theme = useTheme()
+  var valueRef = useRef('')
+  var validateRef = useRef(null)
+  var submitRef = useRef(null)
+  var declarationRef = useRef([])
+  var extraLibRef = useRef(null)
+  var monacoRef = useRef()
+  var editorRef = useRef()
+  var computedLanguage = useRef(language || defaultLanguage)
+  var realLanguage = useRef('')
+  var unmountedRef = useRef(false)
+  var changedRef = useRef(false)
+  var uidRef = useRef(uid())
+  var prefix = usePrefix('monaco-input')
+  var input = props.value || props.defaultValue
   useEffect(function () {
     unmountedRef.current = false
     initMonaco()
@@ -132,16 +132,16 @@ export var MonacoInput = function (_a) {
         ''.concat(uidRef.current, '.d.ts')
       )
   }
-  let isFileLanguage = function () {
-    let lang = computedLanguage.current
+  var isFileLanguage = function () {
+    var lang = computedLanguage.current
     return lang === 'javascript' || lang === 'typescript'
   }
-  let isExpLanguage = function () {
-    let lang = computedLanguage.current
+  var isExpLanguage = function () {
+    var lang = computedLanguage.current
     return lang === 'javascript.expression' || lang === 'typescript.expression'
   }
-  let renderHelper = function () {
-    let getHref = function () {
+  var renderHelper = function () {
+    var getHref = function () {
       if (typeof helpLink === 'string') return helpLink
       if (isFileLanguage()) {
         return 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript'
@@ -151,7 +151,7 @@ export var MonacoInput = function (_a) {
       }
     }
     if (helpLink === false) return null
-    let href = getHref()
+    var href = getHref()
     return (
       href &&
       React.createElement(
@@ -173,12 +173,12 @@ export var MonacoInput = function (_a) {
       )
     )
   }
-  let onMountHandler = function (editor, monaco) {
+  var onMountHandler = function (editor, monaco) {
     editorRef.current = editor
     monacoRef.current = monaco
     onMount === null || onMount === void 0 ? void 0 : onMount(editor, monaco)
-    let model = editor.getModel()
-    let currentValue = editor.getValue()
+    var model = editor.getModel()
+    var currentValue = editor.getValue()
     model['getDesignerLanguage'] = function () {
       return computedLanguage.current
     }
@@ -201,7 +201,7 @@ export var MonacoInput = function (_a) {
       onChangeHandler(editor.getValue())
     })
   }
-  let submit = function () {
+  var submit = function () {
     clearTimeout(submitRef.current)
     submitRef.current = setTimeout(function () {
       onChange === null || onChange === void 0
@@ -209,7 +209,7 @@ export var MonacoInput = function (_a) {
         : onChange(valueRef.current)
     }, 1000)
   }
-  let validate = function () {
+  var validate = function () {
     if (realLanguage.current === 'typescript') {
       clearTimeout(validateRef.current)
       validateRef.current = setTimeout(function () {
@@ -300,7 +300,7 @@ export var MonacoInput = function (_a) {
   )
     ? 'typescript'
     : computedLanguage.current
-  let renderHelpCode = function () {
+  var renderHelpCode = function () {
     if (!helpCode) return null
     return React.createElement(
       'div',

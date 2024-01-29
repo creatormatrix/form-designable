@@ -9,9 +9,9 @@ import {
   HistoryPushEvent,
 } from '../events'
 //工作区模型
-let Workspace = /** @class */ (function () {
+var Workspace = /** @class */ (function () {
   function Workspace(engine, props) {
-    let _this = this
+    var _this = this
     this.engine = engine
     this.props = props
     this.id = props.id || uid()

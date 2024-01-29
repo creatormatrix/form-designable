@@ -34,20 +34,20 @@ export var useCursorEffect = function (engine) {
     })
   })
   engine.subscribeTo(MouseMoveEvent, function (event) {
-    let _a, _b
-    let currentWorkspace =
+    var _a, _b
+    var currentWorkspace =
       (_a = event === null || event === void 0 ? void 0 : event.context) ===
         null || _a === void 0
         ? void 0
         : _a.workspace
     if (!currentWorkspace) return
-    let operation = currentWorkspace.operation
+    var operation = currentWorkspace.operation
     if (engine.cursor.status !== CursorStatus.Normal) {
       operation.hover.clear()
       return
     }
-    let target = event.data.target
-    let el =
+    var target = event.data.target
+    var el =
       (_b = target === null || target === void 0 ? void 0 : target.closest) ===
         null || _b === void 0
         ? void 0
@@ -60,9 +60,9 @@ export var useCursorEffect = function (engine) {
     if (!(el === null || el === void 0 ? void 0 : el.getAttribute)) {
       return
     }
-    let nodeId = el.getAttribute(engine.props.nodeIdAttrName)
-    let outlineNodeId = el.getAttribute(engine.props.outlineNodeIdAttrName)
-    let node = operation.tree.findById(nodeId || outlineNodeId)
+    var nodeId = el.getAttribute(engine.props.nodeIdAttrName)
+    var outlineNodeId = el.getAttribute(engine.props.outlineNodeIdAttrName)
+    var node = operation.tree.findById(nodeId || outlineNodeId)
     if (node) {
       operation.hover.setHover(node)
     } else {

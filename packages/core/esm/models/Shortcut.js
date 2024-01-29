@@ -1,13 +1,13 @@
 import { isFn, KeyCode } from '@designable/shared'
 export { KeyCode }
-let Shortcut = /** @class */ (function () {
+var Shortcut = /** @class */ (function () {
   function Shortcut(props) {
     this.codes = this.parseCodes(props.codes)
     this.handler = props.handler
     this.matcher = props.matcher
   }
   Shortcut.prototype.parseCodes = function (codes) {
-    let results = []
+    var results = []
     codes.forEach(function (code) {
       if (Array.isArray(code)) {
         results.push(code)
@@ -18,11 +18,11 @@ let Shortcut = /** @class */ (function () {
     return results
   }
   Shortcut.prototype.preventCodes = function (codes) {
-    let _a
+    var _a
     if (this.codes.length) {
-      for (let i = 0; i < codes.length; i++) {
-        let sequence = (_a = this.codes[i]) !== null && _a !== void 0 ? _a : []
-        for (let j = 0; j < sequence.length; j++) {
+      for (var i = 0; i < codes.length; i++) {
+        var sequence = (_a = this.codes[i]) !== null && _a !== void 0 ? _a : []
+        for (var j = 0; j < sequence.length; j++) {
           if (!Shortcut.matchCode(codes[j], sequence[j])) {
             return false
           }
@@ -39,16 +39,16 @@ let Shortcut = /** @class */ (function () {
     return matched
   }
   Shortcut.prototype.match = function (codes, context) {
-    let _this = this
+    var _this = this
     return this.codes.some(function (sequence) {
-      let sortedSelf = Shortcut.sortCodes(sequence)
-      let sortedTarget = Shortcut.sortCodes(codes)
+      var sortedSelf = Shortcut.sortCodes(sequence)
+      var sortedTarget = Shortcut.sortCodes(codes)
       if (isFn(_this.matcher)) {
         return _this.matched(_this.matcher(sortedTarget), context)
       }
       if (sortedTarget.length !== sortedSelf.length)
         return _this.matched(false, context)
-      for (let i = 0; i < sortedSelf.length; i++) {
+      for (var i = 0; i < sortedSelf.length; i++) {
         if (!Shortcut.matchCode(sortedTarget[i], sortedSelf[i])) {
           return _this.matched(false, context)
         }
@@ -57,7 +57,7 @@ let Shortcut = /** @class */ (function () {
     })
   }
   Shortcut.matchCode = function (code1, code2) {
-    let _a, _b
+    var _a, _b
     return (
       ((_a =
         code1 === null || code1 === void 0

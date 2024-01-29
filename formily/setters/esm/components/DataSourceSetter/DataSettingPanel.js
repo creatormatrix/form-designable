@@ -10,7 +10,7 @@ import { usePrefix, TextWidget } from '@designable/react'
 import { Header } from './Header'
 import { traverseTree } from './shared'
 import './styles.less'
-let SchemaField = createSchemaField({
+var SchemaField = createSchemaField({
   components: {
     FormItem: FormItem,
     Input: Input,
@@ -19,12 +19,12 @@ let SchemaField = createSchemaField({
   },
 })
 export var DataSettingPanel = observer(function (props) {
-  let allowExtendOption = props.allowExtendOption,
+  var allowExtendOption = props.allowExtendOption,
     effects = props.effects
-  let prefix = usePrefix('data-source-setter')
-  let form = useMemo(
+  var prefix = usePrefix('data-source-setter')
+  var form = useMemo(
     function () {
-      let values
+      var values
       traverseTree(props.treeDataSource.dataSource, function (dataItem) {
         if (dataItem.key === props.treeDataSource.selectedKey) {
           values = dataItem

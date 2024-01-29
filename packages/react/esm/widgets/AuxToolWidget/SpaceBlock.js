@@ -4,11 +4,11 @@ import { observer } from '@formily/reactive-react'
 import { CursorStatus } from '@designable/core'
 import { calcRectOfAxisLineSegment } from '@designable/shared'
 export var SpaceBlock = observer(function () {
-  let cursor = useCursor()
-  let transformHelper = useTransformHelper()
-  let prefix = usePrefix('aux-space-block')
+  var cursor = useCursor()
+  var transformHelper = useTransformHelper()
+  var prefix = usePrefix('aux-space-block')
   if (cursor.status !== CursorStatus.Dragging) return null
-  let renderRulerBox = function (distance, type) {
+  var renderRulerBox = function (distance, type) {
     if (type === 'top' || type === 'bottom') {
       return React.createElement(
         'div',
@@ -43,11 +43,11 @@ export var SpaceBlock = observer(function () {
       )
     }
   }
-  let renderDashedLine = function (line) {
-    let rect = calcRectOfAxisLineSegment(line)
+  var renderDashedLine = function (line) {
+    var rect = calcRectOfAxisLineSegment(line)
     if (!rect) return null
-    let width = rect.width || 2
-    let height = rect.height || 2
+    var width = rect.width || 2
+    var height = rect.height || 2
     return React.createElement(
       'svg',
       {
@@ -79,7 +79,7 @@ export var SpaceBlock = observer(function () {
     React.Fragment,
     null,
     transformHelper.measurerSpaceBlocks.map(function (_a, key) {
-      let type = _a.type,
+      var type = _a.type,
         crossDragNodesRect = _a.crossDragNodesRect,
         distance = _a.distance,
         extendsLine = _a.extendsLine
@@ -108,7 +108,7 @@ export var SpaceBlock = observer(function () {
       )
     }),
     transformHelper.thresholdSpaceBlocks.map(function (_a, key) {
-      let rect = _a.rect
+      var rect = _a.rect
       return React.createElement('div', {
         key: key,
         className: prefix,

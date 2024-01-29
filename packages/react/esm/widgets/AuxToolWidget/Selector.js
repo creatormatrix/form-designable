@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -26,15 +26,15 @@ import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
 import { Button } from 'antd'
 import { observer } from '@formily/reactive-react'
-let useMouseHover = function (ref, enter, leave) {
+var useMouseHover = function (ref, enter, leave) {
   useEffect(function () {
-    let timer = null
-    let unmounted = false
-    let onMouseOver = function (e) {
-      let target = e.target
+    var timer = null
+    var unmounted = false
+    var onMouseOver = function (e) {
+      var target = e.target
       clearTimeout(timer)
       timer = setTimeout(function () {
-        let _a
+        var _a
         if (unmounted) return
         if (
           (_a = ref === null || ref === void 0 ? void 0 : ref.current) ===
@@ -56,17 +56,17 @@ let useMouseHover = function (ref, enter, leave) {
   }, [])
 }
 export var Selector = observer(function (_a) {
-  let node = _a.node
-  let hover = useHover()
-  let _b = __read(useState(false), 2),
+  var node = _a.node
+  var hover = useHover()
+  var _b = __read(useState(false), 2),
     expand = _b[0],
     setExpand = _b[1]
-  let ref = useRef(null)
-  let selection = useSelection()
-  let prefix = usePrefix('aux-selector')
-  let renderIcon = function (node) {
-    let _a
-    let icon = node.designerProps.icon
+  var ref = useRef(null)
+  var selection = useSelection()
+  var prefix = usePrefix('aux-selector')
+  var renderIcon = function (node) {
+    var _a
+    var icon = node.designerProps.icon
     if (icon) {
       return React.createElement(IconWidget, { infer: icon })
     }
@@ -81,8 +81,8 @@ export var Selector = observer(function (_a) {
     }
     return React.createElement(IconWidget, { infer: 'Component' })
   }
-  let renderMenu = function () {
-    let parents = node.getParents()
+  var renderMenu = function () {
+    var parents = node.getParents()
     return React.createElement(
       'div',
       {

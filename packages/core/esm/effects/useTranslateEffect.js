@@ -2,33 +2,33 @@ import { CursorDragType } from '../models'
 import { DragStartEvent, DragMoveEvent, DragStopEvent } from '../events'
 export var useTranslateEffect = function (engine) {
   engine.subscribeTo(DragStartEvent, function (event) {
-    let _a, _b
-    let target = event.data.target
-    let currentWorkspace =
+    var _a, _b
+    var target = event.data.target
+    var currentWorkspace =
       (_b =
         (_a = event.context) === null || _a === void 0
           ? void 0
           : _a.workspace) !== null && _b !== void 0
         ? _b
         : engine.workbench.activeWorkspace
-    let handler =
+    var handler =
       target === null || target === void 0
         ? void 0
         : target.closest('*['.concat(engine.props.nodeTranslateAttrName, ']'))
     if (!currentWorkspace) return
-    let helper = currentWorkspace.operation.transformHelper
+    var helper = currentWorkspace.operation.transformHelper
     if (handler) {
-      let type = handler.getAttribute(engine.props.nodeTranslateAttrName)
+      var type = handler.getAttribute(engine.props.nodeTranslateAttrName)
       if (type) {
-        let selectionElement = handler.closest(
+        var selectionElement = handler.closest(
           '*['.concat(engine.props.nodeSelectionIdAttrName, ']')
         )
         if (selectionElement) {
-          let nodeId = selectionElement.getAttribute(
+          var nodeId = selectionElement.getAttribute(
             engine.props.nodeSelectionIdAttrName
           )
           if (nodeId) {
-            let node = engine.findNodeById(nodeId)
+            var node = engine.findNodeById(nodeId)
             if (node) {
               helper.dragStart({ dragNodes: [node], type: 'translate' })
             }
@@ -38,24 +38,24 @@ export var useTranslateEffect = function (engine) {
     }
   })
   engine.subscribeTo(DragMoveEvent, function (event) {
-    let _a, _b
+    var _a, _b
     if (engine.cursor.dragType !== CursorDragType.Translate) return
-    let currentWorkspace =
+    var currentWorkspace =
       (_b =
         (_a = event.context) === null || _a === void 0
           ? void 0
           : _a.workspace) !== null && _b !== void 0
         ? _b
         : engine.workbench.activeWorkspace
-    let helper =
+    var helper =
       currentWorkspace === null || currentWorkspace === void 0
         ? void 0
         : currentWorkspace.operation.transformHelper
-    let dragNodes = helper.dragNodes
+    var dragNodes = helper.dragNodes
     if (!dragNodes.length) return
     helper.dragMove()
     dragNodes.forEach(function (node) {
-      let element = node.getElement()
+      var element = node.getElement()
       helper.translate(node, function (translate) {
         element.style.position = 'absolute'
         element.style.left = '0px'
@@ -67,16 +67,16 @@ export var useTranslateEffect = function (engine) {
     })
   })
   engine.subscribeTo(DragStopEvent, function (event) {
-    let _a, _b
+    var _a, _b
     if (engine.cursor.dragType !== CursorDragType.Translate) return
-    let currentWorkspace =
+    var currentWorkspace =
       (_b =
         (_a = event.context) === null || _a === void 0
           ? void 0
           : _a.workspace) !== null && _b !== void 0
         ? _b
         : engine.workbench.activeWorkspace
-    let helper =
+    var helper =
       currentWorkspace === null || currentWorkspace === void 0
         ? void 0
         : currentWorkspace.operation.transformHelper

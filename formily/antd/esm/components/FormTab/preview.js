@@ -6,19 +6,19 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -51,8 +51,8 @@ import { createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
 import { matchComponent } from '../../shared'
-let parseTabs = function (parent) {
-  let tabs = []
+var parseTabs = function (parent) {
+  var tabs = []
   parent.children.forEach(function (node) {
     if (matchComponent(node, 'FormTab.TabPane')) {
       tabs.push(node)
@@ -60,7 +60,7 @@ let parseTabs = function (parent) {
   })
   return tabs
 }
-let getCorrectActiveKey = function (activeKey, tabs) {
+var getCorrectActiveKey = function (activeKey, tabs) {
   if (tabs.length === 0) return
   if (
     tabs.some(function (node) {
@@ -71,12 +71,12 @@ let getCorrectActiveKey = function (activeKey, tabs) {
   return tabs[tabs.length - 1].id
 }
 export var FormTab = observer(function (props) {
-  let _a = __read(useState(), 2),
+  var _a = __read(useState(), 2),
     activeKey = _a[0],
     setActiveKey = _a[1]
-  let nodeId = useNodeIdProps()
-  let node = useTreeNode()
-  let designer = useDropTemplate('FormTab', function (source) {
+  var nodeId = useNodeIdProps()
+  var node = useTreeNode()
+  var designer = useDropTemplate('FormTab', function (source) {
     return [
       new TreeNode({
         componentName: 'Field',
@@ -91,9 +91,9 @@ export var FormTab = observer(function (props) {
       }),
     ]
   })
-  let tabs = parseTabs(node)
-  let renderTabs = function () {
-    let _a
+  var tabs = parseTabs(node)
+  var renderTabs = function () {
+    var _a
     if (!((_a = node.children) === null || _a === void 0 ? void 0 : _a.length))
       return React.createElement(DroppableWidget, null)
     return React.createElement(
@@ -105,8 +105,8 @@ export var FormTab = observer(function (props) {
         },
       }),
       tabs.map(function (tab) {
-        let _a
-        let props = tab.props['x-component-props'] || {}
+        var _a
+        var props = tab.props['x-component-props'] || {}
         return React.createElement(
           Tabs.TabPane,
           __assign({}, props, {
@@ -147,7 +147,7 @@ export var FormTab = observer(function (props) {
           title: node.getMessage('addTabPane'),
           icon: 'AddPanel',
           onClick: function () {
-            let tabPane = new TreeNode({
+            var tabPane = new TreeNode({
               componentName: 'Field',
               props: {
                 type: 'void',

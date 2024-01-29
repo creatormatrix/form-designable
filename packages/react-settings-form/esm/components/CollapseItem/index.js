@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -26,10 +26,10 @@ import { usePrefix, IconWidget } from '@designable/react'
 import cls from 'classnames'
 import './styles.less'
 export var CollapseItem = observer(function (props) {
-  let _a
-  let prefix = usePrefix('collapse-item')
-  let field = useField()
-  let _b = __read(
+  var _a
+  var prefix = usePrefix('collapse-item')
+  var field = useField()
+  var _b = __read(
       useState(
         (_a = props.defaultExpand) !== null && _a !== void 0 ? _a : true
       ),

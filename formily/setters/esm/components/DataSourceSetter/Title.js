@@ -5,13 +5,13 @@ import { IconWidget, TextWidget, usePrefix } from '@designable/react'
 import { traverseTree } from './shared'
 import './styles.less'
 export var Title = observer(function (props) {
-  let prefix = usePrefix('data-source-setter-node-title')
-  let getTitleValue = function (dataSource) {
-    let optionalKeys = ['label', 'title', 'header']
-    let nodeTitle
+  var prefix = usePrefix('data-source-setter-node-title')
+  var getTitleValue = function (dataSource) {
+    var optionalKeys = ['label', 'title', 'header']
+    var nodeTitle
     optionalKeys.some(function (key) {
-      let _a
-      let title =
+      var _a
+      var title =
         (_a = toArr(dataSource).find(function (item) {
           return item.label === key
         })) === null || _a === void 0
@@ -34,8 +34,8 @@ export var Title = observer(function (props) {
     }
     return nodeTitle
   }
-  let renderTitle = function (dataSource) {
-    let nodeTitle = getTitleValue(dataSource)
+  var renderTitle = function (dataSource) {
+    var nodeTitle = getTitleValue(dataSource)
     if (nodeTitle === undefined)
       return React.createElement(TextWidget, {
         token: 'SettingComponents.DataSourceSetter.defaultTitle',
@@ -56,8 +56,8 @@ export var Title = observer(function (props) {
       className: prefix + '-icon',
       infer: 'Remove',
       onClick: function () {
-        let _a
-        let newDataSource = clone(
+        var _a
+        var newDataSource = clone(
           (_a =
             props === null || props === void 0
               ? void 0

@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -38,12 +38,12 @@ import './styles.less'
 import { createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
-let ensureObjectItemsNode = createEnsureTypeItemsNode('object')
+var ensureObjectItemsNode = createEnsureTypeItemsNode('object')
 export var ArrayTable = observer(function (props) {
-  let node = useTreeNode()
-  let nodeId = useNodeIdProps()
+  var node = useTreeNode()
+  var nodeId = useNodeIdProps()
   useDropTemplate('ArrayTable', function (source) {
-    let sortHandleNode = new TreeNode({
+    var sortHandleNode = new TreeNode({
       componentName: 'Field',
       props: {
         type: 'void',
@@ -62,7 +62,7 @@ export var ArrayTable = observer(function (props) {
         },
       ],
     })
-    let indexNode = new TreeNode({
+    var indexNode = new TreeNode({
       componentName: 'Field',
       props: {
         type: 'void',
@@ -81,7 +81,7 @@ export var ArrayTable = observer(function (props) {
         },
       ],
     })
-    let columnNode = new TreeNode({
+    var columnNode = new TreeNode({
       componentName: 'Field',
       props: {
         type: 'void',
@@ -95,7 +95,7 @@ export var ArrayTable = observer(function (props) {
         return node
       }),
     })
-    let operationNode = new TreeNode({
+    var operationNode = new TreeNode({
       componentName: 'Field',
       props: {
         type: 'void',
@@ -128,14 +128,14 @@ export var ArrayTable = observer(function (props) {
         },
       ],
     })
-    let objectNode = new TreeNode({
+    var objectNode = new TreeNode({
       componentName: 'Field',
       props: {
         type: 'object',
       },
       children: [sortHandleNode, indexNode, columnNode, operationNode],
     })
-    let additionNode = new TreeNode({
+    var additionNode = new TreeNode({
       componentName: 'Field',
       props: {
         type: 'void',
@@ -145,19 +145,19 @@ export var ArrayTable = observer(function (props) {
     })
     return [objectNode, additionNode]
   })
-  let columns = queryNodesByComponentPath(node, [
+  var columns = queryNodesByComponentPath(node, [
     'ArrayTable',
     '*',
     'ArrayTable.Column',
   ])
-  let additions = queryNodesByComponentPath(node, [
+  var additions = queryNodesByComponentPath(node, [
     'ArrayTable',
     'ArrayTable.Addition',
   ])
-  let defaultRowKey = function () {
+  var defaultRowKey = function () {
     return node.id
   }
-  let renderTable = function () {
+  var renderTable = function () {
     if (node.children.length === 0)
       return React.createElement(DroppableWidget, null)
     return React.createElement(
@@ -172,13 +172,13 @@ export var ArrayTable = observer(function (props) {
           dataSource: [{ id: '1' }],
         }),
         columns.map(function (node) {
-          let children = node.children.map(function (child) {
+          var children = node.children.map(function (child) {
             return React.createElement(TreeNodeWidget, {
               node: child,
               key: child.id,
             })
           })
-          let props = node.props['x-component-props']
+          var props = node.props['x-component-props']
           return React.createElement(
             Table.Column,
             __assign({}, node.props['x-component-props'], {
@@ -241,7 +241,7 @@ export var ArrayTable = observer(function (props) {
               ])
             )
               return
-            let tableColumn = new TreeNode({
+            var tableColumn = new TreeNode({
               componentName: 'Field',
               props: {
                 type: 'void',
@@ -260,7 +260,7 @@ export var ArrayTable = observer(function (props) {
                 },
               ],
             })
-            let sortNode = findNodeByComponentPath(node, [
+            var sortNode = findNodeByComponentPath(node, [
               'ArrayTable',
               '*',
               'ArrayTable.Column',
@@ -277,7 +277,7 @@ export var ArrayTable = observer(function (props) {
           title: node.getMessage('addColumn'),
           icon: 'AddColumn',
           onClick: function () {
-            let operationNode = findNodeByComponentPath(node, [
+            var operationNode = findNodeByComponentPath(node, [
               'ArrayTable',
               '*',
               'ArrayTable.Column',
@@ -289,7 +289,7 @@ export var ArrayTable = observer(function (props) {
                 )
               },
             ])
-            let tableColumn = new TreeNode({
+            var tableColumn = new TreeNode({
               componentName: 'Field',
               props: {
                 type: 'void',
@@ -310,7 +310,7 @@ export var ArrayTable = observer(function (props) {
           title: node.getMessage('addOperation'),
           icon: 'AddOperation',
           onClick: function () {
-            let oldOperationNode = findNodeByComponentPath(node, [
+            var oldOperationNode = findNodeByComponentPath(node, [
               'ArrayTable',
               '*',
               'ArrayTable.Column',
@@ -322,12 +322,12 @@ export var ArrayTable = observer(function (props) {
                 )
               },
             ])
-            let oldAdditionNode = findNodeByComponentPath(node, [
+            var oldAdditionNode = findNodeByComponentPath(node, [
               'ArrayTable',
               'ArrayTable.Addition',
             ])
             if (!oldOperationNode) {
-              let operationNode = new TreeNode({
+              var operationNode = new TreeNode({
                 componentName: 'Field',
                 props: {
                   type: 'void',
@@ -363,7 +363,7 @@ export var ArrayTable = observer(function (props) {
               ensureObjectItemsNode(node).append(operationNode)
             }
             if (!oldAdditionNode) {
-              let additionNode = new TreeNode({
+              var additionNode = new TreeNode({
                 componentName: 'Field',
                 props: {
                   type: 'void',
@@ -389,7 +389,7 @@ ArrayTable.Behavior = createBehavior(createArrayBehavior('ArrayTable'), {
   designerProps: {
     droppable: true,
     allowDrop: function (node) {
-      let _a, _b
+      var _a, _b
       return (
         node.props['type'] === 'object' &&
         ((_b =

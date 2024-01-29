@@ -13,13 +13,13 @@ import { IconWidget } from '../IconWidget'
 import cls from 'classnames'
 import './styles.less'
 export var DesignerToolsWidget = observer(function (props) {
-  let screen = useScreen()
-  let cursor = useCursor()
-  let workbench = useWorkbench()
-  let history = useHistory()
-  let sizeRef = useRef({})
-  let prefix = usePrefix('designer-tools')
-  let renderHistoryController = function () {
+  var screen = useScreen()
+  var cursor = useCursor()
+  var workbench = useWorkbench()
+  var history = useHistory()
+  var sizeRef = useRef({})
+  var prefix = usePrefix('designer-tools')
+  var renderHistoryController = function () {
     if (!props.use.includes('HISTORY')) return null
     return React.createElement(
       Button.Group,
@@ -52,7 +52,7 @@ export var DesignerToolsWidget = observer(function (props) {
       )
     )
   }
-  let renderCursorController = function () {
+  var renderCursorController = function () {
     if (workbench.type !== 'DESIGNABLE') return null
     if (!props.use.includes('CURSOR')) return null
     return React.createElement(
@@ -82,7 +82,7 @@ export var DesignerToolsWidget = observer(function (props) {
       )
     )
   }
-  let renderResponsiveController = function () {
+  var renderResponsiveController = function () {
     if (!props.use.includes('SCREEN_TYPE')) return null
     if (screen.type !== ScreenType.Responsive) return null
     return React.createElement(
@@ -133,7 +133,7 @@ export var DesignerToolsWidget = observer(function (props) {
         )
     )
   }
-  let renderScreenTypeController = function () {
+  var renderScreenTypeController = function () {
     if (!props.use.includes('SCREEN_TYPE')) return null
     return React.createElement(
       Button.Group,
@@ -173,7 +173,7 @@ export var DesignerToolsWidget = observer(function (props) {
       )
     )
   }
-  let renderMobileController = function () {
+  var renderMobileController = function () {
     if (!props.use.includes('SCREEN_TYPE')) return null
     if (screen.type !== ScreenType.Mobile) return
     return React.createElement(

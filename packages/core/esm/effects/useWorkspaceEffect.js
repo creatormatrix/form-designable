@@ -16,7 +16,7 @@ export var useWorkspaceEffect = function (engine) {
       'update:node:props',
     ],
     function (event) {
-      let _a
+      var _a
       if (
         (_a = event.context) === null || _a === void 0 ? void 0 : _a.workbench
       ) {

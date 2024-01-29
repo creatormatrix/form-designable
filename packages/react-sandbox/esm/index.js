@@ -6,17 +6,17 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __rest =
+var __rest =
   (this && this.__rest) ||
   function (s, e) {
-    let t = {}
+    var t = {}
     for (var p in s)
       if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p]
@@ -40,23 +40,23 @@ import {
 } from '@designable/react'
 import ReactDOM from 'react-dom'
 export var useSandbox = function (props) {
-  let ref = useRef()
-  let appCls = usePrefix('app')
-  let designer = useDesigner()
-  let workspace = useWorkspace()
-  let layout = useLayout()
-  let cssAssets = props.cssAssets || []
-  let jsAssets = props.jsAssets || []
-  let getCSSVar = function (name) {
+  var ref = useRef()
+  var appCls = usePrefix('app')
+  var designer = useDesigner()
+  var workspace = useWorkspace()
+  var layout = useLayout()
+  var cssAssets = props.cssAssets || []
+  var jsAssets = props.jsAssets || []
+  var getCSSVar = function (name) {
     return getComputedStyle(
       document.querySelector('.'.concat(appCls))
     ).getPropertyValue(name)
   }
   useEffect(
     function () {
-      let _a, _b
+      var _a, _b
       if (ref.current && workspace) {
-        let styles =
+        var styles =
           (_a =
             cssAssets === null || cssAssets === void 0
               ? void 0
@@ -70,7 +70,7 @@ export var useSandbox = function (props) {
                   )
                 })
                 .join('\n')
-        let scripts =
+        var scripts =
           (_b =
             jsAssets === null || jsAssets === void 0
               ? void 0
@@ -137,7 +137,7 @@ export var renderSandboxContent = function (render) {
   }
 }
 export var Sandbox = function (props) {
-  let cssAssets = props.cssAssets,
+  var cssAssets = props.cssAssets,
     jsAssets = props.jsAssets,
     scope = props.scope,
     style = props.style,

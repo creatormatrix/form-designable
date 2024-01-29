@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -21,7 +21,7 @@ let __read =
     return ar
   }
 import { Point } from './coordinate'
-let InlineLayoutTagNames = new Set([
+var InlineLayoutTagNames = new Set([
   'A',
   'ABBR',
   'ACRONYM',
@@ -90,16 +90,16 @@ export var calcElementOuterWidth = function (innerWidth, style) {
 }
 export var calcElementLayout = function (element) {
   if (!element) return 'vertical'
-  let parent = element.parentElement
+  var parent = element.parentElement
   if (!parent) return 'vertical'
-  let tagName = element.tagName
-  let parentTagName = parent.tagName
-  let style = getComputedStyle(element)
-  let parentStyle = getComputedStyle(parent)
-  let isNotFullWidth = function () {
-    let innerWidth = element.getBoundingClientRect().width
-    let outerWidth = calcElementOuterWidth(innerWidth, style)
-    let parentInnerWidth = parent.getBoundingClientRect().width
+  var tagName = element.tagName
+  var parentTagName = parent.tagName
+  var style = getComputedStyle(element)
+  var parentStyle = getComputedStyle(parent)
+  var isNotFullWidth = function () {
+    var innerWidth = element.getBoundingClientRect().width
+    var outerWidth = calcElementOuterWidth(innerWidth, style)
+    var parentInnerWidth = parent.getBoundingClientRect().width
     return outerWidth.toFixed(0) < parentInnerWidth.toFixed(0)
   }
   if (tagName === 'TH' || tagName === 'TD') {
@@ -125,14 +125,14 @@ export var calcElementLayout = function (element) {
   }
 }
 export var calcElementTranslate = function (element) {
-  let _a, _b, _c
-  let transform =
+  var _a, _b, _c
+  var transform =
     (_a = element === null || element === void 0 ? void 0 : element.style) ===
       null || _a === void 0
       ? void 0
       : _a.transform
   if (transform) {
-    let _d = __read(
+    var _d = __read(
         (_c =
           (_b = transform.match(
             /translate(?:3d)?\(\s*([-\d.]+)[a-z]+?[\s,]+([-\d.]+)[a-z]+?(?:[\s,]+([-\d.]+))?[a-z]+?\s*\)/
@@ -151,8 +151,8 @@ export var calcElementTranslate = function (element) {
   }
 }
 export var calcElementRotate = function (element) {
-  let _a, _b, _c
-  let transform =
+  var _a, _b, _c
+  var transform =
     (_a = element === null || element === void 0 ? void 0 : element.style) ===
       null || _a === void 0
       ? void 0
@@ -171,8 +171,8 @@ export var calcElementRotate = function (element) {
   }
 }
 export var calcElementScale = function (element) {
-  let _a, _b, _c
-  let transform =
+  var _a, _b, _c
+  var transform =
     (_a = element === null || element === void 0 ? void 0 : element.style) ===
       null || _a === void 0
       ? void 0

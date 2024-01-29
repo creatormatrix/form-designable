@@ -6,17 +6,17 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __rest =
+var __rest =
   (this && this.__rest) ||
   function (s, e) {
-    let t = {}
+    var t = {}
     for (var p in s)
       if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p]
@@ -30,12 +30,12 @@ let __rest =
       }
     return t
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -58,20 +58,20 @@ import { AuxToolWidget, EmptyWidget } from '../widgets'
 import { requestIdle, globalThisPolyfill } from '@designable/shared'
 import cls from 'classnames'
 export var Viewport = function (_a) {
-  let placeholder = _a.placeholder,
+  var placeholder = _a.placeholder,
     dragTipsDirection = _a.dragTipsDirection,
     props = __rest(_a, ['placeholder', 'dragTipsDirection'])
-  let _b = __read(useState(false), 2),
+  var _b = __read(useState(false), 2),
     loaded = _b[0],
     setLoaded = _b[1]
-  let prefix = usePrefix('viewport')
-  let viewport = useViewport()
-  let ref = useRef()
-  let viewportRef = useRef()
-  let isFrameRef = useRef(false)
+  var prefix = usePrefix('viewport')
+  var viewport = useViewport()
+  var ref = useRef()
+  var viewportRef = useRef()
+  var isFrameRef = useRef(false)
   useLayoutEffect(
     function () {
-      let frameElement = ref.current.querySelector('iframe')
+      var frameElement = ref.current.querySelector('iframe')
       if (!viewport) return
       if (viewportRef.current && viewportRef.current !== viewport) {
         viewportRef.current.onUnmount()

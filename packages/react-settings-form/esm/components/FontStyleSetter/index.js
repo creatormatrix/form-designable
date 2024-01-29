@@ -7,11 +7,11 @@ import { InputItems } from '../InputItems'
 import { SizeInput } from '../SizeInput'
 import { ColorInput } from '../ColorInput'
 import cls from 'classnames'
-let createFontFamilyOptions = function (fonts) {
+var createFontFamilyOptions = function (fonts) {
   return fonts.map(function (font) {
-    let splited = font.split('=')
-    let label = splited === null || splited === void 0 ? void 0 : splited[0]
-    let value = splited === null || splited === void 0 ? void 0 : splited[1]
+    var splited = font.split('=')
+    var label = splited === null || splited === void 0 ? void 0 : splited[0]
+    var value = splited === null || splited === void 0 ? void 0 : splited[1]
     return {
       label: React.createElement(
         'span',
@@ -22,7 +22,7 @@ let createFontFamilyOptions = function (fonts) {
     }
   })
 }
-let FontFamilyOptions = createFontFamilyOptions([
+var FontFamilyOptions = createFontFamilyOptions([
   '宋体=SimSun',
   '微软雅黑=Microsoft Yahei',
   '苹方=PingFang SC',
@@ -44,8 +44,8 @@ let FontFamilyOptions = createFontFamilyOptions([
   'Verdana=verdana,geneva,sans-serif',
 ])
 export var FontStyleSetter = observer(function (props) {
-  let field = useField()
-  let prefix = usePrefix('font-style-setter')
+  var field = useField()
+  var prefix = usePrefix('font-style-setter')
   return React.createElement(
     FoldItem,
     {

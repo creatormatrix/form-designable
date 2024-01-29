@@ -3,13 +3,13 @@ import { useMoveHelper, usePrefix } from '../../hooks'
 import { ClosestPosition } from '@designable/core'
 import { observer } from '@formily/reactive-react'
 export var Insertion = observer(function (_a) {
-  let workspaceId = _a.workspaceId
-  let moveHelper = useMoveHelper(workspaceId)
-  let prefix = usePrefix('outline-tree-insertion')
-  let createInsertionStyle = function () {
-    let closestDirection = moveHelper.outlineClosestDirection
-    let closestRect = moveHelper.outlineClosestOffsetRect
-    let baseStyle = {
+  var workspaceId = _a.workspaceId
+  var moveHelper = useMoveHelper(workspaceId)
+  var prefix = usePrefix('outline-tree-insertion')
+  var createInsertionStyle = function () {
+    var closestDirection = moveHelper.outlineClosestDirection
+    var closestRect = moveHelper.outlineClosestOffsetRect
+    var baseStyle = {
       position: 'absolute',
       transform: 'perspective(1px) translate3d(0,0,0)',
       top: 0,

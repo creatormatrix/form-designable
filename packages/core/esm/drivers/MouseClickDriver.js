@@ -1,4 +1,4 @@
-let __extends =
+var __extends =
   (this && this.__extends) ||
   (function () {
     var extendStatics = function (d, b) {
@@ -9,7 +9,7 @@ let __extends =
             d.__proto__ = b
           }) ||
         function (d, b) {
-          for (let p in b)
+          for (var p in b)
             if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]
         }
       return extendStatics(d, b)
@@ -29,12 +29,12 @@ let __extends =
   })()
 import { EventDriver } from '@designable/shared'
 import { MouseClickEvent, MouseDoubleClickEvent } from '../events'
-let MouseClickDriver = /** @class */ (function (_super) {
+var MouseClickDriver = /** @class */ (function (_super) {
   __extends(MouseClickDriver, _super)
   function MouseClickDriver() {
-    let _this = (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.onMouseClick = function (e) {
-      let target = e.target
+      var target = e.target
       if (
         target === null || target === void 0
           ? void 0
@@ -56,7 +56,7 @@ let MouseClickDriver = /** @class */ (function (_super) {
       )
     }
     _this.onMouseDoubleClick = function (e) {
-      let target = e.target
+      var target = e.target
       if (
         target === null || target === void 0
           ? void 0

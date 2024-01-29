@@ -7,7 +7,7 @@ var findBottomLastChild = function (node) {
   return node
 }
 var findTopParentNext = function (node) {
-  let _a
+  var _a
   if (!node.parent) return node
   if ((_a = node.parent) === null || _a === void 0 ? void 0 : _a.next)
     return node.parent.next
@@ -23,16 +23,16 @@ export var SelectPrevNode = new Shortcut({
     [KeyCode.ArrowLeft],
   ],
   handler: function (context) {
-    let operation =
+    var operation =
       context === null || context === void 0
         ? void 0
         : context.workspace.operation
     if (operation) {
-      let tree = operation.tree
-      let selection = operation.selection
-      let selectedNode = tree.findById(selection.last)
+      var tree = operation.tree
+      var selection = operation.selection
+      var selectedNode = tree.findById(selection.last)
       if (selectedNode) {
-        let previousNode = selectedNode.previous
+        var previousNode = selectedNode.previous
         if (previousNode) {
           var bottom = findBottomLastChild(previousNode)
           if (bottom) {
@@ -62,16 +62,16 @@ export var SelectNextNode = new Shortcut({
     [KeyCode.ArrowRight],
   ],
   handler: function (context) {
-    let operation =
+    var operation =
       context === null || context === void 0
         ? void 0
         : context.workspace.operation
     if (operation) {
-      let tree = operation.tree
-      let selection = operation.selection
-      let selectedNode = tree.findById(selection.last)
+      var tree = operation.tree
+      var selection = operation.selection
+      var selectedNode = tree.findById(selection.last)
       if (selectedNode) {
-        let nextNode = selectedNode.firstChild
+        var nextNode = selectedNode.firstChild
           ? selectedNode.firstChild
           : selectedNode.next
         if (nextNode) {

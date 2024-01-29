@@ -1,4 +1,4 @@
-let isType = function (type) {
+var isType = function (type) {
   return function (obj) {
     return (
       obj != null &&

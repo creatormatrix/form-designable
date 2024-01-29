@@ -6,19 +6,19 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -35,7 +35,7 @@ let __read =
     }
     return ar
   }
-let __spreadArray =
+var __spreadArray =
   (this && this.__spreadArray) ||
   function (to, from, pack) {
     if (pack || arguments.length === 2)
@@ -57,25 +57,25 @@ import { Header } from './Header'
 import { traverseTree } from './shared'
 import './styles.less'
 import { GlobalRegistry } from '@designable/core'
-let limitTreeDrag = function (_a) {
-  let dropPosition = _a.dropPosition
+var limitTreeDrag = function (_a) {
+  var dropPosition = _a.dropPosition
   if (dropPosition === 0) {
     return false
   }
   return true
 }
 export var TreePanel = observer(function (props) {
-  let prefix = usePrefix('data-source-setter')
-  let dropHandler = function (info) {
-    let _a, _b
-    let dropKey = (_a = info.node) === null || _a === void 0 ? void 0 : _a.key
-    let dragKey =
+  var prefix = usePrefix('data-source-setter')
+  var dropHandler = function (info) {
+    var _a, _b
+    var dropKey = (_a = info.node) === null || _a === void 0 ? void 0 : _a.key
+    var dragKey =
       (_b = info.dragNode) === null || _b === void 0 ? void 0 : _b.key
-    let dropPos = info.node.pos.split('-')
-    let dropPosition = info.dropPosition - Number(dropPos[dropPos.length - 1])
-    let data = __spreadArray([], __read(props.treeDataSource.dataSource), false)
+    var dropPos = info.node.pos.split('-')
+    var dropPosition = info.dropPosition - Number(dropPos[dropPos.length - 1])
+    var data = __spreadArray([], __read(props.treeDataSource.dataSource), false)
     // Find dragObject
-    let dragObj
+    var dragObj
     traverseTree(data, function (item, index, arr) {
       if (arr[index].key === dragKey) {
         arr.splice(index, 1)
@@ -101,8 +101,8 @@ export var TreePanel = observer(function (props) {
         }
       })
     } else {
-      let ar_1
-      let i_1
+      var ar_1
+      var i_1
       traverseTree(data, function (item, index, arr) {
         if (item.key === dropKey) {
           ar_1 = arr
@@ -129,10 +129,10 @@ export var TreePanel = observer(function (props) {
         {
           type: 'text',
           onClick: function () {
-            let _a
-            let uuid = uid()
-            let dataSource = props.treeDataSource.dataSource
-            let initialKeyValuePairs = ((_a = props.defaultOptionValue) ===
+            var _a
+            var uuid = uid()
+            var dataSource = props.treeDataSource.dataSource
+            var initialKeyValuePairs = ((_a = props.defaultOptionValue) ===
               null || _a === void 0
               ? void 0
               : _a.map(function (item) {

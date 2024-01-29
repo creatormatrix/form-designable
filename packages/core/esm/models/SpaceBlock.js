@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -21,7 +21,7 @@ import {
 } from '@designable/shared'
 import { SnapLine } from './SnapLine'
 import { TransformHelper } from './TransformHelper'
-let SpaceBlock = /** @class */ (function () {
+var SpaceBlock = /** @class */ (function () {
   function SpaceBlock(helper, box) {
     this.helper = helper
     this.distance = box.distance
@@ -39,7 +39,7 @@ let SpaceBlock = /** @class */ (function () {
   })
   Object.defineProperty(SpaceBlock.prototype, 'id', {
     get: function () {
-      let _a
+      var _a
       return (_a = this._id) !== null && _a !== void 0
         ? _a
         : ''
@@ -53,7 +53,7 @@ let SpaceBlock = /** @class */ (function () {
   })
   Object.defineProperty(SpaceBlock.prototype, 'next', {
     get: function () {
-      let spaceBlock = this.helper.calcAroundSpaceBlocks(this.referRect)
+      var spaceBlock = this.helper.calcAroundSpaceBlocks(this.referRect)
       return spaceBlock[this.type]
     },
     enumerable: false,
@@ -62,7 +62,7 @@ let SpaceBlock = /** @class */ (function () {
   Object.defineProperty(SpaceBlock.prototype, 'extendsLine', {
     get: function () {
       if (!this.needExtendsLine) return
-      let dragNodesRect = this.helper.dragNodesRect
+      var dragNodesRect = this.helper.dragNodesRect
       return calcExtendsLineSegmentOfRect(dragNodesRect, this.referRect)
     },
     enumerable: false,
@@ -70,17 +70,17 @@ let SpaceBlock = /** @class */ (function () {
   })
   Object.defineProperty(SpaceBlock.prototype, 'needExtendsLine', {
     get: function () {
-      let targetRect = this.crossDragNodesRect
-      let referRect = this.crossReferRect
+      var targetRect = this.crossDragNodesRect
+      var referRect = this.crossReferRect
       if (this.type === 'top' || this.type === 'bottom') {
-        let rightDelta = referRect.right - targetRect.left
-        let leftDelta = targetRect.right - referRect.left
+        var rightDelta = referRect.right - targetRect.left
+        var leftDelta = targetRect.right - referRect.left
         return (
           rightDelta < targetRect.width / 2 || leftDelta < targetRect.width / 2
         )
       } else {
-        let topDelta = targetRect.bottom - referRect.top
-        let bottomDelta = referRect.bottom - targetRect.top
+        var topDelta = targetRect.bottom - referRect.top
+        var bottomDelta = referRect.bottom - targetRect.top
         return (
           topDelta < targetRect.height / 2 ||
           bottomDelta < targetRect.height / 2
@@ -93,7 +93,7 @@ let SpaceBlock = /** @class */ (function () {
   })
   Object.defineProperty(SpaceBlock.prototype, 'crossReferRect', {
     get: function () {
-      let referRect = this.referRect
+      var referRect = this.referRect
       if (this.type === 'top' || this.type === 'bottom') {
         return new Rect(
           referRect.x,
@@ -115,7 +115,7 @@ let SpaceBlock = /** @class */ (function () {
   })
   Object.defineProperty(SpaceBlock.prototype, 'crossDragNodesRect', {
     get: function () {
-      let dragNodesRect = this.helper.dragNodesRect
+      var dragNodesRect = this.helper.dragNodesRect
       if (this.type === 'top' || this.type === 'bottom') {
         return new Rect(
           dragNodesRect.x,
@@ -137,8 +137,8 @@ let SpaceBlock = /** @class */ (function () {
   })
   Object.defineProperty(SpaceBlock.prototype, 'isometrics', {
     get: function () {
-      let results = []
-      let spaceBlock = this
+      var results = []
+      var spaceBlock = this
       while ((spaceBlock = spaceBlock.next)) {
         if (
           Math.abs(spaceBlock.distance - this.distance) <
@@ -161,9 +161,9 @@ let SpaceBlock = /** @class */ (function () {
   Object.defineProperty(SpaceBlock.prototype, 'snapLine', {
     get: function () {
       if (!this.isometrics.length) return
-      let nextRect = this.next.rect
-      let referRect = this.referRect
-      let line
+      var nextRect = this.next.rect
+      var referRect = this.referRect
+      var line
       if (this.type === 'top') {
         line = new LineSegment(
           {
@@ -209,7 +209,7 @@ let SpaceBlock = /** @class */ (function () {
           }
         )
       }
-      let distance = calcDistanceOfSnapLineToEdges(
+      var distance = calcDistanceOfSnapLineToEdges(
         line,
         this.helper.dragNodesEdgeLines
       )

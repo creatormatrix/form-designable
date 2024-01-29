@@ -6,17 +6,17 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __rest =
+var __rest =
   (this && this.__rest) ||
   function (s, e) {
-    let t = {}
+    var t = {}
     for (var p in s)
       if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p]
@@ -41,8 +41,8 @@ import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
 import './styles.less'
 export var FormGrid = observer(function (props) {
-  let node = useTreeNode()
-  let nodeId = useNodeIdProps()
+  var node = useTreeNode()
+  var nodeId = useNodeIdProps()
   if (node.children.length === 0)
     return React.createElement(DroppableWidget, __assign({}, props))
   return React.createElement(
@@ -55,7 +55,7 @@ export var FormGrid = observer(function (props) {
           title: node.getMessage('addGridColumn'),
           icon: 'AddColumn',
           onClick: function () {
-            let column = new TreeNode({
+            var column = new TreeNode({
               componentName: 'Field',
               props: {
                 type: 'void',
@@ -70,7 +70,7 @@ export var FormGrid = observer(function (props) {
   )
 })
 FormGrid.GridColumn = observer(function (_a) {
-  let gridSpan = _a.gridSpan,
+  var gridSpan = _a.gridSpan,
     props = __rest(_a, ['gridSpan'])
   return React.createElement(
     DroppableWidget,
@@ -104,8 +104,8 @@ FormGrid.Behavior = createBehavior(
       droppable: true,
       resizable: {
         width: function (node) {
-          let _a, _b
-          let span = Number(
+          var _a, _b
+          var span = Number(
             (_b =
               (_a = node.props['x-component-props']) === null || _a === void 0
                 ? void 0

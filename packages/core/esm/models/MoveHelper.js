@@ -1,9 +1,9 @@
-let __read =
+var __read =
   (this && this.__read) ||
   function (o, n) {
-    let m = typeof Symbol === 'function' && o[Symbol.iterator]
+    var m = typeof Symbol === 'function' && o[Symbol.iterator]
     if (!m) return o
-    let i = m.call(o),
+    var i = m.call(o),
       r,
       ar = [],
       e
@@ -20,7 +20,7 @@ let __read =
     }
     return ar
   }
-let __spreadArray =
+var __spreadArray =
   (this && this.__spreadArray) ||
   function (to, from, pack) {
     if (pack || arguments.length === 2)
@@ -60,7 +60,7 @@ export var ClosestPosition
   ClosestPosition['ForbidInnerBefore'] = 'FORBID_INNER_BEFORE'
   ClosestPosition['Forbid'] = 'FORBID'
 })(ClosestPosition || (ClosestPosition = {}))
-let MoveHelper = /** @class */ (function () {
+var MoveHelper = /** @class */ (function () {
   function MoveHelper(props) {
     this.dragNodes = []
     this.touchNode = null
@@ -119,22 +119,22 @@ let MoveHelper = /** @class */ (function () {
     return viewport.getValidNodeLayout(this.closestNode)
   }
   MoveHelper.prototype.calcClosestPosition = function (point, viewport) {
-    let _this = this
-    let closestNode = this.closestNode
+    var _this = this
+    var closestNode = this.closestNode
     if (!closestNode || !viewport.isPointInViewport(point))
       return ClosestPosition.Forbid
-    let closestRect = viewport.getValidNodeRect(closestNode)
-    let isInline = this.getClosestLayout(viewport) === 'horizontal'
+    var closestRect = viewport.getValidNodeRect(closestNode)
+    var isInline = this.getClosestLayout(viewport) === 'horizontal'
     if (!closestRect) {
       return
     }
-    let isAfter = isNearAfter(
+    var isAfter = isNearAfter(
       point,
       closestRect,
       viewport.moveInsertionType === 'block' ? false : isInline
     )
     var getValidParent = function (node) {
-      let _a
+      var _a
       if (!node) return
       if (
         (_a = node.parent) === null || _a === void 0
@@ -233,9 +233,9 @@ let MoveHelper = /** @class */ (function () {
     }
   }
   MoveHelper.prototype.calcClosestNode = function (point, viewport) {
-    let _a, _b
+    var _a, _b
     if (this.touchNode) {
-      let touchNodeRect = viewport.getValidNodeRect(this.touchNode)
+      var touchNodeRect = viewport.getValidNodeRect(this.touchNode)
       if (!touchNodeRect) return
       if (
         (_b =
@@ -245,13 +245,13 @@ let MoveHelper = /** @class */ (function () {
           ? void 0
           : _b.length
       ) {
-        let touchDistance = calcDistancePointToEdge(point, touchNodeRect)
-        let minDistance_1 = touchDistance
-        let minDistanceNode_1 = this.touchNode
+        var touchDistance = calcDistancePointToEdge(point, touchNodeRect)
+        var minDistance_1 = touchDistance
+        var minDistanceNode_1 = this.touchNode
         this.touchNode.eachChildren(function (node) {
-          let rect = viewport.getElementRectById(node.id)
+          var rect = viewport.getElementRectById(node.id)
           if (!rect) return
-          let distance = isPointInRect(point, rect, viewport.moveSensitive)
+          var distance = isPointInRect(point, rect, viewport.moveSensitive)
             ? 0
             : calcDistanceOfPointToRect(point, rect)
           if (distance <= minDistance_1) {
@@ -267,9 +267,9 @@ let MoveHelper = /** @class */ (function () {
     return this.operation.tree
   }
   MoveHelper.prototype.calcClosestRect = function (viewport, closestDirection) {
-    let closestNode = this.closestNode
+    var closestNode = this.closestNode
     if (!closestNode || !closestDirection) return
-    let closestRect = viewport.getValidNodeRect(closestNode)
+    var closestRect = viewport.getValidNodeRect(closestNode)
     if (
       closestDirection === ClosestPosition.InnerAfter ||
       closestDirection === ClosestPosition.InnerBefore
@@ -283,9 +283,9 @@ let MoveHelper = /** @class */ (function () {
     viewport,
     closestDirection
   ) {
-    let closestNode = this.closestNode
+    var closestNode = this.closestNode
     if (!closestNode || !closestDirection) return
-    let closestRect = viewport.getValidNodeOffsetRect(closestNode)
+    var closestRect = viewport.getValidNodeOffsetRect(closestNode)
     if (
       closestDirection === ClosestPosition.InnerAfter ||
       closestDirection === ClosestPosition.InnerBefore
@@ -296,7 +296,7 @@ let MoveHelper = /** @class */ (function () {
     }
   }
   MoveHelper.prototype.dragStart = function (props) {
-    let nodes = TreeNode.filterDraggable(
+    var nodes = TreeNode.filterDraggable(
       props === null || props === void 0 ? void 0 : props.dragNodes
     )
     if (nodes.length) {
@@ -313,7 +313,7 @@ let MoveHelper = /** @class */ (function () {
     }
   }
   MoveHelper.prototype.dragMove = function (props) {
-    let point = props.point,
+    var point = props.point,
       touchNode = props.touchNode
     if (!this.dragging) return
     if (this.outline.isPointInViewport(point, false)) {

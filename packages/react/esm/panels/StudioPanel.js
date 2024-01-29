@@ -6,17 +6,17 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
       }
     return __assign.apply(this, arguments)
   }
-let __rest =
+var __rest =
   (this && this.__rest) ||
   function (s, e) {
-    let t = {}
+    var t = {}
     for (var p in s)
       if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p]
@@ -34,13 +34,13 @@ import React from 'react'
 import { usePrefix, usePosition } from '../hooks'
 import { Layout } from '../containers'
 import cls from 'classnames'
-let StudioPanelInternal = function (_a) {
-  let logo = _a.logo,
+var StudioPanelInternal = function (_a) {
+  var logo = _a.logo,
     actions = _a.actions,
     props = __rest(_a, ['logo', 'actions'])
-  let prefix = usePrefix('main-panel')
-  let position = usePosition()
-  let classNameBase = cls('root', position, props.className)
+  var prefix = usePrefix('main-panel')
+  var position = usePosition()
+  var classNameBase = cls('root', position, props.className)
   if (logo || actions) {
     return React.createElement(
       'div',

@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -37,7 +37,7 @@ export var CursorType
   CursorType['Selection'] = 'SELECTION'
   CursorType['Sketch'] = 'SKETCH'
 })(CursorType || (CursorType = {}))
-let DEFAULT_POSITION = {
+var DEFAULT_POSITION = {
   pageX: 0,
   pageY: 0,
   clientX: 0,
@@ -47,9 +47,9 @@ let DEFAULT_POSITION = {
   topClientX: 0,
   topClientY: 0,
 }
-let setCursorStyle = function (contentWindow, style) {
-  let _a, _b, _c, _d
-  let currentRoot =
+var setCursorStyle = function (contentWindow, style) {
+  var _a, _b, _c, _d
+  var currentRoot =
     (_b =
       (_a =
         document === null || document === void 0
@@ -59,7 +59,7 @@ let setCursorStyle = function (contentWindow, style) {
         : _a.call(document, 'html')) === null || _b === void 0
       ? void 0
       : _b[0]
-  let root =
+  var root =
     (_d =
       (_c =
         contentWindow === null || contentWindow === void 0
@@ -76,7 +76,7 @@ let setCursorStyle = function (contentWindow, style) {
     currentRoot.style.cursor = style
   }
 }
-let calcPositionDelta = function (end, start) {
+var calcPositionDelta = function (end, start) {
   return Object.keys(end || {}).reduce(function (buf, key) {
     if (
       isValidNumber(end === null || end === void 0 ? void 0 : end[key]) &&
@@ -89,7 +89,7 @@ let calcPositionDelta = function (end, start) {
     return buf
   }, {})
 }
-let Cursor = /** @class */ (function () {
+var Cursor = /** @class */ (function () {
   function Cursor(engine) {
     this.type = CursorType.Normal
     this.dragType = CursorDragType.Move

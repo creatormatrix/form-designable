@@ -6,15 +6,15 @@ export var lowerSnake = function (str) {
 export var mergeLocales = function (target, source) {
   if (isPlainObj(target) && isPlainObj(source)) {
     each(source, function (value, key) {
-      let token = lowerSnake(key)
-      let messages = mergeLocales(target[key] || target[token], value)
+      var token = lowerSnake(key)
+      var messages = mergeLocales(target[key] || target[token], value)
       target[token] = messages
     })
     return target
   } else if (isPlainObj(source)) {
-    let result_1 = Array.isArray(source) ? [] : {}
+    var result_1 = Array.isArray(source) ? [] : {}
     each(source, function (value, key) {
-      let messages = mergeLocales(undefined, value)
+      var messages = mergeLocales(undefined, value)
       result_1[lowerSnake(key)] = messages
     })
     return result_1
@@ -22,7 +22,7 @@ export var mergeLocales = function (target, source) {
   return source
 }
 export var getBrowserLanguage = function () {
-  let _a
+  var _a
   /* istanbul ignore next */
   if (!globalThisPolyfill.navigator) {
     return 'en'

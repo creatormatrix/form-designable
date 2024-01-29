@@ -1,5 +1,5 @@
 import { define, observable, action } from '@formily/reactive'
-let History = /** @class */ (function () {
+var History = /** @class */ (function () {
   function History(context, props) {
     this.current = 0
     this.history = []
@@ -26,19 +26,19 @@ let History = /** @class */ (function () {
     return this.history
   }
   History.prototype.push = function (type) {
-    let _a
+    var _a
     if (this.locking) return
     if (this.current < this.history.length - 1) {
       this.history = this.history.slice(0, this.current + 1)
     }
-    let item = {
+    var item = {
       data: this.context.serialize(),
       timestamp: Date.now(),
       type: type,
     }
     this.current = this.history.length
     this.history.push(item)
-    let overSizeCount = this.history.length - this.maxSize
+    var overSizeCount = this.history.length - this.maxSize
     if (overSizeCount > 0) {
       this.history.splice(0, overSizeCount)
       this.current = this.history.length - 1
@@ -62,9 +62,9 @@ let History = /** @class */ (function () {
     configurable: true,
   })
   History.prototype.redo = function () {
-    let _a
+    var _a
     if (this.allowRedo) {
-      let item = this.history[this.current + 1]
+      var item = this.history[this.current + 1]
       this.locking = true
       this.context.from(item.data)
       this.locking = false
@@ -75,9 +75,9 @@ let History = /** @class */ (function () {
     }
   }
   History.prototype.undo = function () {
-    let _a
+    var _a
     if (this.allowUndo) {
-      let item = this.history[this.current - 1]
+      var item = this.history[this.current - 1]
       this.locking = true
       this.context.from(item.data)
       this.locking = false
@@ -88,8 +88,8 @@ let History = /** @class */ (function () {
     }
   }
   History.prototype.goTo = function (index) {
-    let _a
-    let item = this.history[index]
+    var _a
+    var item = this.history[index]
     if (item) {
       this.locking = true
       this.context.from(item.data)

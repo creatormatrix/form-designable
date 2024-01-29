@@ -9,10 +9,10 @@ import { SpaceBlock } from './SpaceBlock'
 import { SnapLine } from './SnapLine'
 import './styles.less'
 export var AuxToolWidget = function () {
-  let engine = useDesigner()
-  let viewport = useViewport()
-  let prefix = usePrefix('auxtool')
-  let ref = useRef()
+  var engine = useDesigner()
+  var viewport = useViewport()
+  var prefix = usePrefix('auxtool')
+  var ref = useRef()
   useEffect(
     function () {
       return engine.subscribeWith('viewport:scroll', function () {

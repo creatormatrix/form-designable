@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -22,26 +22,26 @@ import { createPolyInput } from '../PolyInput'
 import { Input, Button, Popover, InputNumber, Select } from 'antd'
 import { MonacoInput } from '../MonacoInput'
 import { TextWidget } from '@designable/react'
-let STARTTAG_REX =
+var STARTTAG_REX =
   /<([-A-Za-z0-9_]+)((?:\s+[a-zA-Z_:][-a-zA-Z0-9_:.]*(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/
-let EXPRESSION_REX = /^\{\{([\s\S]*)\}\}$/
-let isNumber = function (value) {
+var EXPRESSION_REX = /^\{\{([\s\S]*)\}\}$/
+var isNumber = function (value) {
   return typeof value === 'number'
 }
-let isBoolean = function (value) {
+var isBoolean = function (value) {
   return typeof value === 'boolean'
 }
-let isExpression = function (value) {
+var isExpression = function (value) {
   return typeof value === 'string' && EXPRESSION_REX.test(value)
 }
-let isRichText = function (value) {
+var isRichText = function (value) {
   return typeof value === 'string' && STARTTAG_REX.test(value)
 }
-let isNormalText = function (value) {
+var isNormalText = function (value) {
   return typeof value === 'string' && !isExpression(value) && !isRichText(value)
 }
-let takeNumber = function (value) {
-  let num = String(value).replace(/[^\d\.]+/, '')
+var takeNumber = function (value) {
+  var num = String(value).replace(/[^\d\.]+/, '')
   if (num === '') return
   return Number(num)
 }
@@ -89,7 +89,7 @@ export var ValueInput = createPolyInput([
     checker: isExpression,
     toInputValue: function (value) {
       if (!value || value === '{{}}') return
-      let matched = String(value).match(EXPRESSION_REX)
+      var matched = String(value).match(EXPRESSION_REX)
       return (
         (matched === null || matched === void 0 ? void 0 : matched[1]) ||
         value ||
@@ -98,7 +98,7 @@ export var ValueInput = createPolyInput([
     },
     toChangeValue: function (value) {
       if (!value || value === '{{}}') return
-      let matched = String(value).match(EXPRESSION_REX)
+      var matched = String(value).match(EXPRESSION_REX)
       return '{{'.concat(
         (matched === null || matched === void 0 ? void 0 : matched[1]) ||
           value ||

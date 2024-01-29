@@ -3,9 +3,9 @@ import { useDesigner } from './useDesigner'
 import { WorkspaceContext } from '../context'
 import { globalThisPolyfill } from '@designable/shared'
 export var useWorkspace = function (id) {
-  let _a
-  let designer = useDesigner()
-  let workspaceId =
+  var _a
+  var designer = useDesigner()
+  var workspaceId =
     id ||
     ((_a = useContext(WorkspaceContext)) === null || _a === void 0
       ? void 0

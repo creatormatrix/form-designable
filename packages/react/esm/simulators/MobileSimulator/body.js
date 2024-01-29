@@ -1,7 +1,7 @@
 import { observer } from '@formily/reactive-react'
 import React from 'react'
 import { useScreen, usePrefix, useTheme } from '../../hooks'
-let MockupImages = {
+var MockupImages = {
   dark: [
     '//img.alicdn.com/imgextra/i3/O1CN01zXMc8W26oJZGUaCK1_!!6000000007708-55-tps-946-459.svg',
     '//img.alicdn.com/imgextra/i3/O1CN012KWk2i1DLduN7InSK_!!6000000000200-55-tps-459-945.svg',
@@ -12,10 +12,10 @@ let MockupImages = {
   ],
 }
 export var MobileBody = observer(function (props) {
-  let screen = useScreen()
-  let theme = useTheme()
-  let prefix = usePrefix('mobile-simulator-body')
-  let getContentStyles = function () {
+  var screen = useScreen()
+  var theme = useTheme()
+  var prefix = usePrefix('mobile-simulator-body')
+  var getContentStyles = function () {
     if (screen.flip) {
       return {
         position: 'absolute',

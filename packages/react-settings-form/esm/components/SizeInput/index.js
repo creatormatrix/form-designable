@@ -1,13 +1,13 @@
 import { InputNumber } from 'antd'
 import { createPolyInput } from '../PolyInput'
-let takeNumber = function (value) {
-  let num = String(value)
+var takeNumber = function (value) {
+  var num = String(value)
     .trim()
     .replace(/[^\d\.]+/, '')
   if (num === '') return
   return Number(num)
 }
-let createUnitType = function (type) {
+var createUnitType = function (type) {
   return {
     type: type,
     component: InputNumber,
@@ -22,7 +22,7 @@ let createUnitType = function (type) {
     },
   }
 }
-let createSpecialSizeOption = function (type) {
+var createSpecialSizeOption = function (type) {
   return {
     type: type,
     checker: function (value) {
@@ -34,7 +34,7 @@ let createSpecialSizeOption = function (type) {
     },
   }
 }
-let NormalSizeOptions = [
+var NormalSizeOptions = [
   createSpecialSizeOption('inherit'),
   createSpecialSizeOption('auto'),
   createUnitType('px'),

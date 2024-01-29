@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -20,30 +20,30 @@ import { FoldItem } from '../FoldItem'
 import { SizeInput } from '../SizeInput'
 import { InputItems } from '../InputItems'
 import cls from 'classnames'
-let PositionMap = {
+var PositionMap = {
   top: 1,
   right: 2,
   bottom: 3,
   left: 4,
   all: 1,
 }
-let BoxRex =
+var BoxRex =
   /([\d\.]+[^\d\s\.+-]+)(?:\s+([\d\.]+[^\d\s\.+-]+)(?:\s+([\d\.]+[^\d\s\.+-]+)(?:\s+([\d\.]+[^\d\s\.+-]+))?)?)?/
 export var BoxStyleSetter = observer(function (props) {
-  let field = useField()
-  let prefix = usePrefix('box-style-setter')
-  let createPositionHandler = function (position, props) {
-    let matched = String(props.value).match(BoxRex) || []
-    let value = matched[PositionMap[position]]
-    let v1 = matched[1]
-    let v2 = matched[2]
-    let v3 = matched[3]
-    let v4 = matched[4]
-    let allEqualls = v1 === v2 && v2 === v3 && v3 === v4
+  var field = useField()
+  var prefix = usePrefix('box-style-setter')
+  var createPositionHandler = function (position, props) {
+    var matched = String(props.value).match(BoxRex) || []
+    var value = matched[PositionMap[position]]
+    var v1 = matched[1]
+    var v2 = matched[2]
+    var v3 = matched[3]
+    var v4 = matched[4]
+    var allEqualls = v1 === v2 && v2 === v3 && v3 === v4
     return __assign(__assign({}, props), {
       value: position === 'all' ? (allEqualls ? v1 : undefined) : value,
       onChange: function (value) {
-        let _a, _b
+        var _a, _b
         if (position === 'all') {
           ;(_a = props.onChange) === null || _a === void 0
             ? void 0

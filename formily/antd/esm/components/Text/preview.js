@@ -6,7 +6,7 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i]
-          for (let p in s)
+          for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
         }
         return t
@@ -21,7 +21,7 @@ import { AllLocales } from '../../locales'
 import cls from 'classnames'
 import './styles.less'
 export var Text = function (props) {
-  let tagName = props.mode === 'normal' || !props.mode ? 'div' : props.mode
+  var tagName = props.mode === 'normal' || !props.mode ? 'div' : props.mode
   return React.createElement(
     tagName,
     __assign(__assign({}, props), {

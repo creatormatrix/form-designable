@@ -1,4 +1,4 @@
-let __extends =
+var __extends =
   (this && this.__extends) ||
   (function () {
     var extendStatics = function (d, b) {
@@ -9,7 +9,7 @@ let __extends =
             d.__proto__ = b
           }) ||
         function (d, b) {
-          for (let p in b)
+          for (var p in b)
             if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]
         }
       return extendStatics(d, b)
@@ -28,20 +28,20 @@ let __extends =
     }
   })()
 import { AbstractCursorEvent } from './AbstractCursorEvent'
-let MouseClickEvent = /** @class */ (function (_super) {
+var MouseClickEvent = /** @class */ (function (_super) {
   __extends(MouseClickEvent, _super)
   function MouseClickEvent() {
-    let _this = (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.type = 'mouse:click'
     return _this
   }
   return MouseClickEvent
 })(AbstractCursorEvent)
 export { MouseClickEvent }
-let MouseDoubleClickEvent = /** @class */ (function (_super) {
+var MouseDoubleClickEvent = /** @class */ (function (_super) {
   __extends(MouseDoubleClickEvent, _super)
   function MouseDoubleClickEvent() {
-    let _this = (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.type = 'mouse:dblclick'
     return _this
   }

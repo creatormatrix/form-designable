@@ -1,5 +1,5 @@
 import { getKeyCodeFromEvent } from '@designable/shared'
-let AbstractKeyboardEvent = /** @class */ (function () {
+var AbstractKeyboardEvent = /** @class */ (function () {
   function AbstractKeyboardEvent(e) {
     this.data = getKeyCodeFromEvent(e)
     this.originEvent = e
@@ -47,7 +47,7 @@ let AbstractKeyboardEvent = /** @class */ (function () {
     }
   }
   AbstractKeyboardEvent.prototype.stopPropagation = function () {
-    let _a
+    var _a
     if (
       (_a = this.originEvent) === null || _a === void 0
         ? void 0

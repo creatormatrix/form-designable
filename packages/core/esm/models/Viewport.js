@@ -13,9 +13,9 @@ import { action, define, observable } from '@formily/reactive'
 /**
  * 视口模型
  */
-let Viewport = /** @class */ (function () {
+var Viewport = /** @class */ (function () {
   function Viewport(props) {
-    let _a, _b
+    var _a, _b
     this.scrollX = 0
     this.scrollY = 0
     this.width = 0
@@ -51,7 +51,7 @@ let Viewport = /** @class */ (function () {
   })
   Object.defineProperty(Viewport.prototype, 'isScrollRight', {
     get: function () {
-      let _a, _b, _c
+      var _a, _b, _c
       if (this.isIframe) {
         return (
           this.width + this.contentWindow.scrollX >=
@@ -77,7 +77,7 @@ let Viewport = /** @class */ (function () {
   })
   Object.defineProperty(Viewport.prototype, 'isScrollBottom', {
     get: function () {
-      let _a, _b
+      var _a, _b
       if (this.isIframe) {
         if (
           !((_b =
@@ -105,7 +105,7 @@ let Viewport = /** @class */ (function () {
   })
   Object.defineProperty(Viewport.prototype, 'viewportRoot', {
     get: function () {
-      let _a, _b
+      var _a, _b
       return this.isIframe
         ? (_b =
             (_a = this.contentWindow) === null || _a === void 0
@@ -127,7 +127,7 @@ let Viewport = /** @class */ (function () {
   })
   Object.defineProperty(Viewport.prototype, 'isIframe', {
     get: function () {
-      let _a
+      var _a
       return (
         !!((_a = this.contentWindow) === null || _a === void 0
           ? void 0
@@ -146,7 +146,7 @@ let Viewport = /** @class */ (function () {
   })
   Object.defineProperty(Viewport.prototype, 'rect', {
     get: function () {
-      let viewportElement = this.viewportElement
+      var viewportElement = this.viewportElement
       if (viewportElement) return viewportElement.getBoundingClientRect()
     },
     enumerable: false,
@@ -154,7 +154,7 @@ let Viewport = /** @class */ (function () {
   })
   Object.defineProperty(Viewport.prototype, 'innerRect', {
     get: function () {
-      let rect = this.rect
+      var rect = this.rect
       return new Rect(
         0,
         0,
@@ -167,7 +167,7 @@ let Viewport = /** @class */ (function () {
   })
   Object.defineProperty(Viewport.prototype, 'offsetX', {
     get: function () {
-      let rect = this.rect
+      var rect = this.rect
       if (!rect) return 0
       return rect.x
     },
@@ -176,7 +176,7 @@ let Viewport = /** @class */ (function () {
   })
   Object.defineProperty(Viewport.prototype, 'offsetY', {
     get: function () {
-      let rect = this.rect
+      var rect = this.rect
       if (!rect) return 0
       return rect.y
     },
@@ -186,8 +186,8 @@ let Viewport = /** @class */ (function () {
   Object.defineProperty(Viewport.prototype, 'scale', {
     get: function () {
       if (!this.viewportElement) return 1
-      let clientRect = this.viewportElement.getBoundingClientRect()
-      let offsetWidth = this.viewportElement.offsetWidth
+      var clientRect = this.viewportElement.getBoundingClientRect()
+      var offsetWidth = this.viewportElement.offsetWidth
       if (!clientRect.width || !offsetWidth) return 1
       return Math.round(clientRect.width / offsetWidth)
     },
@@ -209,15 +209,15 @@ let Viewport = /** @class */ (function () {
     configurable: true,
   })
   Viewport.prototype.cacheElements = function () {
-    let _this = this
-    let _a
+    var _this = this
+    var _a
     this.nodeElementsStore = {}
     ;(_a = this.viewportRoot) === null || _a === void 0
       ? void 0
       : _a
           .querySelectorAll('*['.concat(this.nodeIdAttrName, ']'))
           .forEach(function (element) {
-            let id = element.getAttribute(_this.nodeIdAttrName)
+            var id = element.getAttribute(_this.nodeIdAttrName)
             _this.nodeElementsStore[id] = _this.nodeElementsStore[id] || []
             _this.nodeElementsStore[id].push(element)
           })
@@ -226,8 +226,8 @@ let Viewport = /** @class */ (function () {
     this.nodeElementsStore = {}
   }
   Viewport.prototype.getCurrentData = function () {
-    let _a, _b, _c, _d, _e, _f, _g, _h
-    let data = {}
+    var _a, _b, _c, _d, _e, _f, _g, _h
+    var data = {}
     if (this.isIframe) {
       data.scrollX =
         ((_a = this.contentWindow) === null || _a === void 0
@@ -272,7 +272,7 @@ let Viewport = /** @class */ (function () {
     Object.assign(this, this.getCurrentData())
   }
   Viewport.prototype.elementFromPoint = function (point) {
-    let _a
+    var _a
     if (
       (_a = this.contentWindow) === null || _a === void 0 ? void 0 : _a.document
     ) {
@@ -280,7 +280,7 @@ let Viewport = /** @class */ (function () {
     }
   }
   Viewport.prototype.matchViewport = function (target) {
-    let _a
+    var _a
     if (this.isIframe) {
       return (
         target === this.viewportElement ||
@@ -295,8 +295,8 @@ let Viewport = /** @class */ (function () {
     }
   }
   Viewport.prototype.attachEvents = function () {
-    let _this = this
-    let engine = this.engine
+    var _this = this
+    var engine = this.engine
     cancelIdle(this.attachRequest)
     this.attachRequest = requestIdle(function () {
       if (!engine) return
@@ -369,7 +369,7 @@ let Viewport = /** @class */ (function () {
     })
   }
   Viewport.prototype.findElementById = function (id) {
-    let _a
+    var _a
     if (!id) return
     if (this.nodeElementsStore[id]) return this.nodeElementsStore[id][0]
     return (_a = this.viewportRoot) === null || _a === void 0
@@ -379,7 +379,7 @@ let Viewport = /** @class */ (function () {
         )
   }
   Viewport.prototype.findElementsById = function (id) {
-    let _a, _b
+    var _a, _b
     if (!id) return []
     if (this.nodeElementsStore[id]) return this.nodeElementsStore[id]
     return Array.from(
@@ -394,12 +394,12 @@ let Viewport = /** @class */ (function () {
     )
   }
   Viewport.prototype.containsElement = function (element) {
-    let root = this.viewportElement
+    var root = this.viewportElement
     if (root === element) return true
     return root === null || root === void 0 ? void 0 : root.contains(element)
   }
   Viewport.prototype.getOffsetPoint = function (topPoint) {
-    let data = this.getCurrentData()
+    var data = this.getCurrentData()
     return {
       x: topPoint.x - this.offsetX + data.scrollX,
       y: topPoint.y - this.offsetY + data.scrollY,
@@ -407,11 +407,11 @@ let Viewport = /** @class */ (function () {
   }
   //相对于页面
   Viewport.prototype.getElementRect = function (element) {
-    let rect = element.getBoundingClientRect()
-    let offsetWidth = element['offsetWidth']
+    var rect = element.getBoundingClientRect()
+    var offsetWidth = element['offsetWidth']
       ? element['offsetWidth']
       : rect.width
-    let offsetHeight = element['offsetHeight']
+    var offsetHeight = element['offsetHeight']
       ? element['offsetHeight']
       : rect.height
     return new Rect(
@@ -423,9 +423,9 @@ let Viewport = /** @class */ (function () {
   }
   //相对于页面
   Viewport.prototype.getElementRectById = function (id) {
-    let _this = this
-    let elements = this.findElementsById(id)
-    let rect = calcBoundingRect(
+    var _this = this
+    var elements = this.findElementsById(id)
+    var rect = calcBoundingRect(
       elements.map(function (element) {
         return _this.getElementRect(element)
       })
@@ -445,7 +445,7 @@ let Viewport = /** @class */ (function () {
   }
   //相对于视口
   Viewport.prototype.getElementOffsetRect = function (element) {
-    let elementRect = element.getBoundingClientRect()
+    var elementRect = element.getBoundingClientRect()
     if (elementRect) {
       if (this.isIframe) {
         return new Rect(
@@ -468,10 +468,10 @@ let Viewport = /** @class */ (function () {
   }
   //相对于视口
   Viewport.prototype.getElementOffsetRectById = function (id) {
-    let _this = this
-    let elements = this.findElementsById(id)
+    var _this = this
+    var elements = this.findElementsById(id)
     if (!elements.length) return
-    let elementRect = calcBoundingRect(
+    var elementRect = calcBoundingRect(
       elements.map(function (element) {
         return _this.getElementRect(element)
       })
@@ -497,10 +497,10 @@ let Viewport = /** @class */ (function () {
     }
   }
   Viewport.prototype.getValidNodeElement = function (node) {
-    let _this = this
+    var _this = this
     var getNodeElement = function (node) {
       if (!node) return
-      let ele = _this.findElementById(node.id)
+      var ele = _this.findElementById(node.id)
       if (ele) {
         return ele
       } else {
@@ -510,8 +510,8 @@ let Viewport = /** @class */ (function () {
     return getNodeElement(node)
   }
   Viewport.prototype.getChildrenRect = function (node) {
-    let _this = this
-    let _a
+    var _this = this
+    var _a
     if (
       !((_a = node === null || node === void 0 ? void 0 : node.children) ===
         null || _a === void 0
@@ -521,7 +521,7 @@ let Viewport = /** @class */ (function () {
       return
     return calcBoundingRect(
       node.children.reduce(function (buf, child) {
-        let rect = _this.getValidNodeRect(child)
+        var rect = _this.getValidNodeRect(child)
         if (rect) {
           return buf.concat(rect)
         }
@@ -530,8 +530,8 @@ let Viewport = /** @class */ (function () {
     )
   }
   Viewport.prototype.getChildrenOffsetRect = function (node) {
-    let _this = this
-    let _a
+    var _this = this
+    var _a
     if (
       !((_a = node === null || node === void 0 ? void 0 : node.children) ===
         null || _a === void 0
@@ -541,7 +541,7 @@ let Viewport = /** @class */ (function () {
       return
     return calcBoundingRect(
       node.children.reduce(function (buf, child) {
-        let rect = _this.getValidNodeOffsetRect(child)
+        var rect = _this.getValidNodeOffsetRect(child)
         if (rect) {
           return buf.concat(rect)
         }
@@ -551,7 +551,7 @@ let Viewport = /** @class */ (function () {
   }
   Viewport.prototype.getValidNodeRect = function (node) {
     if (!node) return
-    let rect = this.getElementRectById(node.id)
+    var rect = this.getElementRectById(node.id)
     if (node && node === node.root && node.isInOperation) {
       if (!rect) return this.rect
       return calcBoundingRect([this.rect, rect])
@@ -564,7 +564,7 @@ let Viewport = /** @class */ (function () {
   }
   Viewport.prototype.getValidNodeOffsetRect = function (node) {
     if (!node) return
-    let rect = this.getElementOffsetRectById(node.id)
+    var rect = this.getElementOffsetRectById(node.id)
     if (node && node === node.root && node.isInOperation) {
       if (!rect) return this.innerRect
       return calcBoundingRect([this.innerRect, rect])
@@ -576,7 +576,7 @@ let Viewport = /** @class */ (function () {
     }
   }
   Viewport.prototype.getValidNodeLayout = function (node) {
-    let _a, _b
+    var _a, _b
     if (!node) return 'vertical'
     if (
       (_b =

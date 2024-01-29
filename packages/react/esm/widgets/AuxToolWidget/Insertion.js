@@ -3,17 +3,17 @@ import { useMoveHelper, usePrefix } from '../../hooks'
 import { ClosestPosition } from '@designable/core'
 import { observer } from '@formily/reactive-react'
 export var Insertion = observer(function () {
-  let moveHelper = useMoveHelper()
-  let prefix = usePrefix('aux-insertion')
-  let createInsertionStyle = function () {
-    let _a
-    let closestDirection = moveHelper.viewportClosestDirection
-    let closestRect = moveHelper.viewportClosestOffsetRect
-    let isInlineLayout =
+  var moveHelper = useMoveHelper()
+  var prefix = usePrefix('aux-insertion')
+  var createInsertionStyle = function () {
+    var _a
+    var closestDirection = moveHelper.viewportClosestDirection
+    var closestRect = moveHelper.viewportClosestOffsetRect
+    var isInlineLayout =
       ((_a = moveHelper.closestNode) === null || _a === void 0
         ? void 0
         : _a.moveLayout) === 'horizontal'
-    let baseStyle = {
+    var baseStyle = {
       position: 'absolute',
       transform: 'perspective(1px) translate3d(0,0,0)',
       top: 0,

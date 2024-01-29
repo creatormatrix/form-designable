@@ -10,8 +10,8 @@ import { SizeInput } from '../SizeInput'
 import { PositionInput } from '../PositionInput'
 import cls from 'classnames'
 import './styles.less'
-let Positions = ['center', 'top', 'right', 'bottom', 'left']
-let BorderStyleOptions = [
+var Positions = ['center', 'top', 'right', 'bottom', 'left']
+var BorderStyleOptions = [
   {
     label: 'None',
     value: 'none',
@@ -35,21 +35,21 @@ let BorderStyleOptions = [
     value: 'dotted',
   },
 ]
-let createBorderProp = function (position, key) {
-  let insert = position === 'center' ? '' : '-'.concat(position)
+var createBorderProp = function (position, key) {
+  var insert = position === 'center' ? '' : '-'.concat(position)
   return camelCase('border'.concat(insert, '-').concat(key))
 }
-let parseInitPosition = function (field) {
-  let basePath = field.address.parent()
-  for (let i = 0; i < Positions.length; i++) {
-    let position = Positions[i]
-    let stylePath = ''
+var parseInitPosition = function (field) {
+  var basePath = field.address.parent()
+  for (var i = 0; i < Positions.length; i++) {
+    var position = Positions[i]
+    var stylePath = ''
       .concat(basePath, '.')
       .concat(createBorderProp(position, 'style'))
-    let widthPath = ''
+    var widthPath = ''
       .concat(basePath, '.')
       .concat(createBorderProp(position, 'width'))
-    let colorPath = ''
+    var colorPath = ''
       .concat(basePath, '.')
       .concat(createBorderProp(position, 'color'))
     if (
@@ -63,10 +63,10 @@ let parseInitPosition = function (field) {
   return 'center'
 }
 export var BorderStyleSetter = observer(function (_a) {
-  let className = _a.className,
+  var className = _a.className,
     style = _a.style
-  let field = useField()
-  let currentPosition = useMemo(
+  var field = useField()
+  var currentPosition = useMemo(
     function () {
       return observable({
         value: parseInitPosition(field),
@@ -74,14 +74,14 @@ export var BorderStyleSetter = observer(function (_a) {
     },
     [field.value]
   )
-  let prefix = usePrefix('border-style-setter')
-  let createReaction = function (position) {
+  var prefix = usePrefix('border-style-setter')
+  var createReaction = function (position) {
     return function (field) {
       field.display = currentPosition.value === position ? 'visible' : 'hidden'
       if (position !== 'center') {
-        let borderStyle = field.query('.borderStyle').value()
-        let borderWidth = field.query('.borderWidth').value()
-        let borderColor = field.query('.borderColor').value()
+        var borderStyle = field.query('.borderStyle').value()
+        var borderWidth = field.query('.borderWidth').value()
+        var borderColor = field.query('.borderColor').value()
         if (borderStyle || borderWidth || borderColor) {
           field.value = undefined
         }
