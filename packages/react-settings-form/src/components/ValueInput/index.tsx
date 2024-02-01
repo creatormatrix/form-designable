@@ -64,7 +64,7 @@ export const ValueInput = createPolyInput([
           trigger="click"
         >
           <Button block>
-            <TextWidget token="SettingComponents.ValueInput.expression" />
+            {<TextWidget token="SettingComponents.ValueInput.expression" />}
           </Button>
         </Popover>
       )

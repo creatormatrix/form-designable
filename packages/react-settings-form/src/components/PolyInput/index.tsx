@@ -24,6 +24,7 @@ export interface IPolyType {
 }
 
 export type PolyTypes = IPolyType[]
+export type PolyConfig = { classPrefix?: string }
 
 const isValid = (val: any) => val !== undefined && val !== null
 
@@ -52,7 +53,10 @@ const createTypes = (
   })
 }
 
-export function createPolyInput(polyTypes: PolyTypes = []): React.FC<IInput> {
+export function createPolyInput(
+  polyTypes: PolyTypes = [],
+  config?: PolyConfig
+): React.FC<IInput> {
   return ({
     className,
     style,
@@ -62,7 +66,7 @@ export function createPolyInput(polyTypes: PolyTypes = []): React.FC<IInput> {
     include,
     ...props
   }) => {
-    const prefix = usePrefix('poly-input')
+    const prefix = config?.classPrefix || usePrefix('poly-input')
     const types = createTypes(polyTypes, exclude, include)
     const [current, setCurrent] = useState(types[0]?.type)
     const type = types?.find(({ type }) => type === current)

@@ -3,7 +3,6 @@ import fs from 'fs-extra'
 import { GlobSync } from 'glob'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import autoprefixer from 'autoprefixer'
-//import { getThemeVariables } from 'antd/dist/theme'
 
 const getWorkspaceAlias = () => {
   const basePath = path.resolve(__dirname, '../../../')
@@ -83,6 +82,9 @@ export default {
               // modifyVars: getThemeVariables({
               //   dark: true, // 开启暗黑模式
               // }),
+              modifyVars: {
+                'ant-prefix': 'gd',
+              },
               javascriptEnabled: true,
             },
           },

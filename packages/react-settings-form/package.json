@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/react-settings-form",
-  "version": "1.0.0-gamma.1",
+  "version": "1.0.0-gamma.2",
   "license": "MIT",
   "main": "lib",
   "types": "lib/index.d.ts",
@@ -42,9 +42,9 @@
   },
   "dependencies": {
     "@babel/parser": "^7.14.7",
-    "@creatormatrix/core": "1.0.0-gamma.1",
-    "@creatormatrix/react": "1.0.0-gamma.1",
-    "@creatormatrix/shared": "1.0.0-gamma.1",
+    "@creatormatrix/core": "1.0.0-gamma.2",
+    "@creatormatrix/react": "1.0.0-gamma.2",
+    "@creatormatrix/shared": "1.0.0-gamma.2",
     "@monaco-editor/react": "4.2.1",
     "monaco-editor": "^0.25.2",
     "prettier": "^2.3.2",

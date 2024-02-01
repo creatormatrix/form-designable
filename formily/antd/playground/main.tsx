@@ -1,79 +1,80 @@
-import 'antd/dist/antd.less'
-import React, { useMemo } from 'react'
-import ReactDOM from 'react-dom'
+import './main.less'
+
 import {
-  Designer,
-  DesignerToolsWidget,
-  ViewToolsWidget,
-  Workspace,
-  OutlineTreeWidget,
-  ResourceWidget,
-  HistoryWidget,
-  StudioPanel,
-  CompositePanel,
-  WorkspacePanel,
-  ToolbarPanel,
-  ViewportPanel,
-  ViewPanel,
-  SettingsPanel,
-  ComponentTreeWidget,
-} from '@creatormatrix/react'
-import {
-  SettingsForm,
-  setNpmCDNRegistry,
-} from '@creatormatrix/react-settings-form'
-import {
-  createDesigner,
   GlobalRegistry,
-  Shortcut,
   KeyCode,
+  Shortcut,
+  createDesigner,
 } from '@creatormatrix/core'
-import {
-  LogoWidget,
-  ActionsWidget,
-  PreviewWidget,
-  SchemaEditorWidget,
-  MarkupSchemaWidget,
-} from './widgets'
-import { saveSchema } from './service'
-import {
-  Form,
-  Field,
-  Input,
-  Select,
-  TreeSelect,
-  Cascader,
-  Radio,
-  Checkbox,
-  Slider,
-  Rate,
-  NumberPicker,
-  Transfer,
-  Password,
-  DatePicker,
-  TimePicker,
-  Upload,
-  Switch,
-  Text,
-  Card,
-  ArrayCards,
-  ObjectContainer,
-  ArrayTable,
-  Space,
-  FormTab,
-  FormCollapse,
-  FormLayout,
-  FormGrid,
-} from '../src'
 import {
   DataSourceSetter,
   ReactionsSetter,
   ValidatorSetter,
 } from '@creatormatrix/formily-setters'
-import { DesignerLayoutContext } from '@creatormatrix/react'
+import {
+  ComponentTreeWidget,
+  CompositePanel,
+  Designer,
+  DesignerLayoutContext,
+  DesignerToolsWidget,
+  HistoryWidget,
+  OutlineTreeWidget,
+  ResourceWidget,
+  SettingsPanel,
+  StudioPanel,
+  ToolbarPanel,
+  ViewPanel,
+  ViewToolsWidget,
+  ViewportPanel,
+  Workspace,
+  WorkspacePanel,
+} from '@creatormatrix/react'
+import {
+  SettingsForm,
+  setNpmCDNRegistry,
+} from '@creatormatrix/react-settings-form'
+import React, { useMemo } from 'react'
+import ReactDOM from 'react-dom'
+import {
+  ArrayCards,
+  ArrayTable,
+  Card,
+  Cascader,
+  Checkbox,
+  DatePicker,
+  Field,
+  Form,
+  FormCollapse,
+  FormGrid,
+  FormLayout,
+  FormTab,
+  Input,
+  NumberPicker,
+  ObjectContainer,
+  Password,
+  Radio,
+  Rate,
+  Select,
+  Slider,
+  Space,
+  Switch,
+  Text,
+  TimePicker,
+  Transfer,
+  TreeSelect,
+  Upload,
+} from '../src'
+import { saveSchema } from './service'
+import {
+  ActionsWidget,
+  LogoWidget,
+  MarkupSchemaWidget,
+  PreviewWidget,
+  SchemaEditorWidget,
+} from './widgets'
 
-import { ConfigProvider } from 'antd'
 import { createForm } from '@formily/core'
+import { ConfigProvider, Button } from 'antd'
 // setNpmCDNRegistry('//unpkg.com')
 setNpmCDNRegistry('//cdn.jsdelivr.net/npm')
 
@@ -132,32 +133,43 @@ const App = () => {
           zIndex: 1000,
         }}
       >
-        <ConfigProvider componentSize={'small'}>
-          <DesignerLayoutContext.Provider
-            value={{
-              theme: 'light',
-              prefixCls: 'dn-',
-              position: 'fixed',
-            }}
+        <DesignerLayoutContext.Provider
+          value={{
+            theme: 'light',
+            prefixCls: 'dn-',
+            position: 'fixed',
+          }}
+        >
+          <ReactionsSetter
+            onChange={(v) => console.log(v)}
+            independence={true}
+            outSource={[
+              { label: '商品类型 (productType)', value: 'productType' },
+              { label: '商品价格 (price)', value: 'price' },
+            ]}
           >
-            <ReactionsSetter
-              onChange={(v) => console.log(v)}
-              independence={true}
-              outSource={[
-                { label: '商品类型 (productType)', value: 'productType' },
-                { label: '商品价格 (price)', value: 'price' },
-              ]}
-            />
-            <DataSourceSetter
-              onChange={(v) => {
-                console.log('DataSourceSetter', v)
-              }}
-            />
-            <ValidatorSetter
-              independence={true}
-              onChange={(v) => console.log(v)}
-            ></ValidatorSetter>
-            {/* <FormContext.Provider value={form}>
+            <Button>联动规则</Button>
+          </ReactionsSetter>
+          <DataSourceSetter
+            onChange={(v) => {
+              console.log('DataSourceSetter', v)
+            }}
+            value={[
+              { label: '商品类型 (productType)', value: 'productType' },
+              { label: '商品价格 (price)', value: 'price' },
+            ]}
+          >
+            <Button>静态枚举</Button>
+          </DataSourceSetter>
+          <ValidatorSetter
+            title="校验规则设置"
+            independence={true}
+            value={'email'}
+            onChange={(v) => console.log(v)}
+          >
+            <Button>校验规则</Button>
+          </ValidatorSetter>
+          {/* <FormContext.Provider value={form}>
               <FieldContext.Provider
                 value={form.createField({ name: 'abc', title: '校验' })}
               >
@@ -166,8 +178,7 @@ const App = () => {
                 ></ValidatorSetter>
               </FieldContext.Provider>
             </FormContext.Provider> */}
-          </DesignerLayoutContext.Provider>
-        </ConfigProvider>
+        </DesignerLayoutContext.Provider>
       </div>
       <Designer engine={engine}>
         <StudioPanel logo={<LogoWidget />} actions={<ActionsWidget />}>
@@ -288,4 +299,9 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+  <ConfigProvider componentSize={'small'} prefixCls="gd">
+    <App />
+  </ConfigProvider>,
+  document.getElementById('root')
+)

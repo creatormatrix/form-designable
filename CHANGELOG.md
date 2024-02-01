@@ -1,5 +1,55 @@
 # Changelog
 
+## v1.0.0-gamma.1(2024-01-29)
+
+### :tada: Enhancements
+
+1. [feat: 更改 scope](https://github.com/alibaba/designable/commit/7987b11) :point_right: ( [elppac](https://github.com/elppac) )
+
+1. [feat: 初始化](https://github.com/alibaba/designable/commit/eb4bfe2) :point_right: ( [elppac](https://github.com/elppac) )
+
+1. [feat(playground): add tableLayout for ArrayTable (#281)](https://github.com/alibaba/designable/commit/3e961de) :point_right: ( [Jehu](https://github.com/Jehu) )
+
+1. [feat(core): support space-box for translate mode](https://github.com/alibaba/designable/commit/7e75fd5) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
+
+1. [chore: update align line feature](https://github.com/alibaba/designable/commit/a90132a) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
+
+### :beetle: Bug Fixes
+
+1. [fix: remove pre script](https://github.com/alibaba/designable/commit/1fa0f67) :point_right: ( [elppac](https://github.com/elppac) )
+
+1. [fix: add git ignore](https://github.com/alibaba/designable/commit/1deaf23) :point_right: ( [elppac](https://github.com/elppac) )
+
+1. [fix: publishing-multiple-packages-to-the-same-repository](https://github.com/alibaba/designable/commit/6d8f66c) :point_right: ( [elppac](https://github.com/elppac) )
+
+1. [fix(core): quick selection error (#275)](https://github.com/alibaba/designable/commit/ce2b6eb) :point_right: ( [coder-byte](https://github.com/coder-byte) )
+
+1. [fix: fix reaction setter throw error and fix monaco registry can not change completly](https://github.com/alibaba/designable/commit/65f0841) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
+
+1. [fix(antd/next): fix collapse styles](https://github.com/alibaba/designable/commit/bd79e5f) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
+
+1. [fix(react): fix ResourceWidget styles](https://github.com/alibaba/designable/commit/bf8587f) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
+
+1. [fix(react): fix CompositePanel typings](https://github.com/alibaba/designable/commit/5d06c7c) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
+
+1. [fix(core): fix text past can not trigger change](https://github.com/alibaba/designable/commit/d296103) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
+
+1. [fix(core): fix keyboard errror](https://github.com/alibaba/designable/commit/7b9ed43) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
+
+1. [fix: fix free-selection](https://github.com/alibaba/designable/commit/0f3a887) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
+
+### :rocket: Improve Performance
+
+1. [perf(core): improve dnd performance](https://github.com/alibaba/designable/commit/1722e86) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
+
+### :blush: Other Changes
+
+1. [chore: improve code](https://github.com/alibaba/designable/commit/f34ba4b) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
+
+1. [chore: improve align line drag experience (#263)](https://github.com/alibaba/designable/commit/91a8a79) :point_right: ( [Janry](https://github.com/Janry) )
+
+1. [chore: update align line feature](https://github.com/alibaba/designable/commit/a90132a) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
+
 ## v1.0.0-beta.45(2022-02-25)
 
 ### :beetle: Bug Fixes
@@ -367,9 +417,3 @@
 ### :beetle: Bug Fixes
 
 1. [fix(react): fix ui can not refresh with top rerender](https://github.com/alibaba/designable/commit/cf63e82) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.6(2021-09-22)
-
-### :blush: Other Changes
-
-1. [chore(project): move formily deps to peerDeps](https://github.com/alibaba/designable/commit/ee19f25) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )

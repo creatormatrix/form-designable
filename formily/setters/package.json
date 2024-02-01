@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/formily-setters",
-  "version": "1.0.0-gamma.1",
+  "version": "1.0.0-gamma.2",
   "license": "MIT",
   "main": "lib",
   "module": "esm",
@@ -42,10 +42,10 @@
     "react-is": ">=16.8.0 || >=17.0.0"
   },
   "dependencies": {
-    "@creatormatrix/core": "1.0.0-gamma.1",
-    "@creatormatrix/formily-transformer": "1.0.0-gamma.1",
-    "@creatormatrix/react": "1.0.0-gamma.1",
-    "@creatormatrix/react-settings-form": "1.0.0-gamma.1"
+    "@creatormatrix/core": "1.0.0-gamma.2",
+    "@creatormatrix/formily-transformer": "1.0.0-gamma.2",
+    "@creatormatrix/react": "1.0.0-gamma.2",
+    "@creatormatrix/react-settings-form": "1.0.0-gamma.2"
   },
   "publishConfig": {
     "access": "public"

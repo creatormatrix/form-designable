@@ -1,5 +1,5 @@
-import React from 'react'
-import { ArrayField } from '@formily/core'
+import React, { useEffect, useRef, useState } from 'react'
+import { ArrayField, createForm } from '@formily/core'
 import {
   observer,
   useField,
@@ -10,11 +10,12 @@ import {
 import { GlobalRegistry } from '@creatormatrix/core'
 import {
   ArrayItems,
-  FormDialog,
+  Form,
   FormItem,
   FormLayout,
   Input,
   NumberPicker,
+  Select,
 } from '@formily/antd'
 import {
   DrawerSetter,
@@ -23,16 +24,17 @@ import {
   ValueInput,
   useLocales,
 } from '@creatormatrix/react-settings-form'
-import { Button, Select } from 'antd'
-import { DesignerLayoutContext } from '@creatormatrix/react'
+import { Button, Modal } from 'antd'
 import '../../locales'
 import locale from '../../locales/zh-CN'
 import { clone } from '@creatormatrix/shared'
+import './index.less'
 
 export interface IValidatorSetterProps {
   value?: any
   onChange?: (value: any) => void
   independence?: boolean
+  title?: string
 }
 
 const ValidatorSchema: ISchema = {
@@ -65,18 +67,10 @@ const ValidatorSchema: ISchema = {
             'x-decorator': 'FormItem',
             'x-component': 'Select',
           },
-          validator: {
+          required: {
             type: 'string',
             'x-decorator': 'FormItem',
-            'x-component': 'ValueInput',
-            'x-component-props': {
-              include: ['EXPRESSION'],
-            },
-          },
-          message: {
-            type: 'string',
-            'x-decorator': 'FormItem',
-            'x-component': 'Input.TextArea',
+            'x-component': 'Switch',
           },
           format: {
             type: 'string',
@@ -95,6 +89,19 @@ const ValidatorSchema: ISchema = {
               suffix: '/',
             },
           },
+          message: {
+            type: 'string',
+            'x-decorator': 'FormItem',
+            'x-component': 'Input.TextArea',
+          },
+          // validator: {
+          //   type: 'string',
+          //   'x-decorator': 'FormItem',
+          //   'x-component': 'ValueInput',
+          //   'x-component-props': {
+          //     include: ['EXPRESSION'],
+          //   },
+          // },
           len: {
             type: 'string',
             'x-decorator': 'FormItem',
@@ -121,11 +128,6 @@ const ValidatorSchema: ISchema = {
             'x-component': 'NumberPicker',
           },
           whitespace: {
-            type: 'string',
-            'x-decorator': 'FormItem',
-            'x-component': 'Switch',
-          },
-          required: {
             type: 'string',
             'x-decorator': 'FormItem',
             'x-component': 'Switch',
@@ -198,120 +200,204 @@ const ValidatorSetterItem: React.FC<IValidatorSetterProps> = (props) => {
     </FoldItem>
   )
 }
-// effects={
-//   (form) => {
-//     useLocales({
-//       getMessage: (token: string) => {
-//         return GlobalRegistry.getDesignerMessage(token, Schema.Input.Behavior[0].designerLocales);
-//       },
-//     } as any);
-//   }
-// }
 export const ValidatorSetter: React.FC<IValidatorSetterProps> = observer(
   (props) => {
+    const [open, setOpen] = useState(false)
+    const [form, setForm] = useState(null)
+    const env = useRef({ form: null })
+    useEffect(() => {
+      if (open && !env.current.form) {
+        env.current.form = createForm({
+          values: { 'x-validator': props.value },
+          effects() {
+            useLocales({
+              getMessage: (token: string) => {
+                console.log(token)
+                return GlobalRegistry.getDesignerMessage(token, locale['zh-CN'])
+              },
+            } as any)
+          },
+        })
+        setForm(true)
+      } else {
+        env.current.form = null
+        setForm(false)
+      }
+    }, [open])
+    const showModal = () => {
+      setOpen(true)
+    }
+    const handleOk = () => {
+      props?.onChange(clone(env.current.form.values['x-validator']))
+      setOpen(false)
+    }
+    const handleCancel = () => {
+      setOpen(false)
+    }
     if (props.independence) {
       return (
-        <FormDialog.Portal>
-          <Button
-            onClick={() => {
-              const dialog = FormDialog('弹窗表单', 'formValidator', (form) => {
-                form.addEffects('Locales', () => {
-                  useLocales({
-                    getMessage: (token: string) => {
-                      return (
-                        GlobalRegistry.getDesignerMessage(
-                          token,
-                          locale['zh-CN']
-                        ) ||
-                        GlobalRegistry.getDesignerMessage(
-                          `${token}.title`,
-                          locale['zh-CN']
-                        )
-                      )
-                      // return token
-                    },
-                  } as any)
-                })
-                return (
-                  <div className="dn-validator-setter-dialog">
-                    <DesignerLayoutContext.Provider
-                      value={{
-                        theme: 'light',
-                        prefixCls: 'dn-',
-                        position: 'fixed',
-                      }}
-                    >
-                      <FormLayout
-                        labelWidth={120}
-                        labelAlign="left"
-                        wrapperAlign="right"
-                        feedbackLayout="none"
-                        tooltipLayout="text"
-                      >
-                        <SchemaField
-                          components={{
-                            DrawerSetter,
-                            FormItem,
-                            Input,
-                            ValueInput,
-                            NumberPicker,
-                            Select,
-                            ArrayItems,
-                            FormLayout,
-                          }}
-                        >
-                          <SchemaField.Array
-                            name="x-validator"
-                            title="x-validator"
-                            x-component={ValidatorSetterItem}
-                            x-component-props={{ independence: true }}
-                          />
-                        </SchemaField>
-                        <FormDialog.Footer>
-                          <span
-                            style={{ marginLeft: 4 }}
-                            onClick={() => {
-                              dialog.close()
+        <>
+          {/* <FormDialog.Portal id="ValidatorSetterFormDialog">
+            <Button
+              onClick={() => {
+                const dialog = FormDialog(
+                  { title: '弹窗表单', prefixCls: 'gd-modal' },
+                  'formValidator',
+                  (form) => {
+                    form.addEffects('Locales', () => {
+                      useLocales({
+                        getMessage: (token: string) => {
+                          return (
+                            GlobalRegistry.getDesignerMessage(
+                              token,
+                              locale['zh-CN']
+                            ) ||
+                            GlobalRegistry.getDesignerMessage(
+                              `${token}.title`,
+                              locale['zh-CN']
+                            )
+                          )
+                          // return token
+                        },
+                      } as any)
+                    })
+                    return (
+                      <div className="dn-validator-setter-dialog">
+                        <ConfigProvider prefixCls="gd">
+                          <DesignerLayoutContext.Provider
+                            value={{
+                              theme: 'light',
+                              prefixCls: 'dn-',
+                              position: 'fixed',
                             }}
                           >
-                            扩展文案：{form.values.aaa}(点击关闭弹窗)
-                          </span>
-                        </FormDialog.Footer>
-                      </FormLayout>
-                    </DesignerLayoutContext.Provider>
-                  </div>
+                            <FormLayout
+                              labelWidth={120}
+                              labelAlign="left"
+                              wrapperAlign="right"
+                              feedbackLayout="none"
+                              tooltipLayout="text"
+                            >
+                              <SchemaField
+                                components={{
+                                  DrawerSetter,
+                                  FormItem,
+                                  Input,
+                                  ValueInput,
+                                  NumberPicker,
+                                  Select,
+                                  ArrayItems,
+                                  FormLayout,
+                                }}
+                              >
+                                <SchemaField.Array
+                                  name="x-validator"
+                                  title="x-validator"
+                                  x-component={ValidatorSetterItem}
+                                  x-component-props={{ independence: true }}
+                                />
+                              </SchemaField>
+                              <FormDialog.Footer>
+                                <span
+                                  style={{ marginLeft: 4 }}
+                                  onClick={() => {
+                                    debugger
+                                    dialog.close()
+                                  }}
+                                >
+                                  扩展文案：{form.values.aaa}(点击关闭弹窗)
+                                </span>
+                              </FormDialog.Footer>
+                            </FormLayout>
+                          </DesignerLayoutContext.Provider>
+                        </ConfigProvider>
+                      </div>
+                    )
+                  }
                 )
-              })
-              dialog
-                .forOpen((payload, next) => {
-                  setTimeout(() => {
-                    next({
-                      initialValues: {
-                        aaa: '123',
-                      },
-                    })
-                  }, 0)
-                })
-                .forConfirm((payload, next) => {
-                  setTimeout(() => {
-                    console.log(payload)
-                    next(payload)
-                  }, 10)
-                })
-                .forCancel((payload, next) => {
-                  setTimeout(() => {
-                    console.log(payload)
-                    next(payload)
-                  }, 10)
-                })
-                .open()
-                .then(console.log)
-                .catch(console.error)
-            }}
+                dialog
+                  .forOpen((payload, next) => {
+                    setTimeout(() => {
+                      next({
+                        initialValues: {
+                          aaa: '123',
+                        },
+                      })
+                    }, 0)
+                  })
+                  .forConfirm((payload, next) => {
+                    setTimeout(() => {
+                      console.log(payload)
+                      next(payload)
+                    }, 10)
+                  })
+                  .forCancel((payload, next) => {
+                    setTimeout(() => {
+                      console.log(payload)
+                      next(payload)
+                    }, 10)
+                  })
+                  .open()
+                  .then(console.log)
+                  .catch(console.error)
+              }}
+            >
+              Validator Setter
+            </Button>
+          </FormDialog.Portal> */}
+          {React.Children.map(props.children, (child: React.ReactElement) =>
+            React.cloneElement(child, { onClick: showModal })
+          )}
+          <Modal
+            visible={open}
+            title={props.title || 'Validator'}
+            onOk={handleOk}
+            onCancel={handleCancel}
+            destroyOnClose
+            footer={[
+              <Button key="back" onClick={handleCancel}>
+                取消
+              </Button>,
+              <Button key="submit" type="primary" onClick={handleOk}>
+                保存
+              </Button>,
+            ]}
           >
-            点我打开表单
-          </Button>
-        </FormDialog.Portal>
+            <div className="dn-light dn-validator-setter-dialog">
+              {form && env.current.form && (
+                <Form form={env.current.form}>
+                  <FormLayout
+                    labelWidth={120}
+                    labelAlign="left"
+                    wrapperAlign="right"
+                    feedbackLayout="none"
+                    tooltipLayout="text"
+                  >
+                    <SchemaField
+                      components={{
+                        DrawerSetter,
+                        FormItem,
+                        Input,
+                        ValueInput,
+                        NumberPicker,
+                        Select,
+                        ArrayItems,
+                        FormLayout,
+                      }}
+                    >
+                      <SchemaField.Array
+                        name="x-validator"
+                        title="x-validator"
+                        x-component={ValidatorSetterItem}
+                        x-component-props={{ independence: true }}
+                      />
+                    </SchemaField>
+                  </FormLayout>
+                </Form>
+              )}
+            </div>
+          </Modal>
+        </>
       )
     } else {
       return <ValidatorSetterItem {...props} />

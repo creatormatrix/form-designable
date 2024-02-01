@@ -5,7 +5,7 @@ import {
   AnyHelper,
   DataSourceHelper,
   DecoratorPropsHelper,
-  DisplayHelper,
+  // DisplayHelper,
   ComponentPropsHelper,
 } from './helpers'
 
@@ -16,11 +16,11 @@ export const FieldProperties = [
     helpCode: BooleanHelper,
   },
   { key: 'hidden', type: 'boolean', helpCode: BooleanHelper },
-  {
-    key: 'display',
-    type: '"visible" | "hidden" | "none"',
-    helpCode: DisplayHelper,
-  },
+  // {
+  //   key: 'display',
+  //   type: '"visible" | "hidden" | "none"',
+  //   helpCode: DisplayHelper,
+  // },
   {
     key: 'pattern',
     type: '"editable" | "disabled" | "readOnly" | "readPretty"',

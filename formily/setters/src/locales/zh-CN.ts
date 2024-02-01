@@ -17,7 +17,9 @@ export default {
       'x-validator': {
         title: '校验规则',
         addValidatorRules: '添加校验规则',
+        placeholder: '请选择',
         drawer: '配置规则',
+        dataSource: ValidatorFormats,
         triggerType: {
           title: '触发类型',
           placeholder: '请选择',

@@ -13,8 +13,8 @@ import './styles.less'
 export interface IDataSourceSetterProps {
   className?: string
   style?: React.CSSProperties
-  onChange: (dataSource: IDataSourceItem[]) => void
-  value: IDataSourceItem[]
+  onChange?: (dataSource: IDataSourceItem[]) => void
+  value?: IDataSourceItem[]
   allowTree?: boolean
   allowExtendOption?: boolean
   defaultOptionValue?: {
@@ -50,9 +50,15 @@ export const DataSourceSetter: React.FC<IDataSourceSetterProps> = observer(
     const closeModal = () => setModalVisible(false)
     return (
       <Fragment>
-        <Button block onClick={openModal}>
-          <TextWidget token="SettingComponents.DataSourceSetter.configureDataSource" />
-        </Button>
+        {props.children &&
+          React.Children.map(props.children, (child: React.ReactElement) =>
+            React.cloneElement(child, { onClick: openModal })
+          )}
+        {!props.children && (
+          <Button block onClick={openModal}>
+            <TextWidget token="SettingComponents.DataSourceSetter.configureDataSource" />
+          </Button>
+        )}
         <Modal
           title={
             <TextWidget token="SettingComponents.DataSourceSetter.configureDataSource" />

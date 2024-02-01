@@ -53,7 +53,7 @@ export const FieldPropertySetter: React.FC<IFieldPropertySetterProps> = (
         mode="vertical"
         style={{
           width: 200,
-          height: 300,
+          height: 400,
           paddingRight: 4,
           overflowY: 'auto',
           overflowX: 'hidden',
@@ -88,7 +88,7 @@ export const FieldPropertySetter: React.FC<IFieldPropertySetterProps> = (
           {`$self.${selectKeys[0]} = (`}
           <span
             style={{
-              fontSize: 14,
+              fontSize: 11,
               marginLeft: 10,
               color: '#888',
               fontWeight: 'normal',

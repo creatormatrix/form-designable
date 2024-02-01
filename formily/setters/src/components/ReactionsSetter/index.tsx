@@ -1,26 +1,26 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { clone, uid } from '@formily/shared'
-import { createForm, isVoidField } from '@formily/core'
-import { createSchemaField } from '@formily/react'
 import { GlobalRegistry } from '@creatormatrix/core'
-import { requestIdle } from '@creatormatrix/shared'
-import { usePrefix, TextWidget } from '@creatormatrix/react'
+import { TextWidget, usePrefix } from '@creatormatrix/react'
 import { MonacoInput } from '@creatormatrix/react-settings-form'
+import { requestIdle } from '@creatormatrix/shared'
 import {
-  Form,
   ArrayTable,
+  Form,
+  FormCollapse,
+  FormItem,
   Input,
   Select,
-  FormItem,
-  FormCollapse,
 } from '@formily/antd'
-import { Modal, Card, Button, Tag, Tooltip } from 'antd'
-import { PathSelector } from './PathSelector'
+import { createForm, isVoidField } from '@formily/core'
+import { createSchemaField } from '@formily/react'
+import { clone, uid } from '@formily/shared'
+import { Button, Card, Modal, Tag, Tooltip } from 'antd'
+import type { DefaultOptionType } from 'antd/lib/select'
+import React, { useEffect, useMemo, useState } from 'react'
 import { FieldPropertySetter } from './FieldPropertySetter'
-import { IReaction } from './types'
+import { PathSelector } from './PathSelector'
 import './declarations'
 import './styles.less'
-import type { DefaultOptionType } from 'antd/lib/select'
+import { IReaction } from './types'
 
 export interface IReactionsSetterProps {
   value?: IReaction
@@ -169,9 +169,15 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
   }, [modalVisible])
   return (
     <>
-      <Button block onClick={openModal}>
-        <TextWidget token="SettingComponents.ReactionsSetter.configureReactions" />
-      </Button>
+      {props.children &&
+        React.Children.map(props.children, (child: React.ReactElement) =>
+          React.cloneElement(child, { onClick: openModal })
+        )}
+      {!props.children && (
+        <Button block onClick={openModal}>
+          <TextWidget token="SettingComponents.ReactionsSetter.configureReactions" />
+        </Button>
+      )}
       <Modal
         title={GlobalRegistry.getDesignerMessage(
           'SettingComponents.ReactionsSetter.configureReactions'
@@ -297,6 +303,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                               placeholder: GlobalRegistry.getDesignerMessage(
                                 'SettingComponents.ReactionsSetter.pleaseInput'
                               ),
+                              style: { verticalAlign: 'middle' },
                             }}
                             x-reactions={(field) => {
                               if (isVoidField(field)) return

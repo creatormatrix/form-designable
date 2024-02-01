@@ -2,10 +2,11 @@ import React, { Fragment, useState, useLayoutEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { observer, useField } from '@formily/react'
 import { FormLayout } from '@formily/antd'
-import { IconWidget, usePrefix, useTreeNode } from '@creatormatrix/react'
+import { usePrefix, useTreeNode } from '@creatormatrix/react'
 import { Button, ButtonProps } from 'antd'
 import cls from 'classnames'
 import './styles.less'
+import { ArrowLeftOutlined } from '@ant-design/icons'
 
 export interface IDrawerSetterProps {
   text: React.ReactNode
@@ -39,7 +40,8 @@ export const DrawerSetter: React.FC<IDrawerSetterProps> = observer((props) => {
           })}
         >
           <div className={prefix + '-header'} onClick={handleClose}>
-            <IconWidget infer="Return" size={18} />
+            {/* <IconWidget infer="Return" size={18} /> */}
+            <ArrowLeftOutlined />
             <span className={prefix + '-header-text'}>
               {props.text || field.title}
             </span>

@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/react-sandbox",
-  "version": "1.0.0-gamma.1",
+  "version": "1.0.0-gamma.2",
   "license": "MIT",
   "main": "lib",
   "types": "lib/index.d.ts",
@@ -26,8 +26,8 @@
     "react": "16.x || 17.x"
   },
   "dependencies": {
-    "@creatormatrix/react": "1.0.0-gamma.1",
-    "@creatormatrix/shared": "1.0.0-gamma.1"
+    "@creatormatrix/react": "1.0.0-gamma.2",
+    "@creatormatrix/shared": "1.0.0-gamma.2"
   },
   "publishConfig": {
     "access": "public"

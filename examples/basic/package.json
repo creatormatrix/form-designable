@@ -1,13 +1,13 @@
 {
   "name": "@creatormatrix/basic-example",
-  "version": "1.0.0-gamma.1",
+  "version": "1.0.0-gamma.2",
   "license": "MIT",
   "private": true,
   "engines": {
     "npm": ">=3.0.0"
   },
   "scripts": {
-    "build": "rimraf dist && webpack-cli --config config/webpack.prod.ts",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider && rimraf dist && webpack-cli --config config/webpack.prod.ts",
     "start": "webpack-dev-server --config config/webpack.dev.ts"
   },
   "devDependencies": {
@@ -25,11 +25,11 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
-    "@creatormatrix/core": "1.0.0-gamma.1",
-    "@creatormatrix/react": "1.0.0-gamma.1",
-    "@creatormatrix/react-sandbox": "1.0.0-gamma.1",
-    "@creatormatrix/react-settings-form": "1.0.0-gamma.1",
-    "@creatormatrix/shared": "1.0.0-gamma.1",
+    "@creatormatrix/core": "1.0.0-gamma.2",
+    "@creatormatrix/react": "1.0.0-gamma.2",
+    "@creatormatrix/react-sandbox": "1.0.0-gamma.2",
+    "@creatormatrix/react-settings-form": "1.0.0-gamma.2",
+    "@creatormatrix/shared": "1.0.0-gamma.2",
     "@formily/reactive": "^2.0.2",
     "@formily/reactive-react": "^2.0.2",
     "antd": "^4.15.2",
