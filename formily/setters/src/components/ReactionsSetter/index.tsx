@@ -27,6 +27,7 @@ export interface IReactionsSetterProps {
   onChange?: (value: IReaction) => void
   independence?: boolean
   outSource?: DefaultOptionType[]
+  children?: React.ReactNode
 }
 
 const TypeView = ({ value }) => {

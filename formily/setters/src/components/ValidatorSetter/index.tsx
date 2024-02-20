@@ -35,6 +35,7 @@ export interface IValidatorSetterProps {
   onChange?: (value: any) => void
   independence?: boolean
   title?: string
+  children?: React.ReactNode
 }
 
 const ValidatorSchema: ISchema = {

@@ -16,7 +16,7 @@ export interface IInput {
 export interface IPolyType {
   type: string
   title?: string
-  icon?: string
+  icon?: string | React.ReactNode
   component?: any
   checker: (value: any) => boolean
   toInputValue?: (value: any) => any

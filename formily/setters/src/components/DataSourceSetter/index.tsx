@@ -22,6 +22,7 @@ export interface IDataSourceSetterProps {
     value: any
   }[]
   effects?: (form: Form<any>) => void
+  children?: React.ReactNode
 }
 
 export const DataSourceSetter: React.FC<IDataSourceSetterProps> = observer(
