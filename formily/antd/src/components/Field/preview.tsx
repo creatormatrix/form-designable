@@ -91,15 +91,25 @@ const toDesignableFieldProps = (
 ) => {
   const results: any = {}
   each(SchemaStateMap, (fieldKey, schemaKey) => {
-    const value = schema[schemaKey]
-    if (isExpression(value)) {
+    const v = schema[schemaKey]
+    if (v?.type) {
+      if (['static'].includes(v.type)) {
+        results[fieldKey] = v.value
+      } else if (v.type === 'expression') {
+        results[fieldKey] = v.value
+      } else if (v.type === 'service') {
+        results[fieldKey] = v.value ? `#${v.value.name}` : undefined
+      }
+      return
+    }
+    if (isExpression(v)) {
       if (!NeedShownExpression[schemaKey]) return
-      if (value) {
-        results[fieldKey] = value
+      if (v) {
+        results[fieldKey] = v
         return
       }
-    } else if (value) {
-      results[fieldKey] = filterExpression(value)
+    } else if (v) {
+      results[fieldKey] = filterExpression(v)
     }
   })
   if (!components['FormItem']) {

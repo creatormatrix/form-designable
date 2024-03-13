@@ -7,8 +7,8 @@
     "npm": ">=3.0.0"
   },
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider && rimraf dist && webpack-cli --config config/webpack.prod.ts",
-    "start": "webpack-dev-server --config config/webpack.dev.ts"
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && rimraf dist && webpack-cli --config config/webpack.prod.ts",
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --config config/webpack.dev.ts"
   },
   "devDependencies": {
     "file-loader": "^5.0.2",

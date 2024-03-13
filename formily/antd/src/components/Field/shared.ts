@@ -1,7 +1,8 @@
 import { ISchema } from '@formily/json-schema'
 import {
   ReactionsSetter,
-  DataSourceSetter,
+  ValueSetter,
+  EnumSetter,
   ValidatorSetter,
 } from '@creatormatrix/formily-setters'
 import { FormItemSwitcher } from '../../common/FormItemSwitcher'
@@ -89,6 +90,7 @@ export const createFieldSchema = (
             type: 'string',
             'x-decorator': 'FormItem',
             'x-component': 'Input',
+            'x-editable': false,
           },
           title: {
             type: 'string',
@@ -120,11 +122,11 @@ export const createFieldSchema = (
           },
           default: {
             'x-decorator': 'FormItem',
-            'x-component': 'ValueInput',
+            'x-component': ValueSetter,
           },
           enum: {
             'x-decorator': 'FormItem',
-            'x-component': DataSourceSetter,
+            'x-component': EnumSetter,
           },
           'x-reactions': {
             'x-decorator': 'FormItem',
