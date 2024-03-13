@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/shared",
-  "version": "1.0.0-y.0",
+  "version": "1.0.0-1.0.0-gamma.7.0",
   "license": "MIT",
   "main": "lib",
   "types": "lib/index.d.ts",
@@ -28,5 +28,5 @@
   "dependencies": {
     "requestidlecallback": "^0.3.0"
   },
-  "gitHead": "e0c862b6a5c6366aaf788f436ae723bb94d209c5"
+  "gitHead": "c3e94921fba2354eeff5cd5e8d7be1fb7706aef2"
 }

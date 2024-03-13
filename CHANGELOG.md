@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.0-y.0(2024-03-13)
+
+### No Change Log
+
 ## v1.0.0-gamma.6(2024-03-13)
 
 ### No Change Log
@@ -393,9 +397,3 @@
 ### :blush: Other Changes
 
 1. [chore(react): improve theme styles](https://github.com/alibaba/designable/commit/f45572d) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.12(2021-09-30)
-
-### :tada: Enhancements
-
-1. [feat(react): add more source icons](https://github.com/alibaba/designable/commit/75963da) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )

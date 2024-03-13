@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/core",
-  "version": "1.0.0-y.0",
+  "version": "1.0.0-1.0.0-gamma.7.0",
   "license": "MIT",
   "main": "lib",
   "types": "lib/index.d.ts",
@@ -33,11 +33,11 @@
     "@formily/reactive": "^2.0.2"
   },
   "dependencies": {
-    "@creatormatrix/shared": "1.0.0-y.0",
+    "@creatormatrix/shared": "1.0.0-1.0.0-gamma.7.0",
     "@juggle/resize-observer": "^3.3.1"
   },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "e0c862b6a5c6366aaf788f436ae723bb94d209c5"
+  "gitHead": "c3e94921fba2354eeff5cd5e8d7be1fb7706aef2"
 }
