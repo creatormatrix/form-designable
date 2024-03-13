@@ -4,6 +4,10 @@
 
 ### No Change Log
 
+## v1.0.0-gamma.8(2024-03-13)
+
+### No Change Log
+
 ## v1.0.0-gamma.7(2024-03-13)
 
 ### No Change Log
@@ -389,9 +393,3 @@
 ### :beetle: Bug Fixes
 
 1. [fix(react): fix styles](https://github.com/alibaba/designable/commit/19df7b2) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.14(2021-10-04)
-
-### :blush: Other Changes
-
-1. [chore(react): improve theme styles](https://github.com/alibaba/designable/commit/51a0fde) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )

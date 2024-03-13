@@ -5,6 +5,7 @@ import { clone, map, uid } from '@creatormatrix/shared'
 export interface ITransformerOptions {
   designableFieldName?: string
   designableFormName?: string
+  sourceToValue?: boolean
 }
 
 export interface IFormilySchema {
@@ -44,22 +45,26 @@ export const transformToSchema = (
   if (!root) return { schema }
   const createSchema = (node: ITreeNode, schema: ISchema = {}) => {
     if (node !== root) {
-      const props = map(clone(node.props), (v) => {
+      const props = map(clone(node.props), (v, k) => {
         if (
+          options?.sourceToValue &&
           Object.prototype.hasOwnProperty.call(v, 'type') &&
           Object.prototype.hasOwnProperty.call(v, 'value')
         ) {
           if (['static'].includes(v.type)) {
             return v.value
-          } else if (v.type === 'expression') {
-            return v.value
-          } else if (v.type === 'service') {
-            return v.value ? `#${v.value.name}` : undefined
+          } else if (k === 'value') {
+            if (v.type === 'expression') {
+              return v.value
+            } else if (v.type === 'service') {
+              return v.value ? `#${v.value.name}` : undefined
+            }
+          } else {
+            return undefined
           }
         }
         return v
       })
-
       Object.assign(schema, props)
     }
     schema['x-designable-id'] = node.id

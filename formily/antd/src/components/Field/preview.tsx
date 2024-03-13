@@ -99,10 +99,12 @@ const toDesignableFieldProps = (
     ) {
       if (['static'].includes(v.type)) {
         results[fieldKey] = v.value
-      } else if (v.type === 'expression') {
-        results[fieldKey] = v.value
-      } else if (v.type === 'service') {
-        results[fieldKey] = v.value ? `#${v.value.name}` : undefined
+      } else if (fieldKey === 'value') {
+        if (v.type === 'expression') {
+          results[fieldKey] = v.value
+        } else if (v.type === 'service') {
+          results[fieldKey] = v.value ? `#${v.value.name}` : undefined
+        }
       }
       return
     }

@@ -82,7 +82,10 @@ export interface IPreviewWidgetProps {
 
 export const PreviewWidget: React.FC<IPreviewWidgetProps> = (props) => {
   const form = useMemo(() => createForm(), [])
-  const { form: formProps, schema } = transformToSchema(props.tree)
+  const { form: formProps, schema } = transformToSchema(props.tree, {
+    sourceToValue: true,
+  })
+  console.log('schema', schema)
   return (
     <Form {...formProps} form={form}>
       <SchemaField schema={schema} />
