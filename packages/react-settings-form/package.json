@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/react-settings-form",
-  "version": "1.0.0-gamma.6",
+  "version": "1.0.0-y.0",
   "license": "MIT",
   "main": "lib",
   "types": "lib/index.d.ts",
@@ -42,9 +42,9 @@
   },
   "dependencies": {
     "@babel/parser": "^7.14.7",
-    "@creatormatrix/core": "1.0.0-gamma.6",
-    "@creatormatrix/react": "1.0.0-gamma.6",
-    "@creatormatrix/shared": "1.0.0-gamma.6",
+    "@creatormatrix/core": "1.0.0-y.0",
+    "@creatormatrix/react": "1.0.0-y.0",
+    "@creatormatrix/shared": "1.0.0-y.0",
     "@monaco-editor/react": "4.2.1",
     "monaco-editor": "^0.25.2",
     "prettier": "^2.3.2",
@@ -54,5 +54,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "c4e0510dd101360a1368c7a78552df91d94d37db"
+  "gitHead": "e0c862b6a5c6366aaf788f436ae723bb94d209c5"
 }

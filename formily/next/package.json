@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/formily-next",
-  "version": "1.0.0-gamma.6",
+  "version": "1.0.0-y.0",
   "license": "MIT",
   "main": "lib",
   "module": "esm",
@@ -24,7 +24,7 @@
     "start": "webpack-dev-server --config playground/webpack.dev.ts"
   },
   "devDependencies": {
-    "@creatormatrix/react-settings-form": "1.0.0-gamma.6",
+    "@creatormatrix/react-settings-form": "1.0.0-y.0",
     "@formily/core": "^2.0.2",
     "@formily/next": "^2.0.2",
     "@formily/react": "^2.0.2",
@@ -61,13 +61,13 @@
     "react-is": ">=16.8.0 || >=17.0.0"
   },
   "dependencies": {
-    "@creatormatrix/core": "1.0.0-gamma.6",
-    "@creatormatrix/formily-setters": "1.0.0-gamma.6",
-    "@creatormatrix/formily-transformer": "1.0.0-gamma.6",
-    "@creatormatrix/react": "1.0.0-gamma.6"
+    "@creatormatrix/core": "1.0.0-y.0",
+    "@creatormatrix/formily-setters": "1.0.0-y.0",
+    "@creatormatrix/formily-transformer": "1.0.0-y.0",
+    "@creatormatrix/react": "1.0.0-y.0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "c4e0510dd101360a1368c7a78552df91d94d37db"
+  "gitHead": "e0c862b6a5c6366aaf788f436ae723bb94d209c5"
 }

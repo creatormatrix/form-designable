@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/formily-transformer",
-  "version": "1.0.0-gamma.6",
+  "version": "1.0.0-y.0",
   "license": "MIT",
   "main": "lib",
   "engines": {
@@ -33,8 +33,8 @@
     "@formily/json-schema": "^2.0.2"
   },
   "dependencies": {
-    "@creatormatrix/core": "1.0.0-gamma.6",
-    "@creatormatrix/shared": "1.0.0-gamma.6"
+    "@creatormatrix/core": "1.0.0-y.0",
+    "@creatormatrix/shared": "1.0.0-y.0"
   },
-  "gitHead": "c4e0510dd101360a1368c7a78552df91d94d37db"
+  "gitHead": "e0c862b6a5c6366aaf788f436ae723bb94d209c5"
 }
