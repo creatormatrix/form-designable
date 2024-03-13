@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.0-gamma.5(2024-03-13)
+
+### No Change Log
+
 ## v1.0.0-gamma.4(2024-03-13)
 
 ### :beetle: Bug Fixes
@@ -401,9 +405,3 @@
 ### :beetle: Bug Fixes
 
 1. [fix: fix controlled props can not update](https://github.com/alibaba/designable/commit/dcffdeb) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.10(2021-09-27)
-
-### :beetle: Bug Fixes
-
-1. [fix(shared): fix batch add event conflict with multi engine](https://github.com/alibaba/designable/commit/a92f56b) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
