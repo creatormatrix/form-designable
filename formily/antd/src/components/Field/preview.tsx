@@ -92,7 +92,11 @@ const toDesignableFieldProps = (
   const results: any = {}
   each(SchemaStateMap, (fieldKey, schemaKey) => {
     const v = schema[schemaKey]
-    if (v?.type) {
+    if (
+      v &&
+      Object.prototype.hasOwnProperty.call(v, 'type') &&
+      Object.prototype.hasOwnProperty.call(v, 'value')
+    ) {
       if (['static'].includes(v.type)) {
         results[fieldKey] = v.value
       } else if (v.type === 'expression') {

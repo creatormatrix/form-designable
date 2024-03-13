@@ -1,6 +1,6 @@
 import { ISchema, Schema } from '@formily/json-schema'
 import { ITreeNode } from '@creatormatrix/core'
-import { clone, uid } from '@creatormatrix/shared'
+import { clone, map, uid } from '@creatormatrix/shared'
 
 export interface ITransformerOptions {
   designableFieldName?: string
@@ -29,7 +29,6 @@ const findNode = (node: ITreeNode, finder?: (node: ITreeNode) => boolean) => {
   }
   return
 }
-
 export const transformToSchema = (
   node: ITreeNode,
   options?: ITransformerOptions
@@ -45,7 +44,23 @@ export const transformToSchema = (
   if (!root) return { schema }
   const createSchema = (node: ITreeNode, schema: ISchema = {}) => {
     if (node !== root) {
-      Object.assign(schema, clone(node.props))
+      const props = map(clone(node.props), (v) => {
+        if (
+          Object.prototype.hasOwnProperty.call(v, 'type') &&
+          Object.prototype.hasOwnProperty.call(v, 'value')
+        ) {
+          if (['static'].includes(v.type)) {
+            return v.value
+          } else if (v.type === 'expression') {
+            return v.value
+          } else if (v.type === 'service') {
+            return v.value ? `#${v.value.name}` : undefined
+          }
+        }
+        return v
+      })
+
+      Object.assign(schema, props)
     }
     schema['x-designable-id'] = node.id
     if (schema.type === 'array') {
