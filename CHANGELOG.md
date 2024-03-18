@@ -4,6 +4,10 @@
 
 ### No Change Log
 
+## v1.0.0-gamma.9(2024-03-13)
+
+### No Change Log
+
 ## v1.0.0-gamma.8(2024-03-13)
 
 ### No Change Log
@@ -387,9 +391,3 @@
 ### :blush: Other Changes
 
 1. [chore(core): improve dnd](https://github.com/alibaba/designable/commit/f59b65e) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.15(2021-10-04)
-
-### :beetle: Bug Fixes
-
-1. [fix(react): fix styles](https://github.com/alibaba/designable/commit/19df7b2) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
