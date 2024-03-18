@@ -31,6 +31,7 @@ export const initDeclaration = async () => {
         `file:///node_modules/${name}/index.d.ts`
       )
     })
+    console.log('initDeclaration', deps)
     monaco.languages.typescript.typescriptDefaults.addExtraLib(
       `
     import { Form, Field } from '@formily/core'

@@ -1,7 +1,7 @@
 import { GlobalRegistry } from '@creatormatrix/core'
 import { TextWidget, usePrefix } from '@creatormatrix/react'
 import { MonacoInput } from '@creatormatrix/react-settings-form'
-import { requestIdle } from '@creatormatrix/shared'
+import { contextExpressions, requestIdle } from '@creatormatrix/shared'
 import {
   ArrayTable,
   Form,
@@ -415,6 +415,22 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                     <SchemaField.Markup
                       name="fulfill.state"
                       x-component="FieldPropertySetter"
+                      x-reactions={(field) => {
+                        const deps = field.query('dependencies').value()
+                        if (Array.isArray(deps)) {
+                          field.componentProps.extraLib = `
+                          declare var $deps : {
+                            ${deps.map(({ name, type }) => {
+                              if (!name) return ''
+                              return `${name}?:${type || 'any'},`
+                            })}
+                          }
+                          
+                          ${contextExpressions()}
+
+                          `
+                        }
+                      }}
                     />
                   </SchemaField.Void>
                   {/* <SchemaField.Void
@@ -452,6 +468,10 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                             })}
                           }
                           `
+                          console.log(
+                            'field.componentProps.extraLib',
+                            field.componentProps.extraLib
+                          )
                         }
                       }}
                     />

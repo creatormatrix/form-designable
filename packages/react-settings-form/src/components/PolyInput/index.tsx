@@ -3,6 +3,7 @@ import { Button } from 'antd'
 import { usePrefix, IconWidget } from '@creatormatrix/react'
 import cls from 'classnames'
 import './styles.less'
+import { DefaultOptionType } from 'antd/lib/select'
 
 export interface IInput {
   style?: React.CSSProperties
@@ -11,6 +12,7 @@ export interface IInput {
   onChange: (value: any) => void
   exclude?: string[]
   include?: string[]
+  outSource?: DefaultOptionType[]
 }
 
 export interface IPolyType {

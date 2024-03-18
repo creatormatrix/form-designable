@@ -3,6 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import MonacoPlugin from 'monaco-editor-webpack-plugin'
 //import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+// import CopyPlugin from 'copy-webpack-plugin'
 import webpack from 'webpack'
 import path from 'path'
 
@@ -46,6 +47,8 @@ export default {
     new MonacoPlugin({
       languages: ['json'],
     }),
+    // new CopyPlugin({from 'assets'})
+
     // new BundleAnalyzerPlugin()
   ],
   devServer: {

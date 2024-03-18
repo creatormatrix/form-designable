@@ -76,7 +76,7 @@ import {
 import { createForm } from '@formily/core'
 import { ConfigProvider, Button } from 'antd'
 // setNpmCDNRegistry('//unpkg.com')
-setNpmCDNRegistry('//cdn.jsdelivr.net/npm')
+setNpmCDNRegistry('/public', false)
 
 GlobalRegistry.registerDesignerLocales({
   'zh-CN': {
