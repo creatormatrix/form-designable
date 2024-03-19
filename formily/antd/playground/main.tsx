@@ -75,6 +75,7 @@ import {
 
 import { createForm } from '@formily/core'
 import { ConfigProvider, Button } from 'antd'
+import { ServiceSetter } from './widgets/ServiceSetter'
 // setNpmCDNRegistry('//unpkg.com')
 setNpmCDNRegistry('/public', false)
 
@@ -140,6 +141,7 @@ const App = () => {
             position: 'fixed',
           }}
         >
+          <ServiceSetter />
           <ReactionsSetter
             onChange={(v) => console.log(v)}
             independence={true}

@@ -40,7 +40,7 @@ export const EnumSetter: React.FC<IValueInput> = createPolyInput([
     component: (props: any) => {
       return (
         <ServiceSetter {...props}>
-          <Button block>服务编排</Button>
+          <Button block>服务设计</Button>
         </ServiceSetter>
       )
     },

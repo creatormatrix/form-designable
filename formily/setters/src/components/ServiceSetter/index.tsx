@@ -1,9 +1,5 @@
-import { Form, FormItem } from '@formily/antd'
-import { createForm } from '@formily/core'
-import { createSchemaField } from '@formily/react'
-import { clone } from '@formily/shared'
-import { Button, Input, Modal } from 'antd'
-import React, { Fragment, useMemo, useState } from 'react'
+import { Button } from 'antd'
+import React, { Fragment } from 'react'
 
 export interface IServiceSetterProps {
   className?: string
@@ -12,34 +8,30 @@ export interface IServiceSetterProps {
   value?: any
   children?: React.ReactNode
 }
-const SchemaField = createSchemaField({
-  components: {
-    Input,
-    FormItem,
-  },
-})
 
-const serviceExample = `
-{
-  "name": "getOperator",
-  "title": "获取操作员列表",
-  "returns": {
-    "name": "backUser",
-    "dataType": "enum",
-    "title": "操作员"
-  }
-}
-`
 export const ServiceSetter: React.FC<IServiceSetterProps> = (props) => {
   const { value, onChange } = props
-  const [modalVisible, setModalVisible] = useState(false)
-  const form = useMemo(() => {
-    return createForm({
-      values: { textarea: clone(value) },
+  const listenerMessage = (event: MessageEvent) => {
+    const data = event.data || {}
+    if (data?.name === 'ServiceSetter' && data.type === 'component') {
+      if (!data?.open && data.value !== undefined) {
+        onChange(data.value)
+      }
+      // 只要关闭就删除监听
+      if (!data?.open) {
+        window.removeEventListener('message', listenerMessage)
+      }
+    }
+  }
+  const openModal = () => {
+    window.postMessage({
+      name: 'ServiceSetter',
+      open: true,
+      value,
+      type: 'proxy',
     })
-  }, [modalVisible, value])
-  const openModal = () => setModalVisible(true)
-  const closeModal = () => setModalVisible(false)
+    window.addEventListener('message', listenerMessage)
+  }
   return (
     <Fragment>
       {props.children &&
@@ -51,51 +43,6 @@ export const ServiceSetter: React.FC<IServiceSetterProps> = (props) => {
           服务编排
         </Button>
       )}
-      <Modal
-        title={'服务编排'}
-        width="600px"
-        bodyStyle={{ padding: 10 }}
-        visible={modalVisible}
-        onCancel={closeModal}
-        onOk={() => {
-          onChange?.(
-            form.submit((values) => {
-              let v = undefined
-              if (values.textarea) {
-                try {
-                  v = JSON.parse(values.textarea)
-                } catch (e) {}
-              }
-              props.onChange?.(v)
-            })
-          )
-          closeModal()
-        }}
-      >
-        <Form form={form}>
-          <SchemaField>
-            <SchemaField.String
-              name="textarea"
-              title="协议"
-              x-decorator="FormItem"
-              required
-              x-component="Input.TextArea"
-              description={
-                <pre>
-                  例子:
-                  {serviceExample}
-                </pre>
-              }
-              x-component-props={{
-                style: {
-                  width: '100%',
-                },
-                rows: 6,
-              }}
-            />
-          </SchemaField>
-        </Form>
-      </Modal>
     </Fragment>
   )
 }

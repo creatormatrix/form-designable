@@ -90,7 +90,7 @@ export const createFieldSchema = (
             type: 'string',
             'x-decorator': 'FormItem',
             'x-component': 'Input',
-            'x-editable': false,
+            // 'x-editable': false,
           },
           title: {
             type: 'string',

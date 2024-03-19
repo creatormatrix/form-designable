@@ -21,6 +21,7 @@ import { PathSelector } from './PathSelector'
 import './declarations'
 import './styles.less'
 import { IReaction } from './types'
+import { FulfillRunHelper } from './helpers'
 
 export interface IReactionsSetterProps {
   value?: IReaction
@@ -351,6 +352,9 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                               const property = field
                                 .query('.property')
                                 .get('inputValues')
+                              if (property === undefined) {
+                                return
+                              }
                               property[0] = property[0] || 'value'
                               field.query('.source').take((source) => {
                                 if (isVoidField(source)) return
@@ -433,7 +437,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                       }}
                     />
                   </SchemaField.Void>
-                  {/* <SchemaField.Void
+                  <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
                       key: 'run',
@@ -475,7 +479,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                         }
                       }}
                     />
-                  </SchemaField.Void> */}
+                  </SchemaField.Void>
                 </SchemaField.Void>
               </SchemaField>
             </Form>
