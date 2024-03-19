@@ -4,6 +4,12 @@
 
 ### No Change Log
 
+## v1.0.0-gamma.10(2024-03-18)
+
+### :beetle: Bug Fixes
+
+1. [fix: monaco local path](https://github.com/alibaba/designable/commit/0a2e0d4) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.0.0-gamma.9(2024-03-13)
 
 ### No Change Log
@@ -385,9 +391,3 @@
 1. [chore(shared): improve element layout calculator](https://github.com/alibaba/designable/commit/f29ec8a) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
 
 1. [chore(core): improve remove](https://github.com/alibaba/designable/commit/8eeed0a) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.16(2021-10-06)
-
-### :blush: Other Changes
-
-1. [chore(core): improve dnd](https://github.com/alibaba/designable/commit/f59b65e) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
