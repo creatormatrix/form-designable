@@ -2,9 +2,11 @@ import './main.less'
 
 import {
   GlobalRegistry,
+  IResourceLike,
   KeyCode,
   Shortcut,
   createDesigner,
+  createResource,
 } from '@creatormatrix/core'
 import {
   DataSourceSetter,
@@ -76,6 +78,7 @@ import {
 import { createForm } from '@formily/core'
 import { ConfigProvider, Button } from 'antd'
 import { ServiceSetter } from './widgets/ServiceSetter'
+import { FieldResourceWidget } from './widgets/FieldResourceWidget'
 // setNpmCDNRegistry('//unpkg.com')
 setNpmCDNRegistry('/public', false)
 
@@ -186,6 +189,33 @@ const App = () => {
         <StudioPanel logo={<LogoWidget />} actions={<ActionsWidget />}>
           <CompositePanel>
             <CompositePanel.Item title="panels.Component" icon="Component">
+              <FieldResourceWidget
+                title="Fields"
+                sources={
+                  Array(6)
+                    .fill(null)
+                    .map((i, idx) => {
+                      const Field: any = {}
+                      Field.Resource = createResource({
+                        icon: 'InputSource',
+                        title: `Text ${idx}`,
+                        elements: [
+                          {
+                            componentName: 'Field',
+                            props: {
+                              name: `text${idx}`,
+                              title: `Text ${idx}`,
+                              'x-component': 'Input',
+                              'x-decorator': 'FormItem',
+                            },
+                          },
+                        ],
+                      })
+
+                      return Field
+                    }) as IResourceLike[]
+                }
+              />
               <ResourceWidget
                 title="sources.Inputs"
                 sources={[
@@ -293,6 +323,16 @@ const App = () => {
             <SettingsForm
               uploadAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
               scope={{ abc: 'hello world' }}
+              buildSchema={(schema) => {
+                if (schema?.properties?.['field-group']?.properties?.name) {
+                  const settingSchema = { ...schema }
+                  settingSchema?.properties?.['field-group']?.properties?.name[
+                    'x-pattern'
+                  ] = 'readPretty'
+                  return settingSchema
+                }
+                return schema
+              }}
             />
           </SettingsPanel>
         </StudioPanel>

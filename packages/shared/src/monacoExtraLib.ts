@@ -2,15 +2,17 @@ export const dataSourceToExpressions = (dataSource: any) => {
   if (Array.isArray(dataSource) && dataSource.length > 0) {
     return `
       declare var $values : {
-        ${dataSource.map(({ label, value }) => {
-          if (!label) return ''
-          return `
+        ${dataSource
+          .map(({ label, value }) => {
+            if (!label) return ''
+            return `
           /**
           * ${label}
           */
           ${value}?: 'any';
           `
-        })}
+          })
+          .join('')}
       }
     `
   }

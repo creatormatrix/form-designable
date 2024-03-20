@@ -222,7 +222,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                   >
                     <SchemaField.Array
                       name="dependencies"
-                      default={[{}]}
+                      default={[]}
                       x-component="ArrayTable"
                     >
                       <SchemaField.Object>

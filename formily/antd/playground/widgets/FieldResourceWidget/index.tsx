@@ -1,15 +1,21 @@
-import React, { useState } from 'react'
 import {
+  IResource,
+  IResourceLike,
+  TreeNode,
   isResourceHost,
   isResourceList,
-  IResourceLike,
-  IResource,
 } from '@creatormatrix/core'
 import { isFn } from '@creatormatrix/shared'
 import { observer } from '@formily/reactive-react'
+import React, { useEffect, useState } from 'react'
+
+import {
+  IconWidget,
+  TextWidget,
+  usePrefix,
+  useWorkbench,
+} from '@creatormatrix/react'
 import cls from 'classnames'
-import './styles.less'
-import { IconWidget, TextWidget, usePrefix } from '@creatormatrix/react'
 
 export type SourceMapper = (resource: IResource) => React.ReactChild
 
@@ -21,18 +27,67 @@ export interface IResourceWidgetProps {
   children?: SourceMapper | React.ReactElement
 }
 
-export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
+const transformFieldNames = (tree: TreeNode) => {
+  const buf: string[] = []
+  tree.children.forEach((i) => {
+    if (i.componentName === 'Field' && i?.props?.name) {
+      buf.push(i?.props?.name)
+    }
+    if (Array.isArray(i.children) && i.children.length > 0) {
+      buf.push(...transformFieldNames(i))
+    }
+  })
+  return buf
+}
+
+export const FieldResourceWidget: React.FC<IResourceWidgetProps> = observer(
   (props) => {
     const prefix = usePrefix('resource')
     const [expand, setExpand] = useState(props.defaultExpand)
+    const [usedFields, setUsedFields] = useState<string[]>([])
+    const [sources, setSources] = useState<IResource[]>([])
+    const [resourceSources] = useState(
+      (props?.sources || []).reduce<IResource[]>((buf, source) => {
+        if (isResourceList(source)) {
+          return buf.concat(source)
+        } else if (isResourceHost(source)) {
+          return buf.concat(source.Resource as IResource[])
+        }
+        return buf
+      }, [])
+    )
+    const workbench = useWorkbench()
+    const updateFields = () => {
+      setUsedFields(transformFieldNames(workbench.engine.getCurrentTree()))
+    }
+    useEffect(() => {
+      updateFields()
+      workbench.engine.subscribeWith(
+        ['append:node', 'insert:after', 'insert:before', 'remove:node'],
+        () => {
+          Promise.resolve().then(() => {
+            updateFields()
+          })
+        }
+      )
+    }, [workbench])
+
+    useEffect(() => {
+      const buf = resourceSources.filter(
+        (i) => !usedFields.includes((i as any)?.elements?.[0]?.props?.name)
+      )
+      setSources(buf)
+    }, [usedFields])
+
     const renderNode = (source: IResource) => {
       const { node, icon, title, thumb, span } = source
+      const n = node as TreeNode
       return (
         <div
           className={prefix + '-item'}
           style={{ gridColumnStart: `span ${span || 1}` }}
-          key={node.id}
-          data-designer-source-id={node.id}
+          key={n.id}
+          data-designer-source-id={n.id}
         >
           {thumb && <img className={prefix + '-item-thumb'} src={thumb} />}
           {icon && React.isValidElement(icon) ? (
@@ -47,21 +102,14 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
           <span className={prefix + '-item-text'}>
             {
               <TextWidget>
-                {title || node.children[0]?.getMessage('title')}
+                {title || n.children[0]?.getMessage('title')}
               </TextWidget>
             }
           </span>
         </div>
       )
     }
-    const sources = props.sources.reduce<IResource[]>((buf, source) => {
-      if (isResourceList(source)) {
-        return buf.concat(source)
-      } else if (isResourceHost(source)) {
-        return buf.concat(source.Resource)
-      }
-      return buf
-    }, [])
+
     const remainItems =
       sources.reduce((length, source) => {
         return length + (source.span ?? 1)
@@ -95,7 +143,22 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
                 className={prefix + '-item-remain'}
                 style={{ gridColumnStart: `span ${3 - remainItems}` }}
               ></div>
-            ) : null}
+            ) : (
+              <div
+                style={{
+                  background: '#fff',
+                  gridColumnStart: 'span 3',
+                  color: '#aaa',
+                  fontSize: '12px',
+                  justifyContent: 'center',
+                  height: '88px',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                {resourceSources.length > 0 ? '字段都已使用' : '无可用字段'}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -103,6 +166,6 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
   }
 )
 
-ResourceWidget.defaultProps = {
+FieldResourceWidget.defaultProps = {
   defaultExpand: true,
 }
