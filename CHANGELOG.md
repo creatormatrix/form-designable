@@ -4,6 +4,12 @@
 
 ### No Change Log
 
+## v1.0.0-gamma.11(2024-03-19)
+
+### :beetle: Bug Fixes
+
+1. [fix: service setter 分离](https://github.com/alibaba/designable/commit/a8b3dfb) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.0.0-gamma.10(2024-03-18)
 
 ### :beetle: Bug Fixes
@@ -379,15 +385,3 @@
 ### :beetle: Bug Fixes
 
 1. [fix(react): fix CompositePanel](https://github.com/alibaba/designable/commit/03eb84d) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.17(2021-10-06)
-
-### :tada: Enhancements
-
-1. [feat(react): add source icons](https://github.com/alibaba/designable/commit/de56564) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-### :blush: Other Changes
-
-1. [chore(shared): improve element layout calculator](https://github.com/alibaba/designable/commit/f29ec8a) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-1. [chore(core): improve remove](https://github.com/alibaba/designable/commit/8eeed0a) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )

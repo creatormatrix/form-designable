@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/shared",
-  "version": "1.0.0-gamma.11",
+  "version": "1.0.0-gamma.12",
   "license": "MIT",
   "main": "lib",
   "types": "lib/index.d.ts",

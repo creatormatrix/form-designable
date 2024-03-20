@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/basic-example",
-  "version": "1.0.0-gamma.11",
+  "version": "1.0.0-gamma.12",
   "license": "MIT",
   "private": true,
   "engines": {
@@ -25,11 +25,11 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
-    "@creatormatrix/core": "1.0.0-gamma.11",
-    "@creatormatrix/react": "1.0.0-gamma.11",
-    "@creatormatrix/react-sandbox": "1.0.0-gamma.11",
-    "@creatormatrix/react-settings-form": "1.0.0-gamma.11",
-    "@creatormatrix/shared": "1.0.0-gamma.11",
+    "@creatormatrix/core": "1.0.0-gamma.12",
+    "@creatormatrix/react": "1.0.0-gamma.12",
+    "@creatormatrix/react-sandbox": "1.0.0-gamma.12",
+    "@creatormatrix/react-settings-form": "1.0.0-gamma.12",
+    "@creatormatrix/shared": "1.0.0-gamma.12",
     "@formily/reactive": "^2.0.2",
     "@formily/reactive-react": "^2.0.2",
     "antd": "^4.15.2",

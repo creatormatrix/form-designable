@@ -9,7 +9,9 @@ import { isFn } from '@creatormatrix/shared'
 import { observer } from '@formily/reactive-react'
 import cls from 'classnames'
 import './styles.less'
-import { IconWidget, TextWidget, usePrefix } from '@creatormatrix/react'
+import { usePrefix } from '../../hooks'
+import { IconWidget } from '../IconWidget'
+import { TextWidget } from '../TextWidget'
 
 export type SourceMapper = (resource: IResource) => React.ReactChild
 
