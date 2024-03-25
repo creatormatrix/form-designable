@@ -28,6 +28,7 @@ import {
   FormCollapse,
   ArrayTable,
   ArrayCards,
+  ArrayItems,
 } from '@formily/antd'
 import { Card, Slider, Rate } from 'antd'
 import { TreeNode } from '@creatormatrix/core'
@@ -51,6 +52,7 @@ const SchemaField = createSchemaField({
     FormCollapse,
     ArrayTable,
     ArrayCards,
+    ArrayList: ArrayItems,
     FormItem,
     DatePicker,
     Checkbox,
@@ -85,7 +87,6 @@ export const PreviewWidget: React.FC<IPreviewWidgetProps> = (props) => {
   const { form: formProps, schema } = transformToSchema(props.tree, {
     sourceToValue: true,
   })
-  console.log('schema', schema)
   return (
     <Form {...formProps} form={form}>
       <SchemaField schema={schema} />

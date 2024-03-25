@@ -40,6 +40,7 @@ import ReactDOM from 'react-dom'
 import {
   ArrayCards,
   ArrayTable,
+  ArrayList,
   Card,
   Cascader,
   Checkbox,
@@ -250,7 +251,7 @@ const App = () => {
               />
               <ResourceWidget
                 title="sources.Arrays"
-                sources={[ArrayCards, ArrayTable]}
+                sources={[ArrayCards, ArrayTable, ArrayList]}
               />
               <ResourceWidget title="sources.Displays" sources={[Text]} />
             </CompositePanel.Item>
@@ -295,6 +296,7 @@ const App = () => {
                         Card,
                         ArrayCards,
                         ArrayTable,
+                        ArrayList,
                         Space,
                         FormTab,
                         FormCollapse,

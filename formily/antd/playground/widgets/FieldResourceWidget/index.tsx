@@ -138,12 +138,13 @@ export const FieldResourceWidget: React.FC<IResourceWidgetProps> = observer(
         <div className={prefix + '-content-wrapper'}>
           <div className={prefix + '-content'}>
             {sources.map(isFn(props.children) ? props.children : renderNode)}
-            {remainItems ? (
+            {remainItems !== 0 && (
               <div
                 className={prefix + '-item-remain'}
                 style={{ gridColumnStart: `span ${3 - remainItems}` }}
-              ></div>
-            ) : (
+              />
+            )}
+            {sources.length === 0 && (
               <div
                 style={{
                   background: '#fff',

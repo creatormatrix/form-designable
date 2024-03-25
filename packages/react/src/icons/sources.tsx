@@ -1899,6 +1899,56 @@ export const ArrayCardsSource = (
   </g>
 )
 
+export const ArrayListSource = (
+  <svg fill="none" width="40" height="40" viewBox="0 0 40 40">
+    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g>
+        <rect
+          x="0.5"
+          y="0.5"
+          width="39"
+          height="39"
+          rx="2.5"
+          stroke="#999"
+          fill="none"
+          strokeWidth="1"
+        />
+      </g>
+      <g>
+        <ellipse
+          cx="20"
+          cy="20"
+          rx="7.5"
+          ry="7.5"
+          stroke="#999"
+          fill="none"
+          strokeWidth="1"
+        />
+      </g>
+      <g>
+        <rect
+          x="16"
+          y="19"
+          width="8"
+          height="2"
+          rx="0"
+          fill="var(--dn-brand-color)"
+        />
+      </g>
+      <g>
+        <rect
+          x="19"
+          y="16"
+          width="2"
+          height="8"
+          rx="0"
+          fill="var(--dn-brand-color)"
+        />
+      </g>
+    </g>
+  </svg>
+)
+
 export const ArrayTableSource = {
   light: (
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
