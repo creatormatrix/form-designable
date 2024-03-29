@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react'
-import { Card, CardProps } from 'antd'
+import React from 'react'
+import { CardProps } from 'antd'
 import { TreeNode, createResource } from '@creatormatrix/core'
 import {
   useTreeNode,
@@ -20,7 +20,6 @@ import {
   createNodeId,
 } from '../../shared'
 import { createArrayBehavior } from '../ArrayBase'
-import cls from 'classnames'
 import './styles.less'
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode('object')
