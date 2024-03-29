@@ -278,9 +278,9 @@ export const ValueSetter: React.FC<IValueInput> = createPolyInput([
     checker: (data) => {
       return data?.type === 'service'
     },
-    toInputValue: (data) => {
-      return JSON.stringify(data?.value, null, '  ')
-    },
+    // toInputValue: (data) => {
+    //   return JSON.stringify(data?.value, null, '  ')
+    // },
     toChangeValue: (value) => {
       if (isEmpty(value)) {
         return undefined

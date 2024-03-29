@@ -26,6 +26,7 @@
     "access": "public"
   },
   "dependencies": {
+    "lodash.set": "^4.3.2",
     "requestidlecallback": "^0.3.0"
   },
   "gitHead": "c3e94921fba2354eeff5cd5e8d7be1fb7706aef2"

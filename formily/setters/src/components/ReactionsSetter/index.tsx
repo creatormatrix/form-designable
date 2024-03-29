@@ -1,7 +1,11 @@
 import { GlobalRegistry } from '@creatormatrix/core'
 import { TextWidget, usePrefix } from '@creatormatrix/react'
 import { MonacoInput } from '@creatormatrix/react-settings-form'
-import { contextExpressions, requestIdle } from '@creatormatrix/shared'
+import {
+  contextExpressions,
+  dataSourceToDeclare,
+  requestIdle,
+} from '@creatormatrix/shared'
 import {
   ArrayTable,
   Form,
@@ -423,15 +427,15 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                         const deps = field.query('dependencies').value()
                         if (Array.isArray(deps)) {
                           field.componentProps.extraLib = `
-                          declare var $deps : {
-                            ${deps.map(({ name, type }) => {
-                              if (!name) return ''
-                              return `${name}?:${type || 'any'},`
-                            })}
-                          }
-                          
+                          declare var $deps :  ${dataSourceToDeclare(
+                            deps
+                              .filter((i) => !!i.name)
+                              .map((i) => ({
+                                label: i.name.toUpperCase(),
+                                value: i.name,
+                              }))
+                          )}
                           ${contextExpressions()}
-
                           `
                         }
                       }}
@@ -465,17 +469,16 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                         const deps = field.query('dependencies').value()
                         if (Array.isArray(deps)) {
                           field.componentProps.extraLib = `
-                          declare var $deps : {
-                            ${deps.map(({ name, type }) => {
-                              if (!name) return ''
-                              return `${name}?:${type || 'any'},`
-                            })}
-                          }
+                          declare var $deps : ${dataSourceToDeclare(
+                            deps
+                              .filter((i) => !!i.name)
+                              .map((i) => ({
+                                label: i.name.toUpperCase(),
+                                value: i.name,
+                              }))
+                          )}
+                          ${contextExpressions()}
                           `
-                          console.log(
-                            'field.componentProps.extraLib',
-                            field.componentProps.extraLib
-                          )
                         }
                       }}
                     />

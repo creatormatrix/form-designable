@@ -326,13 +326,13 @@ const App = () => {
               uploadAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
               scope={{ abc: 'hello world' }}
               buildSchema={(schema) => {
-                if (schema?.properties?.['field-group']?.properties?.name) {
-                  const settingSchema = { ...schema }
-                  settingSchema?.properties?.['field-group']?.properties?.name[
-                    'x-pattern'
-                  ] = 'readPretty'
-                  return settingSchema
-                }
+                // if (schema?.properties?.['field-group']?.properties?.name) {
+                //   const settingSchema = { ...schema }
+                //   settingSchema?.properties?.['field-group']?.properties?.name[
+                //     'x-pattern'
+                //   ] = 'readPretty'
+                //   return settingSchema
+                // }
                 return schema
               }}
             />
