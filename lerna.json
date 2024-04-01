@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-gamma.12",
+  "version": "1.0.0-gamma.13",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "npmClientArgs": ["--ignore-engines"],

@@ -4,6 +4,16 @@
 
 ### No Change Log
 
+## v1.0.0-gamma.12(2024-03-20)
+
+### :tada: Enhancements
+
+1. [feat: add FieldResourceWidget & fix expression scope](https://github.com/alibaba/designable/commit/39e7b6e) :point_right: ( [elppac](https://github.com/elppac) )
+
+### :beetle: Bug Fixes
+
+1. [feat: add FieldResourceWidget & fix expression scope](https://github.com/alibaba/designable/commit/39e7b6e) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.0.0-gamma.11(2024-03-19)
 
 ### :beetle: Bug Fixes
@@ -379,9 +389,3 @@
 ### :beetle: Bug Fixes
 
 1. [fix(react): fix CompositePanel](https://github.com/alibaba/designable/commit/3708613) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.18(2021-10-08)
-
-### :beetle: Bug Fixes
-
-1. [fix(react): fix CompositePanel](https://github.com/alibaba/designable/commit/03eb84d) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
