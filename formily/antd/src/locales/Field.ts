@@ -27,6 +27,7 @@ export const Field = {
       'x-component-props': {
         size: { title: '尺寸', dataSource: ['大', '小', '默认', '继承'] },
         allowClear: '允许清除内容',
+        multiple: '支持多选节点',
         autoFocus: '自动获取焦点',
         showSearch: '支持搜索',
         notFoundContent: '空状态内容',
@@ -71,6 +72,10 @@ export const Field = {
         inset: '内联布局',
         shallow: '是否浅传递',
         bordered: '是否有边框',
+        enableStringify: {
+          title: '数据字符串化',
+          tooltip: '把数据字符串化, 比如 [1,2]=>"1,2"',
+        },
         size: { title: '尺寸', dataSource: ['大', '小', '默认', '继承'] },
         layout: { title: '布局', dataSource: ['垂直', '水平', '内联', '继承'] },
         feedbackLayout: {
@@ -136,10 +141,15 @@ export const Field = {
         },
         allowClear: 'Allow Clear',
         autoFocus: 'Auto Focus',
+        multiple: 'Support multiple or not',
         showSearch: 'Show Search',
         notFoundContent: 'Not Found Content',
         bordered: 'Bordered',
         placeholder: 'Placeholder',
+        enableStringify: {
+          title: 'Stringify Data',
+          tooltip: 'stringify data, eg. [1,2]=>"1,2"',
+        },
         style: {
           width: 'Width',
           height: 'Height',

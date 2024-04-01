@@ -11,7 +11,22 @@ export const Cascader: ISchema = {
         defaultChecked: true,
       },
     },
+    multiple: {
+      type: 'boolean',
+      'x-decorator': 'FormItem',
+      'x-component': 'Switch',
+    },
     changeOnSelect: {
+      type: 'boolean',
+      'x-decorator': 'FormItem',
+      'x-component': 'Switch',
+    },
+    ignoreRootNode: {
+      type: 'boolean',
+      'x-decorator': 'FormItem',
+      'x-component': 'Switch',
+    },
+    enableStringify: {
       type: 'boolean',
       'x-decorator': 'FormItem',
       'x-component': 'Switch',

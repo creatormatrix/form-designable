@@ -145,5 +145,10 @@ export const Select: ISchema = {
         defaultValue: 'middle',
       },
     },
+    enableStringify: {
+      type: 'boolean',
+      'x-decorator': 'FormItem',
+      'x-component': 'Switch',
+    },
   },
 }

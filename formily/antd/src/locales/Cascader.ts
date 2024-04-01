@@ -3,9 +3,13 @@ export const Cascader = {
     title: '联级选择',
     settings: {
       'x-component-props': {
+        ignoreRootNode: {
+          title: '忽略根节点',
+          tooltip: '不显示根节点数据',
+        },
         changeOnSelect: {
           title: '选择时触发',
-          tooltip: '点选每级菜单选项值都会发生变化',
+          tooltip: '点选每级菜单选项值都会发生变化, 默认为 true',
         },
         displayRender: {
           title: '渲染函数',
@@ -23,9 +27,14 @@ export const Cascader = {
     title: 'Cascader',
     settings: {
       'x-component-props': {
+        ignoreRootNode: {
+          title: 'Ignore root',
+          tooltip: 'Ignore root node data',
+        },
         changeOnSelect: {
           title: 'Change On Select',
-          tooltip: 'Click on each level of menu option value will change',
+          tooltip:
+            'Click on each level of menu option value will change, Defaults is true',
         },
         displayRender: {
           title: 'Display Render',
