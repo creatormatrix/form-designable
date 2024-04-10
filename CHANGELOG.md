@@ -4,6 +4,10 @@
 
 ### No Change Log
 
+## v1.0.0-gamma.14(2024-04-01)
+
+### No Change Log
+
 ## v1.0.0-gamma.13(2024-04-01)
 
 ### :beetle: Bug Fixes
@@ -385,9 +389,3 @@
 ### :beetle: Bug Fixes
 
 1. [fix(react): fix CompositePanel](https://github.com/alibaba/designable/commit/bf4ba3f) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.20(2021-10-08)
-
-### :beetle: Bug Fixes
-
-1. [fix(react): fix CompositePanel](https://github.com/alibaba/designable/commit/84e8dfb) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
