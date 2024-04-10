@@ -106,9 +106,6 @@ export const DataSettingPanel: React.FC<IDataSettingPanelProps> = observer(
                     x-decorator="FormItem"
                     name="value"
                     x-component="ValueInput"
-                    x-component-props={{
-                      defaultType: 'NUMBER',
-                    }}
                   />
                   <SchemaField.Void
                     x-component="ArrayItems.Remove"
