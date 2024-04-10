@@ -33,6 +33,10 @@ export const Field = {
         notFoundContent: '空状态内容',
         bordered: '是否有边框',
         placeholder: '占位提示',
+        enableStringify: {
+          title: '数据字符串化',
+          tooltip: '把数据字符串化, 比如 [1,2]=>"1,2"',
+        },
         style: {
           width: '宽度',
           height: '高度',
@@ -72,10 +76,6 @@ export const Field = {
         inset: '内联布局',
         shallow: '是否浅传递',
         bordered: '是否有边框',
-        enableStringify: {
-          title: '数据字符串化',
-          tooltip: '把数据字符串化, 比如 [1,2]=>"1,2"',
-        },
         size: { title: '尺寸', dataSource: ['大', '小', '默认', '继承'] },
         layout: { title: '布局', dataSource: ['垂直', '水平', '内联', '继承'] },
         feedbackLayout: {

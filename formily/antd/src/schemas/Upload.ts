@@ -66,11 +66,11 @@ export const Upload: ISchema & { Dragger?: ISchema } = {
         optionType: 'button',
       },
     },
-    directory: {
-      type: 'boolean',
-      'x-decorator': 'FormItem',
-      'x-component': 'Switch',
-    },
+    // directory: {
+    //   type: 'boolean',
+    //   'x-decorator': 'FormItem',
+    //   'x-component': 'Switch',
+    // },
     multiple: {
       type: 'boolean',
       'x-decorator': 'FormItem',
@@ -93,6 +93,11 @@ export const Upload: ISchema & { Dragger?: ISchema } = {
       },
     },
     withCredentials: {
+      type: 'boolean',
+      'x-decorator': 'FormItem',
+      'x-component': 'Switch',
+    },
+    enableStringify: {
       type: 'boolean',
       'x-decorator': 'FormItem',
       'x-component': 'Switch',

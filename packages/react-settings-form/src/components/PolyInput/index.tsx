@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { Button } from 'antd'
+import { Button, Dropdown } from 'antd'
 import { usePrefix, IconWidget } from '@creatormatrix/react'
 import cls from 'classnames'
 import './styles.less'
@@ -108,30 +108,56 @@ export function createPolyInput(
             })}
           </div>
         )}
-        <Button
-          className={prefix + '-controller'}
-          style={{
-            width: !component ? '100%' : 'auto',
+        <Dropdown
+          destroyPopupOnHide
+          overlayClassName={prefix + '-dropdown'}
+          menu={{
+            items: types.map((i) => {
+              return {
+                label: i.title,
+                key: i.type,
+                icon: i?.icon ? (
+                  <IconWidget infer={i.icon} />
+                ) : (
+                  i?.title || i?.type
+                ),
+                onClick: () => {
+                  setCurrent(i.type)
+                  onChange?.(
+                    transformOnChangeValue(typesValue.current[i?.type], i)
+                  )
+                },
+              }
+            }),
           }}
-          block
-          onClick={() => {
-            const nextType = getNextType()
-            if (nextType === type) return
-            setCurrent(nextType?.type)
-            onChange?.(
-              transformOnChangeValue(
-                typesValue.current[nextType?.type],
-                nextType
-              )
-            )
-          }}
+          placement="bottomRight"
         >
-          {type?.icon ? (
-            <IconWidget infer={type.icon} />
-          ) : (
-            type?.title || type?.type
-          )}
-        </Button>
+          <Button
+            className={prefix + '-controller'}
+            style={{
+              width: !component ? '100%' : 'auto',
+              color: value ? 'var(--dn-brand-color)' : 'inherit',
+            }}
+            block
+            // onClick={() => {
+            //   const nextType = getNextType()
+            //   if (nextType === type) return
+            //   setCurrent(nextType?.type)
+            //   onChange?.(
+            //     transformOnChangeValue(
+            //       typesValue.current[nextType?.type],
+            //       nextType
+            //     )
+            //   )
+            // }}
+          >
+            {type?.icon ? (
+              <IconWidget infer={type.icon} />
+            ) : (
+              type?.title || type?.type
+            )}
+          </Button>
+        </Dropdown>
       </div>
     )
   }

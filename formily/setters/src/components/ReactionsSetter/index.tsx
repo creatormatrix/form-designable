@@ -180,7 +180,11 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
           React.cloneElement(child, { onClick: openModal })
         )}
       {!props.children && (
-        <Button block onClick={openModal}>
+        <Button
+          block
+          onClick={openModal}
+          style={{ color: props.value ? 'var(--dn-brand-color)' : 'inherit' }}
+        >
           <TextWidget token="SettingComponents.ReactionsSetter.configureReactions" />
         </Button>
       )}

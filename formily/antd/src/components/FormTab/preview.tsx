@@ -16,6 +16,7 @@ import { createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
 import { matchComponent } from '../../shared'
+import './styles.less'
 
 const parseTabs = (parent: TreeNode) => {
   const tabs: TreeNode[] = []
