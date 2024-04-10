@@ -98,7 +98,7 @@ export const TreePanel: React.FC<ITreePanelProps> = observer((props) => {
                     `SettingComponents.DataSourceSetter.item`
                   )} ${dataSource.length + 1}`,
                 },
-                { label: 'value', value: uuid },
+                { label: 'value', value: dataSource.length + 1 },
               ]
               props.treeDataSource.dataSource = dataSource.concat({
                 key: uuid,

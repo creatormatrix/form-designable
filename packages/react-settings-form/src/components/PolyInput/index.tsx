@@ -13,6 +13,7 @@ export interface IInput {
   exclude?: string[]
   include?: string[]
   outSource?: DefaultOptionType[]
+  defaultType?: ''
 }
 
 export interface IPolyType {
@@ -70,7 +71,7 @@ export function createPolyInput(
   }) => {
     const prefix = config?.classPrefix || usePrefix('poly-input')
     const types = createTypes(polyTypes, exclude, include)
-    const [current, setCurrent] = useState(types[0]?.type)
+    const [current, setCurrent] = useState(props?.defaultType || types[0]?.type)
     const type = types?.find(({ type }) => type === current)
     const component = type?.component
     const typesValue = useRef({})
