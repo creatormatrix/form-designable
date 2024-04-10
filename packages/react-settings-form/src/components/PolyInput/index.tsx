@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useEffect, useState, useRef } from 'react'
 import { Button, Dropdown } from 'antd'
 import { usePrefix, IconWidget } from '@creatormatrix/react'
@@ -83,12 +84,12 @@ export function createPolyInput(
       })
     }, [value])
 
-    const getNextType = () => {
-      const currentIndex = types?.findIndex(({ type }) => type === current)
-      const nextIndex =
-        currentIndex + 1 > types?.length - 1 ? 0 : currentIndex + 1
-      return types[nextIndex]
-    }
+    // const getNextType = () => {
+    //   const currentIndex = types?.findIndex(({ type }) => type === current)
+    //   const nextIndex =
+    //     currentIndex + 1 > types?.length - 1 ? 0 : currentIndex + 1
+    //   return types[nextIndex]
+    // }
 
     const transformOnChangeValue = (value: any, type: IPolyType) => {
       return type?.toChangeValue ? type?.toChangeValue(value) : value
@@ -112,6 +113,7 @@ export function createPolyInput(
         <Dropdown
           destroyPopupOnHide
           overlayClassName={prefix + '-dropdown'}
+          // @ts-expect-error
           menu={{
             items: types.map((i) => {
               return {
