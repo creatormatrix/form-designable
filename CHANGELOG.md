@@ -4,6 +4,12 @@
 
 ### No Change Log
 
+## v1.0.0-gamma.15(2024-04-10)
+
+### :beetle: Bug Fixes
+
+1. [fix: bug](https://github.com/alibaba/designable/commit/f91550f) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.0.0-gamma.14(2024-04-01)
 
 ### No Change Log
@@ -383,9 +389,3 @@
 ### :beetle: Bug Fixes
 
 1. [fix(react): fix CompositePanel](https://github.com/alibaba/designable/commit/a364532) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.21(2021-10-14)
-
-### :beetle: Bug Fixes
-
-1. [fix(react): fix CompositePanel](https://github.com/alibaba/designable/commit/bf4ba3f) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )

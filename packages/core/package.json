@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/core",
-  "version": "1.0.0-gamma.15",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "lib",
   "types": "lib/index.d.ts",
@@ -33,7 +33,7 @@
     "@formily/reactive": "^2.0.2"
   },
   "dependencies": {
-    "@creatormatrix/shared": "1.0.0-gamma.15",
+    "@creatormatrix/shared": "1.0.0",
     "@juggle/resize-observer": "^3.3.1"
   },
   "publishConfig": {
