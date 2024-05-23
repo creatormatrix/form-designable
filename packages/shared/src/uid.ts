@@ -2,9 +2,9 @@ let IDX = 36,
   HEX = ''
 while (IDX--) HEX += IDX.toString(36)
 
-export function uid(len?: number) {
+export function uid(len?: number, prefix?: string) {
   let str = '',
     num = len || 11
   while (num--) str += HEX[(Math.random() * 36) | 0]
-  return str
+  return `${prefix ?? 'i'}${str}`
 }

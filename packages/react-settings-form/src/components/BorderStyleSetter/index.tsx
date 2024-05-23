@@ -75,9 +75,9 @@ export const BorderStyleSetter: React.FC<IBorderStyleSetterProps> = observer(
       field.display = currentPosition.value === position ? 'visible' : 'hidden'
       if (position !== 'center') {
         const borderStyle = field.query('.borderStyle').value()
-        const borderWidth = field.query('.borderWidth').value()
-        const borderColor = field.query('.borderColor').value()
-        if (borderStyle || borderWidth || borderColor) {
+        // const borderWidth = field.query('.borderWidth').value()
+        // const borderColor = field.query('.borderColor').value()
+        if (borderStyle === 'none') {
           field.value = undefined
         }
       }
