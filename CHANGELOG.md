@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.0.0(2024-05-23)
+
+### :tada: Enhancements
+
+1. [feat: v 1](https://github.com/alibaba/designable/commit/c4f013d) :point_right: ( [elppac](https://github.com/elppac) )
+
+1. [feat: add FieldResourceWidget & fix expression scope](https://github.com/alibaba/designable/commit/39e7b6e) :point_right: ( [elppac](https://github.com/elppac) )
+
+### :beetle: Bug Fixes
+
+1. [fix: 平衡](https://github.com/alibaba/designable/commit/033110e) :point_right: ( [elppac](https://github.com/elppac) )
+
+1. [fix: add array list](https://github.com/alibaba/designable/commit/9dc77dd) :point_right: ( [elppac](https://github.com/elppac) )
+
+1. [feat: add FieldResourceWidget & fix expression scope](https://github.com/alibaba/designable/commit/39e7b6e) :point_right: ( [elppac](https://github.com/elppac) )
+
+1. [fix: service setter 分离](https://github.com/alibaba/designable/commit/a8b3dfb) :point_right: ( [elppac](https://github.com/elppac) )
+
+1. [fix: monaco local path](https://github.com/alibaba/designable/commit/0a2e0d4) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.0.0-y.0(2024-03-13)
 
 ### No Change Log
@@ -383,9 +403,3 @@
 ### :beetle: Bug Fixes
 
 1. [fix(react): fix CompositePanel onChange](https://github.com/alibaba/designable/commit/d928b69) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.22(2021-10-14)
-
-### :beetle: Bug Fixes
-
-1. [fix(react): fix CompositePanel](https://github.com/alibaba/designable/commit/a364532) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
