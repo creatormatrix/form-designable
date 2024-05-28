@@ -128,9 +128,15 @@ const InputBehavior = createBehavior({
             },
             'style.margin': {
               'x-component': 'BoxStyleSetter',
+              'x-component-props': {
+                exclude: ['unset'],
+              },
             },
             'style.padding': {
               'x-component': 'BoxStyleSetter',
+              'x-component-props': {
+                exclude: ['unset'],
+              },
             },
             'style.borderRadius': {
               'x-component': 'BorderRadiusStyleSetter',

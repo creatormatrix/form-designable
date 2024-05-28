@@ -4,7 +4,7 @@ import { createPolyInput } from '../PolyInput'
 const takeNumber = (value: any) => {
   const num = String(value)
     .trim()
-    .replace(/[^\d\.]+/, '')
+    .replace(/[^\d\-\.]+/, '')
   if (num === '') return
   return Number(num)
 }
@@ -39,6 +39,7 @@ const createSpecialSizeOption = (type: string) => ({
 const NormalSizeOptions = [
   createSpecialSizeOption('inherit'),
   createSpecialSizeOption('auto'),
+  createSpecialSizeOption('unset'),
   createUnitType('px'),
   createUnitType('%'),
   createUnitType('vh'),

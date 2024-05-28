@@ -13,14 +13,15 @@ export interface IMarginStyleSetterProps {
   labels?: React.ReactNode[]
   value?: string
   onChange?: (value: string) => void
+  exclude?: string[]
 }
 
 const PositionMap = {
-  top: 1,
-  right: 2,
-  bottom: 3,
-  left: 4,
-  all: 1,
+  top: 0,
+  right: 1,
+  bottom: 2,
+  left: 3,
+  all: 0,
 }
 
 const BoxRex =
@@ -34,12 +35,13 @@ export const BoxStyleSetter: React.FC<IMarginStyleSetterProps> = observer(
       position: Position,
       props: IMarginStyleSetterProps
     ) => {
-      const matched = String(props.value).match(BoxRex) || []
+      const matched =
+        props.value === undefined ? [] : String(props.value).split(' ') || []
       const value = matched[PositionMap[position]]
-      const v1 = matched[1]
-      const v2 = matched[2]
-      const v3 = matched[3]
-      const v4 = matched[4]
+      const v1 = matched[0]
+      const v2 = matched[1]
+      const v3 = matched[2]
+      const v4 = matched[3]
       const allEqualls = v1 === v2 && v2 === v3 && v3 === v4
       return {
         ...props,
@@ -54,21 +56,23 @@ export const BoxStyleSetter: React.FC<IMarginStyleSetterProps> = observer(
           } else {
             matched[PositionMap[position]] = value
             props.onChange?.(
-              `${matched[1] || '0px'} ${matched[2] || '0px'} ${
-                matched[3] || '0px'
-              } ${matched[4] || '0px'}`
+              `${matched[0] || '0px'} ${matched[1] || '0px'} ${
+                matched[2] || '0px'
+              } ${matched[3] || '0px'}`
             )
           }
         },
       }
     }
 
+    const exclude = props.exclude || ['inherit', 'auto']
+
     return (
       <FoldItem className={cls(prefix, props.className)} label={field.title}>
         <FoldItem.Base>
           <SizeInput
             {...createPositionHandler('all', props)}
-            exclude={['inherit', 'auto']}
+            exclude={exclude}
           />
         </FoldItem.Base>
         <FoldItem.Extra>
@@ -76,25 +80,25 @@ export const BoxStyleSetter: React.FC<IMarginStyleSetterProps> = observer(
             <InputItems.Item icon={props.labels[0]}>
               <SizeInput
                 {...createPositionHandler('top', props)}
-                exclude={['inherit', 'auto']}
+                exclude={exclude}
               />
             </InputItems.Item>
             <InputItems.Item icon={props.labels[1]}>
               <SizeInput
                 {...createPositionHandler('right', props)}
-                exclude={['inherit', 'auto']}
+                exclude={exclude}
               />
             </InputItems.Item>
             <InputItems.Item icon={props.labels[2]}>
               <SizeInput
                 {...createPositionHandler('bottom', props)}
-                exclude={['inherit', 'auto']}
+                exclude={exclude}
               />
             </InputItems.Item>
             <InputItems.Item icon={props.labels[3]}>
               <SizeInput
                 {...createPositionHandler('left', props)}
-                exclude={['inherit', 'auto']}
+                exclude={exclude}
               />
             </InputItems.Item>
           </InputItems>

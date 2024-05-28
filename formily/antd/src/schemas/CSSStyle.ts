@@ -27,9 +27,15 @@ export const CSSStyle: ISchema = {
     },
     'style.margin': {
       'x-component': 'BoxStyleSetter',
+      'x-component-props': {
+        exclude: ['unset'],
+      },
     },
     'style.padding': {
       'x-component': 'BoxStyleSetter',
+      'x-component-props': {
+        exclude: ['unset', 'auto'],
+      },
     },
     'style.borderRadius': {
       'x-component': 'BorderRadiusStyleSetter',
