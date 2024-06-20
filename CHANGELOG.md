@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.1(2024-05-28)
+
+### :beetle: Bug Fixes
+
+1. [fix: size input add unset](https://github.com/alibaba/designable/commit/fa48cc5) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.0.0(2024-05-23)
 
 ### :tada: Enhancements
@@ -397,9 +403,3 @@
 1. [fix(react): fix CompositePanel styles](https://github.com/alibaba/designable/commit/7e2d15f) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
 
 1. [fix(react): fix conflict of registerDesignerBehaviors](https://github.com/alibaba/designable/commit/a88611a) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.23(2021-10-15)
-
-### :beetle: Bug Fixes
-
-1. [fix(react): fix CompositePanel onChange](https://github.com/alibaba/designable/commit/d928b69) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )

@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/basic-example",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "private": true,
   "engines": {
@@ -25,11 +25,11 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
-    "@creatormatrix/core": "1.0.1",
-    "@creatormatrix/react": "1.0.1",
-    "@creatormatrix/react-sandbox": "1.0.1",
-    "@creatormatrix/react-settings-form": "1.0.1",
-    "@creatormatrix/shared": "1.0.1",
+    "@creatormatrix/core": "1.0.2",
+    "@creatormatrix/react": "1.0.2",
+    "@creatormatrix/react-sandbox": "1.0.2",
+    "@creatormatrix/react-settings-form": "1.0.2",
+    "@creatormatrix/shared": "1.0.2",
     "@formily/reactive": "^2.0.2",
     "@formily/reactive-react": "^2.0.2",
     "antd": "^4.15.2",
