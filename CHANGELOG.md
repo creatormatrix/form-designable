@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.2(2024-06-20)
+
+### :beetle: Bug Fixes
+
+1. [fix: monaco change 响应时间改为 0.5s 之内](https://github.com/alibaba/designable/commit/bb249ac) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.0.1(2024-05-28)
 
 ### :beetle: Bug Fixes
@@ -395,11 +401,3 @@
 ### :beetle: Bug Fixes
 
 1. [fix(react): add source icons](https://github.com/alibaba/designable/commit/8cb04ec) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.24(2021-10-18)
-
-### :beetle: Bug Fixes
-
-1. [fix(react): fix CompositePanel styles](https://github.com/alibaba/designable/commit/7e2d15f) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-1. [fix(react): fix conflict of registerDesignerBehaviors](https://github.com/alibaba/designable/commit/a88611a) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
