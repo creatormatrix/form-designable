@@ -23,9 +23,19 @@ export interface MonacoInputProps extends EditorProps {
   helpCodeViewWidth?: number | string
   extraLib?: string
   onChange?: (value: string) => void
+  editTheme?: string
+  editPrefix?: string
 }
 
 export const MonacoInput: React.FC<MonacoInputProps> & {
+  loader?: typeof loader
+} = (props) => {
+  const theme = useTheme()
+  const prefix = usePrefix('monaco-input')
+  return <MonacoInputEditor editPrefix={prefix} editTheme={theme} {...props} />
+}
+
+export const MonacoInputEditor: React.FC<MonacoInputProps> & {
   loader?: typeof loader
 } = ({
   className,
@@ -38,10 +48,11 @@ export const MonacoInput: React.FC<MonacoInputProps> & {
   height,
   onMount,
   onChange,
+  editTheme,
+  editPrefix,
   ...props
 }) => {
   const [loaded, setLoaded] = useState(false)
-  const theme = useTheme()
   const valueRef = useRef('')
   const validateRef = useRef(null)
   const submitRef = useRef(null)
@@ -54,7 +65,6 @@ export const MonacoInput: React.FC<MonacoInputProps> & {
   const unmountedRef = useRef(false)
   const changedRef = useRef(false)
   const uidRef = useRef(uid())
-  const prefix = usePrefix('monaco-input')
   const input = props.value || props.defaultValue
 
   useEffect(() => {
@@ -114,7 +124,7 @@ export const MonacoInput: React.FC<MonacoInputProps> & {
             <TextWidget token="SettingComponents.MonacoInput.helpDocument" />
           }
         >
-          <div className={prefix + '-helper'}>
+          <div className={editPrefix + '-helper'}>
             <a target="_blank" href={href} rel="noreferrer">
               <IconWidget infer="Help" />
             </a>
@@ -158,7 +168,7 @@ export const MonacoInput: React.FC<MonacoInputProps> & {
     clearTimeout(submitRef.current)
     submitRef.current = setTimeout(() => {
       onChange?.(valueRef.current)
-    }, 1000)
+    }, 100)
   }
 
   const validate = () => {
@@ -258,12 +268,12 @@ export const MonacoInput: React.FC<MonacoInputProps> & {
     if (!helpCode) return null
     return (
       <div
-        className={prefix + '-view'}
+        className={editPrefix + '-view'}
         style={{ width: helpCodeViewWidth || '50%' }}
       >
         <Editor
           value={helpCode}
-          theme={theme === 'dark' ? 'monokai' : 'chrome-devtools'}
+          theme={editTheme === 'dark' ? 'monokai' : 'chrome-devtools'}
           defaultLanguage={realLanguage.current}
           language={realLanguage.current}
           options={{
@@ -294,16 +304,16 @@ export const MonacoInput: React.FC<MonacoInputProps> & {
 
   return (
     <div
-      className={cls(prefix, className, {
+      className={cls(editPrefix, className, {
         loaded,
       })}
       style={{ width, height }}
     >
       {renderHelper()}
-      <div className={prefix + '-view'}>
+      <div className={editPrefix + '-view'}>
         <Editor
           {...props}
-          theme={theme === 'dark' ? 'monokai' : 'chrome-devtools'}
+          theme={editTheme === 'dark' ? 'monokai' : 'chrome-devtools'}
           defaultLanguage={realLanguage.current}
           language={realLanguage.current}
           options={{
@@ -329,3 +339,4 @@ export const MonacoInput: React.FC<MonacoInputProps> & {
 }
 
 MonacoInput.loader = loader
+MonacoInputEditor.loader = loader
