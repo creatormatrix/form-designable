@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.3(2024-06-20)
+
+### No Change Log
+
 ## v1.0.2(2024-06-20)
 
 ### :beetle: Bug Fixes
@@ -395,9 +399,3 @@
 1. [feat(core): add takeSnapshot to content editable](https://github.com/alibaba/designable/commit/ec82636) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
 
 1. [feat(react): support placeholder to DroppableWidget](https://github.com/alibaba/designable/commit/19e61ad) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.25(2021-10-18)
-
-### :beetle: Bug Fixes
-
-1. [fix(react): add source icons](https://github.com/alibaba/designable/commit/8cb04ec) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
