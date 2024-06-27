@@ -8,10 +8,13 @@ import './styles.less'
 
 const ExpandedMap = new Map<string, boolean>()
 
-export const FoldItem: React.FC<IFormItemProps> & {
+export const FoldItem: React.FC<
+  IFormItemProps & {
+    disabled?: boolean
+  }
+> & {
   Base?: React.FC
   Extra?: React.FC
-  disabled?: boolean
 } = observer(({ className, style, children, disabled = false, ...props }) => {
   const prefix = usePrefix('fold-item')
   const field = useField()
