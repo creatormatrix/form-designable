@@ -3,7 +3,7 @@ import { useField, Field, observer } from '@formily/react'
 import { usePrefix } from '@creatormatrix/react'
 import { Select, Input } from '@formily/antd'
 import { FoldItem } from '../FoldItem'
-import { ColorInput } from '../ColorInput'
+import { MixColorInput } from '../ColorInput'
 import { BackgroundSizeInput } from '../SizeInput'
 import { BackgroundImageInput } from '../ImageInput'
 import { InputItems } from '../InputItems'
@@ -12,6 +12,7 @@ import cls from 'classnames'
 export interface IBackgroundStyleSetterProps {
   className?: string
   style?: React.CSSProperties
+  theme?: any
 }
 
 export const BackgroundStyleSetter: React.FC<IBackgroundStyleSetterProps> =
@@ -24,7 +25,7 @@ export const BackgroundStyleSetter: React.FC<IBackgroundStyleSetterProps> =
           <Field
             name="backgroundColor"
             basePath={field.address.parent()}
-            component={[ColorInput]}
+            component={[MixColorInput, { theme: 'backgroundColor' }]}
           />
         </FoldItem.Base>
         <FoldItem.Extra>

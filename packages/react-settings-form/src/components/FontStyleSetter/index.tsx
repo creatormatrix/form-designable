@@ -5,7 +5,7 @@ import { Select, Radio, NumberPicker } from '@formily/antd'
 import { FoldItem } from '../FoldItem'
 import { InputItems } from '../InputItems'
 import { SizeInput } from '../SizeInput'
-import { ColorInput } from '../ColorInput'
+import { MixColorInput } from '../ColorInput'
 import cls from 'classnames'
 export interface IFontStyleSetterProps {
   className?: string
@@ -58,17 +58,31 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = observer(
       >
         <FoldItem.Base>
           <Field
-            name="fontFamily"
+            name="fontSize"
             basePath={field.address.parent()}
-            component={[
-              Select,
-              { style: { width: '100%' }, placeholder: 'Helvetica Neue' },
-            ]}
-            dataSource={FontFamilyOptions}
+            component={[SizeInput, { exclude: ['auto'], theme: 'font' }]}
           />
         </FoldItem.Base>
         <FoldItem.Extra>
           <InputItems>
+            <InputItems.Item width="100%">
+              <Field
+                name="fontFamily"
+                basePath={field.address.parent()}
+                component={[
+                  Select,
+                  { style: { width: '100%' }, placeholder: 'Helvetica Neue' },
+                ]}
+                dataSource={FontFamilyOptions}
+              />
+            </InputItems.Item>
+            <InputItems.Item icon="FontColor" width="100%">
+              <Field
+                name="color"
+                basePath={field.address.parent()}
+                component={[MixColorInput, { theme: 'color' }]}
+              />
+            </InputItems.Item>
             <InputItems.Item icon="FontWeight" width="50%">
               <Field
                 name="fontWeight"
@@ -93,21 +107,8 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = observer(
                 component={[Radio.Group, { optionType: 'button' }]}
               />
             </InputItems.Item>
-            <InputItems.Item icon="FontColor" width="100%">
-              <Field
-                name="color"
-                basePath={field.address.parent()}
-                component={[ColorInput]}
-              />
-            </InputItems.Item>
-            <InputItems.Item icon="FontSize" width="50%">
-              <Field
-                name="fontSize"
-                basePath={field.address.parent()}
-                component={[SizeInput, { exclude: ['auto'] }]}
-              />
-            </InputItems.Item>
-            <InputItems.Item icon="LineHeight" width="50%">
+
+            <InputItems.Item icon="LineHeight" width="100%">
               <Field
                 name="lineHeight"
                 basePath={field.address.parent()}

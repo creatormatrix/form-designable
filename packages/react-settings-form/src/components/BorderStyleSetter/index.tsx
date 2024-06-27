@@ -6,7 +6,7 @@ import { observable } from '@formily/reactive'
 import { Field as FieldType } from '@formily/core'
 import { useField, Field, observer } from '@formily/react'
 import { FoldItem } from '../FoldItem'
-import { ColorInput } from '../ColorInput'
+import { MixColorInput } from '../ColorInput'
 import { SizeInput } from '../SizeInput'
 import { PositionInput } from '../PositionInput'
 import cls from 'classnames'
@@ -116,7 +116,7 @@ export const BorderStyleSetter: React.FC<IBorderStyleSetterProps> = observer(
                       name={createBorderProp(position, 'color')}
                       basePath={field.address.parent()}
                       reactions={createReaction(position)}
-                      component={[ColorInput]}
+                      component={[MixColorInput, { theme: 'borderColor' }]}
                     />
                   </Fragment>
                 )

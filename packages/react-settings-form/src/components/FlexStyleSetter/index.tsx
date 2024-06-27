@@ -29,9 +29,15 @@ export const FlexStyleSetter: React.FC<IFlexStyleSetterProps> = observer(
                 label: <IconWidget infer="FlexDirectionColumn" />,
                 value: 'column',
               },
+              {
+                label: <IconWidget infer="Clear" />,
+                value: 'unset',
+              },
             ]}
             reactions={(field) => {
-              field.decorator[1].title = `Flex Direction : ${field.value || ''}`
+              field.decorator[1].title = `Flex Direction : ${
+                field.value || 'unset'
+              }`
             }}
             decorator={[InputItems.Item]}
             component={[Radio.Group, { optionType: 'button' }]}
@@ -48,9 +54,13 @@ export const FlexStyleSetter: React.FC<IFlexStyleSetterProps> = observer(
                 label: <IconWidget infer="FlexWrap" />,
                 value: 'wrap',
               },
+              {
+                label: <IconWidget infer="Clear" />,
+                value: 'unset',
+              },
             ]}
             reactions={(field) => {
-              field.decorator[1].title = `Flex Wrap : ${field.value || ''}`
+              field.decorator[1].title = `Flex Wrap : ${field.value || 'unset'}`
             }}
             decorator={[InputItems.Item]}
             component={[Radio.Group, { optionType: 'button' }]}
@@ -83,9 +93,15 @@ export const FlexStyleSetter: React.FC<IFlexStyleSetterProps> = observer(
                 label: <IconWidget infer="FlexAlignContentStretch" />,
                 value: 'stretch',
               },
+              {
+                label: <IconWidget infer="Clear" />,
+                value: 'unset',
+              },
             ]}
             reactions={(field) => {
-              field.decorator[1].title = `Align Content : ${field.value || ''}`
+              field.decorator[1].title = `Align Content : ${
+                field.value || 'unset'
+              }`
             }}
             decorator={[InputItems.Item]}
             component={[Radio.Group, { optionType: 'button' }]}
@@ -117,6 +133,10 @@ export const FlexStyleSetter: React.FC<IFlexStyleSetterProps> = observer(
               {
                 label: <IconWidget infer="FlexJustifySpaceEvenly" />,
                 value: 'space-evenly',
+              },
+              {
+                label: <IconWidget infer="Clear" />,
+                value: 'unset',
               },
             ]}
             reactions={(field) => {
@@ -151,9 +171,34 @@ export const FlexStyleSetter: React.FC<IFlexStyleSetterProps> = observer(
                 label: <IconWidget infer="FlexAlignItemsBaseline" />,
                 value: 'baseline',
               },
+              {
+                label: <IconWidget infer="Clear" />,
+                value: 'unset',
+              },
             ]}
             reactions={(field) => {
-              field.decorator[1].title = `Align Items : ${field.value || ''}`
+              field.decorator[1].title = `Align Items : ${
+                field.value || 'unset'
+              }`
+            }}
+            decorator={[InputItems.Item]}
+            component={[Radio.Group, { optionType: 'button' }]}
+          />
+          <Field
+            name="flex1"
+            basePath={field.address.parent()}
+            dataSource={[
+              {
+                label: <IconWidget infer="Flex1" />,
+                value: '1',
+              },
+              {
+                label: <IconWidget infer="Clear" />,
+                value: 'unset',
+              },
+            ]}
+            reactions={(field) => {
+              field.decorator[1].title = `Flex : ${field.value || 'unset'}`
             }}
             decorator={[InputItems.Item]}
             component={[Radio.Group, { optionType: 'button' }]}

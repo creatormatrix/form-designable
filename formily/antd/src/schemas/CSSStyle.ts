@@ -29,19 +29,27 @@ export const CSSStyle: ISchema = {
       'x-component': 'BoxStyleSetter',
       'x-component-props': {
         exclude: ['unset'],
+        theme: 'margin',
       },
     },
     'style.padding': {
       'x-component': 'BoxStyleSetter',
       'x-component-props': {
         exclude: ['unset', 'auto'],
+        theme: 'padding',
       },
     },
     'style.borderRadius': {
       'x-component': 'BorderRadiusStyleSetter',
+      'x-component-props': {
+        theme: 'borderRadius',
+      },
     },
     'style.border': {
       'x-component': 'BorderStyleSetter',
+      'x-component-props': {
+        theme: 'borderColor',
+      },
     },
     'style.opacity': {
       'x-decorator': 'FormItem',

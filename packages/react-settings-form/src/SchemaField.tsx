@@ -20,6 +20,7 @@ import { Slider } from 'antd'
 import {
   SizeInput,
   ColorInput,
+  MixColorInput,
   ImageInput,
   BackgroundImageInput,
   PositionInput,
@@ -74,5 +75,7 @@ export const SchemaField = createSchemaField({
     FormGrid,
     FormLayout,
     FormTab,
+
+    MixColorInput,
   },
 })

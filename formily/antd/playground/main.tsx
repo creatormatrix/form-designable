@@ -35,7 +35,7 @@ import {
   SettingsForm,
   setNpmCDNRegistry,
 } from '@creatormatrix/react-settings-form'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import ReactDOM from 'react-dom'
 import {
   ArrayCards,
@@ -130,6 +130,26 @@ const App = () => {
     []
   )
   const form = useMemo(() => createForm(), [])
+
+  useEffect(() => {
+    const cssVars = {
+      '--gm-color-text': '#333333',
+      '--gm-color-secondary': '#666',
+      '--gm-color-primary': '#0000ff',
+      '--gm-color-success': '#00ff00',
+    }
+    // 构建包含所有 CSS 变量的样式字符串
+    const cssVarsString: string[] = []
+    for (const [key, value] of Object.entries(cssVars)) {
+      cssVarsString.push(`${key}: ${value}; `)
+    }
+    // 创建一个新的 <style> 元素
+    const styleElement = document.createElement('style')
+    styleElement.textContent = `:root {${cssVarsString.join('')}}`
+
+    // 将 <style> 元素添加到文档的 <head> 中
+    document.head.appendChild(styleElement)
+  }, [])
   return (
     <div>
       <div
@@ -324,6 +344,59 @@ const App = () => {
           <SettingsPanel title="panels.PropertySettings">
             <SettingsForm
               uploadAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              theme={{
+                backgroundColor: {
+                  default: '--gm-background-color',
+                },
+                font: {
+                  size: '--gm-font-size',
+                  size1: '--gm-font-size-1',
+                  size2: '--gm-font-size-2',
+                  size3: '--gm-font-size-3',
+                  size4: '--gm-font-size-4',
+                  size5: '--gm-font-size-5',
+                  size6: '--gm-font-size-6',
+                  size7: '--gm-font-size-7',
+                  size8: '--gm-font-size-8',
+                  size9: '--gm-font-size-9',
+                  size10: '--gm-font-size-10',
+                },
+                color: {
+                  text: '--gm-color-text',
+                  textSecondary: '--gm-color-secondary',
+                  primary: '--gm-color-primary',
+                  success: '--gm-color-success',
+                },
+                boxShadow: {
+                  default: '--gm-box-shadow',
+                  secondary: '--gm-box-shadow-secondary',
+                },
+                margin: {
+                  default: '--gm-margin',
+                  xs: '--gm-margin-xs',
+                  sm: '--gm-margin-sm',
+                  md: '--gm-margin-md',
+                  lg: '--gm-margin-md',
+                  xl: '--gm-margin-xl',
+                },
+                padding: {
+                  default: '--gm-padding',
+                  xs: '--gm-padding-xs',
+                  sm: '--gm-padding-sm',
+                  md: '--gm-padding-md',
+                  lg: '--gm-padding-md',
+                  xl: '--gm-padding-xl',
+                },
+                borderRadius: {
+                  xs: '--gm-border-radius-xs',
+                  sm: '--gm-border-radius-sm',
+                  md: '--gm-border-radius-md',
+                },
+                borderColor: {
+                  default: '--gm-border-color',
+                  secondary: '--gm-border-color-secondary',
+                },
+              }}
               scope={{ abc: 'hello world' }}
               buildSchema={(schema) => {
                 // if (schema?.properties?.['field-group']?.properties?.name) {

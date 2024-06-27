@@ -1,5 +1,9 @@
 import { InputNumber } from 'antd'
-import { createPolyInput } from '../PolyInput'
+import { createPolyInput, createVarOption } from '../PolyInput'
+import { variableToLabel } from '@creatormatrix/shared'
+import { useContext, useMemo } from 'react'
+import { SettingsFormContext } from '../../shared/context'
+import React from 'react'
 
 const takeNumber = (value: any) => {
   const num = String(value)
@@ -46,7 +50,25 @@ const NormalSizeOptions = [
   createUnitType('em'),
 ]
 
-export const SizeInput = createPolyInput(NormalSizeOptions)
+export const SizeInput = (props) => {
+  const context = useContext(SettingsFormContext)
+  const sizes = context?.theme?.[props.theme]
+  const MemoizedComponent = useMemo(() => {
+    let sizeOptions = NormalSizeOptions
+    if (sizes && Object.keys(sizes).length > 0) {
+      sizeOptions = [
+        ...NormalSizeOptions,
+        ...Object.keys(sizes).map((i) => {
+          return createVarOption(variableToLabel(i), `var(${sizes[i]})`)
+        }),
+      ]
+    }
+    return createPolyInput(sizeOptions)
+  }, [])
+  return <MemoizedComponent {...props} />
+}
+
+createPolyInput(NormalSizeOptions)
 
 export const BackgroundSizeInput = createPolyInput([
   createSpecialSizeOption('cover'),

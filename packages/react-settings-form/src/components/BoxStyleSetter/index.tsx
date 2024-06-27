@@ -42,10 +42,10 @@ export const BoxStyleSetter: React.FC<IMarginStyleSetterProps> = observer(
       const v2 = matched[1]
       const v3 = matched[2]
       const v4 = matched[3]
-      const allEqualls = v1 === v2 && v2 === v3 && v3 === v4
+      const allEquals = v1 === v2 && v2 === v3 && v3 === v4
       return {
         ...props,
-        value: position === 'all' ? (allEqualls ? v1 : undefined) : value,
+        value: position === 'all' ? (allEquals ? v1 : undefined) : value,
         onChange(value: string) {
           if (position === 'all') {
             props.onChange?.(

@@ -11,7 +11,8 @@ const ExpandedMap = new Map<string, boolean>()
 export const FoldItem: React.FC<IFormItemProps> & {
   Base?: React.FC
   Extra?: React.FC
-} = observer(({ className, style, children, ...props }) => {
+  disabled?: boolean
+} = observer(({ className, style, children, disabled = false, ...props }) => {
   const prefix = usePrefix('fold-item')
   const field = useField()
   const expand = useMemo(
@@ -46,7 +47,9 @@ export const FoldItem: React.FC<IFormItemProps> & {
                 expand: expand.value,
               })}
             >
-              {slots.current.extra && <IconWidget infer="Expand" size={10} />}
+              {slots.current.extra && disabled === false && (
+                <IconWidget infer="Expand" size={10} />
+              )}
               {props.label}
             </span>
           }
@@ -61,7 +64,7 @@ export const FoldItem: React.FC<IFormItemProps> & {
           </div>
         </FormItem.BaseItem>
       </div>
-      {expand.value && slots.current.extra && (
+      {expand.value && slots.current.extra && disabled === false && (
         <div className={prefix + '-extra'}>{slots.current.extra}</div>
       )}
     </div>

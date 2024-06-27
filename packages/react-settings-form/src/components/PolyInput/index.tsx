@@ -25,6 +25,7 @@ export interface IPolyType {
   checker: (value: any) => boolean
   toInputValue?: (value: any) => any
   toChangeValue?: (value: any) => any
+  toLabelPrefix?: (value: any) => any
 }
 
 export type PolyTypes = IPolyType[]
@@ -56,6 +57,42 @@ const createTypes = (
     return true
   })
 }
+
+export const createClearOption = (type: string) => {
+  return {
+    type,
+    checker() {
+      return false
+    },
+  }
+}
+
+export const createDefaultOption = (type: string, component: any) => {
+  return {
+    type,
+    component,
+    checker(value: any) {
+      return !/^var\(.*?\)$/.test(value)
+    },
+  }
+}
+
+export const createVarOption = (
+  type: string,
+  value: string,
+  labelPrefix?: (v: string) => any
+) => ({
+  type: type,
+  checker(v: any) {
+    return v === value
+  },
+  toChangeValue() {
+    return value
+  },
+  toLabelPrefix(v) {
+    return labelPrefix?.(v)
+  },
+})
 
 export function createPolyInput(
   polyTypes: PolyTypes = [],
@@ -154,6 +191,7 @@ export function createPolyInput(
             //   )
             // }}
           >
+            {type?.toLabelPrefix && type?.toLabelPrefix(value)}
             {type?.icon ? (
               <IconWidget infer={type.icon} />
             ) : (
