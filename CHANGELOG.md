@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.4(2024-06-27)
+
+### :tada: Enhancements
+
+1. [feat: 增加对 cssvar 的支持](https://github.com/alibaba/designable/commit/afc385e) :point_right: ( [elppac](https://github.com/elppac) )
+
+### :beetle: Bug Fixes
+
+1. [fix: remove basic example](https://github.com/alibaba/designable/commit/e622cc1) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.0.3(2024-06-20)
 
 ### No Change Log
@@ -391,11 +401,3 @@
 ### :tada: Enhancements
 
 1. [feat(react): support placeholder to DroppableWidget](https://github.com/alibaba/designable/commit/79ae6d1) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.26(2021-10-23)
-
-### :tada: Enhancements
-
-1. [feat(core): add takeSnapshot to content editable](https://github.com/alibaba/designable/commit/ec82636) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-1. [feat(react): support placeholder to DroppableWidget](https://github.com/alibaba/designable/commit/19e61ad) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )

@@ -15,10 +15,7 @@ import { ServiceSetter } from '../ServiceSetter'
 import { isEmpty } from '@formily/shared'
 import { useSelectedNode } from '@creatormatrix/react'
 import { TreeNode } from '@creatormatrix/core'
-import {
-  contextExpressions,
-  dataSourceToExpressions,
-} from '@creatormatrix/shared'
+import { dataSourceToExpressions } from '@creatormatrix/shared'
 
 type Source<T = any> =
   | {
