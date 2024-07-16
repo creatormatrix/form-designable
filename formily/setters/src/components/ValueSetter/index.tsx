@@ -2,11 +2,12 @@
  * 支持文本、数字、布尔、表达式
  * Todo: JSON、富文本，公式
  */
-import React from 'react'
+import React, { useContext } from 'react'
 import { Input, Button, Popover, InputNumber, Select } from 'antd'
 import {
   IInput,
   MonacoInput,
+  SettingsFormContext,
   createPolyInput,
 } from '@creatormatrix/react-settings-form'
 import { ApartmentOutlined } from '@ant-design/icons'
@@ -191,6 +192,9 @@ export const ValueSetter: React.FC<IValueInput> = createPolyInput([
       const declareExtra = dataSourceToExpressions(
         flattenDataSource(dataSource)
       )
+
+      const context = useContext(SettingsFormContext)
+      const expressions = context?.expressions
       return (
         <Popover
           content={
@@ -208,7 +212,7 @@ export const ValueSetter: React.FC<IValueInput> = createPolyInput([
                 language="javascript.expression"
                 extraLib={`
                 ${declareExtra}
-                ${contextExpressions()}
+                ${expressions && expressions?.()}
                 `}
               />
             </div>

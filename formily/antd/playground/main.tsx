@@ -80,6 +80,7 @@ import { createForm } from '@formily/core'
 import { ConfigProvider, Button } from 'antd'
 import { ServiceSetter } from './widgets/ServiceSetter'
 import { FieldResourceWidget } from './widgets/FieldResourceWidget'
+import { contextExpressions } from '@creatormatrix/shared'
 // setNpmCDNRegistry('//unpkg.com')
 setNpmCDNRegistry('/public', false)
 
@@ -398,6 +399,9 @@ const App = () => {
                 },
               }}
               scope={{ abc: 'hello world' }}
+              expressions={() => {
+                return contextExpressions()
+              }}
               buildSchema={(schema) => {
                 // if (schema?.properties?.['field-group']?.properties?.name) {
                 //   const settingSchema = { ...schema }

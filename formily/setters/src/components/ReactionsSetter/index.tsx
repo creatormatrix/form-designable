@@ -1,11 +1,10 @@
 import { GlobalRegistry } from '@creatormatrix/core'
 import { TextWidget, usePrefix } from '@creatormatrix/react'
-import { MonacoInput } from '@creatormatrix/react-settings-form'
 import {
-  contextExpressions,
-  dataSourceToDeclare,
-  requestIdle,
-} from '@creatormatrix/shared'
+  MonacoInput,
+  SettingsFormContext,
+} from '@creatormatrix/react-settings-form'
+import { dataSourceToDeclare, requestIdle } from '@creatormatrix/shared'
 import {
   ArrayTable,
   Form,
@@ -19,7 +18,7 @@ import { createSchemaField } from '@formily/react'
 import { clone, uid } from '@formily/shared'
 import { Button, Card, Modal, Tag, Tooltip } from 'antd'
 import type { DefaultOptionType } from 'antd/lib/select'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { FieldPropertySetter } from './FieldPropertySetter'
 import { PathSelector } from './PathSelector'
 import './declarations'
@@ -148,6 +147,8 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
   const [modalVisible, setModalVisible] = useState(false)
   const [innerVisible, setInnerVisible] = useState(false)
   const prefix = usePrefix('reactions-setter')
+  const context = useContext(SettingsFormContext)
+  const expressions = context?.expressions
   const form = useMemo(() => {
     return createForm({
       values: clone(props.value),
@@ -439,7 +440,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                                 value: i.name,
                               }))
                           )}
-                          ${contextExpressions()}
+                          ${expressions && expressions?.()}
                           `
                         }
                       }}
@@ -481,7 +482,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                                 value: i.name,
                               }))
                           )}
-                          ${contextExpressions()}
+                          ${expressions && expressions?.()}
                           `
                         }
                       }}

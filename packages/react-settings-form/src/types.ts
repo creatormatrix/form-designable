@@ -15,4 +15,5 @@ export interface ISettingFormProps {
   components?: Record<string, React.FC<any>>
   effects?: (form: Form) => void
   scope?: any
+  expressions?: () => any
 }
