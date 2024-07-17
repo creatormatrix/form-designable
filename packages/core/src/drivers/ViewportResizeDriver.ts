@@ -1,8 +1,7 @@
-import { EventDriver } from '@creatormatrix/shared'
-import { Engine } from '../models/Engine'
-import { ViewportResizeEvent } from '../events'
+import { EventDriver, globalThisPolyfill } from '@creatormatrix/shared'
 import { ResizeObserver } from '@juggle/resize-observer'
-import { globalThisPolyfill } from '@creatormatrix/shared'
+import { ViewportResizeEvent } from '../events'
+import { Engine } from '../models/Engine'
 
 export class ViewportResizeDriver extends EventDriver<Engine> {
   request = null

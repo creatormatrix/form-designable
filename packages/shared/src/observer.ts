@@ -8,7 +8,17 @@ export class LayoutObserver {
   private connected = false
 
   constructor(observer: () => void = () => {}) {
-    this.resizeObserver = new ResizeObserver(() => observer())
+    this.resizeObserver = new ResizeObserver(
+      (entries: ResizeObserverEntry[]) => {
+        window.requestAnimationFrame((): void | undefined => {
+          if (!Array.isArray(entries) || !entries.length) {
+            return
+          }
+          observer()
+        })
+      }
+    )
+
     this.performanceObserver = new PerformanceObserver(() => {
       observer()
     })

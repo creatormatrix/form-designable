@@ -1,8 +1,8 @@
-import path from 'path'
+// import autoprefixer from 'autoprefixer'
 import fs from 'fs-extra'
 import { GlobSync } from 'glob'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import autoprefixer from 'autoprefixer'
+import path from 'path'
 
 const getWorkspaceAlias = () => {
   const basePath = path.resolve(__dirname, '../../../')
@@ -72,9 +72,6 @@ export default {
           { loader: 'css-loader' },
           {
             loader: 'postcss-loader',
-            options: {
-              plugins: () => autoprefixer(),
-            },
           },
           {
             loader: 'less-loader',

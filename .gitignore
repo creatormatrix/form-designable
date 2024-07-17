@@ -25,3 +25,4 @@ doc-site
 lib/
 esm/
 dist/
+.dumi/

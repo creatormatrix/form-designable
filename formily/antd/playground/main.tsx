@@ -1,12 +1,10 @@
-import './main.less'
-
 import {
+  createDesigner,
+  createResource,
   GlobalRegistry,
   IResourceLike,
   KeyCode,
   Shortcut,
-  createDesigner,
-  createResource,
 } from '@creatormatrix/core'
 import {
   DataSourceSetter,
@@ -26,21 +24,24 @@ import {
   StudioPanel,
   ToolbarPanel,
   ViewPanel,
-  ViewToolsWidget,
   ViewportPanel,
+  ViewToolsWidget,
   Workspace,
   WorkspacePanel,
 } from '@creatormatrix/react'
 import {
-  SettingsForm,
   setNpmCDNRegistry,
+  SettingsForm,
 } from '@creatormatrix/react-settings-form'
+import { contextExpressions } from '@creatormatrix/shared'
+import { createForm } from '@formily/core'
+import { Button, ConfigProvider } from 'antd'
 import React, { useEffect, useMemo } from 'react'
 import ReactDOM from 'react-dom'
 import {
   ArrayCards,
-  ArrayTable,
   ArrayList,
+  ArrayTable,
   Card,
   Cascader,
   Checkbox,
@@ -67,6 +68,7 @@ import {
   TreeSelect,
   Upload,
 } from '../src'
+import './main.less'
 import { saveSchema } from './service'
 import {
   ActionsWidget,
@@ -75,14 +77,11 @@ import {
   PreviewWidget,
   SchemaEditorWidget,
 } from './widgets'
-
-import { createForm } from '@formily/core'
-import { ConfigProvider, Button } from 'antd'
-import { ServiceSetter } from './widgets/ServiceSetter'
 import { FieldResourceWidget } from './widgets/FieldResourceWidget'
-import { contextExpressions } from '@creatormatrix/shared'
+import { ServiceSetter } from './widgets/ServiceSetter'
+
 // setNpmCDNRegistry('//unpkg.com')
-setNpmCDNRegistry('/public', false)
+setNpmCDNRegistry('http://127.0.0.1:3000', false)
 
 GlobalRegistry.registerDesignerLocales({
   'zh-CN': {
