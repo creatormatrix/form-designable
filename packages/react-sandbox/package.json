@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/react-sandbox",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "homepage": "https://github.com/alibaba/designable#readme",
   "bugs": {
     "url": "https://github.com/alibaba/designable/issues"
@@ -20,8 +20,8 @@
     "build:umd": "rollup --config"
   },
   "dependencies": {
-    "@creatormatrix/react": "1.0.5",
-    "@creatormatrix/shared": "1.0.5"
+    "@creatormatrix/react": "1.1.0",
+    "@creatormatrix/shared": "1.1.0"
   },
   "peerDependencies": {
     "react": "16.x || 17.x|| 18.x"

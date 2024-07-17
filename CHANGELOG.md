@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.5(2024-07-16)
+
+### :beetle: Bug Fixes
+
+1. [fix: expression](https://github.com/alibaba/designable/commit/2c1d2f2) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.0.4(2024-06-27)
 
 ### :tada: Enhancements
@@ -395,9 +401,3 @@
 ### :tada: Enhancements
 
 1. [feat(react-settings-form): support to expression](https://github.com/alibaba/designable/commit/7290811) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.27(2021-10-23)
-
-### :tada: Enhancements
-
-1. [feat(react): support placeholder to DroppableWidget](https://github.com/alibaba/designable/commit/79ae6d1) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )

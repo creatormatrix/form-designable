@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/formily-antd",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "homepage": "https://github.com/alibaba/designable#readme",
   "bugs": {
     "url": "https://github.com/alibaba/designable/issues"
@@ -21,13 +21,13 @@
     "start": "export NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --config playground/webpack.dev.ts"
   },
   "dependencies": {
-    "@creatormatrix/core": "1.0.5",
-    "@creatormatrix/formily-setters": "1.0.5",
-    "@creatormatrix/formily-transformer": "1.0.5",
-    "@creatormatrix/react": "1.0.5"
+    "@creatormatrix/core": "1.1.0",
+    "@creatormatrix/formily-setters": "1.1.0",
+    "@creatormatrix/formily-transformer": "1.1.0",
+    "@creatormatrix/react": "1.1.0"
   },
   "devDependencies": {
-    "@creatormatrix/react-settings-form": "1.0.5",
+    "@creatormatrix/react-settings-form": "1.1.0",
     "@formily/antd": "^2.0.2",
     "@formily/core": "^2.0.2",
     "@formily/react": "^2.0.2",
