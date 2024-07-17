@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.0(2024-07-17)
+
+### :tada: Enhancements
+
+1. [feat: to react 18](https://github.com/alibaba/designable/commit/175833b) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.0.5(2024-07-16)
 
 ### :beetle: Bug Fixes
@@ -395,9 +401,3 @@
 ### :tada: Enhancements
 
 1. [feat(formily-transformer): remove designable core code dependency](https://github.com/alibaba/designable/commit/be8b182) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.28(2021-10-24)
-
-### :tada: Enhancements
-
-1. [feat(react-settings-form): support to expression](https://github.com/alibaba/designable/commit/7290811) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )

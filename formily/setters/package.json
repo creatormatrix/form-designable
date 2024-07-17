@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/formily-setters",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "homepage": "https://github.com/alibaba/designable#readme",
   "bugs": {
     "url": "https://github.com/alibaba/designable/issues"
@@ -20,10 +20,10 @@
     "start": "webpack-dev-server --config playground/webpack.dev.ts"
   },
   "dependencies": {
-    "@creatormatrix/core": "1.1.0",
-    "@creatormatrix/formily-transformer": "1.1.0",
-    "@creatormatrix/react": "1.1.0",
-    "@creatormatrix/react-settings-form": "1.1.0"
+    "@creatormatrix/core": "1.1.1",
+    "@creatormatrix/formily-transformer": "1.1.1",
+    "@creatormatrix/react": "1.1.1",
+    "@creatormatrix/react-settings-form": "1.1.1"
   },
   "devDependencies": {
     "@formily/antd": "^2.0.2",
