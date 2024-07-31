@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.1(2024-07-17)
+
+### No Change Log
+
 ## v1.1.0(2024-07-17)
 
 ### :tada: Enhancements
@@ -395,9 +399,3 @@
 ### :tada: Enhancements
 
 1. [feat: add source icons](https://github.com/alibaba/designable/commit/56321bc) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.29(2021-10-25)
-
-### :tada: Enhancements
-
-1. [feat(formily-transformer): remove designable core code dependency](https://github.com/alibaba/designable/commit/be8b182) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )

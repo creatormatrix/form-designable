@@ -1,6 +1,6 @@
 {
   "name": "@creatormatrix/react-settings-form",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "homepage": "https://github.com/alibaba/designable#readme",
   "bugs": {
     "url": "https://github.com/alibaba/designable/issues"
@@ -21,9 +21,9 @@
   },
   "dependencies": {
     "@babel/parser": "^7.14.7",
-    "@creatormatrix/core": "1.1.1",
-    "@creatormatrix/react": "1.1.1",
-    "@creatormatrix/shared": "1.1.1",
+    "@creatormatrix/core": "1.1.2",
+    "@creatormatrix/react": "1.1.2",
+    "@creatormatrix/shared": "1.1.2",
     "@monaco-editor/react": "4.2.1",
     "monaco-editor": "^0.25.2",
     "react-color": "^2.19.3",
