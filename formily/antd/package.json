@@ -24,7 +24,8 @@
     "@creatormatrix/core": "1.1.1",
     "@creatormatrix/formily-setters": "1.1.1",
     "@creatormatrix/formily-transformer": "1.1.1",
-    "@creatormatrix/react": "1.1.1"
+    "@creatormatrix/react": "1.1.1",
+    "axios": "^1.6.7"
   },
   "devDependencies": {
     "@creatormatrix/react-settings-form": "1.1.1",

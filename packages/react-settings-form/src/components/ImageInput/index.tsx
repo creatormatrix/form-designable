@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
-import { InputProps } from 'antd/lib/input'
+import { IconWidget, usePrefix } from '@creatormatrix/react'
 import { Input, Upload } from 'antd'
-import { usePrefix, IconWidget } from '@creatormatrix/react'
-import { SettingsFormContext } from '../../shared/context'
+import { InputProps } from 'antd/lib/input'
 import cls from 'classnames'
+import React, { useContext } from 'react'
+import { SettingsFormContext } from '../../shared/context'
 import './styles.less'
+
 export interface ImageInputProps extends Omit<InputProps, 'onChange'> {
   value?: string
   onChange?: (value: string) => void
@@ -17,6 +18,59 @@ export const ImageInput: React.FC<ImageInputProps> = ({
 }) => {
   const prefix = usePrefix('image-input')
   const context = useContext(SettingsFormContext)
+  const customRequest = context.getUploadSignAction
+    ? async ({ file, onError, onProgress, onSuccess, withCredentials }) => {
+        // const formData = new FormData()
+        // if (data) {
+        //   Object.keys(data).forEach((key) => {
+        //     formData.append(key, data[key])
+        //   })
+        // }
+        // formData.append(filename, file)
+        const responseData = await context.getUploadSignAction(file)
+
+        const { uploadUrl, fileUrl } = responseData.data
+        fetch(uploadUrl, {
+          method: 'PUT',
+          body: file,
+          headers: { 'Content-Type': file.type },
+        })
+          // axios
+          //   .put(uploadUrl, file, {
+          //     withCredentials,
+          //     headers: { 'Content-Type': file.type },
+          //     onUploadProgress: ({ total, loaded }) => {
+          //       onProgress(
+          //         {
+          //           percent: Math.round((loaded / total) * 100).toFixed(2),
+          //         },
+          //         file
+          //       )
+          //     },
+          //   })
+          .then((response) => {
+            if (response.status === 200) {
+              onSuccess(
+                {
+                  status: 'success',
+                  url: fileUrl,
+                  name: file.name,
+                },
+                file
+              )
+            } else {
+              console.log('upload error.', response)
+            }
+          })
+          .catch(onError)
+
+        return {
+          abort() {
+            console.log('upload progress is aborted.')
+          },
+        }
+      }
+    : undefined
   return (
     <div className={cls(prefix, className)} style={style}>
       <Input
@@ -27,6 +81,7 @@ export const ImageInput: React.FC<ImageInputProps> = ({
         prefix={
           <Upload
             action={context.uploadAction}
+            customRequest={customRequest as any}
             itemRender={() => null}
             maxCount={1}
             onChange={(params: any) => {

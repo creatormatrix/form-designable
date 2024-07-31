@@ -36,6 +36,7 @@ import {
 import { contextExpressions } from '@creatormatrix/shared'
 import { createForm } from '@formily/core'
 import { Button, ConfigProvider } from 'antd'
+import axios from 'axios'
 import React, { useEffect, useMemo } from 'react'
 import ReactDOM from 'react-dom'
 import {
@@ -344,6 +345,25 @@ const App = () => {
           <SettingsPanel title="panels.PropertySettings">
             <SettingsForm
               uploadAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              getUploadSignAction={async (file: File) => {
+                const { data: responseData }: any = await axios.post(
+                  'http://192.168.126.21:8071/appfactory/generatePresignedUrl',
+                  {
+                    fileName: file.name,
+                    fileLength: file.size,
+                    fileType: file.type,
+                  },
+                  {
+                    withCredentials: true,
+                    headers: {
+                      'X-Platform': 'GM',
+                      'X-Access-Token':
+                        'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjM2NDk0NTAsInVzIjoiODYyZDI5YjUyZTlmNjI0NWVjMjk3YWUyMWI2NGMyZWY4NWRhIn0.aManf_2YvBPzu2YbmBu3DEn4uP0u2fqgLiRJdFq9uDU',
+                    },
+                  }
+                )
+                return responseData
+              }}
               theme={{
                 backgroundColor: {
                   default: '--gm-background-color',
