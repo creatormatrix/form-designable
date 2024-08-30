@@ -344,7 +344,7 @@ const App = () => {
           </Workspace>
           <SettingsPanel title="panels.PropertySettings">
             <SettingsForm
-              uploadAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              // uploadAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
               getUploadSignAction={async (file: File) => {
                 const { data: responseData }: any = await axios.post(
                   'http://192.168.126.21:8071/appfactory/generatePresignedUrl',

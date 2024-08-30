@@ -2,20 +2,20 @@
  * 支持文本、数字、布尔、表达式
  * Todo: JSON、富文本，公式
  */
-import React, { useContext } from 'react'
-import { Input, Button, Popover, InputNumber, Select } from 'antd'
+import { ApartmentOutlined } from '@ant-design/icons'
+import { TreeNode } from '@creatormatrix/core'
+import { useSelectedNode } from '@creatormatrix/react'
 import {
+  createPolyInput,
   IInput,
   MonacoInput,
   SettingsFormContext,
-  createPolyInput,
 } from '@creatormatrix/react-settings-form'
-import { ApartmentOutlined } from '@ant-design/icons'
-import { ServiceSetter } from '../ServiceSetter'
-import { isEmpty } from '@formily/shared'
-import { useSelectedNode } from '@creatormatrix/react'
-import { TreeNode } from '@creatormatrix/core'
 import { dataSourceToExpressions } from '@creatormatrix/shared'
+import { isEmpty } from '@formily/shared'
+import { Button, Input, InputNumber, Popover, Select } from 'antd'
+import React, { useContext, useState } from 'react'
+import { ServiceSetter } from '../ServiceSetter'
 
 type Source<T = any> =
   | {
@@ -41,6 +41,9 @@ const isNumber = (data: Source) =>
 
 const isBoolean = (data: Source) =>
   data?.type === 'static' && typeof data.value === 'boolean'
+
+const isJSON = (data: Source) =>
+  data?.type === 'static' && typeof data.value === 'object'
 
 const isExpression = (data: Source<string>) => {
   return data?.type === 'expression' && typeof data.value === 'string'
@@ -265,6 +268,72 @@ export const ValueSetter: React.FC<IValueInput> = createPolyInput([
     checker: isNumber,
     toInputValue: (data) => takeNumber(data?.value),
     toChangeValue: (value) => ({ type: 'static', value: takeNumber(value) }),
+  },
+
+  {
+    type: 'JSON',
+    icon: 'JSON',
+    component: (props: any) => {
+      const [value, setValue] = useState(props.value)
+      return (
+        <Popover
+          destroyTooltipOnHide
+          onOpenChange={(bool) => {
+            if (!bool) {
+              let json = undefined
+              try {
+                json = JSON.parse(value)
+              } catch (e) {}
+              props.onChange(json)
+            }
+          }}
+          content={
+            <div
+              style={{
+                width: 400,
+                height: 200,
+                marginLeft: -16,
+                // marginRight: -16,
+                // marginBottom: -12,
+              }}
+            >
+              <MonacoInput
+                {...props}
+                value={
+                  typeof value === 'string' ? value : JSON.stringify(value)
+                }
+                onChange={(v) => {
+                  setValue(v)
+                }}
+                options={{
+                  minimap: {
+                    enabled: false,
+                  },
+                  lineNumbers: 'off',
+                  roundedSelection: false,
+                  scrollBeyondLastLine: false,
+                  readOnly: false,
+                }}
+                language="json"
+              />
+            </div>
+          }
+          trigger="click"
+        >
+          <Button block>{'JSON'}</Button>
+        </Popover>
+      )
+    },
+    checker: isJSON,
+    toInputValue: (data) => {
+      return data?.value
+    },
+    toChangeValue: (value) => {
+      return {
+        type: 'static',
+        value: value,
+      }
+    },
   },
   {
     type: 'Service',
