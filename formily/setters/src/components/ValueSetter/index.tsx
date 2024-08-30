@@ -275,9 +275,12 @@ export const ValueSetter: React.FC<IValueInput> = createPolyInput([
     icon: 'JSON',
     component: (props: any) => {
       const [value, setValue] = useState(props.value)
+      //
       return (
         <Popover
           destroyTooltipOnHide
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           onOpenChange={(bool) => {
             if (!bool) {
               let json = undefined

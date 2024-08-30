@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.2(2024-07-31)
+
+### :tada: Enhancements
+
+1. [feat: add upload sign](https://github.com/alibaba/designable/commit/ea1ca56) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.1.1(2024-07-17)
 
 ### No Change Log
@@ -393,9 +399,3 @@
 ### :tada: Enhancements
 
 1. [feat(core): support fromUser for SelectionEvent](https://github.com/alibaba/designable/commit/d3aeda7) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.30(2021-10-27)
-
-### :tada: Enhancements
-
-1. [feat: add source icons](https://github.com/alibaba/designable/commit/56321bc) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
