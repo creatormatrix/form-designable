@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.3(2024-08-30)
+
+### :tada: Enhancements
+
+1. [feat: value setter add JSON type](https://github.com/alibaba/designable/commit/2c039df) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.1.2(2024-07-31)
 
 ### :tada: Enhancements
@@ -393,9 +399,3 @@
 ### :tada: Enhancements
 
 1. [feat(core): support fromUser for SelectionEvent](https://github.com/alibaba/designable/commit/c97de88) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.31(2021-10-29)
-
-### :tada: Enhancements
-
-1. [feat(core): support fromUser for SelectionEvent](https://github.com/alibaba/designable/commit/d3aeda7) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
