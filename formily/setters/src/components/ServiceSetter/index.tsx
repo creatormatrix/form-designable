@@ -24,10 +24,16 @@ export const ServiceSetter: React.FC<IServiceSetterProps> = (props) => {
     }
   }
   const openModal = () => {
+    let v: any
+    try {
+      v = JSON.parse(JSON.stringify(value))
+    } catch (e) {
+      v = value
+    }
     window.postMessage({
       name: 'ServiceSetter',
       open: true,
-      value,
+      value: v,
       type: 'proxy',
     })
     window.addEventListener('message', listenerMessage)

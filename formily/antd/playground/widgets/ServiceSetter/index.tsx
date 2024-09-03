@@ -39,8 +39,14 @@ export const ServiceSetter: React.FC<any> = () => {
     })
   }, [modalVisible, value])
   const closeModal = (value) => {
+    let v: any
+    try {
+      v = JSON.parse(JSON.stringify(value))
+    } catch (e) {
+      v = value
+    }
     window.postMessage(
-      { name: 'ServiceSetter', open: false, value, type: 'component' },
+      { name: 'ServiceSetter', open: false, value: v, type: 'component' },
       '*'
     )
     setModalVisible(false)
