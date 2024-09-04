@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.4(2024-09-03)
+
+### :beetle: Bug Fixes
+
+1. [fix: postMessage](https://github.com/alibaba/designable/commit/76edbda) :point_right: ( [elppac](https://github.com/elppac) )
+
 ## v1.1.3(2024-08-30)
 
 ### :tada: Enhancements
@@ -393,9 +399,3 @@
 ### :blush: Other Changes
 
 1. [chore(formily-setters): remove ip/qq format](https://github.com/alibaba/designable/commit/460782d) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-## v1.0.0-beta.32(2021-10-29)
-
-### :tada: Enhancements
-
-1. [feat(core): support fromUser for SelectionEvent](https://github.com/alibaba/designable/commit/c97de88) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
