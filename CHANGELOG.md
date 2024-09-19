@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.5(2024-09-04)
+
+### No Change Log
+
 ## v1.1.4(2024-09-03)
 
 ### :beetle: Bug Fixes
@@ -383,19 +387,3 @@
 1. [fix(formily): fix reactionSetters and playground](https://github.com/alibaba/designable/commit/87971f4) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
 
 1. [fix(react): fix missing record props in ArrayBase.Item (#125)](https://github.com/alibaba/designable/commit/c041167) :point_right: ( [haloworld](https://github.com/haloworld) )
-
-## v1.0.0-beta.33(2021-11-09)
-
-### :tada: Enhancements
-
-1. [feat(settings-form): add DrawerSetter's trigger props (#122)](https://github.com/alibaba/designable/commit/003de57) :point_right: ( [nekic](https://github.com/nekic) )
-
-1. [feat(formily-setters): add config to DataSourceSetter (#121)](https://github.com/alibaba/designable/commit/6fdf887) :point_right: ( [Sun HaoWei](https://github.com/Sun HaoWei) )
-
-### :beetle: Bug Fixes
-
-1. [fix(settings-form): fix styles](https://github.com/alibaba/designable/commit/6583cf9) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
-
-### :blush: Other Changes
-
-1. [chore(formily-setters): remove ip/qq format](https://github.com/alibaba/designable/commit/460782d) :point_right: ( [zhili.wzl](https://github.com/zhili.wzl) )
