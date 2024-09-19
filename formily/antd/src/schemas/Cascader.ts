@@ -16,6 +16,11 @@ export const Cascader: ISchema = {
       'x-decorator': 'FormItem',
       'x-component': 'Switch',
     },
+    checkStrictly: {
+      type: 'boolean',
+      'x-decorator': 'FormItem',
+      'x-component': 'Switch',
+    },
     changeOnSelect: {
       type: 'boolean',
       'x-decorator': 'FormItem',

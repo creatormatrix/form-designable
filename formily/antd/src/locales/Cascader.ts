@@ -20,6 +20,7 @@ export const Cascader = {
           tooltip:
             '默认值：{ label: "label", value: "value", children: "children" }',
         },
+        checkStrictly: '父子节点选中不关联',
       },
     },
   },
@@ -46,6 +47,7 @@ export const Cascader = {
           tooltip:
             'Defaults：{ label: "label", value: "value", children: "children" }',
         },
+        checkStrictly: 'Check Strictly',
       },
     },
   },
@@ -67,6 +69,7 @@ export const Cascader = {
           tooltip:
             '기본 값：{ label: "label", value: "value", children: "children" }',
         },
+        checkStrictly: 'Check Strictly',
       },
     },
   },
